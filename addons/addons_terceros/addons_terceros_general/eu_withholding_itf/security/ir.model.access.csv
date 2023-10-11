@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-acl_report_igtf,eu_withholding_itf.igtf_wizard,model_igtf_wizard,base.group_user,1,1,1,1
-access_account_payment_igtf,access_account_payment_igtf,model_account_payment_igtf,base.group_user,1,1,1,1
-access_igtf_declaration,access_igtf_declaration,model_igtf_declaration,base.group_user,1,1,1,1
-access_igtf_declaration_line,access_igtf_declaration_line,model_igtf_declaration_line,base.group_user,1,1,1,1

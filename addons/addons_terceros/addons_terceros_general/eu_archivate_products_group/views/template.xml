@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <template id="test_modulo_assets_backend" name="test modulo assets" inherit_id="web.assets_backend">
-        <xpath expr="." position="inside">
-            <script type="text/javascript" src="/eu_archivate_products_group/static/src/js/basic_view.js"/>
-        </xpath>
-    </template>
-</odoo>

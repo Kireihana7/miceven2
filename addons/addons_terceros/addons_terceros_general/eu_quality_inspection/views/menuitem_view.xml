@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<odoo>
-    <menuitem id="chargue_quality_check_motivo" name="Tabla de no Conformidades" sequence="3" action="open_view_quality_check_motivo_tree" parent="quality_control.menu_quality_configuration"/>
-    <menuitem id="chargue_quality_check_tabla" name="Control de Calidad" sequence="4" action="open_view_quality_check_tabla_tree" parent="quality_control.menu_quality_configuration"/>
-    <menuitem id="config_quality_check_motivo_detail" name="Tabla de Motivos" sequence="6" parent="quality_control.menu_quality_configuration" action="open_view_quality_check_motivo_detail_tree"/>
-    <menuitem id="config_product_template_operation" name="Operaciones del Producto" sequence="7" parent="quality_control.menu_quality_configuration" action="open_view_product_template_operation_tree"/>
-    <menuitem id="config_product_template_propiedades" name="Propiedades del Producto" sequence="8" parent="quality_control.menu_quality_configuration" action="open_view_product_template_propiedades_tree"/>
-    <menuitem id="config_tolerancia" name="Tabla Tolerancias" sequence="4" action="open_view_quality_tolerancia_tree" parent="quality_control.menu_quality_configuration" />
-</odoo>

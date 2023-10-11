@@ -1,1 +1,0 @@
-from . import nomina_concepto_salarial

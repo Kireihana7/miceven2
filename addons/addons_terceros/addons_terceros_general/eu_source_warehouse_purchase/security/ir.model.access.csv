@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_eu_source_warehouse_purchase,eu_source_warehouse_purchase.purchase_source_warehouse,model_purchase_source_warehouse,,1,1,1,1

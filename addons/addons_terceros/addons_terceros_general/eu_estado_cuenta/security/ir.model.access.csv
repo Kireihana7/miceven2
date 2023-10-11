@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-acl_estado_cuenta,eu_estado_cuenta.report_estado_cuenta,model_estado_cuenta,base.group_user,1,1,1,1

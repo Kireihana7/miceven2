@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <record id="group_puesto_compra" model="res.groups">
-        <field name="name">Permiso Puesto de Compra</field>
-        <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
-    </record>
-</odoo>

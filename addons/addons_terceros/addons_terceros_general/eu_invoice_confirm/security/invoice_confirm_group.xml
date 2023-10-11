@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <record id="group_confirm_invoice_purchase" model="res.groups">
-        <field name="name">Puede Confirmar Facturas de Proveedores y Clientes</field>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-    </record>
-</odoo>

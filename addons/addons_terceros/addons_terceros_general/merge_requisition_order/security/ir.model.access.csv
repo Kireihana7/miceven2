@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_merge_requisition_purchase_user,merge_requisition_order.merge_requisition_purchase_user,model_merge_requisition_order,base.group_user,1,1,1,1

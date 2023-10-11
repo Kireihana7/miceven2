@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <menuitem 
-        id="report_clientes_prepago_submenu"
-        name="Detalle de Clientes Prepago"
-        sequence='1'
-        action="eu_reporte_clientes_prepago.action_clientes_prepago_wizard"
-        parent="sale.menu_sale_report"/>    
-</odoo>

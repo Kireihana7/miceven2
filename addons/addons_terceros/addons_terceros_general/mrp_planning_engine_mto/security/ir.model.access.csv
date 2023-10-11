@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mrp_planning_engine_mto_user,mrp.planning.engine.mto.user,model_mrp_planning_engine_mto,mrp_planning_engine.group_planning_user,1,1,1,0
-access_mrp_planning_engine_mto_line_user,mrp.planning.engine.mto.line.user,model_mrp_planning_engine_mto_line,mrp_planning_engine.group_planning_user,1,1,1,0
-access_mrp_planning_engine_mto_mo_user,mrp.planning.engine.mto.mo.user,model_mrp_planning_engine_mto_mo,mrp_planning_engine.group_planning_user,1,1,1,0
-access_mrp_planning_engine_mto_po_user,mrp.planning.engine.mto.po.user,model_mrp_planning_engine_mto_po,mrp_planning_engine.group_planning_user,1,1,1,0

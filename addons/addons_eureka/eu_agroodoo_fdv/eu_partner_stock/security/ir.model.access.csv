@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_eu_partner_stock,eu_partner_stock.sale_order_return,model_stock_quant_partner,eu_partner_stock.group_stock_quant_partner_user,1,1,1,0
-access_eu_partner_stock_dos,eu_partner_stock.sale_order_return,model_stock_quant_partner,eu_partner_stock.group_stock_quant_partner_manager,1,1,1,1
-access_eu_partner_stock_tres,eu_partner_stock.sale_order_return,model_stock_quant_partner,base.group_user,1,0,0,0

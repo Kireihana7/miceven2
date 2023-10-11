@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<odoo>
-    <template id="assets_backend" name="chargue_consolidate_assets" inherit_id="web.assets_backend">
-        <xpath expr="." position="inside">
-            <link rel="stylesheet" type="text/scss" href="/eu_agroindustry/static/src/scss/chargue_consolidate.scss"/>
-            <script type="text/javascript" src="/eu_agroindustry/static/src/js/chargue_consolidate.js"></script>
-        </xpath>
-    </template>
-</odoo>

@@ -1,9 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_quality_check_motivo,eu_quality_inspection.quality_check_motivo,model_quality_check_motivo,base.group_user,1,1,1,1
-access_quality_check_motivo_detail,eu_quality_inspection.quality_check_motivo_detail,model_quality_check_motivo_detail,base.group_user,1,1,1,1
-access_product_template_propiedades,eu_quality_inspection.product_template_propiedades,model_product_template_propiedades,base.group_user,1,1,1,1
-access_product_template_operation,eu_quality_inspection.product_template_operation,model_product_template_operation,base.group_user,1,1,1,1
-access_quick_check_tabla,eu_quality_inspection.quick_check_tabla,model_quality_check_tabla,base.group_user,1,1,1,1
-access_quality_check_line,eu_agroindustry.quality_check_line,model_quality_check_line,base.group_user,1,1,1,1
-access_quality_tolerancia,eu_agroindustry.quality_tolerancia,model_quality_tolerancia,base.group_user,1,1,1,1
-access_quality_tolerancia_line,eu_agroindustry.quality_tolerancia.line,model_quality_tolerancia_line,base.group_user,1,1,1,1

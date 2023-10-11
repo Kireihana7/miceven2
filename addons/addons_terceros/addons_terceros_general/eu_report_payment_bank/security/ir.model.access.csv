@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_eu_reporte_payment_bank,eu_report_payment.eu_reporte_payment_bank,model_eu_reporte_payment_bank,base.group_user,1,1,1,1/

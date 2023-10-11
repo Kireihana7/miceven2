@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_eu_ve_dates_res_day,eu_ve_dates.res_day,eu_ve_dates.model_res_day,base.group_user,1,1,1,1
-access_eu_ve_dates_res_month,eu_ve_dates.res_month,eu_ve_dates.model_res_month,base.group_user,1,1,1,1

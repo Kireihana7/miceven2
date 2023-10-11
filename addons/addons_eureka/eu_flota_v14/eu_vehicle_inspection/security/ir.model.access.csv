@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_fleet_inspection_category,eu_vehicle_inspection.fleet_inspection_category,model_fleet_inspection_category,base.group_user,1,1,1,1
-access_fleet_inspection_part,eu_vehicle_inspection.fleet_inspection_part,model_fleet_inspection_part,base.group_user,1,1,1,1
-access_fleet_inspection_line,eu_vehicle_inspection.fleet_inspection_line,model_fleet_inspection_line,base.group_user,1,1,1,1
-access_fleet_vehicle_inspection,eu_vehicle_inspection.fleet_vehicle_inspection,model_fleet_vehicle_inspection,base.group_user,1,1,1,1

@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_account_report_reconciles,eu_reconcile_report.access_account_report_reconciles,model_account_report_reconciles,base.group_user,1,1,1,1

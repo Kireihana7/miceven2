@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_report_skit_bank_reconcil_reconcil_report_user,report_skit_bank_reconcil_reconcil_report,model_report_skit_bank_reconcil_reconcil_report,account.group_account_user,1,1,1,1
-accessbank_reconcil_rep_user,bank_reconcil_rep,model_bank_reconcil_rep,account.group_account_user,1,1,1,1

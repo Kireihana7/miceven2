@@ -1,6 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-
-access_eu_collective_contract01,access_eu_collective_contract01,model_hr_collective_contracts,,1,1,1,1
-
-access_eu_collective_contract_line02,access_eu_collective_contract_line02,model_hr_collective_additionals,,1,1,1,1
-
