@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================ RECEPCIÓN ================ -->
+    <record id="nomina_matrix" model="mail.template">
+        <field name="name">Dot Matrix Nomina</field>
+        <field name="model_id" ref="hr_payroll.model_hr_payslip" />
+        <field name="subject">Dot Matrix Nomina</field>
+        <field name="body_html"><![CDATA[
+%if not object.is_vacation:
+${''.rjust(120,' ')}${'FECHA NOMINA'.center(17,' ')}
+${''.rjust(120,' ')}${object.compute_date.strftime('%d/%m/%Y').center(17,' ')}
+%endif
+${''.rjust(20, ' ')}${object.company_id.name[:28].center(28, ' ')}${'-'.rjust(1, ' ')}${'-'.rjust(1, ' ')}${object.company_id.street[:41].ljust(41, ' ')}${'-'.rjust(1, ' ')}${object.company_id.city.ljust(12, ' ')}${'-'.rjust(1, ' ')}${object.company_id.vat.ljust(12, ' ')}${''.rjust(20, ' ')}
+%if object.is_vacation:
+${''.rjust(25,' ')}${'Liquidacion de Vacaciones'.upper().center(87,' ')}${''.rjust(25,' ')}
+%elif object.is_utility:
+${''.rjust(25,' ')}${'Calculo de utilidades'.upper().center(87,' ')}${''.rjust(25,' ')}
+%else:
+${''.rjust(25,' ')}${('Recibo de '+object.struct_id.name).upper().center(87,' ')}${''.rjust(25,' ')}
+%endif
+%if not object.is_vacation:
+${''.rjust(41,' ')}${'PERIODO DE PAGO DESDE EL'.rjust(25,' ')}${str(object.date_from).center(10,' ')}${'HASTA EL'.center(10,' ')}${str(object.date_to).center(10,' ')}${''.rjust(41,' ')}
+%endif
+${'CODIGO'.ljust(15,' ')}${object.employee_id.emp_id.center(22,' ')}${'EMPLEADO'.rjust(11,' ')}${object.employee_id.name.center(42,' ')}${'SALARIO DIARIO NORMAL'.rjust(22,' ') if not object.is_vacation else 'SALARIO P/ CALCULO'.rjust(22,' ')}${"{:20,.2f}".format(object.salario_promedio if object.contract_id.is_variable_wage else object.sal_diario).rjust(22,' ')}${object.company_id.currency_id.parent_id.symbol[:3].rjust(3,' ')}
+${'CI o RIF'.ljust(15,' ')}${object.employee_id.identification_id_2.center(22,' ')}${''.rjust(11,' ')}${''.center(42,' ')}${'SALARIO MENSUAL'.rjust(22,' ')}${"{:20,.2f}".format(object.sal_mensual).rjust(22,' ')}${object.company_id.currency_id.parent_id.symbol[:3].rjust(3,' ')}
+${'FECHA INGRESO'.ljust(15,' ')}${object.contract_id.date_start.strftime('%d/%m/%Y').center(22,' ')}${''.rjust(11,' ')}${''.center(42,' ')}${'VALOR CESTATICKET'.rjust(22,' ') if object.is_vacation else ''.rjust(22,' ')}${"{:20,.2f}".format(object.contract_id.cesta_ticket).rjust(22,' ')if object.is_vacation else ''.rjust(22,' ')}${object.company_id.currency_id.parent_id.symbol[:3].rjust(3,' ')if object.is_vacation else ''.rjust(3,' ')}
+${'CARGO'.ljust(15,' ')}${object.employee_id.job_id.name.center(33,' ')}${''.center(42,' ')}${'FORMA DE PAGO'.rjust(22,' ') }${object.pay_type.rjust(25,' ')}
+${'DEPARTAMENTO'.ljust(15,' ')}${object.employee_id.department_id.name.center(33,' ')}${''.center(42,' ')}${'CUENTA DE BANCO'.rjust(22,' ') }${object.employee_id.account_number_2.rjust(25,' ')}
+%if object.is_vacation :
+${'ANTIGUEDAD'.ljust(15,' ')}${str(object.employee_id.ano_antig).center(6,' ')}${'AÑOS'.center(6,' ')}${str(object.employee_id.mes_antig).center(6,' ')}${'MESES'.center(7,' ')}${str(object.employee_id.dias_antig).center(6,' ')}${'DIAS'.center(6,' ')}${'PERIODO CORRESPONDIENTE'.ljust(42,' ')}${object.anno_vacaciones_designado.rjust(47,' ')}
+
+${'PERIODO DE DISFRUTE DEL:'.ljust(25,' ')}${object.date_from.strftime('%d/%m/%Y').center(10,' ')}${'AL'.center(6,' ')}${object.date_to.strftime('%d/%m/%Y').center(10,' ')}${''.center(39,' ')}${'FECHA DE REINTEGRO'.rjust(22,' ') }${(object.date_to+relativedelta(days=1)).strftime('%d/%m/%Y').rjust(25,' ')}
+%endif
+${''.rjust(137,'-')}
+% set total_asig=object.total_asig(object.line_ids)
+% set total_deduc=object.total_deduc(object.line_ids)
+% set total_aportem=object.total_aportem(object.line_ids)
+% set neto_acobrar=0
+% set neto_acobrar_ref=0
+${'CONCEPTO'.center(57,' ')}${'CANTIDAD'.center(20,' ')}${'ASIGNACION'.center(20,' ')}${'DEDUCCION'.center(20,' ')}${'APORTE EMP.'.center(20,' ')}
+%for line in object.line_ids:
+%if line.appears_on_payslip:
+%if line.category_id.name !='Deducción' and line.category_id.code !='COMP':
+${line.name[:57].center(57,' ')}${str(line.quantity).center(20,' ')}${"{:17,.2f}".format(line.total).center(17,' ')}${object.company_id.currency_id.parent_id.symbol[:3].rjust(3,' ')}${''.center(20,' ')}${''.center(20,' ')}
+%endif
+%if line.category_id.name == 'Deducción':
+${line.name[:57].center(57,' ')}${str(line.quantity).center(20,' ')}${''.center(20,' ')}${"{:17,.2f}".format(line.total).center(17,' ')}${object.company_id.currency_id.parent_id.symbol[:3].rjust(3,' ')}${''.center(20,' ')}
+%endif
+%if line.category_id.code == 'COMP':
+${line.name[:57].center(57,' ')}${str(line.quantity).center(20,' ')}${''.center(20,' ')}${''.center(20,' ')}${"{:17,.2f}".format(line.total).center(17,' ')}${object.company_id.currency_id.parent_id.symbol[:3].rjust(3,' ')}
+%endif
+%endif
+%endfor
+${''.center(57,' ')}${'|'.rjust(20,' ')}${"{:17,.2f}".format(total_asig).center(17,' ')}${object.company_id.currency_id.parent_id.symbol[:3].rjust(3,' ')}${"{:17,.2f}".format(total_deduc).center(17,' ')}${object.company_id.currency_id.parent_id.symbol[:3].rjust(3,' ')}${"{:17,.2f}".format(total_aportem).center(17,' ')}${object.company_id.currency_id.parent_id.symbol[:2].rjust(2,' ')}${'|'.rjust(1,' ')}
+%set neto_acobrar=total_asig-total_deduc
+${''.center(57,' ')}${''.rjust(20,' ')}${''.rjust(20,' ')}${"NETO A COBRAR".rjust(20,' ')}${"{:17,.2f}".format(neto_acobrar).center(17,' ')}${object.company_id.currency_id.parent_id.symbol[:2].rjust(2,' ')}${'|'.rjust(1,' ')}
+${'HE RECIBIDO EL TOTAL INDICADO EN PAGO A MIS SERVICIOS PRESTADOS DURANTE EL PRESENTE PERIODO SEGÚN LOS CONCEPTOS ESPECIFICADOS.'.center(137,' ')}
+${''.center(137,' ')}
+${''.center(10,' ')}${'ENTREGO CONFORME'.center(50,' ')}${''.center(17,' ')}${'RECIBI CONFORME'.center(50,' ')}${''.center(10,' ')}
+${''.center(10,' ')}${''.center(50,'_')}${''.center(17,' ')}${''.center(50,'_')}${''.center(10,' ')}
+${''.center(10,' ')}${(object.company_id.name+' '+object.company_id.vat)[:50].center(50,' ')}${''.center(17,' ')}${object.employee_id.name[:50].center(50,' ')}${''.center(10,' ')}
+${''.center(10,' ')}${''.center(50,' ')}${''.center(17,' ')}${str(object.employee_id.identification_id_2).center(50,' ')}${''.center(10,' ')}
+${''.center(137,' ')}
+]]>  
+        </field>
+    </record>
+
+
+
+    <record id="hr_payslip_run_form_matrix_print" model="ir.ui.view">
+        <field name="name">hr.payslip.run.miceven.view.form.inherit</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+        <field name="arch" type="xml">
+            <header position="inside">
+                <button 
+                    string="Imprimir Matriz de puntos" 
+                    name="action_print_nomina_matrix" 
+                    type="object" 
+                    class="oe_highlight"
+                    
+                />
+            </header>
+        </field>
+    </record>
+
+   
+</odoo>

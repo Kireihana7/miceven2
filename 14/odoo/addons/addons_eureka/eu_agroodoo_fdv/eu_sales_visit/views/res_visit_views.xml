@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_visit_view_tree" model="ir.ui.view">
+        <field name="name">res.visit.view.tree</field>
+        <field name="model">res.visit</field>
+        <field name="arch" type="xml">
+            <tree string="Visitas" default_order="fecha_visita asc" js_class="visit-dashboard">
+                <field name="name" />
+                <field name="salesperson_id" widget="many2one_avatar_user" />
+                <field name="partner_id" />
+                <field name="tipo_visita" />
+                <field name="duracion" widget="float_time" optional="hide" />
+                <field name="fecha_visita" widget="remaining_days" />
+                <field name="currency_id" invisible="1" />
+                <field name="client_due" optional="hide" widget="monetary" />
+                <field name="sale_order_id" optional="hide" />
+                <field name="to_repeat" />
+                <field name="to_recall" optional="hide" />
+                <field 
+                    name="status" 
+                    widget="badge" 
+                    decoration-primary="status == 'por_vistar'"
+                    decoration-warning="status == 'visitando'"
+                    decoration-success="status == 'efectiva'"
+                    decoration-danger="status == 'no_efectiva'"
+                />
+                <button 
+                    string="No visitado" 
+                    icon="fa-frown-o"
+                    name="action_set_status" 
+                    type="object"
+                    class="bg-danger"
+                    context="{'status': 'no_visitado'}"
+                    confirm="Está seguro?"
+                    attrs="{'invisible':[('status','!=','por_visitar')]}"
+                />
+                <button
+                    string="Visitando" 
+                    name="action_set_status" 
+                    type="object" 
+                    class="bg-primary"
+                    icon="fa-handshake-o"
+                    context="{'status': 'visitando'}"
+                    confirm="Está seguro?"
+                    attrs="{'invisible':[('status','!=','por_visitar'),]}"
+                />
+                <button
+                    string="Efectiva"
+                    name="action_open_status_wizard" 
+                    type="object" 
+                    icon="fa-thumbs-o-up"
+                    class="bg-success"
+                    context="{'status': 'efectiva'}"
+                    confirm="Está seguro?"
+                    attrs="{'invisible':[('status','!=','visitando')]}"
+                />
+                <button 
+                    string="No efectiva"
+                    name="action_open_status_wizard" 
+                    type="object"
+                    icon="fa-thumbs-o-down"
+                    class="bg-danger"
+                    context="{'status': 'no_efectiva'}"
+                    confirm="Está seguro?"
+                    attrs="{'invisible':[('status','!=','visitando')]}"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record id="res_visit_view_pivot" model="ir.ui.view">
+        <field name="name">res.visit.view.pivot</field>
+        <field name="model">res.visit</field>
+        <field name="arch" type="xml">
+            <pivot string="Visitas" display_quantity="false">
+                <field name="duracion" />
+                <field name="fecha_visita" interval="day" />
+                <field name="salesperson_id" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="res_visit_view_search" model="ir.ui.view">
+        <field name="name">res.visit.view.search</field>
+        <field name="model">res.visit</field>
+        <field name="arch" type="xml">
+            <search string="Visitas">
+                <field name="salesperson_id" />
+                <field name="partner_id" />
+                <field name="to_repeat" />
+                <field name="fecha_visita" />
+                <field name="fecha_cancelacion" />
+                <field name="duracion" widget="float_time" />
+                <filter 
+                    name="filter_fecha_visita" 
+                    string="Visitar hoy" 
+                    domain="[('fecha_visita', '=', datetime.date.today().strftime('%Y-%m-%d'))]" 
+                />
+                <filter 
+                    name="groupby_fecha_cancelacion" 
+                    string="Fecha de cancelación" 
+                    domain="[('fecha_cancelacion', '!=', False)]" 
+                />
+                <filter 
+                    name="groupby_has_delay" 
+                    string="Visita Tardía" 
+                    domain="[('has_delay', '=', True)]" 
+                />
+                <separator />
+                <filter 
+                    name="groupby_partner_id" 
+                    string="Cliente" 
+                    context="{'group_by': 'partner_id'}" 
+                />
+                <filter 
+                    name="groupby_tipo_visita" 
+                    string="Tipo" 
+                    context="{'group_by': 'tipo_visita'}" 
+                />
+                <filter 
+                    name="groupby_salesperson_id" 
+                    string="Vendedor" 
+                    context="{'group_by': 'salesperson_id'}" 
+                />
+                <separator />
+                <filter 
+                    name="groupby_status" 
+                    string="Estatus" 
+                    context="{'group_by': 'status'}" 
+                />
+            </search>
+        </field>
+    </record>
+
+    <record id="res_visit_view_calendar" model="ir.ui.view">
+        <field name="name">res.visit.view.calendar</field>
+        <field name="model">res.visit</field>
+        <field name="arch" type="xml">
+            <calendar 
+                string="Visitas" 
+                date_start="fecha_visita" 
+                mode="month" 
+                form_view_id="res_visit_view_form"
+                quick_add="0"
+            >
+                <field name="name" />
+                <field name="salesperson_id" widget="many2one_avatar_user" />
+                <field name="partner_id" />
+                <field name="tipo_visita" />
+                <field name="to_recall" />
+                <field name="duracion" widget="float_time" />
+                <field 
+                    name="status" 
+                    widget="badge" 
+                    decoration-primary="status == 'por_vistar'"
+                    decoration-warning="status == 'visitando'"
+                    decoration-success="status == 'efectiva'"
+                    decoration-danger="status in ['no_efectiva', 'no_visitado']"
+                />
+            </calendar>
+        </field>
+    </record>
+
+    <record id="res_visit_view_graph" model="ir.ui.view">
+        <field name="name">res.visit.view.graph</field>
+        <field name="model">res.visit</field>
+        <field name="arch" type="xml">
+            <graph string="Visitas" type="pie">
+                <field name="salesperson_id" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="res_visit_view_form" model="ir.ui.view">
+        <field name="name">res.visit.view.form</field>
+        <field name="model">res.visit</field>
+        <field name="arch" type="xml">
+            <form string="Visitas">
+                <header>
+                    <button 
+                        string="No visitado" 
+                        name="action_open_status_wizard" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'status': 'no_visitado'}"
+                        attrs="{'invisible':[('status','!=','por_visitar')]}"
+                    />
+                    <button 
+                        string="Visitando" 
+                        name="action_set_status" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'status': 'visitando'}"
+                        attrs="{'invisible':[('status','!=','por_visitar'),]}"
+                    />
+                    <button 
+                        string="Efectiva" 
+                        name="action_open_status_wizard" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'status': 'efectiva'}"
+                        attrs="{'invisible':[('status','!=','visitando')]}"
+                    />
+                    <button 
+                        string="Crear SO"
+                        name="action_create_so"
+                        type="object"
+                        class="oe_highlight"
+                        attrs="{
+                            'invisible':[
+                                '|', '|',
+                                ('tipo_visita', '=', 'cobranza'),
+                                ('status','!=','efectiva'),
+                                ('sale_order_id', '!=', False),
+                            ]
+                        }"
+                    />
+                    <button 
+                        string="No efectiva" 
+                        name="action_open_status_wizard" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'status': 'no_efectiva'}"
+                        attrs="{'invisible':[('status','!=','visitando')]}"
+                    />
+                    <field name="status" widget="statusbar" />
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                    </div>
+                    <group>
+                        <group string="Básico">
+                            <field name="name" required="1" force_save="1" />
+                            <field name="company_id" invisible="1" />
+                            <field 
+                                name="salesperson_id"
+                                readonly="1"
+                                widget="many2one_avatar_user" 
+                                required="1"
+                                force_save="1"
+                                options="{'no_create': True, 'no_create_edit': True}"
+                            />
+                            <field 
+                                name="tipo_visita"
+                                attrs="{'readonly': [('status', '!=', 'por_visitar')]}"
+                                required="1"
+                            />
+                            <label for="duracion" attrs="{'invisible':[('status', '!=', 'efectiva')]}" />
+                            <div class="o_row" attrs="{'invisible':[('status', '!=', 'efectiva')]}">
+                                <field name="duracion" widget="float_time" required="1" />
+                                <span>Horas</span>
+                            </div>
+                            <field 
+                                name="fecha_visita"
+                                force_save="1"
+                                required="1"
+                                attrs="{'readonly':[('to_repeat','=',True)],}" 
+                            />
+                        </group>
+                        <group string="Cliente">
+                            <field name="currency_id" invisible="1" />
+                            <field 
+                                name="partner_id" 
+                                required="1" 
+                                options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' 
+                                domain="[('state', '=', 'activo'),('user_id', '!=', False),('type', 'in', ('contact','invoice'))]" 
+                            />
+                            <field 
+                                name="client_due" 
+                                widget="monetary" 
+                                readonly="1" 
+                                attrs="{'invisible':[('partner_id','=',False)]}"
+                            />
+                            <field 
+                                name="promedio_venta" 
+                                readonly="1" 
+                                widget="monetary"
+                                attrs="{'invisible':[('partner_id','=',False)]}"
+                            />
+                            <field 
+                                name="promedio_venta_producto"
+                                readonly="1" 
+                                attrs="{'invisible':[('partner_id','=',False)]}"
+                            />
+                            
+                            <field 
+                                name="sale_order_id" 
+                                attrs="{'invisible':[('status', '!=', 'efectiva')]}" 
+                                readonly="1"
+                            />
+                            <field name="last_sale_order_id" readonly="1" />
+                            <field name="last_sale_order_date" attrs="{'invisible':[('last_sale_order_id', '=', False)]}" />
+                            <field name="last_sale_order_amount" attrs="{'invisible':[('last_sale_order_id', '=', False)]}" />
+                            <field 
+                                name="motivo_cancelacion" 
+                                options="{'no_create': True}"
+                                attrs="{'invisible':[('status', '!=', 'no_efectiva')]}" 
+                            />
+                            <field name="note" />
+                            <field name="has_delay" invisible="1" readonly="1" />
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Notificaciones">
+                            <field name="to_recall" widget="boolean_toggle" />
+                            <field 
+                                name="recall_date" 
+                                attrs="{
+                                    'invisible':[('to_recall','=',False)],
+                                    'required':[('to_recall','=',True)],
+                                }"
+                            />
+                        </group>
+                        <group 
+                            string="Frecuencia" 
+                            attrs="{'invisible':[('tipo_visita', '=', 'cobranza')]}"
+                            groups="eu_sales_visit.sales_group_coordinador"
+                        >
+                            <field name="to_repeat" />
+                            <field 
+                                name="frequency_id" 
+                                attrs="{
+                                    'required':[('to_repeat', '=', True)],
+                                    'invisible':[('to_repeat', '=', False)],
+                                }"
+                                options="{'no_quick_create': True}"
+                                force_save="1"
+                            />
+                            <field 
+                                name="repeat_since" 
+                                attrs="{
+                                    'invisible':[('to_repeat','=',False)],
+                                    'required':[('to_repeat','=',True)],
+                                }"
+                            />
+                        </group>
+                    </group>
+                    <notebook>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+</odoo>

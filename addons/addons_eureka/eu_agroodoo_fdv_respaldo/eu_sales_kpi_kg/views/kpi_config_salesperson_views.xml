@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="kpi_config_salesperson_view_tree" model="ir.ui.view">
+        <field name="name">kpi.config.salesperson.view.tree</field>
+        <field name="model">kpi.config.salesperson</field>
+        <field name="arch" type="xml">
+            <tree string="KPI Vendedores" delete="0">
+                <field 
+                    name="salesperson_id" 
+                    widget="many2one_avatar_employee" 
+                    required="1" 
+                    optional="show"
+                />
+                <field name="kpi_branch_id" optional="show"/>
+                <field name="rank" widget="badge" optional="show"/>
+                <field name="parent_id" optional="show" />
+                <field name="crm_team_id" optional="show"/>
+                <field name="goal" required="1" optional="show"/>
+                <field name="distributed_goal" required="1" optional="show"/>
+                <field name="progress" optional="show" string="Progreso" />
+                <field name="progress_percent" optional="show"/>
+                <field name="devoluciones" required="1" optional="show"/>
+                <field name="venta_mes" string="Venta del Mes" required="1" optional="show" />
+                <field name="actual_percent" optional="show"/>
+                <field name="goal_average_price" widget="monetary" required="1" optional="hide"/>
+                <field name="average_price" widget="monetary" optional="hide"/>
+                <field name="logro_average_price" optional="hide"/>
+                <field name="kpi_percent_pp" optional="hide"/>
+                <field name="kpi_amount_pp" optional="hide" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                <field name="kpi_bono_pp" optional="show" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                <field name="customers_to_active" required="1" optional="hide"/>
+                <field name="is_active" optional="hide"/>
+                <field name="customer_active"  optional="hide"/>
+                <field name="logro_ac"  optional="hide"/>
+                <field name="kpi_percent_ac"  optional="hide"/>
+                <field name="kpi_amount_ac"  optional="hide" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                <field name="kpi_bono_ac"  optional="show" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                <field name="xcobrar_pasado"  optional="hide"/>
+                <field name="meta_cobranza"  optional="hide"/>
+                <field name="xcobrar_mes" optional="hide"/>
+                <field name="logro_cobranza"  optional="hide"/>
+                <field name="kpi_percent_cc" optional="hide"/>
+                <field name="kpi_amount_cc" optional="hide" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                <field name="kpi_bono_cc" optional="show" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                <field name="xcobrar_vencidas" optional="hide"/>
+                <field name="xcobrar_no_vencidas" optional="hide"/>
+                <field name="kpi_percent_cc_dos" optional="hide"/>
+                <field name="meta_cobranza_dos" optional="hide"/>
+                <field name="kpi_amount_cc_dos" optional="hide" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                <field name="kpi_bono_cc_dos" optional="show" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                <field name="total_bono" optional="show" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="kpi_config_salesperson_view_form" model="ir.ui.view">
+        <field name="name">kpi.config.salesperson.view.form</field>
+        <field name="model">kpi.config.salesperson</field>
+        <field name="arch" type="xml">
+            <form string="KPI Vendedores">
+                <header>
+                    <button name="computar_lineas" 
+                        type="object" 
+                        string="Computar Líneas" 
+                        class="btn-primary"
+                        groups="eu_sales_kpi_kg.group_crear_kpi"
+                        attrs="{'invisible':[('rank','=','vendedor')]}"
+                    />
+                </header>
+                <sheet>
+                    <field name="currency_id" invisible="1" />
+                    <group>
+                        <group name="data">
+                            <field 
+                                name="salesperson_id" 
+                                required="1" 
+                                widget="many2one_avatar_employee" 
+                                options="{'currency_field': 'currency_id_ref', 'no_open': True, 'no_create_edit': True, 'no_quick_create': True, 'no_create': True}"
+                            />
+                            <field 
+                                name="kpi_branch_id" 
+                                readonly="1" 
+                                options="{'currency_field': 'currency_id_ref', 'no_open': True, 'no_create_edit': True, 'no_quick_create': True, 'no_create': True}"
+                                attrs="{'invisible':[('rank','=','gerente_nacional')]}"
+                            />
+                            <field name="goal" required="1" />
+                            <field name="rank" required="1" />
+                            <field 
+                                name="parent_id"
+                                options="{'currency_field': 'currency_id_ref', 'no_open': True, 'no_create_edit': True, 'no_quick_create': True, 'no_create': True}"
+                                attrs="{
+                                    'invisible':[('rank', '=', 'gerente_nacional')],
+                                    'required':[('rank', '!=', 'gerente_nacional')]
+                                }"
+                            />
+                            <field name="distributed_goal" required="1" />
+                            <field name="progress" string="Progreso" />
+                            <field name="progress_percent" string="Progreso %" />
+                            <field 
+                                name="crm_team_id"
+                                options="{'currency_field': 'currency_id_ref', 'no_open': True, 'no_create_edit': True, 'no_quick_create': True, 'no_create': True}"
+                                attrs="{
+                                    'invisible':[('rank', 'in', ['gerente_sucursal', 'gerente_nacional'])],
+                                    'required':[('rank', '=', 'coordinador')],
+                                }"
+                            />
+                            <field name="devoluciones" required="1" />
+                        </group>
+                        <group name="calculos">
+                            <field name="goal_average_price" widget="monetary" required="1" />
+                            <field name="average_price" widget="monetary" />
+                            <field name="logro_average_price" />
+                            <field name="kpi_percent_pp" />
+                            <field name="kpi_amount_pp" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                            <field name="kpi_bono_pp"  groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                            <field name="category_active" />
+                            <field name="total_bono" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                            <field name="actual_percent" />
+                            <field name="venta_mes" string="Venta del Mes" required="1" />
+                        </group>
+                    </group>
+                    <group>
+                        <group name="cobranza"> 
+                            <field name="xcobrar_pasado" />
+                            <field name="meta_cobranza" />
+                            <field name="xcobrar_mes"/>
+                            <field name="logro_cobranza" />
+                            <field name="kpi_percent_cc"/>
+                            <field name="kpi_amount_cc" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                            <field name="kpi_bono_cc" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                        </group>
+                        <group name="cobranza_dos"> 
+                            <field name="xcobrar_vencidas"/>
+                            <field name="xcobrar_no_vencidas"/>
+                            <field name="kpi_logro_cc_dos"/>
+                            <field name="kpi_percent_cc_dos"/>
+                            <field name="meta_cobranza_dos"/>
+                            <field name="kpi_amount_cc_dos" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                            <field name="kpi_bono_cc_dos" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group name="clientes"> 
+                            <field name="customers_to_active" required="1" />
+                            <field name="is_active" />
+                            <field name="customer_active" />
+                            <field name="logro_ac" />
+                            <field name="kpi_percent_ac" />
+                            <field name="kpi_amount_ac"  groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                            <field name="kpi_bono_ac"  groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="kpi_subcategory_ids">
+                            <tree string="Categoria" editable="bottom">
+                                <field name="kpi_salesperson_id" invisible="1" />
+                                <field name="kpi_category_id" required="1" />
+                                <field name="goal" required="1" />
+                                <field name="progress" />
+                                <field name="actual_percent" />
+                                <field name="kpi_percent" />
+                                <field name="kpi_amount"  groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                                <field name="kpi_monto_logrado" sum="Total logrado" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                            </tree>
+                            <form string="Categoria">
+                                <sheet>
+                                    <group>
+                                        <field name="kpi_salesperson_id" invisible="1" />
+                                        <field name="kpi_category_id" />
+                                    </group>
+                                    <group>
+                                        <field name="goal" />
+                                        <field name="progress" />
+                                        <field name="actual_percent" />
+                                        <field name="kpi_percent" />
+                                        <field name="kpi_amount"  groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                                        <field name="kpi_monto_logrado" groups="eu_sales_kpi_kg.group_crear_kpi"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_move_view_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.view.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="trip" string="Viajes asociados" attrs="{'invisible':[('fleet_trip_id_ids','=',False)]}">
+                    <field name="fleet_trip_id_ids" readonly="1" />
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>

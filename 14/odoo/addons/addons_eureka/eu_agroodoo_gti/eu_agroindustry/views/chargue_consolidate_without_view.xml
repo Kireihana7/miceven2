@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="quality_check_action_picking_romana" model="ir.actions.act_window">
+        <field name="name">Controles de Calidad</field>
+        <field name="res_model">quality.check</field>
+        <field name="view_mode">tree,form</field>
+        <!--<field name="context">{
+            'default_picking_id': picking_id}
+        </field>-->
+    </record>
+    <!--Formulario sin Documento de Origen -->
+    <record id="view_guide_consolidate_form_without" model="ir.ui.view">
+        <field name="name">chargue.consolidate.form</field>
+        <field name="model">chargue.consolidate</field>
+        <field name="arch" type="xml">
+            <form string="Orden">
+                <header>
+                    <field name="usar_patio" invisible="1"/>
+                    <button string="Calcular peso por liquidar" name="action_open_peso_liquidar" confirm="Debe confirmar para proceder" groups="eu_agroindustry.group_peso_liquidar" type="object" class="oe_highlight" attrs="{'invisible':[('operation_type','!=','compra')]}"/>
+                    <button name="button_patio" type="object" string="Pasar a Patio" attrs="{'invisible':['|',('usar_patio','=',False),('state','!=','por_llegar')]}" class="btn-primary" groups="eu_agroindustry.group_pasar_patio,eu_agroindustry.group_pcp_user"/>
+                    <button name="button_proceso" type="object" string="Pasar a Romana" attrs="{'invisible':['|','&amp;',('usar_patio','=',False),('state','!=','por_llegar'),'&amp;',('state','!=','patio'),('usar_patio','=',True)]}" states="patio" class="btn-primary" groups="eu_agroindustry.group_proceso"/>
+                    <button name="button_por_proceso" type="object" string="Siguiente Etapa" states="peso_bruto,peso_tara" class="btn-primary" groups="eu_agroindustry.group_por_salir"/>
+                    <button name="button_peso_bruto" type="object" string="Siguiente Etapa" states="proceso" class="btn-primary" groups="eu_agroindustry.group_peso_bruto"/>
+                    <button name="button_finalizado" type="object" string="Finalizar" states="por_salir" class="btn-primary" groups="eu_agroindustry.group_finalizado,eu_agroindustry.group_pcp_user"/>
+                    <button name="action_peso_manual" type="object" string="Cargar Peso Manual" states="peso_tara,peso_bruto" class="btn-primary" groups="eu_agroindustry.group_cargar_peso_manual"/>
+                    <button name="button_cancel" type="object" string="Cancel" states="aprobacion,por_llegar,patio" groups="eu_agroindustry.group_rechazado" confirm="¿Está seguro que desea Rechazar la Orden?" class="btn-primary"/>
+                    <button name="button_picking" type="object" string="Crear Picking" class="btn-primary" groups="eu_agroindustry.group_crear_orden" attrs="{                             'invisible': [                                 ('state', '!=' , 'por_llegar'),                                 '|',                                 ('operation_type','not in', ['compra','transferencia']),                                 ('picking_id','!=', []),                              ]                         }"/>
+                    <button name="button_link_picking" type="object" string="Enlazar Picking" states="finalizado" class="btn-primary" groups="eu_agroindustry.group_finalizado"/>
+                    <field name="state" widget="statusbar" statusbar_visible="por_llegar,proceso,aprobacion,por_salir,finalizado" readonly="1"/>
+                    <!-- crear orden     - group_crear_orden
+                        patio           - group_pasar_patio
+                        proceso         - group_proceso
+                        peso_bruto     - group_peso_bruto
+                        aprobacion      - group_aprobacion
+                        peso_tara        - group_peso_tara
+                        por_salir       - group_por_salir
+                        finalizado      - group_finalizado
+                        rechazada       - group_rechazado 
+                    -->
+                </header>
+                <field name="diff_tolerancia" invisible="1"/>
+                <div class="o_notification_alert alert alert-danger" attrs="{'invisible':[('diff_tolerancia','&gt;',0),('state','in',['peso_bruto','peso_tara'])]}" role="alert">
+                    Hay una diferencia que supera el márgen establecido en la compañia
+                </div>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button class="oe_stat_button" type="object" icon="fa-book" attrs="{'invisible': [('picking_count','&lt;',1)]}" groups="stock.group_stock_user" context="{                             'default_partner_id': partner_id,                             }" name="open_pickings" width="200px">
+                            <field name="picking_count" groups="stock.group_stock_user" string="Movimiento de Inventario" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/><br/>
+                            </h1>
+                            <h3>
+                                <strong>ID Único </strong><field name="id"/><br/>
+                            </h3>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="operation_type" force_save="1" attrs="{'readonly': ['|',('origin', '!=' , False),('state', '!=' , 'por_llegar')]}" required="1"/>
+                            <field name="is_return" attrs="{'readonly':[('state', '!=' , 'por_llegar')]}"/>
+                            <field name="is_return_compra" invisible="1"/>
+                            <field name="is_return_venta" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="origin" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="balanza" attrs="{'readonly': [('state', 'not in' , ['peso_tara','peso_bruto'])]}" options="{&quot;no_open&quot;: True, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                            <!-- <field name="descuento_humedad"  readonly="1"/>
+                            <field name="descuento_impureza"  readonly="1"/>
+                            <field name="total_descuento" readonly="1"/> -->
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="partner_id" required="1" force_save="1" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                            <field name="date"/>
+                            <field name="scheduled_date" attrs="{'readonly': [('state', '!=' , 'por_llegar')],'invisible': [('state', '!=' , 'por_llegar')]}"/>
+                            <field name="chargue_count_per_day" attrs="{'invisible': [('state', '!=' , 'por_llegar')]}"/>
+                            <field name="sale_ids" widget="many2many_tags" force_save="1" domain="[('state','in',('done','sale')),('vehicle_id','=',vehicle_id),('invoice_status','!=','invoiced')]" attrs="{'readonly': [('state', '!=' , 'por_llegar')],'invisible': [('operation_type', '!=' , 'venta')]}" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                            <field name="purchase_id" force_save="1" attrs="{'readonly': [('state', 'in' , ['peso_bruto','peso_tara'])],'invisible': [('operation_type', '!=' , 'compra')],'required': [('operation_type', '=' , 'compra'),('state','=','patio')]}" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                            <field name="picking_id" widget="many2many_tags" force_save="1" string="Movimiento de Inventario" attrs="{'readonly': ['|',('state', 'not in' , ['por_llegar', 'patio']),('operation_type', 'in' , ['transferencia'])]}" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}" domain="[('state','not in', ['cancel','done']),'|',('purchase_id', 'in', [purchase_id]),('sale_id', 'in', sale_ids)]"/>
+                            <field name="picking_id_weight"/>
+                            <field name="product_id" attrs="{'invisible': [('picking_id','=',False)]}" force_save="1"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="product_price" attrs="{'invisible': [('product_id', '=' , False)]}" force_save="1"/>
+                            <field name="location_dest_id" attrs="{'readonly': ['|',('state', 'not in' , ['peso_bruto','peso_tara']),('operation_type', 'not in' , ['compra','transferencia'])]}" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                            <field name="humedad" attrs="{'invisible': [('humedad','&lt;=','0')]}"/>
+                            <field name="impureza" attrs="{'invisible': [('impureza','&lt;=','0')]}"/>
+                            <!-- <field name="picking_id_state"  groups="stock.group_stock_user" />
+                            domain="[('origin', '=', origin),('state','not in', ['cancel','done'])]"
+                            -->
+                        </group>
+                        <group>
+                            <field name="vehicle_id" attrs="{'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])]}" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                            <field name="vehicle_type_property"/>
+                            <field name="driver_id" readonly="0" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                            <field name="license_plate"/>
+                            <field name="cedula"/>
+                            <field name="with_trailer" attrs="{'readonly':[('state', 'in', ('por_salir','rechazada','finalizado'))]}"/>
+                            <field name="plate_trailer" attrs="{'invisible':[('with_trailer', '=', False)],'required':[('with_trailer', '=', True)],'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])]}"/>
+                            <field name="multi_active" attrs="{'invisible': [('operation_type', '!=' , 'venta')],'readonly':[('state', 'not in', ('por_llegar','patio'))]}"/>
+                            <field name="check_ids" attrs="{'readonly':[('state', 'in', ('finalizado','rechazada','por_salir'))]}" domain="[('picking_id', '=', picking_id)]" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                            <field name="quality_state"/>
+                            <field name="aplicar_descuento" attrs="{'readonly': [('state','not in',('por_llegar','patio'))]}" groups="eu_agroindustry.group_aplicar_descuento"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Romana" attrs="{'invisible':['|',('state', 'in', ['por_llegar','patio']),('multi_active', '=', True)]}">
+                            <group name="romana">
+                                <group string="Peso Camión">
+                                    <label for="peso_bruto"/>
+                                    <div name="peso_bruto">
+                                        <field name="peso_bruto" readonly="1"/>
+                                        <button name="obtener_peso_bruto" attrs="{'invisible':[('state', 'not in', ['peso_bruto'])]}" string="Obtener Peso Bruto" class="oe_link" icon="fa-long-arrow-right" type="object"/>
+                                    </div>
+                                    <label for="peso_tara"/>
+                                    <div name="peso_tara">
+                                        <field name="peso_tara" readonly="1"/>
+                                        <button name="obtener_peso_tara" attrs="{'invisible':[('state', 'not in', ['peso_tara'])]}" string="Obtener Peso Tara" class="oe_link" icon="fa-long-arrow-right" type="object"/>
+                                    </div>
+                                    <field name="peso_neto" readonly="1"/>
+                                    <field name="peso_condicionado" readonly="1"/>
+                                </group>
+                                <group string="Peso Remolque" attrs="{'invisible':[('with_trailer','=',False)]}">
+                                    <label for="peso_bruto_trailer"/>
+                                    <div name="peso_bruto_trailer" attrs="{'invisible':[('state', 'in', ['por_llegar','patio'])]}">
+                                        <field name="peso_bruto_trailer" readonly="1"/>
+                                        <button name="obtener_peso_bruto_trailer" attrs="{'invisible':[('state', 'not in', ['peso_bruto'])]}" string="Obtener Peso Bruto" class="oe_link" icon="fa-long-arrow-right" type="object"/>
+                                    </div>
+                                    <label for="peso_tara_trailer"/>
+                                    <div name="peso_tara_trailer" attrs="{'invisible':[('state', 'in', ['por_llegar','patio'])]}">
+                                        <field name="peso_tara_trailer" readonly="1"/>
+                                        <button name="obtener_peso_tara_trailer" attrs="{'invisible':[('state', 'not in', ['peso_tara'])]}" string="Obtener Peso Tara" class="oe_link" icon="fa-long-arrow-right" type="object"/>
+                                    </div>
+                                    <field name="peso_neto_trailer" readonly="1"/>
+                                    <field name="peso_condicionado" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <!-- Romana Multi Pesada-->
+                        <page string="Romana Venta Multi Pesada" attrs="{'invisible':['|',('state', 'in', ['por_llegar','patio']),('multi_active', '=', False)]}">
+                            <group name="romana_multi">
+                                <group string="Peso Camión">
+                                    <field name="multi_weight" attrs="{'readonly':[('state', 'not in', ['proceso', 'peso_tara'])]}">
+                                        <tree editable="bottom">
+                                            <field name="sale_ids" width="100px" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                                            <field name="picking_ids" width="100px" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                                            <field name="product_id" width="100px" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                                            <field name="warehouses_id" width="100px" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                                            <field name="peso_bruto"/>
+                                            <button name="obtener_peso_bruto" string="Obtener" type="object" icon="fa-list" width="24px" attrs="{'invisible':[('parent.state', 'not in', ['peso_bruto','peso_tara'])]}" options="{&quot;warn&quot;: true}"/>
+                                            <field name="peso_tara"/>
+                                            <button name="obtener_peso_tara" string="Obtener" type="object" icon="fa-list" width="24px" attrs="{'invisible':[('parent.state', 'not in', ['peso_bruto','peso_tara'])]}" options="{&quot;warn&quot;: true}"/>
+                                            <field name="peso_neto" sum="Total Mercancia"/>
+                                            <field name="peso_bruto_trailer" attrs="{'column_invisible': [('parent.with_trailer', '=', False)]}"/>
+                                            <button name="obtener_peso_bruto_trailer" string="Obtener" type="object" icon="fa-list" width="24px" attrs="{'invisible':['|',('parent.state', 'not in', ['peso_bruto','peso_tara']),('parent.with_trailer','=',False)],'column_invisible': [('parent.with_trailer', '=', False)]}" options="{&quot;warn&quot;: true}"/>
+                                            <field name="peso_tara_trailer" attrs="{'column_invisible': [('parent.with_trailer', '=', False)]}"/>
+                                            <button name="obtener_peso_tara_trailer" string="Obtener" type="object" icon="fa-list" width="24px" attrs="{'invisible':['|',('parent.state', 'not in', ['peso_bruto','peso_tara']),('parent.with_trailer','=',False)],'column_invisible': [('parent.with_trailer', '=', False)]}" options="{&quot;warn&quot;: true}"/>
+                                            <field name="peso_neto_trailer" sum="Total Mercancia Trailer" attrs="{'column_invisible': [('parent.with_trailer', '=', False)]}"/>
+                                            <button name="action_peso_manual" type="object" string="Cargar Peso Manual" icon="fa-list" width="24px" groups="eu_agroindustry.group_cargar_peso_manual" options="{&quot;warn&quot;: true}" attrs="{'invisible':[('parent.state', 'not in', ['peso_bruto','peso_tara'])]}"/>
+                                            <field name="peso_su" sum="Total Mercancia Pedida"/>
+                                        </tree>
+                                    </field>
+                                </group>
+
+                            </group>
+                            <group name="romana_venta_multi" attrs="{'invisible':[('state', 'in', ['por_llegar','patio'])]}">
+                                <group string="Peso Camión">
+                                    <label for="peso_bruto"/>
+                                    <div name="peso_bruto">
+                                        <field name="peso_bruto" readonly="1"/>
+                                    </div>
+                                    <label for="peso_tara"/>
+                                    <div name="peso_tara">
+                                        <field name="peso_tara" readonly="1"/>
+                                    </div>
+                                    <field name="peso_neto" readonly="1"/>
+                                </group>
+                                <group string="Peso Remolque" attrs="{'invisible':[('with_trailer','=',False)]}">
+                                    <label for="peso_bruto"/>
+                                    <div name="peso_bruto_trailer">
+                                        <field name="peso_bruto_trailer" readonly="1"/>
+                                    </div>
+                                    <label for="peso_tara_trailer"/>
+                                    <div name="peso_tara_trailer">
+                                        <field name="peso_tara_trailer" readonly="1"/>
+                                    </div>
+                                    <field name="peso_neto_trailer" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Calidad">
+                            <group>
+                                <group>
+                                    <field name="is_approved" attrs="{'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])],'invisible':[('with_obs', '=', True)]}"/>
+                                    <field name="approver" attrs="{'invisible':[('is_approved', '=', False),('customer_approval', '=', False)],'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])],'required':['|',('is_approved', '=', True),('customer_approval', '=', True)]}" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}"/>
+                                    <field name="with_obs" attrs="{'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])],'invisible':[('is_approved', '=', True)]}"/>
+                                    <field name="customer_approval" attrs="{'readonly':[('state', 'in', ['finalizado','rechazada','por_salir']),('with_obs', '=', False)],'required':[('with_obs', '=', True),('operation_type', '=', 'venta')],'invisible':[('with_obs', '=', False)]}"/>
+
+                                </group>
+                                <group>
+                                    <field name="conf_primera" attrs="{'invisible': [('operation_type','not in',['venta'])],'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])]}"/>
+                                    <field name="notif_desp" attrs="{'invisible': [('operation_type','not in',['venta'])],'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])]}"/>
+                                    <field name="infestacion_percent" attrs="{'invisible': [('operation_type','not in',['venta'])],'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])]}"/>
+                                    <field name="container_cava" attrs="{'invisible': [('operation_type','not in',['venta'])],'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])]}"/>
+                                    <field name="plataforma" attrs="{'invisible': [('operation_type','not in',['venta'])],'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])]}"/>
+                                    <field name="lona_encerado" attrs="{'invisible': [('operation_type','not in',['venta'])],'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])]}"/>
+                                    <field name="otros" attrs="{'invisible': [('operation_type','not in',['venta'])],'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="observation" attrs="{'invisible':[('with_obs', '=', False)],'readonly':[('state', '!=', 'patio')],'required':[('with_obs', '=', True)]}"/>
+                                </group>
+                                <group>
+                                </group>
+                            </group>
+                        </page>
+                        
+                        <page string="PCP">
+                            <group>
+                                <group>
+                                    <field name="date_por_llegar"/>
+                                    <field name="approver_pcp_in" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}" attrs="{'readonly':[('state', 'in', ['finalizado','rechazada','por_salir'])]}"/>
+                                </group>
+                                <group>
+                                    <field name="date_finalizado"/>
+                                    <field name="approver_pcp_out" options="{&quot;no_open&quot;: False, &quot;no_create_edit&quot;: True, &quot;no_quick_create&quot;: True, &quot;no_create&quot;: True}" attrs="{'readonly':[('state', '!=', 'por_salir')]}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Origen" attrs="{'readonly':[('state', 'not in', ('por_llegar','patio','finalizado'))]}">
+                            <group>
+                                <group>
+                                    <field name="origen_sitio" attrs="{'readonly':[('state', 'not in', ('por_llegar','patio','finalizado'))]}"/>
+                                    <field name="origen_peso_rubro" attrs="{'readonly':[('state', 'not in', ('por_llegar','patio','finalizado'))]}"/>
+                                    <field name="origen_peso_tara" attrs="{'readonly':[('state', 'not in', ('por_llegar','patio','finalizado'))]}"/>
+                                    <field name="origen_peso_neto" attrs="{'readonly':[('state', 'not in', ('por_llegar','patio','finalizado'))]}"/>
+                                </group>
+                                <group>
+                                    <field name="origen_peso_acondicionado" attrs="{'readonly':[('state', 'not in', ('por_llegar','patio','finalizado'))]}"/>
+                                    <field name="origen_nro_origen" attrs="{'readonly':[('state', 'not in', ('por_llegar','patio','finalizado'))]}"/>
+                                    <field name="origen_guia_sada" attrs="{'readonly':[('state', 'not in', ('por_llegar','patio','finalizado'))]}"/>
+                                    <field name="origen_guia_insai" attrs="{'readonly':[('state', 'not in', ('por_llegar','patio','finalizado'))]}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Fechas">
+                            <group>
+                                <group>
+                                    <field name="date_por_llegar"/>
+                                    <field name="date_patio"/>
+                                    <field name="date_first_weight"/>
+                                    <field name="date_peso_bruto"/>
+                                    <field name="date_second_weight"/>
+                                    <field name="date_first_weight_t" attrs="{'invisible':[('with_trailer', '=', False)]}"/>
+                                    <field name="date_second_weight_t" attrs="{'invisible':[('with_trailer', '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="date_aprobacion"/>
+                                    <field name="date_peso_tara"/>
+                                    <field name="date_por_salir"/>
+                                    <field name="date_finalizado"/>
+                                    <field name="date_rechazada" attrs="{'invisible':[('state', '!=', 'rechazada')]}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Aprobaciones">
+                            <group>
+                                <group>
+                                    <field name="approval_por_llegar"/>
+                                    <field name="approval_patio"/>
+                                    <field name="approval_first_weight"/>
+                                    <field name="approval_peso_bruto"/>
+                                    <field name="approval_second_weight"/>
+                                    <field name="approval_first_weight_t" attrs="{'invisible':[('with_trailer', '=', False)]}"/>
+                                    <field name="approval_second_weight_t" attrs="{'invisible':[('with_trailer', '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="approval_aprobacion"/>
+                                    <field name="approval_peso_tara"/>
+                                    <field name="approval_por_salir"/>
+                                    <field name="approval_finalizado"/>
+                                    <field name="approval_rechazada" attrs="{'invisible':[('state', '!=', 'rechazada')]}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Motivo de Cancelación" attrs="{'invisible':[('state', '!=', 'rechazada')]}">
+                            <group>
+                                <group>
+                                    <field name="romana_cancel_reason_id" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="descripcion" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="liquidar" string="Liquidacion" attrs="{'invisible':[('last_operation_id','=',False)]}">
+                            <group>
+                                <field name="last_operation_id"/>
+                                <field name="peso_liquidar"/>
+                                <field name="humedad_liquidar"/>
+                                <field name="impureza_liquidar"/>
+                                <field name="usuario_liquidar"/>
+                            </group>
+                        </page>
+                        <page name="nota" string="Nota">
+                            <group>
+                                <field name="nota"/>
+                            </group>
+                        </page>
+                        <!--<page string="Controles de Calidad" groups="eu_agroindustry.group_proceso">
+                            <group>
+                                <field name="check_ids" readonly="1"/>
+                                <field name="quality_check_todo" invisible="1"/>
+                                <field name="quality_check_fail" invisible="1"/>
+                                <field name="quality_alert_ids" readonly="1"/>
+                                <field name="quality_alert_count" invisible="1"/>
+                            </group>
+                        </page>-->
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_chargue_consolidate_calendar_without" model="ir.ui.view">
+        <field name="name">chargue.consolidate.calendar</field>
+        <field name="model">chargue.consolidate</field>
+        <field name="arch" type="xml">
+            <calendar string="Guía de Romana" date_start="scheduled_date" color="state" hide_time="true" event_limit="5">
+                <field name="partner_id" avatar_field="image_128"/>
+                <field name="scheduled_date"    string="Fecha Programada"/>
+                <field name="vehicle_id" string="Vehículo"        />
+                <field name="sale_ids"    string="Venta Asociada"        />
+            </calendar>
+        </field>
+    </record>
+    <record id="view_chargue_consolidate_tree_without" model="ir.ui.view">
+        <field name="name">chargue.consolidate.tree</field>
+        <field name="model">chargue.consolidate</field>
+        <field name="arch" type="xml">
+
+            <tree string="Guía de Romana" create="1" import="0" edit="0" js_class="agro_list_dashboard">
+                <field name="name"              string="Nombre"          />
+                <field name="scheduled_date"    string="Fecha Programada"/>
+                <field name="partner_id"/>
+                <field name="product_id"/>
+                <field name="vehicle_id" string="Vehículo" optional="show" />
+                <field name="driver_id" string="Conductor" optional="show" />
+                <field name="cedula" string="Cédula" optional="show" />
+                <field name="peso_neto" string="Peso Neto" sum="Total Peso Neto"/>
+                <field name="peso_condicionado" string="Peso Condicionado" sum="Total Peso Condicionado"/>
+                <field name="state"             string="Estado"          />
+                <field name="peso_resta" sum="Total Peso Resta"/>
+                <field name="peso_bruto" sum="Total peso_bruto" optional="hide"/> 
+                <field name="peso_tara" sum="Total peso_tara" optional="hide"/> 
+                <field name="peso_bruto_trailer" sum="Total peso_bruto_trailer" optional="hide"/> 
+                <field name="peso_tara_trailer" sum="Total peso_tara_trailer" optional="hide"/> 
+                <field name="peso_neto_trailer" sum="Total peso_neto_trailer" optional="hide"/> 
+                <field name="peso_tolerancia" sum="Total peso_tolerancia" optional="hide"/> 
+                <field name="peso_resta" sum="Total peso_resta" optional="hide"/> 
+                <field name="peso_neto_dashboard" sum="Total peso_neto_dashboard" optional="hide"/> 
+                <field name="peso_condicionado_dashboard" sum="Total peso_condicionado_dashboard" optional="hide"/> 
+                <field name="peso_neto_total" sum="Total peso_neto_total" optional="hide"/> 
+                <field name="peso_bruto_total" sum="Total peso_bruto_total" optional="hide"/> 
+                <field name="peso_tara_total" sum="Total peso_tara_total" optional="hide"/> 
+                <field name="peso_liquidar" sum="Total peso_liquidar" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_chargue_consolidate_tree_without_inherit" model="ir.ui.view">
+        <field name="name">chargue.consolidate.tree.inherit</field>
+        <field name="model">chargue.consolidate</field>
+        <field name="inherit_id" ref="eu_agroindustry.view_chargue_consolidate_tree_without"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <header>
+                    <button class="btn-secondary" name="action_multi_cancel" type="object"
+                            string="Cancelar Guías" groups="eu_agroindustry.group_rechazado"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="open_chargue_consolidate_without" model="ir.actions.act_window">
+        <field name="name">Ordenes</field>
+        <field name="res_model">chargue.consolidate</field>
+        <field name="view_mode">tree,form,kanban,graph,calendar</field>
+        <field name="domain">[('is_pesaje_externo','=',False)]</field>
+        <!--<field name="context">{
+            'default_state': 'por_llegar',
+            'default_operation_type': 'compra'
+        }</field> -->
+    </record>
+
+    <record id="action_chargue_consolidate_without_view" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_chargue_consolidate_tree_without"/>
+            <field name="act_window_id" ref="open_chargue_consolidate_without"/>
+    </record>
+
+    <record id="action_chargue_consolidate_without_form" model="ir.actions.act_window.view" >
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_guide_consolidate_form_without"/>
+        <field name="act_window_id" ref="open_chargue_consolidate_without"/>
+    </record>
+    
+</odoo>

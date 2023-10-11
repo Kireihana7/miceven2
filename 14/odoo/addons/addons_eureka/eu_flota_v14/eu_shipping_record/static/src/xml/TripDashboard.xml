@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="eu_shipping_record_templates" xml:space="preserve">
+    <t t-name="eu_shipping_record.TripDashboard">
+        <section class="trip-grid shadow-sm">
+            <h1>
+                Gestión de flota
+            </h1>
+            <article 
+                class="trip-kpi" 
+                t-foreach="states" 
+                t-as="state"
+                t-key="'state' + state"
+                t-att-data-trip-state="state"
+                role="marquee button"
+            >
+                <t t-set="labelId" t-value="'state-' + state[0]" />
+                <img 
+                    t-attf-src="/eu_shipping_record/static/src/img/#{state}.png" 
+                    width="86" 
+                    alt="Viajes" 
+                />
+                <span 
+                    aria-live="" 
+                    t-att-aria-labelled-by="labelId"
+                    name="trip-counter"
+                    t-esc="count[state] || 0" 
+                />
+                <h2 t-esc="state.replace('_', ' ')" t-att-id="labelId" />
+            </article>
+        </section>
+    </t>
+</templates>

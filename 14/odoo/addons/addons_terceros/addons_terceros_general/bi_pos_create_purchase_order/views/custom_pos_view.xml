@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+		<!-- Add custom js for pos_create_purhcase_order -->	    
+        <template id="assets_for_pos_create_purchase_order" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/bi_pos_create_purchase_order/static/src/js/CreatePurchaseOrderButtonWidget.js"/>
+
+                <script type="text/javascript" src="/bi_pos_create_purchase_order/static/src/js/CustomErrorPopup.js"/>
+
+                <script type="text/javascript" src="/bi_pos_create_purchase_order/static/src/js/noCustomerPopup.js"/>
+            </xpath>
+        </template>
+        
+    </data>
+</odoo>

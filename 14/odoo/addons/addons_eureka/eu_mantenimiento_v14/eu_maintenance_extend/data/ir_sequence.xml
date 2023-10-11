@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+        <record id="mantenance_sequence" model="ir.sequence">
+            <field name="name">Mantenimiento Secuencia</field>
+            <field name="code">maintenance.sequence</field>
+            <field name="prefix">MAN</field>
+            <field name="padding">6</field>
+        </record>
+    </data>
+</odoo>

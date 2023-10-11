@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <template id="template_report_nomina_new" name="template">
+
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <style type="text/css">
+                        ::root{
+                            font-size: 0.8rem;
+                        }
+                        html{
+                            
+                            margin:0px;
+                            padding:0px;
+                        }
+                        #logos >span{
+                            font-size:10px;
+                        }
+                        .borrel{
+                            border: 2px solid black;
+                            border-radius: 12px
+                        }
+
+                    </style>
+                    <div class="container borrel">
+                        <div class="row">
+                            <div class="col-2">
+                                <img style="height: 120px; width:120px; margin-top:15px;" t-attf-src="data:image/*;base64,{{logo}}" t-att-alt="company['name']" />
+                            </div>
+                            <div  class="col-8 text-center">
+                                <div class="container" style="font-size: 0.7rem;">
+                                    <div class="row">
+                                        <div class="col-12 text-center"><span t-esc="company['name']" style="font-size:1.1rem;"/></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">◄►NOMINA◄►</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center" style="font-size:1.1rem;"><b>RELACION NOMINA</b></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            DEL: <span t-esc="inicio"/> - AL: <span t-esc="final"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3 text-right">
+                                            EMPLEADO INICIAL:
+                                        </div>
+                                        <div class="col-3 text-left">
+                                            <span t-esc="lineas[0]['employee'][:14]"/>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            EMPLEADO FINAL:
+                                        </div>
+                                        <div class="col-3 text-left">
+                                            <span t-esc="lineas[-1]['employee'][:14]"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3 text-right">
+                                            DEPT. INICIAL:
+                                        </div>
+                                        <div class="col-3 text-left">
+                                            <span t-esc="departamentos[0].get('name')[:14]"/>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            DEPT. FINAL:
+                                        </div>
+                                        <div class="col-3 text-left">
+                                            <span t-esc="departamentos[-1].get('name')[:14]"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3 text-right">
+                                            FECHA INICIAL:
+                                        </div>
+                                        <div class="col-3 text-left">
+                                            <span t-esc="inicio"/>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            FECHA FINAL:
+                                        </div>
+                                        <div class="col-3 text-left">
+                                            <span t-esc="final"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3 text-right">
+                                            TIPO NOMINA:
+                                        </div>
+                                        <div class="col-6 text-left">
+                                            <span t-esc="estructura"/>
+                                        </div>
+                                    </div>
+                                </div>            
+                                
+                            </div>
+                            <div class="col-2">
+                                <table class="table table-borderless table-sm" style="font-size:0.8rem;white-space:nowrap;">
+                                    
+                                    <tr>
+                                        <t t-set="date" t-value="datetime.datetime.today()"/>     
+                                        <td class="text-right"><b>FECHA:</b></td>
+                                        <td><span t-esc="date.strftime('%x')"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right" ><b>HORA:</b></td>
+                                        <td><span t-esc="date.strftime('%X')"/></td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                        
+                    </div>
+                
+                    <!-- <table>
+                        <thead>
+                            <tr>
+                                <th>CODIGO</th>
+                                <th>CEDULA</th>
+                                <th>CONCEPTO</th>
+                                <th>NOMBRE</th>
+                                <th>CANTIDAD</th>
+                                <th>CARGO</th>
+                                <th>INGRESO</th>
+                                <th>EGRESO</th>
+                                <th>SALDO</th>
+
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <td>
+
+                            </td>
+
+                        </tbody>
+                    </table>
+            -->
+                    <!-- <div class="container" style="font-size:0.8rem;">
+                    
+                        <t t-foreach="lineas" t-as="line">
+                            <div class="row">
+                                <div class="col-1 text-left">
+                                    <span t-esc="line.get('eid')"/>
+                                </div>
+                                <div class="col-2 text-left">
+                                    <span t-esc="line.get('ci')"/>
+                                </div>
+                                <div class="col-2 text-left">
+                                    <span t-esc="line.get('employee')"/>
+                                </div>
+                                <div class="col-2">                                  
+                                    <br>SALARIO</br>
+                                    <br>BONO NOC</br>
+                                    <br>BONO DIURN</br>
+                                    <br>S.S.O</br>
+                                    <br>F.A.O.V</br> 
+                                    <br>P.I.E</br>
+                                </div>
+                                <div class="col-1 text-left">
+                                    <span t-esc="line.get('sal_complemento')"/>
+                                </div>
+                                <div class="col-1 text-right">
+                                    <span t-esc="line.get('employee')"/>
+                                </div>
+                                <div class="col-1 text-right">
+                                    <span t-esc="line.get('s.s.o.')"/>
+                                </div>
+                                <div class="col-1 text-right">
+                                    <span t-esc="line.get('faov')"/>
+                                </div>
+                                <div class="col-1 text-right">
+                                    <span t-esc="line.get('r.p.e.')"/>
+                                </div>
+    
+                            </div>
+                            
+                       
+                            <div class="row">
+                                <div class="col-6">
+                                    
+                                </div>
+                                <div class="col-3 text-center">
+                                    TOTAL GENERAL:
+                                </div>
+                                
+                                <div class="col-3 text-right" style="border-top:3px solid black;">
+                                    <span t-esc="totaltotal"/>
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    
+                                </div>
+                                    <div class="col-3 text-center">
+                                
+                                </div>
+                                
+                                    <div class="col-3" style="border-top:6px solid black; border-style:double;">
+                                </div>
+                                
+                            </div>
+                        </t>
+                    </div> -->
+               
+
+                    
+                        
+                    <t t-set="total_toda_nomina" t-value="0"/>
+                    <t t-foreach="departamentos" t-as="departamento">
+                        <t t-set="total_departamento" t-value="0"/>
+                        
+                        <t t-if="len(list(filter(lambda x : x['department']==departamento ['id'] and x.get('rules'),lineas))) > 0">
+
+                            <div class="text-center">
+                                <span style="font-size:0.8rem"  t-esc="departamento.get('name',' ')"></span>
+                            </div>          
+                        </t>   
+                   
+                            
+                        
+                        
+                        <t t-foreach="list(filter(lambda x : x['department']==departamento ['id'],lineas)) " t-as="line">
+                       
+                            <t  t-if="line.get('error',False)">
+                                
+                            </t>
+                        
+                            <t t-else="">
+                                <div class="page">
+                                    <div>
+                                        <table class="table table-borderless table-sm" style="font-size:0.7rem">
+                                            <thead>
+                                                <tr class="table-secondary">
+                                                    
+                                                    <th width="5%">CONCEPTO</th>
+                                                    <th  class="text-right" width="25%">CANTIDAD</th>
+                                                    <th  class="text-right" width="25%">ASIGNACIONES</th>
+                                                    <th  class="text-right" width="20%">DEDUCCIONES</th>
+                                                    <th  class="text-center">SALDO</th>  
+                                                </tr>
+                                            </thead>
+                                        
+                                        </table>
+                                     </div>
+                                    <table class="table table-borderless table-sm" style="font-size:0.7rem">
+                                        <thead>
+                                            <tr class="table-secondary">
+                                                
+                                                <th colspan="1" class="text-left text-break" width="10%">Codigo : <span t-esc="line.get('emp_id',' ')"></span></th>
+                                                <th colspan="2" class="text-right" width="45%">Empleado : <span t-esc="line.get('employee',' ')"></span></th>
+                                                <th colspan="1" class="text-right" width="15%">Cedula :<span t-esc="line.get('ci',' ')"/> </th>
+                                                <th colspan="1" class="text-break text-right" width="35%">Cargo : <span t-esc="line.get('position')"></span> </th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="total_deducciones" t-value="0"/>
+                                            <t t-set="total_asignaciones" t-value="0"/>
+
+                                            
+                                            
+                                            <t t-foreach="line['rules'].values()" t-as="plox"> 
+                                                <tr> 
+                                                    
+                                                    <td>  <span t-esc="plox[5]" ></span></td>  
+                                                    
+                                                    <td class="text-right" width="20%">  <span t-esc="plox[3]" t-options='{"widget": "float", "precision": 2}'></span></td>
+                                                    
+                                                    <t t-if="plox[1] in ['DED','COMP']">
+                                                        <td></td>
+                                                        <td class="text-right" width="20%"><span t-esc="plox[4]" t-options='{"widget": "float", "precision": 2}'></span></td>   
+                                                        <t t-if="plox[1] in ['DED']">
+                                                            
+                                                            <t t-set="total_deducciones" t-value="total_deducciones + plox[4]"/>
+                                                        </t>
+                                                    </t>
+                                                    
+                                                    <t t-else="">
+                                                        <td class="text-right" > <span t-esc="plox[4]" t-options='{"widget": "float", "precision": 2}'></span> </td>
+                                                        <td></td>    
+                                                        <t t-set="total_asignaciones" t-value=" total_asignaciones + plox[4]"/>
+                                                    </t>
+                                                    <td></td>
+                                                </tr>
+                                            </t>
+                                            
+                                            <tr class="table-secondary">
+                                                <td class="text-right" colspan="2">TOTAL :</td>
+
+                                                
+                                                    <td class="text-right"><span  t-esc="round(total_asignaciones,2)" t-options='{"widget": "float", "precision": 2}'></span></td>
+                                                    <td class="text-right"><span t-esc="round(total_deducciones,2)" t-options='{"widget": "float", "precision": 2}'></span></td>
+                                                    <t t-set="total_saldo" t-value="total_asignaciones - total_deducciones"/>
+                                                    <td class="text-center"><span t-esc="round(total_saldo,2)" t-options='{"widget": "float", "precision": 2}'></span> </td>
+                                                    <t t-set="total_toda_nomina" t-value="total_toda_nomina + total_saldo "/>
+                                                    <t t-set="total_departamento" t-value="total_departamento + total_saldo"/>
+                                   
+                                                    
+
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                                  
+                                </div>
+                                    
+                                        
+                                
+                            </t>
+                           
+                        </t>
+                        <t t-if="len(list(filter(lambda x : x['department']==departamento ['id'] and x.get('rules'),lineas))) > 0">
+                            <div class="text-right" style="font-size: 0.6rem">
+
+                                <p>Total Departamento <span t-esc="departamento.get('name' )"></span> : <span t-esc="round(total_departamento,2)" t-options='{"widget": "float", "precision": 2}'></span></p>
+                            </div>          
+                        </t>   
+                        
+                    </t>
+                                      
+                    <!-- <t t-debug="pdb('lineas')"/> -->
+                    <div class="text-right " style="font-size: 0.7rem">
+
+                        <p> TOTAL DE NOMINA PAGADA : <span t-esc="round(total_toda_nomina,2)" t-options='{"widget": "float", "precision": 2}'/></p>
+                        
+                    </div>
+                   
+                </t>
+            </t>
+    
+
+
+
+        </template>
+    
+        
+    
+    </data>
+    
+
+</odoo>
+<!-- <t t-foreach="line['rules'].values()" t-as="plox"> 
+    <tr>
+        <td colspan="8"><span t-esc="plox"> </span></td>
+   
+    </tr>
+</t>   -->

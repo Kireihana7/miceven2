@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- <record id="view_calidad_cantidad_imprimir" model="ir.ui.view">
+            <field name="name">name_calidad_cantidad_imprimir</field>
+            <field name="model">quality.check</field>
+            <field name="inherit_id" ref="eu_quality_inspection.quality_check_view_form_small_inherit_romana"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page/group/field[@name='product_operation']" position="after">
+                    <field name="cantidad_imprimir" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_calidad_cantidad_imprimir_report" model="ir.ui.view">
+            <field name="name">name_calidad_cantidad_imprimir_report</field>
+            <field name="model">quality.check</field>
+            <field name="inherit_id" ref="eu_quality_inspection.quality_check_view_form_inherit_romana"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page/group/field[@name='product_operation']" position="after">
+                    <field name="cantidad_imprimir" />
+                </xpath>
+            </field>
+        </record> -->
+    </data>
+</odoo>

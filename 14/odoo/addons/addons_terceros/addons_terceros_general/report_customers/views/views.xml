@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="report_customers_form">
+            <field name="name">report.customer.sale.form</field>
+            <field name="model">report.customer.sale</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="from_date" string="Fecha Inicio"/>
+                        <field name="to_date" string="Fecha Final"/>
+                        <field name="company_id" string="Compañía" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Generar Reporte" type="object" class="highlight"/>
+                        <button string="Cancelar" class="btn-primary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="customer_report_action_window">
+            <field name="name">Reporte de Clientes</field>
+            <field name="res_model">report.customer.sale</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_daily_sale_report" name="Reporte de Clientes"
+                  parent="sale.menu_sale_report" action="customer_report_action_window"
+                  sequence="100"/>
+
+    </data>
+</odoo>

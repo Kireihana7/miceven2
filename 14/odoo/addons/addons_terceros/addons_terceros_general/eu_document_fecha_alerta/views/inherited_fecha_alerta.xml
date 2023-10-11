@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <odoo>
+    <data>  
+
+        <record id="inherit_document_fecha_alerta_views_form" model="ir.ui.view">
+            <field name="name">inherit_document_fecha_alerta_form</field>
+            <field name="model">documents.document</field>
+            <field name="inherit_id" ref="documents.document_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="fecha_alerta"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="inherit_document_fecha_alerta_views_tree" model="ir.ui.view">
+            <field name="name">inherit.document.fecha.views.tree</field>
+            <field name="model">documents.document</field>
+            <field name="arch" type="xml">
+                <tree string="Document" create="0" edit="1" editable="bottom" multi_edit="1">
+                    <field name="id" optional="hide" groups="base.group_no_one" readonly="1"/>
+                    <field name ="fecha_alerta" readonly="0"/>
+                    <field name="name" string="Document" required="True" readonly="1"/>
+                    <field name="url" optional="hide" readonly="1"/>
+                    <field name="tag_ids" widget="documents_many2many_tags" readonly="1"/>
+                    <field name="partner_id" readonly="1" options='{"no_open": True, "no_create_edit": True, "no_create": True, "no_quick_create": True }'/>
+                    <field name="owner_id" widget="many2one_avatar_user" readonly="1"/>
+                    <field name="lock_uid" optional="hide" readonly="1"/>
+                    <field name="type" readonly="1"/>
+                    <field name="create_date" widget="date" readonly="1"/>
+                    <field name="activity_exception_decoration" widget="activity_exception" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="inherit_document_fecha_alerta_action_window" model="ir.actions.act_window">
+            <field name="name">Documento fecha alerta</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">documents.document</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="eu_document_fecha_alerta.inherit_document_fecha_alerta_views_tree" />
+        </record>
+      
+            <menuitem
+                id="model_name_menu"
+                name="Documento Fecha de Alerta"
+                action="inherit_document_fecha_alerta_action_window"
+                parent="documents.menu_root"
+                sequence="10"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,142 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* abs_invoice_cancel_reason
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0-20191126\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-17 16:44+0000\n"
+"PO-Revision-Date: 2021-04-17 13:32-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es_VE\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model,name:abs_invoice_cancel_reason.model_add_invoice_reason
+msgid "Add Invoice Reason"
+msgstr "Agregar Motivo de factura"
+
+#. module: abs_invoice_cancel_reason
+#: model_terms:ir.ui.view,arch_db:abs_invoice_cancel_reason.view_add_cancel_reason_form
+msgid "AddReason"
+msgstr "Agregar Motivo"
+
+#. module: abs_invoice_cancel_reason
+#: model_terms:ir.ui.view,arch_db:abs_invoice_cancel_reason.view_add_cancel_reason_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: abs_invoice_cancel_reason
+#: model_terms:ir.ui.view,arch_db:abs_invoice_cancel_reason.view_customer_invoice_cancel_reason_form
+msgid "Cancel Bill"
+msgstr "Cancelar Factura"
+
+#. module: abs_invoice_cancel_reason
+#: model_terms:ir.ui.view,arch_db:abs_invoice_cancel_reason.view_add_cancel_reason_form
+msgid "Cancel Invoice"
+msgstr "Cancelar factura"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_invoice_cancel_reason__name
+msgid "Cancel Reason"
+msgstr "Razón de Cancelación"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_add_invoice_reason__create_uid
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_invoice_cancel_reason__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_add_invoice_reason__create_date
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_invoice_cancel_reason__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,help:abs_invoice_cancel_reason.field_add_invoice_reason__descripcion
+#: model:ir.model.fields,help:abs_invoice_cancel_reason.field_invoice_cancel_reason__descripcion
+msgid "Describa aca detalladamente la razon de la anulacion de la factura"
+msgstr ""
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_account_move__descripcion
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_add_invoice_reason__descripcion
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_invoice_cancel_reason__descripcion
+msgid "Descripción detallada"
+msgstr ""
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_add_invoice_reason__display_name
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_invoice_cancel_reason__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,help:abs_invoice_cancel_reason.field_account_move__invoice_cancel_reason_id
+msgid "Este campo muestra el motivo de la cancelación de la factura"
+msgstr ""
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,help:abs_invoice_cancel_reason.field_invoice_cancel_reason__name
+msgid "For adding the reason for invoice cancellation."
+msgstr "Por agregar el motivo de la cancelación de la factura."
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_add_invoice_reason__id
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_invoice_cancel_reason__id
+msgid "ID"
+msgstr ""
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.actions.act_window,name:abs_invoice_cancel_reason.open_view_reason_new_tree
+#: model:ir.model,name:abs_invoice_cancel_reason.model_invoice_cancel_reason
+#: model:ir.ui.menu,name:abs_invoice_cancel_reason.menu_invoice_cancelation_reasons
+msgid "Invoice Cancel Reason"
+msgstr "Motivo de cancelación de la factura"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_add_invoice_reason__invoice_cancel_reason_id
+#: model_terms:ir.ui.view,arch_db:abs_invoice_cancel_reason.view_reason_new_form
+#: model_terms:ir.ui.view,arch_db:abs_invoice_cancel_reason.view_reason_new_tree
+msgid "Invoice Cancellation Reason"
+msgstr "Motivos de Cancelación de Facturas"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model,name:abs_invoice_cancel_reason.model_account_move
+msgid "Journal Entries"
+msgstr "Asientos contables"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_add_invoice_reason____last_update
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_invoice_cancel_reason____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_add_invoice_reason__write_uid
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_invoice_cancel_reason__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_add_invoice_reason__write_date
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_invoice_cancel_reason__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,field_description:abs_invoice_cancel_reason.field_account_move__invoice_cancel_reason_id
+msgid "Motivo de cancelación de la factura"
+msgstr ""
+
+#. module: abs_invoice_cancel_reason
+#: model:ir.model.fields,help:abs_invoice_cancel_reason.field_add_invoice_reason__invoice_cancel_reason_id
+msgid "This field display reason of invoice cancellation"
+msgstr "Este campo muestra el motivo de la cancelación de la factura"

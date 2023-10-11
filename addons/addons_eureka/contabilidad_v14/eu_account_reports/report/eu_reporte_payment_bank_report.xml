@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jose Mazzei - 11 -->
+<odoo>
+    <data>
+        <record id="paperformat_eu_reporte_payment_bank" model="report.paperformat">
+            <field name="name">Formato de Papel para Reporte de Cobros en Bancos</field>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+        </record>
+
+        <record id="action_report_eu_reporte_payment_bank" model="ir.actions.report">
+            <field name="name">Reporte de Cobros en Bancos</field>
+            <field name="model">eu.reporte.payment.date</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">eu_account_reports.report_eu_reporte_payment_bank</field>
+            <field name="report_file">eu_account_reports.report_eu_reporte_payment_bank</field>
+            <field name="print_report_name">Reporte de Cobros en Bancos</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_eu_reporte_payment_bank"/>
+        </record>
+
+        <template id="report_eu_reporte_payment_bank">
+            <t t-call="web.html_container">
+                <t t-set="company" t-value="env.company"/>
+                
+                <t t-set="tittle" t-value="'Reporte de Cobros en Bancos'"/>
+                <t t-set="desde" t-value="form.get('start_date')"/>
+                <t t-set="hasta" t-value="form.get('end_date')"/>
+              
+                <t t-call="eu_miceven_report_topper.header_report_miceven">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                            <br/>
+                            <t t-set="obj_currency" t-value="env['res.currency'].search([('id', '=', 2)])"/>    
+                            <t t-set="obj_currency_ref" t-value="env['res.currency'].search([('id', '=', 3)])"/>    
+
+                            <table t-if="form.get('type_report') == 'detail_summary'" class="table table-sm" style="font-size:10px;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width: 3% !important;"><strong>ITEM</strong></th>
+                                        <th class="text-center" style="width: 7% !important;"><strong>FECHA</strong></th>
+                                        <th class="text-center" style="width: 25% !important;"><strong>EMPRESA</strong></th>
+                                        <th class="text-center" style="width: 15% !important;"><strong>BANCO</strong></th>  
+                                        <th class="text-center" style="width: 10% !important;"><strong>NOMBRE</strong></th>
+                                        <th class="text-center" style="width: 10% !important;"><strong>REFERENCIA</strong></th>
+                                        <th class="text-center" style="width: 15% !important;"><strong>MONTO</strong></th>
+                                        <th class="text-center" style="width: 15% !important;"><strong>MONTO REF</strong></th>
+                                    </tr>                                
+                                </thead>
+                                <tbody>
+                                    <t t-set="count" t-value="1"/>
+                                    <t t-foreach="form.get('invoices')" t-as="payment">
+                                        <tr>
+                                            <td class="text-center">
+                                                <span t-esc="count"/>
+                                            </td>
+                                            <td class="text-left">
+                                                <span t-esc="payment.get('date')"/>
+                                            </td>
+                                            <td class="text-left">
+                                                <span t-esc="payment.get('partner_id')"/>
+                                            </td>
+                                            <td class="text-left">
+                                                <span t-esc="payment.get('journal_id')"/>
+                                            </td>        
+                                            <td class="text-left">
+                                                <span t-esc="payment.get('payment_id')"/>
+                                            </td>
+                                            <td class="text-left">
+                                                <span t-esc="payment.get('ref')"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="float(payment.get('amount'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                            </td>       
+                                            <td class="text-right">
+                                                <span t-esc="float(payment.get('amount_ref'))" t-options='{"widget": "monetary", "display_currency": obj_currency_ref}'/>
+                                            </td>
+                                        </tr>      
+                                        <t t-set="count" t-value="count + 1"/>
+                                    </t> 
+                                    <!-- ============= Totales ============= -->
+                                    <tr>
+                                        <td class="text-right" colspan="6">
+                                            <span>Totales</span>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="float(form.get('total_amount'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="float(form.get('total_amount_ref'))" t-options='{"widget": "monetary", "display_currency": obj_currency_ref}'/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table> 
+                                                     
+                            <!-- ===================== Diarios ===================== -->
+                            <!-- Salto de página antes de los Diarios -->
+                            <div t-if="form.get('type_report') == 'detail_summary'" style="page-break-after: always;"></div>
+                            <div t-if="form.get('type_report') == 'detail_summary' or form.get('type_report') == 'only_summary'" class="col-xs-4" align="center">
+                                <table class="table table-sm" style="width:100%;font-size:12px;" >
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="width: 75% !important;"><strong>Diario</strong></th>
+                                            <th class="text-center" style="width: 25% !important;"><strong>Monto</strong></th>
+                                        </tr>                                
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="form.get('journals')" t-as="journal">
+                                            <tr>
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <span t-esc="journal.get('journal_id')"/>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-esc="float(journal.get('monto_moneda_diario'))" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                                        <span t-esc="journal.get('journal_currency')"/>
+                                                    </td>
+                                                </tr>
+                                            </tr>  
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+              
+                            <!-- ===================== Métodos de pago ===================== -->
+                            <br/>
+                            <div t-if="form.get('type_report') == 'detail_summary' or form.get('type_report') == 'only_summary'" class="col-xs-4" align="center">
+                                <table class="table table-sm" style="width:75%;font-size:14px;" >
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="width: 25% !important;"><strong>Método de Pago</strong></th>
+                                            <th class="text-center" style="width: 25% !important;"><strong>Monto</strong></th>
+                                            <th class="text-center" style="width: 25% !important;"><strong>Monto Ref</strong></th>
+                                        </tr>                                
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <span>Efectivo</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-if="form.get('efectivo_usd')" t-esc="float(form.get('efectivo_usd'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-if="form.get('efectivo_bs')" t-esc="float(form.get('efectivo_bs'))" t-options='{"widget": "monetary", "display_currency": obj_currency_ref}'/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <span>Transferencia</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-if="form.get('banco_usd')" t-esc="float(form.get('banco_usd'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-if="form.get('banco_bs')" t-esc="float(form.get('banco_bs'))" t-options='{"widget": "monetary", "display_currency": obj_currency_ref}'/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <span>Totales</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-if="form.get('total_amount')" t-esc="float(form.get('total_amount'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-if="form.get('total_amount_ref')"  t-esc="float(form.get('total_amount_ref'))" t-options='{"widget": "monetary", "display_currency": obj_currency_ref}'/>
+                                                </td>
+                                            </tr>
+                                        </tr>  
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- Salto de página después de los Diarios -->
+                            <div style="page-break-after: always;"></div>                                          
+
+                            <!-- ===================== Resumen de Cobro por mes ===================== -->
+                            <!-- Resumen de Cobro por mes -->
+                            <div t-if="form.get('type_report') == 'detail_summary' or form.get('type_report') == 'only_summary'" class="col-xs-4" align="center">
+                                <center><h5>Resumen de Cobro por mes</h5></center>
+                                <br/>
+                                <table class="table table-sm" style="width:50%;font-size:14px;" >
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="width: 25% !important;"><strong>MES</strong></th>
+                                            <th class="text-center" style="width: 25% !important;"><strong>MONTO</strong></th>
+                                        </tr>                                
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <tr t-if="1 in form.get('month_list') and float(form.get('enero'))">
+                                                <td class="text-left">
+                                                    <span>Enero</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('enero'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                            <tr t-if="2 in form.get('month_list') and float(form.get('febrero'))">
+                                                <td class="text-left">
+                                                    <span>Febrero</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('febrero'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                            <tr t-if="3 in form.get('month_list') and float(form.get('marzo'))">
+                                                <td class="text-left">
+                                                    <span>Marzo</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('marzo'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                            <tr t-if="4 in form.get('month_list') and float(form.get('abril'))">
+                                                <td class="text-left">
+                                                    <span>Abríl</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('abril'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                            <tr t-if="5 in form.get('month_list') and float(form.get('mayo'))">
+                                                <td class="text-left">
+                                                    <span>Mayo</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('mayo'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                            <tr t-if="6 in form.get('month_list') and float(form.get('junio'))">
+                                                <td class="text-left">
+                                                    <span>Junio</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('junio'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                            <tr t-if="7 in form.get('month_list') and float(form.get('julio'))">
+                                                <td class="text-left">
+                                                    <span>Julio</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('julio'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                            <tr t-if="8 in form.get('month_list') and float(form.get('agosto'))">
+                                                <td class="text-left">
+                                                    <span>Agosto</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('agosto'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                            <tr t-if="9 in form.get('month_list') and float(form.get('septiembre'))">
+                                                <td class="text-left">
+                                                    <span>Septiembre</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('septiembre'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                            <tr t-if="10 in form.get('month_list') and float(form.get('octubre'))">
+                                                <td class="text-left">
+                                                    <span>Octubre</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('octubre'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                            <tr t-if="11 in form.get('month_list') and float(form.get('noviembre'))">
+                                                <td class="text-left">
+                                                    <span>Noviembre</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('noviembre'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                            <tr t-if="12 in form.get('month_list') and float(form.get('diciembre'))">
+                                                <td class="text-left">
+                                                    <span>Diciembre</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('diciembre'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                            </tr>
+                                        </tr>  
+                                    </tbody>
+                                </table>
+                            </div>                                                   
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

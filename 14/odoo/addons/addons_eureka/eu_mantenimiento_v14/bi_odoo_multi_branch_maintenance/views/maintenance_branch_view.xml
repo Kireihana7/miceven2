@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    <record id="view_res_branch_form" model="ir.ui.view">
+        <field name="name">res.branch.form</field>
+        <field name="model">res.branch</field>
+        <field name="arch" type="xml">
+        	<form string="Branch Information">
+        		<sheet>
+        			<group cols="4">
+        				<group>
+        					<field name="name"/>
+        					<field name="company_id"/>
+        					<field name="telephone_no"/>
+					    </group>
+					    <group>
+        					<field name="address"/>
+					    </group>
+        			</group>
+			    </sheet>
+		    </form>
+	    </field>
+	</record>
+	
+	<record id="view_res_branch_tree" model="ir.ui.view">
+		<field name="name">res.branch.tree</field>
+		<field name="model">res.branch</field>
+		<field name="arch" type="xml">
+			<tree string="Branch Information">
+				<field name="name"/>
+				<field name="company_id"/>
+			</tree>
+		</field>
+	</record>
+	
+	<record id="action_res_branch_form" model="ir.actions.act_window">
+		<field name="name">Branch</field>
+		<field name="res_model">res.branch</field>
+		<field name="binding_view_types">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+	
+	<menuitem action="action_res_branch_form"
+            id="menu_action_res_branch"
+            parent="base.menu_users"
+            />
+            
+
+    <record id="view_users_form_inherit_branch" model="ir.ui.view">
+            <field name="name">view.users.form.inherit.branch</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook/page[2]/group[1]" position="before">
+                    <group name="branch">
+                        <field name="branch_ids" widget="many2many_tags"/>
+                    </group>
+                    <group>
+                        <field name="branch_id"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+                
+    <record id="view_maintenance_request_form" model="ir.ui.view">
+        <field name="name">maintenance.request.branch.form</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
+        <field name="arch" type="xml">
+            <field name="priority" position="after">
+                <field name="branch_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="bi_maintenance_request_filter" model="ir.ui.view">
+            <field name="name">bi.maintenance.request.select</field>
+            <field name="model">maintenance.request</field>
+            <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search"/>
+            <field name="arch" type="xml">
+				<xpath expr="//search" position="inside">
+			        <separator/>
+                    <filter name="branch_id" string="Branch" domain="[('branch_id','=',uid)]"/>
+                </xpath>
+                <xpath expr="//group" position="inside">
+                    <filter name="branch" string="Branch" domain="[]" context="{'group_by':'branch_id'}"/>
+			    </xpath>
+            </field>
+        </record>
+        
+    <record id="view_maintenance_equipment_form" model="ir.ui.view">
+        <field name="name">maintenance.equipment.branch.form</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form" />
+        <field name="arch" type="xml">
+            <field name="employee_id" position="after">
+                <field name="branch_id"/>
+            </field>
+        </field>
+    </record>  
+
+    <record id="bi_maintenance_equipment_filter" model="ir.ui.view">
+            <field name="name">bi.maintenance.equipment.select</field>
+            <field name="model">maintenance.equipment</field>
+            <field name="inherit_id" ref="maintenance.hr_equipment_view_search"/>
+            <field name="arch" type="xml">
+				<xpath expr="//search" position="inside">
+			        <separator/>
+                    <filter name="branch_id" string="Branch" domain="[('branch_id','=',uid)]"/>
+                </xpath>
+                <xpath expr="//group" position="inside">
+                    <filter name="branch" string="Branch" domain="[]" context="{'group_by':'branch_id'}"/>
+			    </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

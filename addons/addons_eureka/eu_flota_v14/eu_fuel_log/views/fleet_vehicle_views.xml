@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fleet_vehicle_view_form_inherit" model="ir.ui.view">
+        <field name="name">fleet.vehicle.view.form.inherit</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="fuel" string="Registro de combustible">
+                    <group>
+                        <field name="current_fuel" />
+                        <field name="fuel_rate" />
+                        <field name="fuel_log_ids" />
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="fleet_fuel_log_view_tree" model="ir.ui.view">
+        <field name="name">fleet.fuel.log.view.tree</field>
+        <field name="model">fleet.fuel.log</field>
+        <field name="arch" type="xml">
+            <tree string="Registro de combustible">
+                <field name="name" />
+                <field name="fuel_quantity" />
+                <field name="filling_date" />
+                <field name="vehicle_id" invisible="1" />
+                <field 
+                    name="log_type" 
+                    widget="badge"
+                    decoration-success="log_type == 'increment'"
+                    decoration-danger="log_type == 'decrement'"
+                />
+                <field name="currency_id" invisible="1" />
+                <field name="price_per_unit" />
+                <field name="total" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="fleet_fuel_log_view_form" model="ir.ui.view">
+        <field name="name">fleet.fuel.log.view.form</field>
+        <field name="model">fleet.fuel.log</field>
+        <field name="arch" type="xml">
+            <form string="Registro de combustible">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1" />
+                            <field name="log_type" required="1" />
+                            <field name="filling_date" />
+                        </group>
+                        <group>
+                            <field name="currency_id" invisible="1" />
+                            <field name="new_odometer_value" required="1" />
+                            <field name="fuel_quantity" required="1" />
+                            <field name="price_per_unit" />
+                            <field name="total" />
+                        </group>
+                    </group>
+                    <group string="Estatus del vehículo">
+                        <field name="vehicle_id" invisible="1" />
+                        <field name="fuel_type" />
+                        <field name="odometer_unit" />
+                        <field name="current_odometer_value" />
+                        <field name="current_fuel" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

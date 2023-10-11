@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_tipo_serie,eu_account_series.account_tipo_serie,model_account_tipo_serie,base.group_user,1,1,1,1
+access_account_tipo_serie_line,eu_account_series.account_tipo_serie_line,model_account_tipo_serie_line,base.group_user,1,1,1,1

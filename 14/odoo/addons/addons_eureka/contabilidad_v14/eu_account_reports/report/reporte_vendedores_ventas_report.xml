@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- David Linarez 7 -->
+    <template id="reporte_vendedores_ventas_template">
+        <t t-call="web.html_container">
+            <t t-set="tittle" t-value="'Vendedores con más ventas'"/>
+            <t t-set="desde" t-value="start_date"/>
+            <t t-set="hasta" t-value="end_date"/>
+            <t t-call="eu_miceven_report_topper.header_report_miceven">
+                <div class="page">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-right">
+                                <th>#</th>
+                                <th class="text-left">Vendedor</th>
+                                <th>Monto base</th>
+                                <t t-if="importe_adeudado">
+                                    <th>Importe Adeudado</th>
+                                </t>
+                                <th>Total %</th>
+                            </tr>
+                        </thead>
+                        <t t-set="docs" t-value="invoices" />
+                        <t t-set="currency" t-value="env['res.currency'].browse(currency_id or env.company.currency_id.id)" />
+                        <tbody>
+                            <tr t-foreach="enumerate(docs)" t-as="item" t-key="item[1]['name']" class="text-right">
+                                <t t-set="invoice" t-value="item[1]"/>
+
+                                <td scope="row" t-esc="item[0] + 1" />
+                                <td t-esc="invoice['name']" class="text-left" />
+                                <td
+                                    t-esc="invoice['amount']"  
+                                    t-options="{'widget': 'monetary', 'display_currency': currency}" 
+                                />
+                                <t t-if="importe_adeudado">
+                                    <td
+                                        t-esc="invoice['importe_adeudado']"  
+                                        t-options="{'widget': 'monetary', 'display_currency': currency}" 
+                                    />                          
+                                </t>                                
+                                <td t-esc="round((invoice['amount'] * 100) / total, 4)" />
+                            </tr>
+                            <tr class="text-right">
+                                <td colspan="2">Total:</td>
+                                <td
+                                    class="text-right" 
+                                    t-esc="total"
+                                    t-options="{'widget': 'monetary', 'display_currency': currency}" 
+                                />
+                                <t t-if="importe_adeudado">
+                                    <td
+                                        class="text-right" 
+                                        t-esc="total_importe_adeudado"
+                                        t-options="{'widget': 'monetary', 'display_currency': currency}" 
+                                    />                    
+                                </t>                                 
+                                <td>100.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- ======== Resumen de Productos ======== -->
+                    <t t-if="resumen_productos">
+                        <h3 class="text-center">Resumen de Productos</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Producto</th>
+                                    <th class="text-right">Cantidad</th>
+                                    <th class="text-right">Monto Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="resumen_productos" t-as="line_resumen">
+                                    <tr>
+                                        <td class="text-left">
+                                            <t t-esc="line_resumen.get('product_name')" />
+                                        </td>
+                                        <td class="text-right">
+                                            <t t-esc="line_resumen.get('total_quantity')" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </td>
+                                        <td class="text-right">
+                                            <t t-esc="line_resumen.get('total_amount')" t-options="{'widget':'monetary', 'display_currency': currency}" />
+                                        </td>                                    
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>                    
+                    </t>                    
+                </div>
+            </t>
+        </t>
+    </template>
+    <record id="reporte_vendedores_ventas_action_report" model="ir.actions.report">
+        <field name="name">Reporte vendedores ventas</field>
+        <field name="model">account.move.line</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">eu_account_reports.reporte_vendedores_ventas_template</field>
+        <field name="report_file">eu_account_reports.reporte_vendedores_ventas_report</field>
+        <field name="print_report_name">Reporte vendedores ventas</field>
+        <field name="binding_type">report</field>    
+    </record>
+
+</odoo>

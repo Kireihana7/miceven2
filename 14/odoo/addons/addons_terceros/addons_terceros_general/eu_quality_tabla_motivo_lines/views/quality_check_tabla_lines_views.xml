@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_quality_check_tabla_lines_tree_romana" model="ir.ui.view">
+        <field name="name">quality.check.tabla.tree</field>
+        <field name="model">quality.check.tabla</field>
+        <field name="arch" type="xml">
+            <tree string="Detalles de Formulario Proceso" edit="0" create="0" import="0" delete="0">
+                <field name="quality_check"/>
+                <field name="product_id"/> 
+                <field name="propiedades"/>
+                <field name="operation"/>
+                <field name="qty_expected"/>
+                <field name="qty"/>
+                <field name="diferencia"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='view_quality_check_tabla_lines_search_romana' model='ir.ui.view'>
+        <field name="name">quality.check.tabla.search</field>
+        <field name="model">quality.check.tabla</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="quality_check"/>
+                <field name="product_id"/> 
+                <field name="propiedades"/>
+                <field name="operation"/>
+                <field name="qty_expected"/>
+                <field name="qty"/>
+                <field name="diferencia"/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_name" context="{'group_by': 'name'}" string="Nombre"/>
+                    <filter name="groupby_quality_check" context="{'group_by': 'quality_check'}" string="Operaciones"/>
+                    <filter name="groupby_product_id" context="{'group_by': 'product_id'}" string="Producto"/>
+                    <filter name="groupby_propiedades" context="{'group_by': 'propiedades'}" string="Propiedades"/>
+                    <filter name="groupby_display_type" context="{'group_by': 'display_type'}" string="Tipo de Visualización"/>
+                    <filter name="groupby_company_id" context="{'group_by': 'company_id'}" string="Compañia"/>
+                </group>
+            </search>
+        </field>
+    </record>    
+
+    <record id="view_quality_check_tabla_lines_form_romana" model="ir.ui.view">
+        <field name="name">quality.check.tabla.form</field>
+        <field name="model">quality.check.tabla</field>
+        <field name="arch" type="xml">
+            <form string="Detalles de Formulario Proceso">
+                <sheet>
+                    <group>
+                        <field name="quality_check"/>
+                        <field name="product_id"/> 
+                        <field name="propiedades"/>
+                        <field name="operation"/>
+                        <field name="qty_expected"/>
+                        <field name="qty"/>
+                        <field name="diferencia"/>
+                    </group>
+                </sheet>  
+            </form>
+        </field>
+    </record>
+
+    <record id="view_quality_check_tabla_lines_pivot_romana" model="ir.ui.view">
+        <field name="name">Detalles de Formulario Proceso - Pivot</field>
+        <field name="model">quality.check.tabla</field>
+        <field name="arch" type="xml">
+            <pivot string="Detalles de Formulario Proceso">
+                <field name="name"/>
+                <field name="quality_check"/>
+                <field name="product_id"/>
+                <field name="display_type"/>
+                <field name="company_id"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- <record id="view_quality_check_tabla_lines_graph_romana" model="ir.ui.view">
+        <field name="name">Detalles de Formulario Proceso - Gráfico</field>
+        <field name="model">quality.check.tabla</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="name"/>
+                <field name="quality_check"/>
+                <field name="product_id"/>
+                <field name="display_type"/>
+                <field name="company_id"/>
+            </graph>
+        </field>
+    </record>     -->
+
+    <record id="action_quality_check_tabla_lines_form_romana" model="ir.actions.act_window">
+        <field name="name">Detalles de Formulario Proceso</field>
+        <field name="res_model">quality.check.tabla</field>
+        <!-- <field name="view_mode">tree,pivot,graph</field> -->
+        <field name="view_mode">tree,pivot</field>
+        <field name="view_id" ref="view_quality_check_tabla_lines_tree_romana"></field>
+    </record>
+
+    <menuitem 
+        id="quality_check_tabla_lines_submenu"
+        name="Detalles de Formulario Proceso"
+        action="action_quality_check_tabla_lines_form_romana"
+        sequence='21'
+        parent="quality_control.menu_quality_control"/>	       
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_header_driver_viatico" name="Template del Header">
+        <div class="header ">
+            <div class="rounded-lg border " style="font-size:12px;">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <t t-if="image_data_uri(env.company.logo)">
+                                    <img t-att-src="image_data_uri(env.company.logo)" width="55" height="55"/>
+                                </t>
+                            </td>
+                            <td class="text-center">
+                                <span style="font-size: 13px;" t-esc="env.company.name" /><br />
+                                <span> RIF: <span t-esc="env.company.rif" /> </span><br />
+                                <span class="mt-1 text-center">
+                                    <u>REPORTE VIATICO POR CONDUCTOR</u> <br />
+                                </span>
+                            </td>
+                            <td>
+                                <div class="footer mb-2 text-center" style="font-size:12px;">
+                                    <span>Fecha Impresión: <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"/> </span> <br />
+                                    <span>Página: <span class="page"/> / <span class="topage"/> </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </template>
+</odoo>

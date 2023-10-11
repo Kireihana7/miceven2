@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_mrp_production_mro_request_form" model="ir.ui.view">
+        <field name="name">mrp-production_mro_request_form</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <button name="action_cancel" position="after">
+                <button name="%(action_mro_request_production)d" type="action" string="Create MRO Request" groups="mro_maintenance.group_maintenance_user" attrs="{'invisible': ['|',('state', 'in', ('done', 'cancel')),('workorder_ids', '=', [])]}"/>
+            </button>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" name="action_view_mro_requests" type="object" icon="fa-list" groups="mro_maintenance.group_maintenance_user" attrs="{'invisible': [('mro_requests_count', '=', 0)]}">
+                    <field name="mro_requests_count" widget="statinfo" string="MRO Requests"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

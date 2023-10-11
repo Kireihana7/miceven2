@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="faov_date_select_view_form" model="ir.ui.view">
+        <field name="name">FAOV Selector Fecha</field>
+        <field name="model">faov.date.select</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <separator string="TxT info."  />
+                    <span class="text-muted">Si piensa generar un Archivo para mintra la fecha indicada debe referir al final del trimestre, en caso contrario la fecha indicada refiere a la fecha de FAOV</span>
+                    <group>
+                        <field name="fecha" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button 
+                        name="export_faov"
+                        string="Generar FAOV"
+                        type="object"
+                        class="btn-primary"
+                        
+                    />
+                    <button 
+                        name="export_mintra_fijo"
+                        string="Generar MINTRA FIJO"
+                        type="object"
+                        class="btn-primary"
+                        
+                    />
+                    <button 
+                        name="export_mintra_variable"
+                        string="Generar MINTRA VAR"
+                        type="object"
+                        class="btn-primary"
+                        
+                    />
+                    
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_faov_date_select_view_form" model="ir.actions.act_window">
+        <field name="name"> Imprimir FAOV o MINTRA</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">faov.date.select</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee"/>
+        <field name="view_mode">form</field>
+        <!-- <field name="context">{'default_to_employee_ids':}</field> -->
+        <field name="view_id" ref="faov_date_select_view_form"></field>
+        <field name="binding_view_types">list,form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

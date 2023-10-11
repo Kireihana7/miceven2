@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <record id="action_analytic_account_dashboard_map_all" model="ir.actions.client">
+            <field name="name">Analytic Account Dashboard Map</field>
+            <field name="tag">analytic_account_dashboard_map</field>
+        </record>
+
+        <!-- <menuitem name="Analytic Account Dashboard Map" id="menu_analytic_account_dashboard_map" parent="sale.menu_sale_report"
+                  sequence="5"
+                  action="action_analytic_account_dashboard_map_all"/> -->
+
+        <!-- <menuitem name="Analytic Account Dashboard Map" 
+                  id="menu_analytic_account_dashboard_map"
+                  sequence="5"
+                  action="action_analytic_account_dashboard_map_all"/> -->
+
+    </data>
+
+    <template id="assets_backend_analytic_account_dashboard_map" name="Analytic Account Dashboard Map Assets" inherit_id="web.assets_backend">
+        <xpath  expr="." position="inside">
+            <link rel="stylesheet" href="/analytic_account_dashboard_map/static/src/css/style.scss"/>
+            <link rel="stylesheet" href="/analytic_account_dashboard_map/static/src/css/daterangepicker.css"/>
+
+            <script type="text/javascript" src="/analytic_account_dashboard_map/static/lib/echarts.min.js"/>
+            <script type="text/javascript" src="/analytic_account_dashboard_map/static/lib/daterangepicker.min.js"/>
+            <script type="text/javascript" src="/analytic_account_dashboard_map/static/src/js/main.js"/>
+            <script type="text/javascript" src="/analytic_account_dashboard_map/static/src/js/echarts_widget.js"/>
+
+        </xpath>
+    </template>
+</odoo>

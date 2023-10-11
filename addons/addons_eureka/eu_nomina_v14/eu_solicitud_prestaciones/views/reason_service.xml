@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- views_tree -->
+  <record model="ir.ui.view" id="eu_motivo_prestaciones_tree">
+    <field name="name">motivo.de.prestaciones</field>
+    <field name="model">res.reason.service</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="name" />
+        </tree>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="eu_moitivo_prestaciones_form">
+    <field name="name">eu.motivo.prestaciones.form</field>
+    <field name="model">res.reason.service</field>
+    <field name="arch" type="xml">
+
+      <form string="Motivo de Prestaciones">
+        <sheet>
+            <group>             
+                <group >
+                    <field name="name"/>
+                </group>
+                <group>
+                </group>  
+            </group>
+          </sheet>
+      </form>
+    </field>
+  </record>
+
+    <!-- actions opening views on models -->
+    <record id="acction_motivo_prestaciones" model="ir.actions.act_window">
+        <field name="name">motivo.prestaciones.menu</field>
+        <field name="res_model">res.reason.service</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- menu donde se llama a la vista -->
+    <menuitem name="Motivo de Prestaciones" id="motivo_prestaciones_menu" parent="l10n_ve_payroll.view_prestations_view" action="eu_solicitud_prestaciones.acction_motivo_prestaciones"/>
+
+  </data>
+</odoo>

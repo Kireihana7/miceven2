@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_vacaciones_miceven" name="Vacaciones MICEVEN">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="data_report_margin_top" t-value="10"/>
+
+                    <div class="page" style="padding-top: 50px;">
+                        <style>
+                            table, td, th {
+                                border: 1px solid;
+                                font-size: 8px;
+                                padding: .18rem;
+                            }
+                        </style>
+                        <t t-set="empleadospasados" t-value="o.env['hr.employee']"/>
+                        <t t-if="o.employee_tags">
+                            <t t-set="tags" t-value="o.employee_tags"/>
+                            <t t-set="empleados" t-value="o.env['hr.employee'].with_context(active_test=False).search([('category_ids','in',tags.ids)])"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="tags" t-value="o.env['hr.employee.category'].search([])"/>
+                            <t t-set="empleados" t-value="o.env['hr.employee'].with_context(active_test=False).search([])"/>
+                        </t>
+                        <t t-set="totaltotalsueldo" t-value="0"/>
+                        <t t-set="totaltotaldolar" t-value="0"/>
+                        <t t-set="totaltotalpagar" t-value="0"/>
+                        <t t-set="conter" t-value="0"/>
+
+                        <div class="row">
+                            <div class="col-4 text-left"/>
+                            <div class="col-4 text-right"><strong class="closed">PRENÓMINA VACACIONES</strong></div>
+                            <div class="col-4 text-left"/>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-2 text-right"><strong class="closed">Desde</strong></div>
+                            <div class="col-2 text-left"><span t-field="o.desde"/></div>
+                            <div class="col-2 text-right"><strong class="closed">Hasta</strong></div>
+                            <div class="col-2 text-left"><span t-field="o.hasta"/></div>
+                            <div class="col-2 text-right"><strong class="closed">Tasa</strong></div>
+                            <t t-set="tax_today" t-value="empleados.slip_ids.filtered(lambda x: x.state in ['verify','done'] and ((x.date_from &gt;= o.desde and x.date_to &lt;= o.hasta) or (x.payslip_run_id and x.payslip_run_id.date_start &gt;= o.desde and x.payslip_run_id.date_end &lt;= o.hasta) ))[:1].tax_today"/>
+                            <div class="col-2 text-left"><span t-esc="round(tax_today,2)"/></div>
+                        </div>
+                        <table class="table table-sm table-borderless">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>N°</th>
+                                    <th>Código</th>
+                                    <th>Nombre completo</th>
+                                    <th>C.I</th>
+                                    <th>Fecha de ingreso</th>
+                                    <th>Salario $</th>
+                                    <th>Salario diario</th>
+                                    <th>Total dias pagados</th>
+                                    <th>Monto a pagar bonificados</th>
+                                    <th>Salario mensual</th>
+                                    <th>Salarios diario Bs.</th>
+                                    <th>Dias hábiles art. 190, 191 lottt</th>
+                                    <th>Dias adic. Hábiles art. 190, 191 lottt</th>
+                                    <th>Dias bono vacacional art.192 lottt</th>
+                                    <th>Dias ADIC.bono vacacional art.192 lottt</th>
+                                    <th>Dias descanso y feriados en vacacaiones</th>
+                                    <th>Total dias a pagar</th>
+                                    <th>Total deducciones</th>
+                                    <th>Monto a pagar con tabulador</th>
+                                    <th>Total a pagar </th>
+                                </tr>
+                            </thead>
+                            <t t-set="total_bs" t-value="0"/>
+                            <tbody>
+                                <t t-foreach="tags" t-as="tag">
+                                    <t t-set="totalsueldo" t-value="0"/>
+                                    <t t-set="totaldolar" t-value="0"/>
+                                    <t t-set="totalpagar" t-value="0"/>
+
+                                   <!-- <tr style="background-color:#d4d4d4;">
+                                        <td width="5%" class="text-center">
+                                            [<span t-field="tag.name"/>]
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="o.payroll_structure_prime.name"/>
+                                        </td>
+                                        <td colspan="18" class="text-left">
+                                            <span t-field="o.payroll_structure_subprime.name"/>
+                                        </td>
+                                    </tr>-->
+                                    <t t-foreach="enumerate(empleados.filtered(lambda x: tag in x.category_ids))" t-as="item">
+                                        <t t-set="emp" t-value="item[1]"/>
+                                        <t t-set="slip_ids" t-value="emp.slip_ids.filtered(lambda x: x.state in ['verify','done'] and ((x.date_from &gt;= o.desde and x.date_to &lt;= o.hasta) or (x.payslip_run_id and x.payslip_run_id.date_start &gt;= o.desde and x.payslip_run_id.date_end &lt;= o.hasta) ))"/>
+                                        <t t-set="nominasalpha" t-value="slip_ids.filtered(lambda x: x.struct_id == o.payroll_structure_prime)"/>
+                                        <t t-set="nominasbeta" t-value="slip_ids.filtered(lambda x: x.struct_id == o.payroll_structure_subprime)"/>
+                                        
+                                        <t t-if="nominasalpha and nominasbeta and emp not in empleadospasados">
+                                          <t t-set="conter" t-value="conter+1"/>
+
+                                            <t t-set="total_dias_pagados" t-value="nominasalpha[:1].line_ids.filtered(lambda l: l.code == 'vac_bon').quantity"/>
+                                            <t t-set="total_a_pagar_dias" t-value="nominasalpha[:1].line_ids.filtered(lambda l: l.code == 'vac_bon').total"/>
+                                            <t t-set="total_dias_pagar" t-value="0"/>
+                                            <t t-set="monto_pagar_bonificados" t-value="0"/>
+                                            <t t-set="salarios_diario_bs" t-value="0"/>
+                                            <t t-set="total_deducciones" t-value="0"/>
+                                            <t t-set="total_pagar" t-value="0"/>
+
+                                            <tr>
+                                                <td scope="row" t-esc="item[0]"/>
+                                                <td>
+                                                    <span t-field="emp.emp_id"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="emp.name"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="emp.identification_id_2"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="emp.fecha_inicio"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="emp.contract_id.complemento" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/>
+                                                </td>
+                                                <td t-esc="round(emp.contract_id.complemento / 30,2)" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/>
+                                                <td t-esc="total_dias_pagados"/>
+                                                <td>
+                                                    <span t-set="monto_pagar_bonificados" t-value="total_a_pagar_dias"/>
+                                                    <span t-esc="round(monto_pagar_bonificados,2)" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id.parent_id}"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="emp.contract_id.wage" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id.parent_id}"/>
+                                                </td>
+                                                <td>
+                                                    <span t-set="salarios_diario_bs" t-value="emp.contract_id.wage / 30"/>
+                                                    <span t-esc="round(salarios_diario_bs,2)" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id.parent_id}"/>
+                                                </td>
+                                                <td>
+                                                    <t t-set="remvaca" t-value="sum(nominasbeta.line_ids.filtered(lambda l: l.code == 'REMVACA').mapped('quantity'))"/>
+                                                    <t t-set="total_dias_pagar" t-value="total_dias_pagar + remvaca"/>
+                                                    <t t-esc="round(remvaca,2)"/>
+                                                </td>
+                                                <td>
+                                                    <t t-set="remantig" t-value="sum(nominasbeta.line_ids.filtered(lambda l: l.code == 'REMANTIG').mapped('quantity'))"/>
+                                                    <t t-set="total_dias_pagar" t-value="total_dias_pagar + remantig"/>
+                                                    <t t-esc="round(remantig,2)"/>
+                                                </td>
+                                                <td>
+                                                    <t t-set="bdvaca" t-value="sum(nominasbeta.line_ids.filtered(lambda l: l.code == 'BDVACA').mapped('quantity'))"/>
+                                                    <t t-set="total_dias_pagar" t-value="total_dias_pagar + bdvaca"/>
+                                                    <t t-esc="round(bdvaca,2)"/>
+                                                </td>
+                                                <td>
+                                                    <t t-set="bdantig" t-value="sum(nominasbeta.line_ids.filtered(lambda l: l.code == 'BDANTIG').mapped('quantity'))"/>
+                                                    <t t-set="total_dias_pagar" t-value="total_dias_pagar + bdantig"/>
+                                                    <t t-esc="round(bdantig,2)"/>
+                                                </td>
+                                                <td>
+                                                    <t t-set="bdferi" t-value="sum(nominasbeta.line_ids.filtered(lambda l: l.code == 'BDFERI').mapped('quantity'))"/>
+                                                    <t t-set="total_dias_pagar" t-value="total_dias_pagar + bdferi"/>
+                                                    <t t-esc="round(bdferi,2)"/>
+                                                </td>
+                                                <td t-esc="total_dias_pagar" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id.parent_id}"/>
+                                                <td>
+                                                    <t t-set="total_deducciones" t-value="sum(nominasbeta.line_ids.filtered(lambda l: l.code in ['S.S.O','R.P.E','F.A.O.V.']).mapped('total'))"/>
+                                                    <t t-esc="round(total_deducciones,2)" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id.parent_id}"/>
+                                                </td>
+                                                <td>
+                                                    <t t-set="total_pagar" t-value="(total_dias_pagar * salarios_diario_bs) - total_deducciones"/>
+                                                    <t t-esc="round(total_pagar,2)" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id.parent_id}"/>
+                                                </td>
+                                                <td t-esc="round(total_pagar + monto_pagar_bonificados,2)" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id.parent_id}"/>
+                                            </tr>
+                                            <t t-set="total_bs" t-value="total_bs+ total_pagar + monto_pagar_bonificados"/>
+                                        </t>
+                                        <t t-set="empleadospasados" t-value="empleadospasados + emp"/>
+                                        
+                                        
+                                    </t>
+                                </t>
+                            </tbody>
+                            <tfooter>
+                                <tr>
+                                  <td t-esc="'N° Empleados'"/>
+                                  <td t-esc="conter"/>
+                                    <td colspan="13"/>
+                                    
+                                    <td colspan="2">
+                                       <strong> <t t-esc="'TOTAL DIVISA'"/></strong>
+                                    </td>
+                                    <td>
+                                        <t t-esc="round(total_bs/tax_today,2)" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/>
+                                    </td>
+                                    <td>
+                                      <strong>  <t t-esc="'TOTAL'"/></strong>
+                                    </td>
+                                    <td>
+                                        <t t-esc="round(total_bs,2)" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id.parent_id}"/>
+                                    </td>
+                                </tr>
+                            </tfooter>
+                        </table>
+                        <table class="table table-borderless" style="border:0px;background-color:white;page-break-inside: avoid;">
+                            <tr style="background-color:white;">
+                                <th class="text-center" style="font-size:1rem;background-color:white;"><strong>PROCESADO POR:</strong></th>
+                                <th class="text-center" style="font-size:1rem;background-color:white;"><strong>APROBADO POR:</strong></th>
+                            </tr>
+                            <tr style="height:30px;padding-top:5px;">
+                                <th class="text-center text-align-bottom"><strong>______________________________________________</strong></th>
+                                <th class="text-center text-align-bottom"><strong>______________________________________________</strong></th>
+                            </tr>
+                            <tr>
+                                <span> </span>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <th class="text-center" style="margin-bottom:5px;margin-top:5px;width:400px"><strong/></th>
+                                <th class="text-center" style="margin-bottom:5px;margin-top:5px;width:400px"><strong/></th>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

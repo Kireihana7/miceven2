@@ -1,0 +1,246 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* analytic_account_dashboard_map
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e-20191225\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-03 19:10+0000\n"
+"PO-Revision-Date: 2020-10-03 14:11-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.4.1\n"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/js/main.js:0
+#, python-format
+msgid " to "
+msgstr " hasta "
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Africa"
+msgstr ""
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/js/main.js:0
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "All"
+msgstr "Todos"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Asia"
+msgstr ""
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#: model:ir.model,name:analytic_account_dashboard_map.model_res_country
+#, python-format
+msgid "Country"
+msgstr "País"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Europa"
+msgstr ""
+
+#. module: analytic_account_dashboard_map
+#: model:ir.model.fields,field_description:analytic_account_dashboard_map.field_res_country__map
+msgid "File Map JSON"
+msgstr "Mapa de archivos JSON"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/js/main.js:0
+#, python-format
+msgid "From "
+msgstr "Desde "
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/js/main.js:0
+#, python-format
+msgid "High"
+msgstr "Alto"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/js/main.js:0
+#, python-format
+msgid "Low"
+msgstr "Bajo"
+
+#. module: analytic_account_dashboard_map
+#: model_terms:ir.ui.view,arch_db:analytic_account_dashboard_map.res_company_analytic_account_form__l10n_ve_view_for
+msgid "Map"
+msgstr "Mapa"
+
+#. module: analytic_account_dashboard_map
+#: model:ir.model.fields,field_description:analytic_account_dashboard_map.field_res_country__analytic_account_map_render
+msgid "Map Render"
+msgstr "Representación de mapas"
+
+#. module: analytic_account_dashboard_map
+#: model:ir.model.fields,field_description:analytic_account_dashboard_map.field_res_country__analytic_account_map_url
+msgid "Map Url"
+msgstr "Url del mapa"
+
+#. module: analytic_account_dashboard_map
+#: model:ir.model.fields,field_description:analytic_account_dashboard_map.field_res_country__analytic_account_map_name
+msgid "Map name"
+msgstr "Nombre del mapa"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Measures"
+msgstr "Medidas"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "North America"
+msgstr ""
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Oceania"
+msgstr ""
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Quotation"
+msgstr "Cotización"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Regions"
+msgstr "Regiones"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/js/main.js:0
+#, python-format
+msgid "Reset"
+msgstr "Resetear"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#: model:ir.actions.client,name:analytic_account_dashboard_map.action_analytic_account_dashboard_map_all
+#: model:ir.ui.menu,name:analytic_account_dashboard_map.menu_analytic_account_dashboard_map
+#, python-format
+msgid "Analytic Account Dashboard Map"
+msgstr ""
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Farm"
+msgstr "Orden de Venta"
+
+#. module: analytic_account_dashboard_map
+#: model:ir.model,name:analytic_account_dashboard_map.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de Venta"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Sales Person"
+msgstr "Vendedor"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/js/main.js:0
+#, python-format
+msgid "Sales in "
+msgstr "Ventas en "
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/js/main.js:0
+#, python-format
+msgid "Save as imagen"
+msgstr "Guardar como imagen"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Show data"
+msgstr "Mostrar datos"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "South America"
+msgstr "Sudamérica"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "State"
+msgstr "Estado"
+
+#. module: analytic_account_dashboard_map
+#: model_terms:ir.ui.view,arch_db:analytic_account_dashboard_map.res_company_analytic_account_form__l10n_ve_view_for
+msgid "States"
+msgstr "Estados"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Time Ranges"
+msgstr "Período de tiempo"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Total"
+msgstr "Total"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "Untaxed Total"
+msgstr "Total libre de impuestos"
+
+#. module: analytic_account_dashboard_map
+#. openerp-web
+#: code:addons/analytic_account_dashboard_map/static/src/xml/analytic_account_dashboard_template.xml:0
+#, python-format
+msgid "World"
+msgstr ""

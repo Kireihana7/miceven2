@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem 
+        id="menu_sale_order_return" 
+        name="Notificaciones de Devoluciones" 
+        sequence="1" 
+        action="eu_sale_return.open_sale_order_return" 
+        parent="sale.menu_sale_report"
+        groups="eu_sale_return.group_sale_order_return_manager"
+    />
+    
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="cron_action_notify_fleet_documents_due" model="ir.cron">
+            <field name="name">Documentos por vencerse en vehículos</field>
+            <field name="model_id" ref="model_fleet_vehicle_document_line"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="state">code</field>
+            <field name="code">model._action_notify_due()</field>
+        </record>
+        <record id="mail_activity_due_document_fleet_vehicle" model="mail.activity.type">
+            <field name="name">Expiración de documentos de vehículos</field>
+            <field name="summary">note</field>
+            <field name="category">default</field>
+            <field name="res_model_id" ref="model_fleet_vehicle_document_line"/>
+            <field name="icon">fa-car</field>
+            <field name="delay_count">0</field>
+        </record>
+    </data>
+</odoo>

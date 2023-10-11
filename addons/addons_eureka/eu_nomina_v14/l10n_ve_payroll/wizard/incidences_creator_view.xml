@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <!-- <record id="hr_payroll.action_hr_payslip_by_employees" model="ir.actions.act_window">
+            <field name="name">Generate Payslips</field>
+            <field name="res_model">hr.payslip.employees</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_hr_payslip_by_employees"/>
+            <field name="target">new</field>
+        </record> -->
+
+        <record id="hr_payslip_runs_incidences_line" model="ir.ui.view">
+            <field name="name">hr.payslip.run.incidences.line</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="l10n_ve_payroll.hr_paysliprun_inherit_views"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='identifiers']" position="after">
+                    <group colspan="2" groups="l10n_ve_payroll.hr_payroll_incgen_group" attrs="{'invisible':[('has_incidencias','=',False)]}">
+                        <separator string="Incidencias" colspan="2"/>
+                        <group><span class="text-muted">Agregar incidencias fuera de las existentes en el sistema, no se llevara un registro detallado de las mismas pero si se indicara su uso.</span>
+                        
+                            <group><button name="get_all_available_incidences" type="object" class="oe_highlight" string="Obtener incidencias precargadas"/></group>
+                       
+                            </group>
+
+                        <field name="incidence_line_ids" context="{'default_fecha_ini':date_start,'default_fecha_fin':date_end,'default_category_id':category_id_filter}" nolabel="1" domain="[('fecha_ini','=',date_start),('fecha_fin','=',date_end),('category_id','=',category_id_filter)]">
+                            <tree editable="bottom">
+                                <field name="employee_ids" readonly="1" widget="many2many_tags" options="{'no_open':True,'no_create':True}"/>
+                                <field name="work_entry_type" readonly="1" options="{'no_open':True,'no_create':True}"/>
+                                <field name="hours_or_days" readonly="1"/>
+                                <field name="fecha_ini" readonly="1"/>
+                                <field name="fecha_fin" readonly="1"/>
+                                <field name="category_id" readonly="1" options="{'no_open':True,'no_create':True}"/>
+                                <field name="number_of_unit" readonly="1"/>
+                            </tree>
+                            <!-- domain="[('is_reposo','=',False)]" -->
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="employee_ids" widget="many2many_tags" options="{'no_open':True,'no_create':True}"/>
+                                        <field name="work_entry_type" options="{'no_open':True,'no_create':True}"/>
+                                        <field name="fecha_ini" />
+                                        <field name="fecha_fin" />
+                                        
+                                    </group>
+                                    <group>
+                                        <field name="category_id" options="{'no_open':True,'no_create':True}"/>
+                                        <!-- domain="[('is_reposo','=',False)]" -->
+                                        <field name="hours_or_days" />
+                                        <field name="number_of_unit" />
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="hr_incidences_view_tree" model="ir.ui.view">
+            <field name="name">incidence.line</field>
+            <field name="model">incidence.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="employee_ids" widget="many2many_tags" options="{'no_open':True,'no_create':True}"/>
+                    <field name="work_entry_type" domain="[('is_reposo','=',False)]" options="{'no_open':True,'no_create':True}"/>
+                    <field name="fecha_ini" />
+                    <field name="fecha_fin" />
+                    <field name="category_id" options="{'no_open':True,'no_create':True}"/>
+                    <field name="hours_or_days" />
+                    <field name="number_of_unit"/>
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        <record id="hr_incidences_view_form" model="ir.ui.view">
+            <field name="name">incidence.line</field>
+            <field name="model">incidence.line</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="button_state" type="object" class="oe_highlight" string="Cambiar estado" groups="l10n_ve_payroll.hr_payroll_incval_group"/>
+                        
+                        <field name="state" widget="statusbar"  statusbar_visible="open,closed"  readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group >
+                                <field name="employee_ids" widget="many2many_tags" attrs="{'readonly':[('state','=','closed')]}" options="{'no_open':True,'no_create':True}"/>
+                            
+                            <field name="fecha_ini"  attrs="{'readonly':[('state','=','closed')]}"/>
+                            
+                            <field name="category_id"  attrs="{'readonly':[('state','=','closed')]}" options="{'no_open':True,'no_create':True}"/>
+                            <!-- domain="[('is_reposo','=',False)]" -->
+                            
+                            </group>
+                            <group>
+                                <field name="work_entry_type"  attrs="{'readonly':[('state','=','closed')]}" options="{'no_open':True,'no_create':True}"/>
+                                <field name="fecha_fin"  attrs="{'readonly':[('state','=','closed')]}"/>
+                                <field name="number_of_unit" attrs="{'readonly':[('state','=','closed')]}"/>
+                                <field name="hours_or_days"  attrs="{'readonly':[('state','=','closed')]}"/>
+                            </group>
+                        </group>
+                        
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                    
+                </form>
+            </field>
+        </record>
+        <record id="action_view_hr_incidence" model="ir.actions.act_window">
+            <field name="name">Listado de incidencias</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">incidence.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_incidences_view_tree"></field>
+            <field name="binding_view_types">tree</field>
+            <field name="target">current</field>
+        </record>
+        <record id="incidence_line_action_server" model="ir.actions.server">
+            <field name="name">Cambiar estado</field>
+            <field name="model_id" ref="model_incidence_line"/>
+            <field name="binding_model_id" ref="model_incidence_line"/>
+            <field name="groups_id" eval="[(4,ref('l10n_ve_payroll.hr_payroll_incval_group'))]"/>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    records.button_state()
+            </field>
+        </record>
+        <menuitem
+            id="view_hr_list_incidencias"
+            name="Incidencias"
+            action="l10n_ve_payroll.action_view_hr_incidence"
+            parent="l10n_ve_payroll.menu_hr_payroll_unglobal_settings"
+            sequence="13"/>
+    </data>
+
+
+</odoo>

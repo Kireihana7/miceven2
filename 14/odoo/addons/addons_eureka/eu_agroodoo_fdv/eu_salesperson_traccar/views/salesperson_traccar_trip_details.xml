@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="salesperson_traccar_trip_details_form" model="ir.ui.view">
+        <field name="name">salesperson.trip.details.form</field>
+        <field name="model">salesperson.traccar.trip.details</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Detalles de Viaje" create="0" edit="0" js_class="traccar_map_form">
+                <sheet>                    
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g. TRIP0001"/>
+                        </h1>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="employee_id"/>
+                            <h2>
+                                <field name="employee_id" 
+                                    class="oe_inline"
+                                    options="{'no_open': True, 'no_create_edit': True, 'no_quick_create': True, 'no_create': True}"
+                                />
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6" style="padding:0px">
+                            <group string="Latitud &amp; Longitud">
+                                <group string="Origen">                                    
+                                    <field name="src_latitude" string="Latitud" readonly="1"/>
+                                    <field name="src_longitude" string="Longitud" readonly="1"/>
+                                </group>
+                                <group string="Destino">                                    
+                                    <field name="dst_latitude" string="Latitud" readonly="1"/>
+                                    <field name="dst_longitude" string="Longitud" readonly="1"/>
+                                </group>                                
+                            </group>
+                            <group string="Detalles del Viaje">
+                                <group string="Fecha">
+                                    <field name="start_time"/>
+                                    <field name="end_time"/>
+                                    <field name="trip_date"/>
+                                </group>
+                                <group string="Traccar Viaje">
+                                    <field name="duration"/>
+                                    <field name="distance"/>
+                                    <field name="average_speed"/>
+                                    <field name="max_speed"/>
+                                </group>
+                                <group string="Estatus del Dispositivo">                                    
+                                    <field name="spent_fuel"/>
+                                    <field name="start_odometer"/>
+                                    <field name="end_odometer"/>
+                                    <field name="start_position_id"/>
+                                    <field name="end_position_id"/>
+                                </group>                                
+                                <group string="Otros Detalles">
+                                    <field name="src_address"/>
+                                    <field name="dst_address"/>
+                                </group>
+                            </group>
+                        </div>
+
+                        <div class="col-6" style="padding:0px">
+                            <div class="o_horizontal_separator mt-4 mb-3 text-uppercase fw-bolder small">
+                                Mapa del Viaje
+                            </div>
+                            <div class="o_traccar_map_view_container">
+                                <div id="o_traccar_map_view" class="o_traccar_map_view" show_route_trip='true'>
+                                    <div id="popup" class="ol-popup">
+                                        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                                        <div id="popup-content"></div>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="salesperson_traccar_trip_details_tree" model="ir.ui.view">
+        <field name="name">salesperson.traccar.trip.details.tree</field>
+        <field name="model">salesperson.traccar.trip.details</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Detalles de Viajes" create="0" edit="0" >
+                <field name="name" />
+                <field name="employee_id" options="{'no_open': True, 'no_create_edit': True, 'no_quick_create': True, 'no_create': True}"/>
+                <field name="duration"/>
+                <field name="trip_date"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="salesperson_traccar_trip_details_action" model="ir.actions.act_window">
+        <field name="name">Detalles de Viajes</field>
+        <field name="res_model">salesperson.traccar.trip.details</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem 
+        name="Detalles de Viaje" 
+        action="salesperson_traccar_trip_details_action" 
+        parent="eu_salesperson_traccar.hr_traccar_menu" 
+        id="salesperson_traccar_trip_details_menu" 
+        groups="eu_salesperson_traccar.traccar_usuario"
+    />
+
+</odoo>

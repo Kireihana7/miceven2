@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_product_template_operation_tree_romana" model="ir.ui.view">
+        <field name="name">product.template.operation.tree</field>
+        <field name="model">product.template.operation</field>
+        <field name="arch" type="xml">
+            <tree string="Operaciones del Producto">
+                <field name="name"/>
+                <field name="product_id"/> 
+                <field name="propiedades"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_product_template_operation_form_romana" model="ir.ui.view">
+        <field name="name">product.template.operation.form</field>
+        <field name="model">product.template.operation</field>
+        <field name="arch" type="xml">
+            <form string="Operaciones del Producto">
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="product_id" required="1" options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/> 
+                        <field name="propiedades"
+                            widget="section_and_note_one2many"
+                            mode="tree">
+                            <form>
+                                <field name="display_type" invisible="1"/>
+                                <label for="name" string="Nombre" attrs="{'invisible': [('display_type', '!=', False)]}"/>
+                                <label for="name" string="Nombre de la Descripción" attrs="{'invisible': [('display_type', '!=', 'line_section')]}"/>
+                                <field name="name" required="1"/>
+                                <group attrs="{'invisible': [('display_type', '!=', False)]}">
+                                    <group>
+                                        <field name="qty_expected" attrs="{'invisible': [('display_type', '!=', False)],'required': [('display_type', '=', False)]}"/>
+                                    </group>
+                                    <group>
+                                    </group>
+                                </group>
+                                <field name="company_id" invisible="1"/>
+                            </form>
+                            <tree editable="bottom">
+                                <control>
+                                    <create name="add_product_control" string="Añadir Operación"/>
+                                    <create name="add_section_control" string="Añadir una Sección" context="{'default_display_type': 'line_section'}"/>
+                                </control>
+                                <field name="sequence" widget="handle" />
+                                <field name="display_type" invisible="1"/>
+                                <field name="name" required="1"/>
+                                <field name="qty_expected" required="1"/>
+                                <field name="company_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>  
+            </form>
+        </field>
+    </record>
+
+    <record id="open_view_product_template_operation_tree" model="ir.actions.act_window">
+        <field name="name">Operaciones del Producto</field>
+        <field name="res_model">product.template.operation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_product_template_operation_tree_romana"></field>
+    </record>
+
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_chargue_consolidate_reason_form" model="ir.ui.view">
+		<field name="name">chargue.consolidate.reason.form</field>
+		<field name="model">chargue.consolidate.reason</field>
+		<field name="arch" type="xml">
+		    <form string="Motivo Cancelación">
+				<group>
+				    <field name="romana_cancel_reason_id"/>
+				    <field name="descripcion" readonly="0"/>
+				</group>
+				<group>
+				</group>
+			    <footer> 
+					<button string='Cancelar Guía' name='cancel_romana_wizard' type='object' class='btn-primary' />
+					<button string='Cancel' class='btn-default' special="cancel"/>
+		        </footer>				
+		    </form>
+		</field>
+	</record>
+</odoo>

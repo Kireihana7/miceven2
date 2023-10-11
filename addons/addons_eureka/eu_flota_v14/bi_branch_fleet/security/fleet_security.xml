@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="1">
+
+    <record id="fleet_vehical_branch_manager_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Branch Manager</field>
+        <field name="model_id" ref="model_fleet_vehicle"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',[branch.id for branch in user.branch_ids])]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
+    </record>
+
+    <record id="fleet_vehical_branch_user_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Branch User</field>
+        <field name="model_id" ref="model_fleet_vehicle"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','=',user.branch_id.id)]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
+    </record>
+
+    <record id="fleet_vehicle_odometer_branch_manager_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Odometer Branch Manager</field>
+        <field name="model_id" ref="model_fleet_vehicle_odometer"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',[branch.id for branch in user.branch_ids])]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
+    </record>
+
+    <record id="fleet_vehicle_odometer_branch_user_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Odometer Branch User</field>
+        <field name="model_id" ref="model_fleet_vehicle_odometer"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','=',user.branch_id.id)]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
+    </record>
+
+    <record id="fleet_vehicle_log_contract_branch_manager_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Log Contract Branch Manager</field>
+        <field name="model_id" ref="model_fleet_vehicle_log_contract"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',[branch.id for branch in user.branch_ids])]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
+    </record>
+
+    <record id="fleet_vehicle_log_contract_branch_user_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Log Contract Branch User</field>
+        <field name="model_id" ref="model_fleet_vehicle_log_contract"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','=',user.branch_id.id)]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
+    </record>
+
+   <!--  <record id="fleet_vehicle_cost_branch_manager_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Cost Branch Manager</field>
+        <field name="model_id" ref="model_fleet_vehicle_cost"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',[branch.id for branch in user.branch_ids])]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
+    </record>
+
+    <record id="fleet_vehicle_cost_branch_user_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Cost Branch User</field>
+        <field name="model_id" ref="model_fleet_vehicle_cost"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','=',user.branch_id.id)]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
+    </record> -->
+
+   <!--  <record id="fleet_vehicle_log_fuel_branch_manager_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Cost Branch Manager</field>
+        <field name="model_id" ref="model_fleet_vehicle_log_fuel"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',[branch.id for branch in user.branch_ids])]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
+    </record>
+
+    <record id="fleet_vehicle_log_fuel_branch_user_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Cost Branch User</field>
+        <field name="model_id" ref="model_fleet_vehicle_log_fuel"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','=',user.branch_id.id)]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
+    </record> -->
+
+    <record id="fleet_vehicle_log_services_branch_manager_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Log Services Branch Manager</field>
+        <field name="model_id" ref="model_fleet_vehicle_log_services"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',[branch.id for branch in user.branch_ids])]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
+    </record>
+
+    <record id="fleet_vehicle_log_services_branch_user_rule" model="ir.rule">
+        <field name="name">Fleet Vehical Log Services Branch User</field>
+        <field name="model_id" ref="model_fleet_vehicle_log_services"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('branch_id','=',False),('branch_id','=',user.branch_id.id)]</field>
+        <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
+    </record>
+
+
+</data>
+
+</openerp>

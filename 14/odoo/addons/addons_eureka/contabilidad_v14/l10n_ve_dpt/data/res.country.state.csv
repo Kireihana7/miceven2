@@ -1,0 +1,26 @@
+id,name,code,country_id:id
+state_amazonas,"Amazonas",AMA,base.ve
+state_anzoategui,"Anzoategui",ANZ,base.ve
+state_apure,"Apure",APU,base.ve
+state_aragua,"Aragua",ARA,base.ve
+state_barinas,"Barinas",BAR,base.ve
+state_bolivar,"Bolivar",BOL,base.ve
+state_carabobo,"Carabobo",CAR,base.ve
+state_cojedes,"Cojedes",COJ,base.ve
+state_deltaamacuro,"Delta Amacuro",DEA,base.ve
+state_dependenciasfederales,"Dependencias Federales",DPF,base.ve
+state_distritocapital,"Distrito Capital",DTC,base.ve
+state_falcon,"Falcon",FAL,base.ve
+state_guarico,"Guarico",GUA,base.ve
+state_lara,"Lara",LAR,base.ve
+state_merida,"Merida",MER,base.ve
+state_miranda,"Miranda",MIR,base.ve
+state_monagas,"Monagas",MON,base.ve
+state_nuevaesparta,"Nueva Esparta",NVE,base.ve
+state_portuguesa,"Portuguesa",POR,base.ve
+state_sucre,"Sucre",SUC,base.ve
+state_tachira,"Tachira",TAC,base.ve
+state_trujillo,"Trujillo",TRU,base.ve
+state_laguaira,"La Guaira",VAR,base.ve
+state_yaracuy,"Yaracuy",YAR,base.ve
+state_zulia,"Zulia",ZUL,base.ve

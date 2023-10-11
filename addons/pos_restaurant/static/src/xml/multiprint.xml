@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+<<<<<<< HEAD
+=======
+    <t t-name="NameWrapped">
+        <t t-foreach="change.name_wrapped.slice(1)" t-as="wrapped_line">
+            <div style="text-align: right">
+                <span t-esc="wrapped_line"/>
+            </div>
+        </t>
+    </t>
+
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+    <t t-name="OrderChangeReceipt">
+        <div class="pos-receipt">
+            <div class="pos-receipt-order-data"><t t-esc="changes.name" /></div>
+            <t t-if="changes.floor_name || changes.table_name">
+                <br />
+                <div class="pos-receipt-title">
+                    <t t-esc="changes.floor_name" /> / <t t-esc="changes.table_name"/>
+                </div>
+            </t>
+            <br />
+            <br />
+            <t t-if="changes.cancelled.length > 0">
+                <div class="pos-order-receipt-cancel">
+                    <div class="pos-receipt-title">
+                        CANCELLED
+                        <t t-esc='changes.time.hours'/>:<t t-esc='changes.time.minutes'/>
+                    </div>
+                    <br />
+                    <br />
+                    <t t-foreach="changes.cancelled" t-as="change">
+                        <div class="multiprint-flex">
+<<<<<<< HEAD
+                            <span class="product-quantity" t-esc="change.quantity"/>
+                            <span class="product-name" t-esc="change.name"/>
+=======
+                            <t t-esc="change.qty"/>
+                            <span t-esc="change.name_wrapped[0]"/>
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+                        </div>
+                        <t t-if="change.note">
+                            <div>
+                                NOTE
+                                <span class="pos-receipt-right-align">...</span>
+                            </div>
+                            <div><span class="pos-receipt-left-padding">--- <t t-esc="change.note" /></span></div>
+                            <br/>
+                        </t>
+                    </t>
+                    <br />
+                    <br />
+                </div>
+            </t>
+            <t t-if="changes.new.length > 0">
+                <div class="pos-receipt-title">
+                    NEW
+                    <t t-esc='changes.time.hours'/>:<t t-esc='changes.time.minutes'/>
+                </div>
+                <br />
+                <br />
+                <t t-foreach="changes.new" t-as="change">
+                    <div class="multiprint-flex">
+<<<<<<< HEAD
+                        <span class="product-quantity" t-esc="change.quantity"/>
+                        <span class="product-name" t-esc="change.name"/>
+=======
+                        <t t-esc="change.qty"/>
+                        <span t-esc="change.name_wrapped[0]"/>
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+                    </div>
+                    <t t-if="change.note">
+                        <div>
+                            NOTE
+                            <span class="pos-receipt-right-align">...</span>
+                        </div>
+                        <div><span class="pos-receipt-left-padding">--- <t t-esc="change.note" /></span></div>
+                        <br/>
+                    </t>
+                </t>
+                <br />
+                <br />
+            </t>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="hr_estructura_tipo_mensual" model="hr.payroll.structure.type">
+            <field name="name">Base (MENSUAL)</field>
+            <field name="wage_type">monthly</field>
+            <field name="default_schedule_pay">bi-weekly</field>
+            <field name="country_id" eval="False"/>
+        </record>
+
+        <record id="eu_estructura_nomina_eventual" model="hr.payroll.structure">
+            <field name="name">Nómina Eventual</field>
+            <field name="schedule_pay">annually</field>
+            <field name="journal_id" search="[('code', '=', 'OV1')]"/>
+            <field name="use_worked_day_lines">True</field>
+            <field name="struct_category">especial</field>
+            <field name="code">NO_EV</field>
+            <field name="type_id" ref="hr_estructura_tipo_mensual"/>
+            <!-- <field name="regular_pay" eval="True"/> -->
+            <field name="country_id" eval="False"/>
+        </record>
+
+        <record id="hr_salary_rule_481_38edbb1d" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result_qty= inputs.SAB.amount
+if inputs.SAB:
+    if inputs.SAB.amount>0:
+        result = (payslip.sal_comple + payslip.sal_diario) * 1.5
+    else:
+        result = False</field>
+            <field name="name">SABADO TRABAJADO</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="code">NE_SAB_T</field>
+            <field name="sequence" eval="1"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="struct_id" ref="eu_estructura_nomina_eventual"/>
+        </record>
+
+        <record id="hr_salary_rule_351_38edkb1d" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result_qty= inputs.SAB.amount
+if inputs.SAB:
+    if inputs.SAB.amount>0:
+        result = (payslip.sal_comple + payslip.sal_diario) * 1.5
+    else:
+        result = False</field>
+            <field name="name">SABADO TRABAJADO</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="code">NE_SAB_T</field>
+            <field name="sequence" eval="1"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="struct_id" ref="eu_estructura_nomina_eventual"/>
+        </record>
+
+        <record id="hr_salary_rule_525_8c75f673" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if inputs.D_PEND and employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    if inputs.D_PEND.amount>0:
+        result = True
+    else:
+        result = False
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result_qty= inputs.DOM.amount
+if inputs.DOM:
+    if inputs.DOM.amount>0:
+        result = (payslip.sal_comple + payslip.sal_diario) * 1.5
+    else:
+        result = False</field>
+            <field name="name">DOMINGO TRABAJADO</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="code">NE_DOM_T</field>
+            <field name="sequence" eval="2"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="struct_id" ref="eu_estructura_nomina_eventual"/>
+        </record>
+
+        <record id="hr_salary_rule_525_8c75f6ba" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if inputs.D_PEND and employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    if inputs.D_PEND.amount>0:
+        result = True
+    else:
+        result = False
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result_qty= inputs.DOM.amount
+if inputs.DOM:
+    if inputs.DOM.amount>0:
+        result = (payslip.sal_comple + payslip.sal_diario) * 1.5
+    else:
+        result = False</field>
+            <field name="name">DOMINGO TRABAJADO</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="code">NE_DOM_T</field>
+            <field name="sequence" eval="2"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="struct_id" ref="eu_estructura_nomina_eventual"/>
+        </record>
+    </data>
+</odoo>

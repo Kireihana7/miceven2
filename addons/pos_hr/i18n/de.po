@@ -1,0 +1,258 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pos_hr
+# 
+# Translators:
+<<<<<<< HEAD
+# Larissa Manderfeld, 2023
+# Martin Trigaux, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0beta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-23 08:02+0000\n"
+"PO-Revision-Date: 2022-09-22 05:54+0000\n"
+"Last-Translator: Martin Trigaux, 2023\n"
+=======
+# Martin Trigaux, 2020
+# Leon Grill <leg@odoo.com>, 2020
+# Robert Förster <hello@suppliot.eu>, 2021
+# Friederike Fasterling-Nesselbosch, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~13.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-01 07:29+0000\n"
+"PO-Revision-Date: 2020-09-07 08:16+0000\n"
+"Last-Translator: Friederike Fasterling-Nesselbosch, 2021\n"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+"Language-Team: German (https://app.transifex.com/odoo/teams/41243/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: pos_hr
+#: model_terms:ir.ui.view,arch_db:pos_hr.pos_config_form_view_inherit
+<<<<<<< HEAD
+#: model_terms:ir.ui.view,arch_db:pos_hr.res_config_settings_view_form
+msgid "Allowed Employees"
+msgstr "Erlaubte Mitarbeiter"
+=======
+msgid "<span class=\"o_form_label oe_edit_only\">Allowed Employees </span>"
+msgstr "<span class=\"o_form_label oe_edit_only\">Zugelassene Mitarbeiter </span>"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: pos_hr
+#: model:ir.model.fields,field_description:pos_hr.field_pos_order__cashier
+#: model_terms:ir.ui.view,arch_db:pos_hr.pos_order_form_inherit
+#: model_terms:ir.ui.view,arch_db:pos_hr.pos_order_list_select_inherit
+msgid "Cashier"
+msgstr "Kassierer"
+
+#. module: pos_hr
+#. openerp-web
+<<<<<<< HEAD
+#: code:addons/pos_hr/static/src/js/SelectCashierMixin.js:0
+=======
+#: code:addons/pos_hr/static/src/js/useSelectEmployee.js:0
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#, python-format
+msgid "Change Cashier"
+msgstr "Kassierer wechseln"
+
+#. module: pos_hr
+<<<<<<< HEAD
+#: model:ir.model,name:pos_hr.model_res_config_settings
+msgid "Config Settings"
+msgstr "Konfigurationseinstellungen"
+=======
+#. openerp-web
+#: code:addons/pos_hr/static/src/xml/LoginScreen.xml:0
+#, python-format
+msgid "Close session"
+msgstr "Sitzung schließen"
+
+#. module: pos_hr
+#: model:ir.model.fields,field_description:pos_hr.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_pos_config__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_pos_order__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_report_pos_order__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: pos_hr
+#: model:ir.model,name:pos_hr.model_hr_employee
+#: model:ir.model.fields,field_description:pos_hr.field_pos_order__employee_id
+#: model:ir.model.fields,field_description:pos_hr.field_report_pos_order__employee_id
+#: model_terms:ir.ui.view,arch_db:pos_hr.view_report_pos_order_search_inherit
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+#. module: pos_hr
+#: code:addons/pos_hr/models/hr_employee.py:0
+#, python-format
+msgid "Employee: %s - PoS Config(s): %s \n"
+<<<<<<< HEAD
+msgstr "Mitarbeiter: %s - Kassenkonfiguration(en): %s \n"
+=======
+msgstr "Mitarbeiter: %s - Kassenkonfiguration: %s \n"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: pos_hr
+#: model:ir.model.fields,field_description:pos_hr.field_pos_config__employee_ids
+#: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__pos_employee_ids
+msgid "Employees with access"
+msgstr "Mitarbeiter mit Zugriff"
+<<<<<<< HEAD
+=======
+
+#. module: pos_hr
+#: model:ir.model.fields,field_description:pos_hr.field_hr_employee__id
+#: model:ir.model.fields,field_description:pos_hr.field_pos_config__id
+#: model:ir.model.fields,field_description:pos_hr.field_pos_order__id
+#: model:ir.model.fields,field_description:pos_hr.field_report_pos_order__id
+msgid "ID"
+msgstr "ID"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: pos_hr
+#: model:ir.model.fields,help:pos_hr.field_pos_config__employee_ids
+#: model:ir.model.fields,help:pos_hr.field_res_config_settings__pos_employee_ids
+msgid "If left empty, all employees can log in to the PoS session"
+<<<<<<< HEAD
+msgstr "Falls leer, können Mitarbeiter sich in der Kassensitzung anmelden"
+
+#. module: pos_hr
+#. openerp-web
+#: code:addons/pos_hr/static/src/js/SelectCashierMixin.js:0
+=======
+msgstr "Falls leer, können Mitarbeiter sich in der PoS-Sitzung anmelden"
+
+#. module: pos_hr
+#. openerp-web
+#: code:addons/pos_hr/static/src/js/useSelectEmployee.js:0
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#, python-format
+msgid "Incorrect Password"
+msgstr "Falsches Passwort"
+
+#. module: pos_hr
+<<<<<<< HEAD
+=======
+#: model:ir.model.fields,field_description:pos_hr.field_hr_employee____last_update
+#: model:ir.model.fields,field_description:pos_hr.field_pos_config____last_update
+#: model:ir.model.fields,field_description:pos_hr.field_pos_order____last_update
+#: model:ir.model.fields,field_description:pos_hr.field_report_pos_order____last_update
+msgid "Last Modified on"
+msgstr "Zuletzt geändert am"
+
+#. module: pos_hr
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#. openerp-web
+#: code:addons/pos_hr/static/src/xml/LoginScreen.xml:0
+#, python-format
+msgid "Log in to"
+msgstr "Anmelden bei"
+<<<<<<< HEAD
+
+#. module: pos_hr
+#. openerp-web
+#: code:addons/pos_hr/static/src/js/SelectCashierMixin.js:0
+=======
+
+#. module: pos_hr
+#: model_terms:ir.ui.view,arch_db:pos_hr.pos_config_form_view_inherit
+msgid ""
+"Only users with Manager access rights for PoS app can modify the product "
+"prices on orders."
+msgstr ""
+"Nur Benutzer mit Manager-Zugangsrechten für die PoS-App können die "
+"Produktpreise von Aufträgen ändern."
+
+#. module: pos_hr
+#. openerp-web
+#: code:addons/pos_hr/static/src/js/useSelectEmployee.js:0
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#, python-format
+msgid "Password ?"
+msgstr "Passwort?"
+
+#. module: pos_hr
+#: model:ir.model.fields,help:pos_hr.field_pos_order__employee_id
+msgid ""
+"Person who uses the cash register. It can be a reliever, a student or an "
+"interim employee."
+msgstr ""
+"Person, die die Registrierkasse verwendet. Es kann eine Aushilfe, ein "
+"Student oder ein Interim-Mitarbeiter sein."
+
+#. module: pos_hr
+#: model:ir.model,name:pos_hr.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "Kassensystem-Konfiguration"
+
+#. module: pos_hr
+#: model:ir.model,name:pos_hr.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Kassenverkäufe"
+
+#. module: pos_hr
+#: model:ir.model,name:pos_hr.model_report_pos_order
+msgid "Point of Sale Orders Report"
+msgstr "Bericht über Kassenverkäufe"
+
+#. module: pos_hr
+#: model:ir.model,name:pos_hr.model_pos_session
+msgid "Point of Sale Session"
+msgstr "Kassensitzung"
+
+#. module: pos_hr
+#. openerp-web
+#: code:addons/pos_hr/static/src/xml/LoginScreen.xml:0
+#, python-format
+msgid "Scan your badge"
+msgstr "Ausweis scannen"
+
+#. module: pos_hr
+#. openerp-web
+#: code:addons/pos_hr/static/src/xml/LoginScreen.xml:0
+#, python-format
+msgid "Select Cashier"
+<<<<<<< HEAD
+msgstr "Kassierer wählen"
+=======
+msgstr "Kassier wählen"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: pos_hr
+#: code:addons/pos_hr/models/hr_employee.py:0
+#, python-format
+msgid ""
+"You cannot delete an employee that may be used in an active PoS session, "
+"close the session(s) first: \n"
+msgstr ""
+<<<<<<< HEAD
+"Mitarbeiter, die in aktiven Kassensitzungen verwendet werden, können nicht "
+=======
+"Mitarbeiter, die in aktiven PoS-Sitzungen verwendet werden, können nicht "
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+"gelöscht werden. Schließen Sie erst die Sitzung(en):\n"
+
+#. module: pos_hr
+#. openerp-web
+#: code:addons/pos_hr/static/src/xml/LoginScreen.xml:0
+#, python-format
+msgid "or"
+msgstr "oder"
+
+#. module: pos_hr
+#. openerp-web
+#: code:addons/pos_hr/static/src/xml/CashierName.xml:0
+#, python-format
+msgid "selectCashier"
+msgstr "Kassier wählen"

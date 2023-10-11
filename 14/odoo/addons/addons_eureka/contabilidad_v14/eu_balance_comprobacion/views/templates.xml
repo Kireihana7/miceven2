@@ -1,0 +1,223 @@
+<odoo>
+    <template id="balance_comprobacion_template">
+        <t t-call="web.html_container">
+            <t t-set="data_report_margin_top" t-value="10"/>
+            <t t-call="web.basic_layout">
+                <table class="text-center" style="width:100%;font-size:12px;margin-top:20px">
+                    <thead>
+                        <tr>
+                            <t t-set="numCols" t-value="7 if form.get('show_initial_balance') else 4"/>
+                            <td t-attf-colspan="{{numCols}}">
+                                <div style="border:1px solid black;border-radius:20px;border-spacing:0;margin-left:0%;width:100%;height:100px;">
+                                    <div style="position:-webkit-sticky;margin_left:1%;padding:10px;">
+                                        <table>
+                                            <tr>
+                                                <th>
+                                                    <!-- <t t-if="form.get('company_id') == 1">
+                                                        <img style="width:100px" t-att-src="/eu_balance_comprobacion/static/src/img/maisa.png" alt="logo"/>
+                                                    </t>
+                                                    <t t-if="form.get('company_id') == 2">
+                                                        <img style="width:70px;margin-top:-10px;" src="/eu_balance_comprobacion/static/src/img/alivensa.png" alt="logo"/>
+                                                    </t> -->
+                                                    <img style="width:70px;height:70px;" t-att-src="image_data_uri(env['res.company'].search([('id','=',form.get('company_id'))]).logo)" alt="logo"/>
+
+                                                    
+                                                </th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <table class="text-center" style="width:100%;font-size:12px;margin-top:-90px;">
+                                        <tr>
+                                            <th>
+                                                <span t-esc="form.get('company_name')"/>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th><span t-esc="form.get('company_vat')"/></th>
+                                        </tr>
+                                        <tr>
+                                            <th><span>** CONTABILIDAD GENERAL **</span></th>
+                                        </tr>
+                                        <tr>
+                                            <th><span>BALANCE DE COMPROBACIÓN EN <span t-esc="form.get('currency_id').upper()"/></span></th>
+                                        </tr>
+                                        <t t-if="form.get('start_date')">
+                                            <tr>
+                                                <th>
+                                                    DESDE: <span t-esc="form.get('start_date')" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
+                                                    HASTA: <span t-esc="form.get('end_date')" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
+                                                </th>
+                                            </tr>
+                                        </t>
+                                    </table>
+                                    <div style="position:-webkit-sticky;margin-top:-60px;margin-left:85%;width:150px;">
+                                        <table>
+                                            <tr>
+                                                <th class="text-right">Fecha: </th><td class="text-left"><span t-esc="datetime.datetime.now().strftime('%d-%m-%Y')"/></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-right">Hora: </th><td class="text-left"><span t-esc="form.get('hora_actual')"/></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td t-attf-colspan="{{numCols}}">
+                                <br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"/>
+                            <td colspan="2" class="text-justify">
+                                <strong>MOVIMIENTO DEL PERIODO</strong>
+                            </td>
+                            <td colspan="2"/>
+                        </tr>
+                        <tr style="font-size:12px;">
+                            <th class="text-center"> <!-- 1 -->
+                                <strong>CÓDIGO CUENTA</strong>
+                            </th>
+                            <th class="text-center"><!-- 2 -->
+                                <strong>DESCRIPCIÓN</strong>
+                            </th>
+                            <th class="text-center"><!-- 3 -->
+                                <strong>SALDO ANTERIOR</strong>
+                            </th>
+                            <th class="text-center"> <!-- 4 -->
+                                <strong>DEBE</strong>
+                            </th>
+                            <th class="text-center"> <!-- 5 -->
+                                <strong>HABER</strong>
+                            </th>
+                            <th class="text-center"><!-- 6 -->
+                                <strong>RESULTADO PERIODO</strong>
+                            </th>
+                            <th class="text-center"><!-- 7 -->
+                                <strong>SALDO FINAL</strong>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="Tdebe" t-value="0"/>
+                        <t t-set="Thaber" t-value="0"/>
+                        <t t-set="Tbalance" t-value="0"/>
+                        <t t-set="sal_final" t-value="0"/>
+                        <t t-set="Tbalance_inicial" t-value="0"/>
+                        <t t-foreach="form.get('invoices')" t-as="l">    
+                            <tr style="font-size:12px;">
+                                <t t-set="sub" t-value="0"/>
+                                <t t-set="myvar1" t-value="l.get('parent').split('/')"/>
+                                <t t-set="myvar2" t-value="l.get('account_code')"/>
+                                <t t-if="len(myvar2)==1 or len(myvar2)==2 or len(myvar2)==4 or len(myvar2)==6">
+                                    <t t-set="sub" t-value="1"/>
+                                </t>
+                                <t t-else="">
+                                    <t t-set="sub" t-value="0"/>
+                                </t>
+                                <t t-if="len(myvar2)!=1 and len(myvar2)!=2 and len(myvar2)!=4 and len(myvar2)!=6">
+                                    <t t-set="Tbalance_inicial" t-value="Tbalance_inicial+l.get('balance_initial')"/>
+                                    <t t-set="Tdebe" t-value="Tdebe+l.get('debit_final')"/>
+                                    <t t-set="Thaber" t-value="Thaber+l.get('credit_final')"/>
+                                    <t t-set="Tbalance" t-value="Tbalance+l.get('balance_final_total')"/>
+                                </t>
+                                <td class="text-left" style="width:10%;"> <!-- 1 -->                                    
+                                    <t t-if="sub==1">
+                                        <strong><u><span t-esc="l.get('account_code')"/></u></strong>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="l.get('account_code')"/>
+                                    </t>
+                                </td>
+                                <td class="text-left" style="width:20%;"> <!-- 2 -->
+                                    <t t-if="sub==1">
+                                        <strong><u><span t-esc="l.get('account_name')"/></u></strong>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="l.get('account_name')"/>
+                                    </t>
+                                </td>
+                                <td class="text-right" style="width:14%;"><!-- 3 -->
+                                    <t t-if="sub==1">
+                                        <strong><u><span t-esc="l.get('balance_initial')" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></u></strong>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="l.get('balance_initial')" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                    </t>
+                                </td>
+                                <td class="text-right" style="width:14%;"><!-- 4 -->
+                                    <t t-if="sub==1">
+                                        <strong><u><span t-esc="l.get('debit_final')" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></u></strong>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="l.get('debit_final')" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                    </t>
+                                </td>
+                                <td class="text-right" style="width:14%;"> <!-- 5 -->
+                                    <t t-if="sub==1">
+                                        <strong><u><span t-esc="l.get('credit_final')" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></u></strong>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="l.get('credit_final')" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                    </t>
+                                </td>
+                                <td class="text-right" style="width:14%;"><!-- 6 -->
+                                    <t t-set="res_periodo" t-value="(l.get('debit_final')-l.get('credit_final'))"/>
+                                    <t t-if="sub==1">
+                                        <strong><u><span t-esc="res_periodo" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></u></strong>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="res_periodo" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                    </t>
+                                </td>
+                                <td class="text-right" style="width:14%;"><!-- 7 -->
+                                    <t t-set="saldo_final" t-value="(l.get('balance_initial')+res_periodo)"/>
+                                    <t t-if="sub==1">
+                                        <strong><u><span t-esc="saldo_final" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></u></strong>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="saldo_final" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                    </t>
+                                    <t t-set="sal_final" t-value="sal_final+saldo_final"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <tr>
+                            <td class="text-center"> <!-- 1 -->
+                                <span/>
+                            </td>
+                            <td style="border-top:2px solid #333;border-bottom:2px double #333;" class="text-center"><!-- 2 -->
+                                <strong><span>Total General</span></strong>
+                            </td>
+                            <td style="border-top:2px solid #333;border-bottom:2px double #333;" class="text-right"><!-- 3 -->
+                                <span t-esc="Tbalance_inicial" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                            </td>
+                            <td style="border-top:2px solid #333;border-bottom:2px double #333;" class="text-right"><!-- 4 -->
+                                <span t-esc="Tdebe" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                            </td>
+                            <td style="border-top:2px solid #333;border-bottom:2px double #333;" class="text-right"><!-- 5 -->
+                                <span t-esc="Thaber" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                            </td>
+                            <td style="border-top:2px solid #333;border-bottom:2px double #333;" class="text-right"><!-- 6 -->
+                                <!-- <span t-esc="Tbalance" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/> -->
+                                <span t-set="resul_periodo" t-value="(Tdebe-Thaber)"/>
+                                <span t-esc="resul_periodo" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                            </td>
+                            <td style="border-top:2px solid #333;border-bottom:2px double #333;" class="text-right"><!-- 7 -->
+                                <span t-set="total_saldo_final" t-value="(Tbalance_inicial-resul_periodo)"/>
+                                <span t-esc="total_saldo_final" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                            </td>
+                        </tr>
+                        <div class="footer o_standard_footer" style="border-top:2px solid #333">
+                            <div class="text-center">
+                                Pagina: <span class="page"/> / <span class="topage"/>
+                            </div>
+                        </div>
+                    </tbody>
+                </table>
+                <br/>
+            </t>
+        </t>
+    </template>
+</odoo>

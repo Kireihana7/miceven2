@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="qr_sticker_template_unit" >
+        <div class="text-center" style="display:inline-block;padding:20px;">
+            <span style="font-weight:bold;font-size:1.2rem;" t-esc="attendee.name"/>
+          
+          <div style="border: 10px #6d4964; border-style: double; border-radius:49%;padding:20px;">
+            <img t-att-src="attendee.get_url_qr()" class="rounded mx-auto" style="padding:5px;"/>
+          </div>
+          </div>
+    </template>
+
+    <template id="qr_sticker_template_multi">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <div class="page">
+
+                        <t t-foreach="docs" t-as="attendee">
+                            <t t-call="eu_intercompany_payment.qr_sticker_template_unit"/>
+                        </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,12 @@
+.s_quotes_carousel_wrapper[data-vcss='001'] {
+    .s_blockquote {
+        margin-bottom: 0;
+<<<<<<< HEAD
+        @include media-breakpoint-down(md) {
+=======
+        @include media-breakpoint-down(sm) {
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+            width: 100% !important; // TODO add the right class in the xml when it's possible
+        }
+    }
+}

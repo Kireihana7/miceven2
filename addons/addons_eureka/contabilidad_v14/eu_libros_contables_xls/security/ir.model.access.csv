@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wizard_sales_book_xls,acc_wizard_sales_book_xls,model_book_sales_xls_wizard,account.group_account_user,1,1,1,1
+access_wizard_purchase_book_xls,acc_wizard_purchase_book_xls,model_wizard_book_purchase_xls,account.group_account_user,1,1,1,1

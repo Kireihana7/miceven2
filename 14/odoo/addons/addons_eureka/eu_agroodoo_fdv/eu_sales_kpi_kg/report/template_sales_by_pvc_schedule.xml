@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="template_sales_by_pvc_schedule">
+            <t t-call="web.html_container">
+                <t t-set="company" t-value="env.company"/>
+                
+                <t t-set="tittle" t-value="'Pedidos por productos, vendedor y cliente - Programación'"/>
+                <t t-set="desde" t-value="form.get('start_date')"/>
+                <t t-set="hasta" t-value="form.get('end_date')"/>
+              
+                <t t-call="eu_miceven_report_topper.header_report_miceven">
+                    <t t-foreach="form.get('documents')" t-as="docu">
+                        <style>
+                            .t-cuentas th, .t-cuentas td, .div-cuentas div {
+                                font-size: 10px !important;
+                            }
+                            
+                            .t-cuentas th strong {
+                                display: block!important;
+                                margin: auto!important;
+                            }
+                            
+                            .div-cuentas div {
+                                font-weight: bold !important;
+                            }
+                        </style>                        
+                        <div class="page">
+                            <div class="oe_structure"/>
+                            <!-- ================== Moneda ================== -->
+                            <t t-set="currency" t-value="docu.get('company_currency_id')"/>
+                            <t t-set="obj_currency" t-value="env['res.currency'].search([('id', '=', currency)])"/>    
+                            
+                            <p style="text-align: center;">Ventas Netas en el período: <span t-esc="docu.get('total_vendors_amount')" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/></p>
+                            
+                            <!-- ================== Movimientos ================== --> 
+                            <t t-if="docu.get('vendors_data')">
+                                <br/>
+                                <table class="table table-sm t-cuentas">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="width: 25px !important;"><strong>#</strong></th>
+                                            <th class="text-left" style="width: 160px !important;"><strong>ARTÍCULO</strong></th>
+                                            <th class="text-right" style="width: 70px !important;"><strong>CANTIDAD</strong></th>  
+                                            <th class="text-left" style="width: 90px !important;"><strong>UNID.</strong></th>
+                                            <th class="text-right" style="width: 160px !important;"><strong>MONTO BASE</strong></th>
+                                            <th class="text-right" style="width: 160px !important;"><strong>TOTAL %</strong></th>                                         
+                                        </tr>                                
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="docu.get('vendors_data')" t-as="line">
+                                            <tr>
+                                                <t t-if="line.get('res_users_code')">
+                                                  <th style="background: #C8C8C8; text-transform: uppercase;" colspan="9" class="text-center"><strong><t t-esc="line.get('res_users_code')"/> - <t t-esc="line.get('user_name')"/></strong></th>
+                                                </t> 
+                                                <t t-else="">
+                                                  <th style="background: #C8C8C8; text-transform: uppercase;" colspan="9" class="text-center"><strong><t t-esc="line.get('user_name')"/></strong></th>
+                                                </t>                                                  
+                                            </tr>
+                                            <t t-set="count" t-value="1"/>
+                                            <t t-set="sub_total_quantity" t-value="0"/>
+                                            <t t-set="sub_total_amount" t-value="0"/>
+                                            <t t-set="sub_total_percentage" t-value="0"/>                                            
+                                            <t t-foreach="line.get('sold_products_vendor')" t-as="sold_product_line">
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <span t-esc="count"/>                                                                                                    
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <t t-if="sold_product_line.get('default_code')">
+                                                            [<span t-esc="sold_product_line.get('default_code')"/>] <span t-esc="sold_product_line.get('product_name')"/>
+                                                        </t> 
+                                                        <t t-else="">
+                                                            <span t-esc="sold_product_line.get('product_name')"/>
+                                                        </t>                                                         
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-esc="sold_product_line.get('total_quantity')" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>                                                                                                              
+                                                    </td>                                                
+                                                    <td class="text-left">
+                                                        <span t-esc="sold_product_line.get('product_uom_name')"/>                                                                                                       
+                                                    </td>        
+                                                    <td class="text-right">
+                                                        <span t-esc="sold_product_line.get('total_amount')" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/>
+                                                    </td>   
+                                                    <td class="text-right">
+                                                        <span t-esc="float(sold_product_line.get('percentage'))" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 4}"/>
+                                                    </td>                                                                                                                                                                                                       
+                                                </tr>      
+                                                <t t-set="count" t-value="count + 1"/>
+                                                <t t-set="sub_total_quantity" t-value="sub_total_quantity + sold_product_line.get('total_quantity')"/>
+                                                <t t-set="sub_total_amount" t-value="sub_total_amount + sold_product_line.get('total_amount')"/>
+                                                <t t-set="sub_total_percentage" t-value="sub_total_percentage + float(sold_product_line.get('percentage'))"/>
+                                            </t>
+                                            <tr style="border-top: 2px solid black !important;">
+                                                <td class="text-right" colspan="2"><strong>Sub-Totales:</strong></td>
+                                                <td class="text-right">
+                                                    <span t-esc="sub_total_quantity" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                                </td>   
+                                                <td class="text-left"/>
+                                                <td class="text-right">
+                                                    <span t-esc="sub_total_amount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="sub_total_percentage" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 4}"/>
+                                                </td>                                                                                                                                                                                                                                                   
+                                            </tr>                                            
+                                        </t>
+                                    </tbody>
+                                </table> 
+                                
+                                <!-- ================== Totales de la tabla ================== -->
+                                <table class="table table-sm t-cuentas">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="width: 25px !important;"><strong/></th>
+                                            <th class="text-left" style="width: 160px !important;"><strong/></th>
+                                            <th class="text-right" style="width: 70px !important;"><strong/></th>  
+                                            <th class="text-left" style="width: 90px !important;"><strong/></th>
+                                            <th class="text-right" style="width: 160px !important;"><strong/></th>
+                                            <th class="text-right" style="width: 160px !important;"><strong/></th>                                         
+                                        </tr>                                 
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-top: 2px solid black !important;">
+                                            <td class="text-right" colspan="2"><strong>Total:</strong></td>
+                                            <td class="text-right">
+                                                <span t-esc="docu.get('total_vendors_quantity')" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                            </td>   
+                                            <td class="text-left"/>
+                                            <td class="text-right">
+                                                <span t-esc="docu.get('total_vendors_amount')" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <!-- <span t-esc="docu.get('total_vendors_percentage')"/> -->
+                                                <span>100,0000</span>
+                                            </td>                                                                                                                                                                                                                                                   
+                                        </tr>                                            
+                                    </tbody>
+                                </table>                               
+                            </t>
+                            <div class="oe_structure"/>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

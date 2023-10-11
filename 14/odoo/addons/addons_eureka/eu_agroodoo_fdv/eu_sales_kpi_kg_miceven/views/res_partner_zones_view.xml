@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_zones_form_view_kpi_sale_wizard" model="ir.ui.view">
+        <field name="name">res_partner_zones_form_view_kpi_sale.wizard</field>
+        <field name="model">res.partner.zones</field>
+        <field name="inherit_id" ref="eu_zona_contactos_branchless.eu_zona_view_form"/>
+        <field name="arch" type="xml">
+            <field name="zone" position="after">
+                <field name="manager_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+            </field>
+            <notebook position="inside">
+                <page name="crm_team_ids" string="Equipo de Ventas">
+                  <field name="crm_team_ids">
+                    <tree create="0" edit="0" delete="0">
+                      <field name="name"/>
+                      <field name="user_id"/>
+                      <field name="zone_id"/>
+                    </tree>
+                  </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

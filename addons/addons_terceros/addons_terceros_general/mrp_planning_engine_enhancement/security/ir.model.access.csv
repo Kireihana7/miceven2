@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mrp_demand_create_tool,mrp.demand.create.tool,model_mrp_demand_create_tool,mrp_planning_engine.group_planning_user,1,1,1,0
+access_mrp_demand_create_sheet,mrp.demand.create.sheet,model_mrp_demand_create_sheet,mrp_planning_engine.group_planning_user,1,1,1,0
+access_mrp_demand_create_sheet_line,mrp.demand.create.sheet.line,model_mrp_demand_create_sheet_line,mrp_planning_engine.group_planning_user,1,1,1,0

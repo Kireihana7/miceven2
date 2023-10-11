@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="report_servicio_flota" name="Template servicio Flota">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page" style="font-size: 12px;">
+                    <style>
+                        .table th, .table td {
+                            padding: .17rem;
+                        }
+                    </style>
+                    <t t-foreach="docs" t-as="o">
+                        <strong><h6 class="text-center">Orden de Servicio №: <span t-if="o.name" t-field="o.name"/></h6></strong>
+                        <div class="row pt-2 pb-2">
+                            <div class="col-6" t-if="o.date_open">
+                                <strong>Fecha inicio del servicio:</strong>
+                                <span class="pl-2" t-if="o.date_open" t-esc="o.date_open.strftime('%d/%m/%Y')"/>
+                            </div>
+                            <div class="col-6" t-if="o.date_close">
+                                <strong>Fecha fin del servicio:</strong>
+                                <span class="pl-2" t-if="o.date_close" t-esc="o.date_close.strftime('%d/%m/%Y')"/>
+                            </div>
+                        </div>
+                        <u><h4><span t-if="o.description" t-field="o.description" /></h4></u>
+                        <table class="table table-bordered pt-3">
+                            <head>
+                                <tr>
+                                    <td colspan="4" class="text-center"><strong>Detalles de servicios</strong></td>
+                                </tr>
+                            </head>
+                            <tbody>
+                                <tr>
+                                    <td>Identification: <span t-if="o.vehicle_id" t-field="o.vehicle_id.name" />	</td>
+                                    <td>Marca: <span t-if="o.f_brand_id.name" t-field="o.f_brand_id.name" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Conductor: <span t-if="o.purchaser_id" t-field="o.purchaser_id.name" /></td>
+                                    <td>Monto del servicio: <span t-esc="o.amount" t-options='{"widget": "float", "precision": 4}' /></td>
+                                </tr>
+                                <tr>
+                                    <td>Valor del odómetro: <span t-field="o.odometer" t-options='{"widget": "float", "precision": 2}' /> </td>
+                                    <td>Siguiente servicio: <span t-field="o.next_service_odometer" t-options='{"widget": "float", "precision": 2}' /> </td>
+                                </tr>
+                                <tr>
+                                    <td>Siguiente fecha de servicio: <span t-if="o.next_service_date" t-esc="o.next_service_date.strftime('%d/%m/%Y')" /> </td>
+                                    <td>Monto total del servicio: <span t-if="o.service_amount" t-esc="o.service_amount" t-options='{"widget": "float", "precision": 4}' /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h6 class="pt-2" t-if="o.repair_line_ids"><strong>Reparaciones</strong></h6>
+                        <table class="table table-bordered mt-3 text-center" t-if="o.repair_line_ids">
+                            <thead>
+                                <tr>
+                                    <th><strong>Tipo de reparación</strong></th>
+                                    <th><strong>Finalización del objetivo</strong></th>
+                                    <th><strong>Completado</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-if="o.repair_line_ids">
+                                    <tr t-foreach="o.repair_line_ids" t-as="repair">
+                                        <td>
+                                            <span t-field="repair.repair_type_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="repair.target_date.strftime('%d/%m/%Y')"/>
+                                        </td>
+                                        <td>
+                                            <t t-if="repair.complete == True">
+                                                <span>Si</span>
+                                            </t>
+                                            <t t-else="">
+                                                <span>NO</span>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <h6 class="pt-2" t-if="o.parts_ids">Partes usadas</h6>
+                        <table class="table table-bordered mt-3" t-if="o.parts_ids">
+                            <thead>
+                                <tr>
+                                    <th><strong>Part No</strong></th>
+                                    <th><strong>Usado(a)</strong></th>
+                                    <th><strong>Fecha de emisión</strong></th>
+                                    <th><strong>Emitido(a) por</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-if="o.parts_ids">
+                                    <tr t-foreach="o.parts_ids" t-as="part">
+                                        <td>
+                                            <span t-field="part.product_id.name"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="part.qty" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="part.date_issued.strftime('%d/%m/%Y')"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="part.issued_by.name"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <h6 class="pt-2"><strong>Detalles de orden de servicio</strong></h6>
+                        <table class="table table-bordered pt-2">
+                            <tbody>
+                                <tr>
+                                    <td>Finalizada por: <span t-field="o.closed_by.name" t-if="o.closed_by" /></td>
+                                    <td>Proveedor de servicio: <span t-field="o.team_id.name" t-fi="o.team_id" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Prioridad del Servicio <span t-field="o.priority" t-if="o.priority" /></td>
+                                    <td>Fecha Estimada: <span t-esc="o.date_complete.strftime('%d/%m/%Y')" t-if="o.date_complete" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h6 t-if="o.notes">Notas</h6>
+                        <p t-if="o.notes" t-field="o.notes"/> 
+
+                        <div class="row text-center" style="padding-top: 75px;">
+                            <div class="col-6">
+                                <span>----------------------------------------------------------</span><br />
+                                <span>Firma Responsable de Equipo</span>
+                            </div>
+                            <div class="col-6">
+                                <span>----------------------------------------------------------</span><br />
+                                <span>Firma Por Servicio</span>
+                            </div>
+                        </div>
+
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

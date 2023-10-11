@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="iva_wizard_view">
+        <field name="name">iva.wizard form</field>
+        <field name="model">iva.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>                    
+                    <group>
+                        <field name="date_start"/>
+    					<field name="date_end"/>
+                    </group>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="state"/>
+                    </group>
+                </group>
+                <group>                    
+                    <group>
+                        <field name="type_invoice"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="report_iva" string="Generar Reporte" type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+	<record model="ir.actions.act_window" id="iva_wizard_action">
+            <field name="name">Reporte de IVA</field>
+            <field name="res_model">iva.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+     </record>
+
+    <menuitem id="menu_iva_wizard" name="Reporte de IVA"
+          parent="account.menu_finance_reports" action="iva_wizard_action"
+          sequence="100"/>
+</odoo>

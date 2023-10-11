@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_history_price_report_view_form" model="ir.ui.view">
+            <field name="name">product.history.price.report.view.form</field>
+            <field name="model">product.history.price.report</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="all_products" widget="boolean_toggle" />
+                            </group>
+                            <group>
+                                <field name="all_time" widget="boolean_toggle" />
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field 
+                                    name="product_category_ids" 
+                                    widget="many2many_tags"
+                                    attrs="{'invisible': [('all_products','=',True)]}"
+                                    force_save="1"
+                                />
+                                <field 
+                                    name="product_ids" 
+                                    widget="many2many_tags"
+                                    attrs="{
+                                        'required': [('all_products','=',False)],
+                                        'invisible': [('all_products','=',True)],
+                                    }"
+                                    force_save="1"
+                                />
+                            </group>
+                            <group>
+                                <field 
+                                    name="start_date" 
+                                    widget="daterange"
+                                    attrs="{
+                                        'required': [('all_time','=',False)],
+                                        'invisible': [('all_time','=',True)],
+                                    }"
+                                    options="{'related_end_date': 'end_date'}"
+                                    force_save="1"
+                                />
+                                <field 
+                                    name="end_date" 
+                                    widget="daterange"
+                                    attrs="{
+                                        'required': [('all_time','=',False)],
+                                        'invisible': [('all_time','=',True)],
+                                    }"
+                                    options="{'related_start_date': 'start_date'}"
+                                    force_save="1"
+                                />
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="print_report" string="Generar Reporte" type="object" class="btn-secondary highlight"/>
+                        <button string="Cancelar" class="btn-primary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="product_price_history_acction_wizard">
+            <field name="name">product.price.history.wizard</field>
+            <field name="res_model">product.history.price.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem 
+            id="menu_product_price_history_wizard" 
+            name="Reporte de Historial"
+            parent="stock.menu_warehouse_report" 
+            action="eu_product_price_history.product_price_history_acction_wizard"
+        />
+    </data>
+</odoo>

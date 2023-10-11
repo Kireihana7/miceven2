@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_picking_form_inherit_chargue_source_warehouse">
+        <field name="name">view.picking.form.chargue.source.warehouse.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="eu_agroindustry.view_picking_form_inherit_chargue"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='chargue_consolidate_create']" position="after">
+                <field name="purchase_source_warehouse_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

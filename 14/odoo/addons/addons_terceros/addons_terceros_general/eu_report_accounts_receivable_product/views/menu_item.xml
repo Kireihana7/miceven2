@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+      <menuitem
+      id="menu_eu_report_accounts_receivable_product"
+      name="Cuentas por cobrar producto terminado (Vendedores)"
+      action="eu_report_accounts_receivable_product.action_report_accounts_receivable_product_wizard"
+      parent="account.menu_finance_reports"
+      sequence="5"/>
+
+</odoo>

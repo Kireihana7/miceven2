@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="custom_action_report_audit_request_probc" string="Audit Request Report"
+            model="custom.audit.request" report_type="qweb-pdf" file="odoo_audit_request_form.custom_report_audit_request_probc"
+            name="odoo_audit_request_form.custom_report_audit_request_probc"/>
+            
+        <record id="custom_action_report_audit_request_probc" model="ir.actions.report">
+            <field name="name">Audit Request Report</field>
+            <field name="model">custom.audit.request</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">odoo_audit_request_form.custom_report_audit_request_probc</field>
+            <field name="report_file">odoo_audit_request_form.custom_report_audit_request_probc</field>
+            <field name="binding_model_id" ref="model_custom_audit_request"/>
+            <field name="binding_type">report</field>
+        </record>
+        
+        <record id="paperformat_report_audit_planning" model="report.paperformat">
+            <field name="name">report audit planning</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">45</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">8</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">35</field>
+            <field name="dpi">80</field>
+        </record>
+
+            <!-- Cabecera de reporte de memo de auditoria... -->
+        <record id="paperformat_audit_memo" model="report.paperformat">
+            <field name="name">Formato de memorandum</field>
+            <field name="format">custom</field>
+            <field name="page_height">297</field>
+            <field name="page_width">210</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">30</field>
+            <field name="margin_bottom">35</field>
+            <field name="margin_left">6</field>
+            <field name="margin_right">4</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">80</field>
+        </record>
+
+        <record id="custom_action_report_audit_memo" model="ir.actions.report">
+            <field name="name">Audit Report Memo</field>
+            <field name="model">custom.audit.plan.actions</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">odoo_audit_request_form.report_memo_audit_template</field>
+            <field name="report_file">odoo_audit_request_form.report_memo_audit_template</field>
+            <field name="paperformat_id" ref="odoo_audit_request_form.paperformat_audit_memo"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="custom_action_report_audit_planning" model="ir.actions.report">
+            <field name="name">Audit Report Planning</field>
+            <field name="model">custom.audit.plan</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">odoo_audit_request_form.custom_report_audit_planning</field>
+            <field name="report_file">odoo_audit_request_form.custom_report_audit_planning</field>
+            <field name="paperformat_id" ref="odoo_audit_request_form.paperformat_report_audit_planning"/>
+            <field name="binding_model_id" ref="model_custom_audit_plan"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="paperformat_report_audit_request_probc_new" model="report.paperformat">
+            <field name="name">report audit</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">50</field>
+            <field name="margin_bottom">30</field>
+            <field name="margin_left">8</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">45</field>
+            <field name="dpi">80</field>
+        </record>
+        <record id="custom_action_report_audit_request_probc_new" model="ir.actions.report">
+            <field name="name">Reporte de Auditoria </field>
+            <field name="model">custom.audit.request</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">odoo_audit_request_form.custom_report_audit_new</field>
+            <field name="report_file">odoo_audit_request_form.custom_report_audit_new</field>
+            <field name="paperformat_id" ref="odoo_audit_request_form.paperformat_report_audit_request_probc_new"/>
+            <field name="binding_model_id" ref="model_custom_audit_request"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

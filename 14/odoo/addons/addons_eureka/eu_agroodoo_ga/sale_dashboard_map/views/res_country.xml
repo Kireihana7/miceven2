@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_company_form__l10n_ve_view_for" model="ir.ui.view">
+            <field name="name">Map of country</field>
+            <field name="model">res.country</field>
+            <field name="inherit_id" ref="base.view_country_form"/>
+            <field name="priority">30</field>
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='state_ids']" position="replace">
+                </xpath>
+                <xpath expr="//field[@name='state_ids']" position="replace">
+                    <notebook>
+                        <page name="state" string="States">
+                              <group>
+                                    <field name="state_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="code"/>
+                                        </tree>
+                                    </field>
+                              </group>
+                        </page>
+                        <page name="map" string="Map">
+                            <group>
+                                <field name="map" filename="map_name"/>
+                                <field name="map_name" invisible="1"/>
+                                <field name="map_url" invisible="1"/>
+                                <field name="map_render" widget="echart"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

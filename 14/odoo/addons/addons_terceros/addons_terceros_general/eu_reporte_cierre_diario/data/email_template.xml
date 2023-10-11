@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+    
+        <record id="reporte_relacion_usurio_email_template" model="mail.template">
+            <field name="name">Relacion de cierre por usuario</field>
+            <field name="model_id" ref="model_relacion_pagos_wizard_cierre"/>
+            <field name="email_from">${(object.company_id.email_formatted or user.email_formatted or '') | safe}</field>
+            <field name="subject">Relación de cierre de ${object.partner_id.name}</field>
+            <field name="body_html">
+                <![CDATA[
+<style>
+    #backygroundy{
+    background: linear-gradient(180deg, #0044fd 65%, #f6d724 35%);
+    }
+    </style>
+    <div class="container">
+        <table id="backygroundy" style="background-clip:initial;background-origin:initial;background-attachment:initial;background-repeat-y:initial;background-repeat-x:initial;background-size:initial;background-position-y:initial;background-position-x:initial;padding-top:16px;background-color: #0044fd; font-family:Verdana, Arial,sans-serif; color: #454748; width: 80%; border-collapse:separate;" class="mx-auto" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td align="center">
+            <table style="padding:16px;background-color: white; color: #454748; border-collapse:separate;" width="590" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                
+                <tr>
+                    <td style="min-width:590px;max-width:590px;" align="center">
+                        <table style="min-width:590px;background-color: white;padding: 0px 8px 8px; border-collapse:separate;" width="590" cellspacing="0" cellpadding="0" border="0">
+                            <tbody><tr><td valign="middle">
+                                <span style="font-size:10px;">Tu cuenta</span><br>
+                                <span style="font-size:20px;font-weight: bold;">
+                                    ${object.name}
+                                </span>
+                            </td><td valign="middle" align="right">
+                                <img src="/logo.png?company=${object.company_id.id}" style="padding:0px;margin: 0px; height: auto; width: 80px;" alt="${object.company_id.name}">
+                            </td></tr>
+                            <tr><td colspan="2" style="text-align:center;">
+                                <hr style="border-top-style:solid;background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;" width="100%">
+                            </td></tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="min-width:590px;" align="center">
+                        <table style="min-width:590px;background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;" width="590" cellspacing="0" cellpadding="0" border="0">
+                            <tbody><tr><td style="font-size:13px;" valign="top">
+                                <div>
+                                    Estimado/a ${object.partner_id.name},<br>Aca te presentamos tu estado de cuenta para el dia ${object.date}<br>
+                                    </div>
+                            </td></tr>
+                            <tr><td style="text-align:center;">
+                                <hr style="border-top-style:solid;background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;" width="100%">
+                            </td></tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="min-width:590px;" align="center">
+                        <table style="min-width:590px;background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;width:590px;" cellspacing="0" cellpadding="0" border="0">
+                            <tbody><tr><td valign="middle" align="left">
+                                ${object.company_id.name}
+                            </td></tr>
+                            <tr><td style="opacity:0.7;" valign="middle" align="left">
+                                ${object.company_id.phone}
+                                % if object.company_id.email
+                                    | <a href="'mailto:%s' % ${object.company_id.email}" style="color:#454748;">${object.company_id.email}</a>
+                                % endif
+                                % if object.company_id.website
+                                    | <a href="'%s' % ${object.company_id.website}" style="color:#454748;">
+                                    ${object.company_id.website}
+                                </a>
+                                % endif
+                            </td></tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+            </td></tr>
+            
+            <tr><td style="min-width:590px;width:590px;" align="center">
+                <table style="min-width:590px;width:622px;color: #000000; padding: 8px; border-collapse:separate;" cellspacing="0" cellpadding="0" border="0">
+                    <tbody><tr style="width:590px;"><td style="text-align:center;font-size: 13px;width:590px;">Con Tecnología de<b><a target="_blank" href="https://www.corpoeureka.com/web/">
+                        CorpoEureka
+                        
+                    </a></b></td></tr>
+                    
+                </tbody></table>
+            </td></tr>
+            </tbody></table>
+    </div>]]>
+            </field>
+        </record>
+
+    
+    </data>
+    
+
+</odoo>

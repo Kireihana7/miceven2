@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_eu_solicitud_prestaciones,eu_solicitud_prestaciones,model_res_request_benefits,base.group_user,1,1,1,1
+
+access_eu_motivo_prestaciones,eu_motivo_prestaciones,model_res_reason_service,base.group_user,1,1,1,1

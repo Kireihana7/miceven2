@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="employee_sucursal_departement_view" model="ir.ui.view">
+            <field name="name">employee.sucursal.departament_view</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    
+                    <field name="branch_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                        
+                </xpath>
+            </field>
+        </record>
+        <record id="employee_sucursal_departement_view_tree" model="ir.ui.view">
+            <field name="name">employee.sucursal.departament.view.tree</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="branch_id"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

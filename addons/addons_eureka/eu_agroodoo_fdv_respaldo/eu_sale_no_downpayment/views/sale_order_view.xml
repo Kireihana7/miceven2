@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale_advance_payment_inv_form_inherit_tree_ref" model="ir.ui.view">
+        <field name="name">sale_advance_payment_inv_form_inherit_tree</field>
+        <field name="model">sale.advance.payment.inv</field>
+        <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='advance_payment_method']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_form_inherit_tree_ref" model="ir.ui.view">
+        <field name="name">sale_order_form_inherit_tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header/button[4]" position="attributes">
+                <attribute name="context"></attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

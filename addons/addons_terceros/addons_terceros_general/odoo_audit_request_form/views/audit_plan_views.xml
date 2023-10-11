@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="custom_audit_plan_view_tree" model="ir.ui.view">
+        <field name="name">custom.audit.plan.view.tree</field>
+        <field name="model">custom.audit.plan</field>
+        <field name="arch" type="xml">
+            <tree string="Planificación">
+                <field name="name" />
+                <field name="title" />
+                <field name="responsible_id" widget="many2one_avatar_employee" />
+                <field
+                    name="status" 
+                    widget="badge" 
+                    decoration-info="status == 'revision'"
+                    decoration-warning="status == 'modifcar'"
+                    decoration-danger="status == 'rechazado'"
+                    decoration-success="status == 'aprobado'"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record id="custom_audit_plan_view_kanban" model="ir.ui.view">
+        <field name="name">custom.audit.plan.view.kanban</field>
+        <field name="model">custom.audit.plan</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="status">
+                <field name="id" />
+                <field name="name" />
+                <field name="title" />
+                <field name="status" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <h4>
+                                <t t-if="record.title.raw_value">
+                                    <field name="title" />
+                                    <br />
+                                </t>
+                                <small>
+                                    <field name="name" />
+                                </small>
+                            </h4>
+                            <ul class="list-group list-unstyled pl-4">
+                                <li>
+                                    <field 
+                                        name="status" 
+                                        widget="badge" 
+                                        decoration-info="status == 'revision'"
+                                        decoration-warning="status == 'modifcar'"
+                                        decoration-danger="status == 'rechazado'"
+                                        decoration-success="status == 'aprobado'"
+                                    />
+                                </li>
+                            </ul>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="custom_audit_plan_view_form" model="ir.ui.view">
+        <field name="name">custom.audit.plan.view.form</field>
+        <field name="model">custom.audit.plan</field>
+        <field name="arch" type="xml">
+            <form string="Planificación">
+                <header>
+                    <button 
+                        string="Enviar correo" 
+                        name="action_send_mail" 
+                        type="object" 
+                        class="oe_highlight"
+                    />
+                    <button 
+                        string="Revision" 
+                        name="action_set_status" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'status': 'revision',}"
+                        attrs="{'invisible':[('status', '=', 'revision')]}"
+                        groups="odoo_audit_request_form.audit_manager_group"
+                    />
+                    <button 
+                        string="Modificar" 
+                        name="action_set_status" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'status': 'modificar',}"
+                        attrs="{'invisible':[('status', '=', 'modificar')]}"
+                        groups="odoo_audit_request_form.audit_manager_group"
+                    />
+                    <button 
+                        string="Rechazado" 
+                        name="action_set_status" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'status': 'rechazado',}"
+                        attrs="{'invisible':[('status', '=', 'rechazado')]}"
+                        groups="odoo_audit_request_form.audit_manager_group"
+                    />
+                    <button 
+                        string="Aprobado" 
+                        name="action_set_status" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'status': 'aprobado',}"
+                        attrs="{'invisible':[('status', '=', 'aprobado')]}"
+                        groups="odoo_audit_request_form.audit_manager_group"
+                    />
+                    <field name="status" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                            <field 
+                                name="name" 
+                                required="1" 
+                                attrs="{'readonly':[('status', 'in', ['aprobado', 'rechazado'])]}" 
+                            />
+                            <field 
+                                name="title" 
+                                required="1" 
+                                attrs="{'readonly':[('status', 'in', ['aprobado', 'rechazado'])]}" 
+                            />
+                            <div>
+                                <strong>Departamento</strong>
+                            </div>
+                            <div class="border-left">
+                                <span class="pl-1">Auditoría</span>
+                            </div>
+                            <field 
+                                name="responsible_id" 
+                                required="1" 
+                                widget="many2one_avatar_employee" 
+                                domain="[('department_id.is_audit_department', '=', True)]"
+                                attrs="{'readonly':[('status', 'in', ['aprobado', 'rechazado'])]}" 
+                                options="{
+                                    'no_create': True, 
+                                    'no_quick_create': True, 
+                                    'no_edit': True,
+                                    'no_edit': True,
+                                }" 
+                            />
+                            <field name="objetivo_general" required="1" attrs="{'readonly':[('status', 'in', ['aprobado', 'rechazado'])]}"  />
+                    </group>
+                    <notebook>
+                        <page name="actions" string="Acciones">
+                            <field 
+                                name="audit_action_ids" 
+                                context="{'hide_audit_plan_id': True}" 
+                                attrs="{'readonly':[('status', 'in', ['aprobado', 'rechazado'])]}" 
+                            >
+                                <tree>
+                                    <field name="name" />
+                                    <field name="audit_activity_id" />
+                                    <field name="responsible_ids" widget="many2many_tags" />
+                                    <field name="branch_ids" widget="many2many_tags" optional="hide" />
+                                    <field name="audit_request_id" />
+                                    <field name="done" />
+                                    <button 
+                                        string="Crear auditoria" 
+                                        confirm="Esta seguro?"
+                                        name="action_create_audit_request" 
+                                        type="object"
+                                        class="bg-primary" 
+                                        attrs="{'invisible':[('audit_request_id', '!=', False)]}"
+                                    />
+                                    <button 
+                                        string="Imprimir memo" 
+                                        name="action_open_audit_memo_report"
+                                        type="object"
+                                        class="bg-primary"
+                                        attrs="{'invisible':[('audit_request_id', '!=', False)]}"
+                                    />
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="observations" string="Observaciones">
+                            <field name="observation_ids" attrs="{'readonly':[('status', 'in', ['aprobado', 'rechazado'])]}" >
+                                <tree>
+                                    <field name="name" />
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="name" />
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+</odoo>

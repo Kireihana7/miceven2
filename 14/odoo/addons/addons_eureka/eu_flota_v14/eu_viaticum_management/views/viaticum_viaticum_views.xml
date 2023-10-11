@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="viaticum_viaticum_view_tree" model="ir.ui.view">
+        <field name="name">viaticum.viaticum.view.tree</field>
+        <field name="model">viaticum.viaticum</field>
+        <field name="arch" type="xml">
+            <tree string="Viaticos">
+                <field name="name" />
+                <field name="partner_id" widget="many2one_avatar" />
+                <field name="payment_id" />
+                <field name="currency_id" invisible="1" />
+                <field name="amount" />
+                <field name="balance" />
+                <field 
+                    name="state" 
+                    widget="badge" 
+                    decoration-success="state == 'confirm'"
+                    decoration-info="state == 'closed'"
+                    decoration-danger="state == 'cancel'"
+                />
+            </tree>
+        </field>
+    </record>
+    <record id="viaticum_viaticum_view_form" model="ir.ui.view">
+        <field name="name">viaticum.viaticum.view.form</field>
+        <field name="model">viaticum.viaticum</field>
+        <field name="arch" type="xml">
+            <form string="Viaticos">
+                <header>
+                    <button 
+                        string="Reporte USD" 
+                        name="action_viaticum_report" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'currency_id': 'USD'}"
+                        states="confirm"
+                    />
+                    <button 
+                        string="Reporte VEF" 
+                        name="action_viaticum_report" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'currency_id': 'VEF'}"
+                        states="confirm"
+                    />
+                    <button 
+                        string="Pago de reintegro" 
+                        name="action_reintegro" 
+                        type="object" 
+                        class="oe_highlight"
+                        attrs="{'invisible':[('state','!=','confirm'),('pago_reintegro_id','=',False)]}"
+                    />
+                    <button 
+                        string="Crear factura" 
+                        name="action_create_invoice" 
+                        type="object" 
+                        class="oe_highlight"
+                        states="confirm"
+                    />
+                    <button 
+                        string="Borrador"
+                        name="action_set_state" 
+                        type="object" 
+                        states="confirm,cancel"
+                        class="oe_highlight btn-warning"
+                        context="{'state': 'draft'}"
+                    />
+                    <button 
+                        string="Confirmar" 
+                        name="action_set_state" 
+                        type="object" 
+                        states="draft"
+                        class="oe_highlight btn-success"
+                        context="{'state': 'confirm'}"
+                    />
+                    <button 
+                        string="Cerrar" 
+                        name="action_set_state" 
+                        type="object" 
+                        states="confirm"
+                        class="oe_highlight btn-info"
+                        context="{'state': 'closed'}"
+                    />
+                    <button 
+                        string="Cancelar" 
+                        name="action_set_state" 
+                        type="object" 
+                        states="confirm"
+                        class="oe_highlight btn-danger"
+                        context="{'state': 'cancel'}"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box" attrs="{'invisible':[('invoice_count','&lt;=',0)]}">
+                        <button name="action_show_invoices" type="object" class="oe_stat_button" icon="fa-file">
+                            <field name="invoice_count" widget="statinfo" />
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1" /></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field 
+                                name="payment_id" 
+                                domain="[
+                                    ('partner_id','=',partner_id),
+                                    ('payment_type','=','outbound'),
+                                    ('partner_type','=','supplier'),
+                                    ('state','=','posted'),
+                                    ('to_viaticum','=',True),
+                                ]"
+                                force_save="1"
+                                required="1"
+                                options="{'no_create':True}"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
+                        </group>
+                        <group>
+                            <group>
+                                <field name="currency_id" invisible="1" />
+                                <field name="amount" />
+                                <field name="balance" />
+                            </group>
+                            <group>
+                                <field name="currency_id_ref" invisible="1" />
+                                <field name="amount_ref" />
+                                <field name="balance_ref" />
+                            </group>
+                        </group>
+                    </group>
+                    <group>
+                        <field 
+                            name="pago_reintegro_id" 
+                            options="{'no_create': True}" 
+                            domain="[
+                                ('id','!=',payment_id),
+                                ('partner_id','=',partner_id),
+                                ('state','=','posted'),
+                                ('is_reintegro','=',True),
+                                ('to_viaticum','=',False),
+                                ('payment_type','=','inbound'),
+                                ('partner_type','=','supplier'),
+                            ]"
+                        />
+                        <field name="amount_reintegro" />
+                        <field name="amount_reintegro_ref" />
+                    </group>
+                    <field name="invoice_ids" readonly="1" />
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+</odoo>

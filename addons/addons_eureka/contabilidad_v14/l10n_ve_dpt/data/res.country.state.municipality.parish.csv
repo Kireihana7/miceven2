@@ -1,0 +1,1132 @@
+id,name,code,municipality_id:id
+par_23deenero,23 de Enero,1,mu_libertador_dis
+par_5dejulio,5 de Julio,2,mu_caroni
+par_abejales,Abejales,3,mu_libertador_tac
+par_acarigua,Acarigua,4,mu_paez_por
+par_acequias,Acequias,5,mu_campoelias
+par_achaguas,Achaguas,6,mu_achaguas
+par_acurigua,Acurigua,7,mu_colina
+par_adaure,Adaure,8,mu_falcon
+par_adicora,Adicora,9,mu_falcon
+par_adrian,Adrian,10,mu_marcano
+par_aguablanca,Agua Blanca,11,mu_aguablanca
+par_aguacaliente,Agua Caliente,12,mu_miranda_tru
+par_aguaclara,Agua Clara,13,mu_democracia
+par_agualarga,Agua Larga,14,mu_federacion
+par_agualinda,Agua Linda,15,mu_jacura
+par_aguasalada,Agua Salada,16,mu_angosturadelorinoco
+par_aguasanta,Agua Santa,17,mu_miranda_tru
+par_aguaviva,Agua Viva,18,mu_palavecino
+par_aguascalientes,Aguas Calientes,19,mu_diegoibarra
+par_aguasay,Aguasay,20,mu_aguasay
+par_aguedofelipealvarado,Aguedo Felipe Alvarado,21,mu_iribarren
+par_aguirre,Aguirre,22,mu_maneiro
+par_agustincodazzi,Agustin Codazzi,23,mu_franciscojavierpulgar
+par_albarico,Albarico,24,mu_sanfelipe
+par_albertoadriani,Alberto Adriani,25,mu_fernandezfeo
+par_alfredoarvelolarriva,Alfredo Arvelo Larriva,26,mu_barinas
+par_alfredopachecomiranda,Alfredo Pacheco Miranda,27,mu_santiagomarino_ara
+par_almiranteluisbrionmanoa,Almirante Luis Brion Manoa,28,mu_antoniodiaz
+par_alonsodeojeda,Alonso De Ojeda,29,mu_lagunillas
+par_altaguajira,Alta Guajira,30,mu_guajira
+par_altagracia_ced,Altagracia,31,mu_cedeno_bol
+par_altagracia_lib,Altagracia,32,mu_libertador_dis
+par_altagracia_tor,Altagracia,33,mu_torres
+par_altagracia_suc,Altagracia,34,mu_sucre_suc
+par_altagracia_mir,Altagracia,35,mu_miranda_zul
+par_altagraciadelamontana,Altagracia De La Montana,36,mu_guaicaipuro
+par_altagraciadeorituco,Altagracia De Orituco,37,mu_josetadeomonagas
+par_altamiradecaceres,Altamira de Caceres,38,mu_bolivar_bar
+par_altobarinas,Alto Barinas,39,mu_barinas
+par_altodelosgodos,Alto De Los Godos,40,mu_maturin
+par_altoventuari,Alto Ventuari,41,mu_autonomomanapiare
+par_ambrosio,Ambrosio,42,mu_cabimas
+par_amenodororangellamus,Amenodoro Rangel Lamus,43,mu_cardenas
+par_anamariacampos,Ana Maria Campos,44,mu_miranda_zul
+par_anasoto,Ana Soto,45,mu_iribarren
+par_anaco,Anaco,46,mu_anaco
+par_andresbello_ant,Andres Bello,47,mu_antoniojosedesucre
+par_andresbello_lac,Andres Bello,48,mu_lacanadadeurdaneta
+par_andreseloyblanco_gir,Andres Eloy Blanco,49,mu_girardot_ara
+par_andreseloyblanco_pia,Andres Eloy Blanco,50,mu_piar_bol
+par_andresesloyblanco_mir,Andres Eloy Blanco,51,mu_miranda_mer
+par_andreslinares,Andres Linares,52,mu_trujillo
+par_antimano,Antimano,53,mu_libertador_dis
+par_antolindelcampo,Antolin Del Campo,54,mu_antolindelcampo
+par_antolintovaranquino,Antolin Tovar Anquino,55,mu_sangenarodeboconoito
+par_antonioborjasromero,Antonio Borjas Romero,56,mu_maracaibo
+par_antoniodiaz,Antonio Diaz,57,mu_torres
+par_antoniojosedesucre_aris,Antonio Jose De Sucre,58,mu_arismendi_suc
+par_antoniojosedesucre,Antonio Jose De Sucre,59,mu_josefelipemarquezcanizales
+par_antonionicolasbriceno,Antonio Nicolas Briceno,60,mu_sanrafaeldecarvajal
+par_antoniospinettidini,Antonio Spinetti Dini,61,mu_libertador_mer
+par_anzoategui,Anzoategui,62,mu_moran
+par_aparicio,Aparicio,63,mu_piar_bol
+par_aparicion,Aparicion,64,mu_ospino
+par_apurito,Apurito,65,mu_achaguas
+par_aracua,Aracua,66,mu_bolivar_fal
+par_aragua,Aragua,67,mu_piar_mon
+par_araguadebarcelona,Aragua De Barcelona,68,mu_aragua
+par_araguaney,Araguaney,69,mu_andresbello_tru
+par_araguita,Araguita,70,mu_acevedo
+par_aramendi,Aramendi,71,mu_paez_apu
+par_arapuey,Arapuey,72,mu_juliocesarsalas
+par_araure,Araure,73,mu_araure
+par_araurima,Araurima,74,mu_jacura
+par_araya,Araya,75,mu_cruzsalmeronacosta
+par_arenas,Arenas,76,mu_montes
+par_areo,Areo,77,mu_cedeno_mon
+par_arevaloaponte,Arevalo Aponte,78,mu_santiagomarino_ara
+par_arevalogonzalez,Arevalo Gonzalez,79,mu_acevedo
+par_arias,Arias,80,mu_libertador_mer
+par_aricagua_ari,Aricagua,81,mu_aricagua
+par_aricagua_mon,Aricagua,82,mu_montes
+par_aripao,Aripao,83,mu_sucre_bol
+par_arismendi,Arismendi,84,mu_arismendi_bar
+par_aristidesbastidas,Aristides Bastidas,85,mu_aristidesbastidas
+par_aristidescalvani,Aristides Calvani,86,mu_cabimas
+par_arnoldogabaldon_can,Arnoldo Gabaldon,87,mu_candelaria
+par_arnoldogabaldon,Arnoldo Gabaldon,88,mu_juanvicentecampoelias
+par_ascensionfarreras,Ascension Farreras,89,mu_cedeno_bol
+par_atapirire,Atapirire,90,mu_franciscodemiranda_anz
+par_augustomijares,Augusto Mijares,91,mu_zamora_ara
+par_avaria,Avaria,92,mu_democracia
+par_ayacucho_suc,Ayacucho,93,mu_sucre_suc
+par_ayacucho_aya,Ayacucho,94,mu_ayacucho
+par_ayacucho_boc,Ayacucho,95,mu_bocono
+par_bailadores,Bailadores,96,mu_rivasdavila
+par_bajoventuari,Bajo Ventuari,97,mu_autonomomanapiare
+par_baraived,Baraived,98,mu_falcon
+par_barceloneta,Barceloneta,99,mu_angostura
+par_bari,Bari,100,mu_jesusmariasemprun
+par_barinas,Barinas,101,mu_barinas
+par_barinitas,Barinitas,102,mu_bolivar_bar
+par_bariro,Bariro,103,mu_buchivacoa
+par_barrancas_cru,Barrancas,104,mu_cruzparedes
+par_barrancas_sot,Barrancas,105,mu_sotillo
+par_bartolomedelascasas,Bartolome De Las Casas,106,mu_machiquesdeperija
+par_bartolomesalom,Bartolome Salom,107,mu_puertocabello
+par_belen,Belen,108,mu_carlosarvelo
+par_bellavista,Bella Vista,109,mu_sucre_ara
+par_bergatin,Bergatin,110,mu_simonbolivar_anz
+par_betijoque,Betijoque,111,mu_betijoque
+par_bideau,Bideau,112,mu_valdez
+par_biruaca,Biruaca,113,mu_biruaca
+par_biscucuy,Biscucuy,114,mu_sucre_por
+par_bobures,Bobures,115,mu_sucre_zul
+par_bocadearoa,Boca de Aroa,116,mu_joselaurenciosilva
+par_bocadechavez,Boca De Chavez,117,mu_sanjuandecapistrano
+par_bocadegrita,Boca De Grita,118,mu_garciadehevia
+par_bocadetocuyo,Boca De Tocuyo,119,mu_monsenoriturriza
+par_bocadeuchire,Boca De Uchire,120,mu_sanjuandecapistrano
+par_bocadelpao,Boca Del Pao,121,mu_franciscodemiranda_anz
+par_bocadelrio,Boca Del Rio,122,mu_peninsulademacanao
+par_bocono,Bocono,123,mu_samueldariomaldonado
+par_bocono_boc,Bocono,124,mu_bocono
+par_boconoito,Boconoito,125,mu_sangenarodeboconoito
+par_bolivar_mor,Bolivar,126,mu_moran
+par_bolivar_zam,Bolivar,127,mu_zamora_mir
+par_bolivar_gom,Bolivar,128,mu_gomez
+par_bolivar_ber,Bolivar,129,mu_bermudez
+par_bolivar_bol,Bolivar,130,mu_bolivar_tac
+par_bolivar_mar,Bolivar,131,mu_maracaibo
+par_bolivia,Bolivia,132,mu_candelaria
+par_boqueron,Boqueron,133,mu_maturin
+par_borburata,Borburata,134,mu_puertocabello
+par_borojo,Borojo,135,mu_buchivacoa
+par_bramon,Bramon,136,mu_junin
+par_bruzual_mun,Bruzual,137,mu_munoz
+par_bruzua_uru,Bruzual,138,mu_urumaco
+par_bruzual_fal,Buena Vista,139,mu_falcon
+par_bruzual_iri,Buena Vista,140,mu_iribarren
+par_buenavista,Buena Vista,141,mu_montecarmelo
+par_buenavista_ana,Buena Vista,142,mu_anaco
+par_burbusay,Burbusay,143,mu_bocono
+par_buria,Buria,144,mu_simonplanas
+par_cabimbu,Cabimbu,145,mu_urdaneta_tru
+par_cabruta,Cabruta,146,mu_lasmercedes
+par_cabudare,Cabudare,147,mu_palavecino
+par_cabure,Cabure,148,mu_petit
+par_cachamay,Cachamay,149,mu_caroni
+par_cachipoara,Cachipo,150,mu_aragua
+par_cachipopun,Cachipo,151,mu_punceres
+par_caciquemanaure,Cacique Manaure,152,mu_caciquemanaure
+par_caciquemara,Cacique Mara,153,mu_maracaibo
+par_cacute,Cacute,154,mu_rangel
+par_cagua,Cagua,155,mu_sucre_ara
+par_caigua,Caigua,156,mu_simonbolivar_anz
+par_calatrava,Calatrava,157,mu_sirarthurmcgregor
+par_calderas,Calderas,158,mu_bolivar_bar
+par_camacaro,Camacaro,159,mu_torres
+par_camaguan,Camaguan,160,mu_camaguan
+par_camatagua,Camatagua,161,mu_camatagua
+par_campoalegre,Campo Alegre,162,mu_sanrafaeldecarvajal
+par_campoclaro,Campo Claro,163,mu_marino
+par_campoeliaslib,Campo Elias,164,mu_libertador_mer
+par_campoelias,Campo Elias,165,mu_juanvicentecampoelias
+par_campoeliasbru,Campo Elias,166,mu_bruzual
+par_campolara,Campo Lara,167,mu_lagunillas
+par_canagua,Canagua,168,mu_arzobispochacon
+par_caname,Caname,169,mu_autonomoatabapo
+par_candelaria,Candelaria,170,mu_valencia
+par_canelones,Canelones,171,mu_turen
+par_canoabo,Canoabo,172,mu_bejuma
+par_cantagallo,Cantagallo,173,mu_juangermanroscio
+par_cantaura,Cantaura,174,mu_pedromariafreites
+par_canadeazucar,Cana De Azucar,175,mu_mariobricenoiragorry
+par_canodelgadito,Cano Delgadito,176,mu_papelon
+par_canoeltigre,Cano El Tigre,177,mu_zea
+par_capachonuevo,Capacho Nuevo,178,mu_independencia_tac
+par_capachoviejo,Capacho Viejo,179,mu_libertador_tac
+par_capadare,Capadare,180,mu_acosta_fal
+par_capatarida,Capatarida,181,mu_buchivacoa
+par_capaya,Capaya,182,mu_acevedo
+par_capitalcedeno,Capital Cedeno,183,mu_cedeno_bol
+par_capitalsucre,Capital Sucre,184,mu_sucre_suc
+par_capitalurbanacalabozo,Capital Urbana Calabozo,185,mu_franciscodemiranda_gua
+par_capuri,Capuri,186,mu_arzobispochacon
+par_caraballeda,Caraballeda,187,mu_vargas
+par_caraccioloparraperez,Caracciolo Parra Perez,188,mu_libertador_mer
+par_carache,Carache,189,mu_carache
+par_carayaca,Carayaca,190,mu_vargas
+par_cardenas,Cardenas,191,mu_uribante
+par_cariaco,Cariaco,192,mu_ribero
+par_caricuao,Caricuao,193,mu_libertador_dis
+par_caripe,Caripe,194,mu_caripe
+par_caripito,Caripito,195,mu_libertador_mon
+par_carirubana,Carirubana,196,mu_carirubana
+par_carlosquevedo,Carlos Quevedo,197,mu_franciscojavierpulgar
+par_carlossoublette_jos,Carlos Soublette,198,mu_josetadeomonagas
+par_carlossoublette,Carlos Soublette,199,mu_vargas
+par_carmendecura,Carmen De Cura,200,mu_camatagua
+par_carmenherrera,Carmen Herrera,201,mu_cabimas
+par_carraccioloparraperez,Carracciolo Parra Perez,202,mu_maracaibo
+par_carrillo,Carrillo,203,mu_candelaria
+par_carrizal,Carrizal,204,mu_carrizal
+par_caruao,Caruao,205,mu_vargas
+par_carvajal,Carvajal,206,mu_sanrafaeldecarvajal
+par_casigua,Casigua,207,mu_mauroa
+par_casiquiare,Casiquiare,208,mu_autonomorionegro
+par_castaneda,Castaneda,209,mu_torres
+par_castornievesrios,Castor Nieves Rios,210,mu_josefelixribas_ara
+par_catedralang,Catedral,211,mu_angosturadelorinoco
+par_catedralval,Catedral,212,mu_valencia
+par_catedrallib,Catedral,213,mu_libertador_dis
+par_catedraliri,Catedral,214,mu_iribarren
+par_catialamar,Catia La Mar,215,mu_vargas
+par_catuaro,Catuaro,216,mu_ribero
+par_caucagua,Caucagua,217,mu_acevedo
+par_caucaguita,Caucaguita,218,mu_sucre_mir
+par_cazorla,Cazorla,219,mu_sangeronimodeguayabal
+par_cecilioacostagua,Cecilio Acosta,220,mu_guaicaipuro
+par_cecilioacostamar,Cecilio Acosta,221,mu_maracaibo
+par_ceciliozubillaga,Cecilio Zubillaga,222,mu_torres
+par_cedeno,Cedeno,223,mu_cedeno_bol
+par_cegarra,Cegarra,224,mu_candelaria
+par_chabasquen,Chabasquen,225,mu_monsenorjosevicentedeunda
+par_chacanta,Chacanta,226,mu_arzobispochacon
+par_chacao,Chacao,227,mu_chacao
+par_chacopata,Chacopata,228,mu_cruzsalmeronacosta
+par_chaguaramal,Chaguaramal,229,mu_piar_mon
+par_chaguaramascha,Chaguaramas,230,mu_chaguaramas
+par_chaguaramaslib,Chaguaramas,231,mu_libertador_mon
+par_charallave,Charallave,232,mu_cristobalrojas
+par_chejende,Chejende,233,mu_candelaria
+par_cheregue,Cheregue,234,mu_bolivar_tru
+par_chichiriviche,Chichiriviche,235,mu_monsenoriturriza
+par_chiguara,Chiguara,236,mu_sucre_mer
+par_chiquinquirator,Chiquinquira,237,mu_torres
+par_chiquinquiratru,Chiquinquira,238,mu_trujillo
+par_chiquinquirala,Chiquinquira,239,mu_lacanadadeurdaneta
+par_chiquinquiramar,Chiquinquira,240,mu_maracaibo
+par_chirica,Chirica,241,mu_caroni
+par_chivacoa,Chivacoa,242,mu_bruzual
+par_choroni,Choroni,243,mu_girardot_ara
+par_chorreron,Chorreron,244,mu_guanta
+par_chuao,Chuao,245,mu_santiagomarino_ara
+par_churuguara,Churuguara,246,mu_federacion
+par_ciprianocastro,Cipriano Castro,247,mu_libertad_tac
+par_ciudadalianza,Ciudad Alianza,248,mu_guacara
+par_ciudadbolivia,Ciudad Bolivia,249,mu_pedraza
+par_ciudaddenutrias,Ciudad De Nutrias,250,mu_sosa
+par_clarines,Clarines,251,mu_manuelezequielbruzual
+par_coche,Coche,252,mu_libertador_dis
+par_cocollar,Cocollar,253,mu_montes
+par_cocorote,Cocorote,254,mu_cocorote
+par_cocuy,Cocuy,255,mu_autonomorionegro
+par_codazzi,Codazzi,256,mu_pedrocamejo
+par_cojedes,Cojedes,257,mu_anzoategui
+par_colina,Colina,258,mu_petit
+par_comunidad,Comunidad,259,mu_autonomomaroa
+par_concepcioniri,Concepcion,260,mu_iribarren
+par_concepcionsuc,Concepcion,261,mu_sucre_por
+par_concepcionla,Concepcion,262,mu_lacanadadeurdaneta
+par_constitucion,Constitucion,263,mu_lobatera
+par_coquivacoa,Coquivacoa,264,mu_maracaibo
+par_corazondejesus,Corazon De Jesus,265,mu_barinas
+par_cordero,Cordero,266,mu_andresbello_tac
+par_cordoba,Cordoba,267,mu_guanare
+par_coronelmarianoperaza,Coronel Mariano Peraza,268,mu_jimenez
+par_cristodearanza,Cristo De Aranza,269,mu_maracaibo
+par_cristobalcolon,Cristobal Colon,270,mu_valdez
+par_cristobalmendoza,Cristobal Mendoza,271,mu_trujillo
+par_cruzcarrillo,Cruz Carrillo,272,mu_trujillo
+par_cua,Cua,273,mu_urdaneta_mir
+par_cuara,Cuara,274,mu_jimenez
+par_cuicas,Cuicas,275,mu_carache
+par_cumanacoa,Cumanacoa,276,mu_montes
+par_cumbo,Cumbo,277,mu_andresbello_mir
+par_cunaviche,Cunaviche,278,mu_pedrocamejo
+par_cupira,Cupira,279,mu_pedrogual
+par_curiapo,Curiapo,280,mu_antoniodiaz
+par_curiepe,Curiepe,281,mu_brion
+par_curimagua,Curimagua,282,mu_petit
+par_dabajuro,Dabajuro,283,mu_dabajuro
+par_dallacostacar,Dalla Costa,284,mu_caroni
+par_dallacostasif,Dalla Costa,285,mu_sifontes
+par_delicias,Delicias,286,mu_rafaelurdaneta
+par_democracia,Democracia,287,mu_puertocabello
+par_diegodelozada,Diego De Lozada,288,mu_jimenez
+par_divinapastora,Divina Pastora,289,mu_guanarito
+par_dolores,Dolores,290,mu_rojas
+par_domingaortizdepaez,Dominga Ortiz De Paez,291,mu_barinas
+par_domingopena,Domingo Pena,292,mu_libertador_mer
+par_domitilaflores,Domitila Flores,293,mu_sanfrancisco_zul
+par_donaldogarcia,Donaldo Garcia,294,mu_rosariodeperija
+par_doradas,Doradas,295,mu_libertador_tac
+par_drfranciscoromerolobo,Dr. Francisco Romero Lobo,296,mu_sancristobal
+par_edmundobarrios,Edmundo Barrios,297,mu_simonrodriguez_anz
+par_elamparopae,El Amparo,298,mu_paez_apu
+par_elamparoric,El Amparo,299,mu_ricaurte
+par_elamparotov,El Amparo,300,mu_tovar_mer
+par_elbajo,El Bajo,301,mu_sanfrancisco_zul
+par_elbano,El Bano,302,mu_motatan
+par_elbatey,El Batey,303,mu_sucre_zul
+par_elbaul,El Baul,304,mu_girardot_coj
+par_elblanco,El Blanco,305,mu_torres
+par_elcafe,El Cafe,306,mu_acevedo
+par_elcafetal,El Cafetal,307,mu_baruta
+par_elcallao,El Callao,308,mu_elcallao
+par_elcalvario,El Calvario,309,mu_franciscodemiranda_gua
+par_elcanton,El Canton,310,mu_andreseloyblanco_bar
+par_elcarito,El Carito,311,mu_libertad_anz
+par_elcarmelo,El Carmelo,312,mu_lacanadadeurdaneta
+par_elcarmen,El Carmen,313,mu_simonbolivar_anz
+par_elcarmenbar,El Carmen,314,mu_barinas
+par_elcarmenboc,El Carmen,315,mu_bocono
+par_elcartanal,El Cartanal,316,mu_independencia_mir
+par_elcenizo,El Cenizo,317,mu_miranda_tru
+par_elchaparro,El Chaparro,318,mu_sirarthurmcgregor
+par_elcharal,El Charal,319,mu_union
+par_elcobre,El Cobre,320,mu_josemariavargas
+par_elconsejo,El Consejo,321,mu_joserafaelrevenga
+par_elcorozo,El Corozo,322,mu_maturin
+par_elcuji,El Cuji,323,mu_iribarren
+par_eldividive,El Dividive,324,mu_miranda_tru
+par_elfurrial,El Furrial,325,mu_maturin
+par_elguacharo,El Guacharo,326,mu_caripe
+par_elguapo,El Guapo,327,mu_paez_mir
+par_elguayabo,El Guayabo,328,mu_josejuaquinveroes
+par_elhato,El Hato,329,mu_falcon
+par_eljaguito,El Jaguito,330,mu_andresbello_tru
+par_eljarillo,El Jarillo,331,mu_guaicaipuro
+par_eljunko,El Junko,332,mu_vargas
+par_eljunquito,El Junquito,333,mu_libertador_dis
+par_ellimon,El Limon,334,mu_mariobricenoiragorry
+par_elllanolib,El Llano,335,mu_libertador_mer
+par_elllanotov,El Llano,336,mu_tovar_mer
+par_elmene,El Mene,337,mu_santarita
+par_elmolino,El Molino,338,mu_arzobispochacon
+par_elmorro_die,El Morro,339,mu_diegobautistaurbaneja
+par_elmorro,El Morro,340,mu_libertador_mer
+par_elmorrodepuertosanto,El Morro De Puerto Santo,341,mu_arismendi_suc
+par_elpaofra,El Pao,342,mu_franciscodemiranda_anz
+par_elpaopao,El Pao,343,mu_paodesanjuanbautista
+par_elparaisolib,El Paraiso,344,mu_libertador_dis
+par_elparaisosuc,El Paraiso,345,mu_sucre_tru
+par_elpaujil,El Paujil,346,mu_cajigal
+par_elpilar_sim,El Pilar,347,mu_simonbolivar_anz
+par_elpilar,El Pilar,348,mu_benitez
+par_elpinto,El Pinto,349,mu_piar_mon
+par_elplayon,El Playon,350,mu_santarosalia
+par_elprogreso,El Progreso,351,mu_laceiba
+par_elrastro,El Rastro,352,mu_franciscodemiranda_gua
+par_elreal,El Real,353,mu_obispos
+par_elrecreo_san,El Recreo,354,mu_sanfernando
+par_elrecreo,El Recreo,355,mu_libertador_dis
+par_elregalo,El Regalo,356,mu_sosa
+par_elrincon,El Rincon,357,mu_benitez
+par_elrosario,El Rosario,358,mu_rosariodeperija
+par_elsocorrocru,El Socorro,359,mu_cruzparedes
+par_elsocorroval,El Socorro,360,mu_valencia
+par_elsocorroel,El Socorro,361,mu_elsocorro
+par_elsocorrojos,El Socorro,362,mu_josefelipemarquezcanizales
+par_elsombrero,El Sombrero,363,mu_julianmellado
+par_eltejero,El Tejero,364,mu_ezequielzamora_mon
+par_elvalle,El Valle,365,mu_libertador_dis
+par_elvinculo,El Vinculo,366,mu_falcon
+par_elyagual,El Yagual,367,mu_achaguas
+par_eleazarlopezcontrerassuc,Eleazar Lopez Contreras,368,mu_sucre_tac
+par_eleazarlopezcontreraslag,Eleazar Lopez Contreras,369,mu_lagunillas
+par_eliassanchezrubio,Elias Sanchez Rubio,370,mu_guajira
+par_elorza,Elorza,371,mu_romulogallegos_apu
+par_eloyparedes,Eloy Paredes,372,mu_obisporamosdelora
+par_emeterioochoa,Emeterio Ochoa,373,mu_libertador_tac
+par_emilioconstantinoguerrero,Emilio Constantino Guerrero,374,mu_jauregui
+par_encontrados,Encontrados,375,mu_catatumbo
+par_escuque,Escuque,376,mu_escuque
+par_espino,Espino,377,mu_leonardoinfante
+par_espinozadelosmonteros,Espinoza De Los Monteros,378,mu_torres
+par_estanquez,Estanquez,379,mu_sucre_mer
+par_faria,Faria,380,mu_miranda_zul
+par_farriar,Farriar,381,mu_josejuaquinveroes
+par_fernandezpena,Fernandez Pena,382,mu_campoelias
+par_fernandogirontovar,Fernando Giron Tovar,383,mu_autonomoatures
+par_filasdemariches,Filas De Mariches,384,mu_sucre_mir
+par_flordepatria,Flor De Patria,385,mu_pampan
+par_florencioramirez,Florencio Ramirez,386,mu_caraccioloparraolmedo
+par_florida,Florida,387,mu_santarosalia
+par_franciscoanicetolugobocadecuyubini,Francisco Aniceto Lugo Boca de Cuyubini,388,mu_antoniodiaz
+par_franciscodemiranda,Francisco De Miranda,389,mu_franciscolinaresalcantara
+par_franciscoeugeniobustamante,Francisco Eugenio Bustamante,390,mu_maracaibo
+par_franciscofajardo,Francisco Fajardo,391,mu_garcia
+par_franciscojavierpulgar,Francisco Javier Pulgar,392,mu_franciscojavierpulgar
+par_franciscoochoa,Francisco Ochoa,393,mu_sanfrancisco_zul
+par_fraternidad,Fraternidad,394,mu_puertocabello
+par_freitez,Freitez,395,mu_crespo
+par_gabrielpicongonzalez,Gabriel Picon Gonzalez,396,mu_albertoadriani
+par_garcia,Garcia,397,mu_garcia
+par_generalenjefejoselaurenciosilva,General En Jefe Jose Laurencio Silva,398,mu_tinaco
+par_generalfranciscoantoniovasquez,General Francisco Antonio Vasquez,399,mu_benitez
+par_generalribas,General Ribas,400,mu_bocono
+par_generalurdaneta,General Urdaneta,401,mu_baralt
+par_germanrioslinares,German Rios Linares,402,mu_cabimas
+par_geronimomaldonado,Geronimo Maldonado,403,mu_rivasdavila
+par_gibraltar,Gibraltar,404,mu_sucre_zul
+par_goaigoaza,Goaigoaza,405,mu_puertocabello
+par_gonzalopiconfebres,Gonzalo Picon Febres,406,mu_libertador_mer
+par_granmariscal,Gran Mariscal,407,mu_sucre_suc
+par_granados,Granados,408,mu_bolivar_tru
+par_guacara,Guacara,409,mu_guacara
+par_guachara,Guachara,410,mu_achaguas
+par_guadarrama,Guadarrama,411,mu_arismendi_bar
+par_guaibacoa,Guaibacoa,412,mu_colina
+par_guaimaral,Guaimaral,413,mu_arzobispochacon
+par_guajira,Guajira,414,mu_guajira
+par_guajiro,Guajiro,415,mu_buchivacoa
+par_guanaguana,Guanaguana,416,mu_piar_mon
+par_guanape,Guanape,417,mu_manuelezequielbruzual
+par_guanare,Guanare,418,mu_guanare
+par_guanarito,Guanarito,419,mu_guanarito
+par_guaniamo,Guaniamo,420,mu_cedeno_bol
+par_guanta,Guanta,421,mu_guanta
+par_guaramacal,Guaramacal,422,mu_bocono
+par_guaraque,Guaraque,423,mu_guaraque
+par_guarataro,Guarataro,424,mu_sucre_bol
+par_guaraunos,Guaraunos,425,mu_benitez
+par_guardatinajas,Guardatinajas,426,mu_franciscodemiranda_gua
+par_guarenas,Guarenas,427,mu_plaza
+par_guarico,Guarico,428,mu_moran
+par_guasdualito,Guasdualito,429,mu_paez_apu
+par_guatire,Guatire,430,mu_zamora_mir
+par_guayabal,Guayabal,431,mu_sangeronimodeguayabal
+par_guayapo,Guayapo,432,mu_autonomoautana
+par_guevara,Guevara,433,mu_gomez
+par_guigue,Guigue,434,mu_carlosarvelo
+par_guiria,Guiria,435,mu_valdez
+par_guiripa,Guiripa,436,mu_sancasimiro
+par_gustavovegasleon,Gustavo Vegas Leon,437,mu_simonplanas
+par_guzmanguillermo,Guzman Guillermo,438,mu_miranda_fal
+par_hectoramablemora,Hector Amable Mora,439,mu_albertoadriani
+par_heras,Heras,440,mu_sucre_zul
+par_heribertoarroyo,Heriberto Arroyo,441,mu_torres
+par_hernandez,Hernandez,442,mu_samueldariomaldonado
+par_higuerote,Higuerote,443,mu_brion
+par_hilariolunayluna,Hilario Luna Y Luna,444,mu_moran
+par_huachamacareacanana,Huachamacare Acanana,445,mu_altoorinoco
+par_humocaroalto,Humocaro Alto,446,mu_moran
+par_humocarobajo,Humocaro Bajo,447,mu_moran
+par_idelfonsovasquez,Idelfonso Vasquez,448,mu_maracaibo
+par_ignaciobriceno,Ignacio Briceno,449,mu_pedraza
+par_ikabaru,Ikabaru,450,mu_gransabana
+par_imataca,Imataca,451,mu_casacoima
+par_independencialib,Independencia,452,mu_libertador_car
+par_independenciafed,Independencia,453,mu_federacion
+par_independenciatul,Independencia,454,mu_tuliofebrescordero
+par_independenciaind,Independencia,455,mu_independencia_anz
+par_irapa,Irapa,456,mu_marino
+par_isaiasmedinaangarita,Isaias Medina Angarita,457,mu_bolivar_tac
+par_isladetoas,Isla De Toas,458,mu_almirantepadilla
+par_islaraton,Isla Raton,459,mu_autonomoautana
+par_jacintoplaza,Jacinto Plaza,460,mu_libertador_mer
+par_jacura,Jacura,461,mu_jacura
+par_jadacaquiva,Jadacaquiva,462,mu_falcon
+par_jaji,Jaji,463,mu_campoelias
+par_jajo,Jajo,464,mu_urdaneta_tru
+par_jalisco,Jalisco,465,mu_motatan
+par_jesusmariasemprun,Jesus Maria Semprun,466,mu_jesusmariasemprun
+par_joaquincrespo,Joaquin Crespo,467,mu_girardot_ara
+par_jorgehernandez,Jorge Hernandez,468,mu_cabimas
+par_joseantoniopaezang,Jose Antonio Paez,469,mu_angosturadelorinoco
+par_joseantoniopaezgar,Jose Antonio Paez,470,mu_garciadehevia
+par_joseantoniopaezjos,Jose Antonio Paez,471,mu_joseantoniopaez
+par_josebernardodorante,Jose Bernardo Dorante,472,mu_jimenez
+par_josecasanovagodoy,Jose Casanova Godoy,473,mu_girardot_ara
+par_josecenobiourribarri,Jose Cenobio Urribarri,474,mu_santarita
+par_josefelizribas,Jose Felix Ribas,475,mu_josefelixribas_ara
+par_josefelixribas,Jose Felix Ribas,476,mu_pedraza
+par_josegregoriobastidas,Jose Gregorio Bastidas,477,mu_palavecino
+par_josegregoriohernandez,Jose Gregorio Hernandez,478,mu_betijoque
+par_joseignaciodelpumar,Jose Ignacio Del Pumar,479,mu_ezequielzamora_bar
+par_joseleonardosuarez,Jose Leonardo Suarez,480,mu_sanrafaeldecarvajal
+par_josemariablanco,Jose Maria Blanco,481,mu_crespo
+par_josenucetesardi,Jose Nucete Sardi,482,mu_albertoadriani
+par_joseramonyepes,Jose Ramon Yepes,483,mu_jesusenriquelossada
+par_josevidalmarcano,Jose Vidal Marcano,484,mu_tucupita
+par_juanangelbravo,Juan Angel Bravo,485,mu_ezequielzamora_coj
+par_juanantoniorodriguezdominguez,Juan Antonio Rodriguez Dominguez,486,mu_barinas
+par_juanbautistaarismendi,Juan Bautista Arismendi,487,mu_casacoima
+par_juanbautistarodriguez,Juan Bautista Rodriguez,488,mu_jimenez
+par_juandematasuarez,Juan De Mata Suarez,489,mu_anzoategui
+par_juandevillegas,Juan De Villegas,490,mu_iribarren
+par_juangermanroscio,Juan German Roscio,491,mu_independencia_tac
+par_juanignaciomontilla,Juan Ignacio Montilla,492,mu_valera
+par_juanjoseflores,Juan Jose Flores,493,mu_puertocabello
+par_juanmillan,Juan Millan,494,mu_tucupita
+par_juanpablopenaloza,Juan Pablo Penaloza,495,mu_uribante
+par_juanrodriguezsuarez,Juan Rodriguez Suarez,496,mu_libertador_mer
+par_juanvicentegomez,Juan Vicente Gomez,497,mu_bolivar_tac
+par_juanadeavila,Juana De Avila,498,mu_maracaibo
+par_juangriego,Juangriego,499,mu_marcano
+par_juarez,Juarez,500,mu_iribarren
+par_judibana,Judibana,501,mu_lostaques
+par_junin,Junin,502,mu_sucre_tru
+par_jusepin,Jusepin,503,mu_maturin
+par_laaguadita,La Aguadita,504,mu_limablanco
+par_laazulita,La Azulita,505,mu_andresbello_mer
+par_labeatriz,La Beatriz,506,mu_valera
+par_lacandelarialib,La Candelaria,507,mu_libertador_dis
+par_lacandelariamor,La Candelaria,508,mu_moran
+par_laceiba,La Ceiba,509,mu_laceiba
+par_lacienaga,La Cienaga,510,mu_zamora_fal
+par_laconcepcioncar,La Concepcion,511,mu_carache
+par_laconcepcionpam,La Concepcion,512,mu_pampanito
+par_laconcepcion,La Concepcion,513,mu_jesusenriquelossada
+par_laconcordia,La Concordia,514,mu_sancristobal
+par_lacruz,La Cruz,515,mu_maturin
+par_lademocracia,La Democracia,516,mu_tomaslander
+par_ladolorita,La Dolorita,517,mu_sucre_mir
+par_laesmeralda,La Esmeralda,518,mu_altoorinoco
+par_laesperanza,La Esperanza,519,mu_andresbello_tru
+par_laestacion,La Estacion,520,mu_ospino
+par_laflorida,La Florida,521,mu_cardenas
+par_lafria,La Fria,522,mu_garciadehevia
+par_lagrita,La Grita,523,mu_jauregui
+par_laguaira,La Guaira,524,mu_vargas
+par_laguanota,La Guanota,525,mu_caripe
+par_laluz,La Luz,526,mu_obispos
+par_lamesa_cam,La Mesa,527,mu_campoelias
+par_lamesa,La Mesa,528,mu_urdaneta_tru
+par_lapalmita,La Palmita,529,mu_panamericano
+par_lapastoralib,La Pastora,530,mu_libertador_dis
+par_lapastoraaco,La Pastora,531,mu_acosta_fal
+par_lapaz,La Paz,532,mu_pampan
+par_lapena,La Pena,533,mu_bolivar_fal
+par_lapetrolea,La Petrolea,534,mu_junin
+par_lapica,La Pica,535,mu_maturin
+par_lapueblita,La Pueblita,536,mu_betijoque
+par_lapuerta,La Puerta,537,mu_valera
+par_laquebrada,La Quebrada,538,mu_urdaneta_tru
+par_laromerena,La Romerena,539,mu_libertad_anz
+par_larosa,La Rosa,540,mu_cabimas
+par_lasabanita,La Sabanita,541,mu_angosturadelorinoco
+par_lasierrita,La Sierrita,542,mu_mara
+par_lasoledad,La Soledad,543,mu_zamora_fal
+par_latendida,La Tendida,544,mu_samueldariomaldonado
+par_latoma,La Toma,545,mu_rangel
+par_latoscana,La Toscana,546,mu_piar_mon
+par_latrampa,La Trampa,547,mu_sucre_mer
+par_latrinidadrom,La Trinidad,548,mu_romulogallegos_apu
+par_latrinidadla,La Trinidad,549,mu_latrinidad
+par_launionari,La Union,550,mu_arismendi_bar
+par_launionesc,La Union,551,mu_escuque
+par_laurbana,La Urbana,552,mu_cedeno_bol
+par_lavega,La Vega,553,mu_libertador_dis
+par_laveladecoro,La Vela De Coro,554,mu_colina
+par_laventa,La Venta,555,mu_miranda_mer
+par_lavictoria,La Victoria,556,mu_valmorerodriguez
+par_lagunillas,Lagunillas,557,mu_sucre_mer
+par_lara,Lara,558,mu_torres
+par_lasalhuacas,Las Alhuacas,559,mu_libertador_mon
+par_lasbrisas,Las Brisas,560,mu_cristobalrojas
+par_lascalderas,Las Calderas,561,mu_colina
+par_lascocuizas,Las Cocuizas,562,mu_maturin
+par_lasdelicias,Las Delicias,563,mu_girardot_ara
+par_lasguacamayas,Las Guacamayas,564,mu_josefelixribas_ara
+par_lasmajadas,Las Majadas,565,mu_sucre_bol
+par_lasmercedes_las,Las Mercedes,566,mu_lasmercedes
+par_lasmercedes,Las Mercedes,567,mu_torres
+par_lasminasdebaruta,Las Minas De Baruta,568,mu_baruta
+par_lasparcelas,Las Parcelas,569,mu_mara
+par_laspenitas,Las Penitas,570,mu_urdaneta_ara
+par_laspiedras,Las Piedras,571,mu_cardenalquintero
+par_lasvegasdeltuy,Las Vegas Del Tuy,572,mu_union
+par_lassodelavega,Lasso De La Vega,573,mu_libertador_mer
+par_lecherias,Lecherias,574,mu_diegobautistaurbaneja
+par_leonardoruizpineda,Leonardo Ruiz Pineda,575,mu_tucupita
+par_leonciomartinez,Leoncio Martinez,576,mu_sucre_mir
+par_libertadroj,Libertad,577,mu_rojas
+par_libertadcaj,Libertad,578,mu_cajigal
+par_libertadlag,Libertad,579,mu_lagunillas
+par_libertadmac,Libertad,580,mu_machiquesdeperija
+par_libertaddecojedes,Libertad De Cojedes,581,mu_ricaurte
+par_libertaddeorituco,Libertad De Orituco,582,mu_josetadeomonagas
+par_libertadorped,Libertador,583,mu_pedromariafreites
+par_libertadoraco,Libertador,584,mu_acosta_fal
+par_libertadorbar,Libertador,585,mu_baralt
+par_lobatera,Lobatera,586,mu_lobatera
+par_losbarales,Los Barales,587,mu_tubores
+par_losbarrancosdefajardo,Los Barrancos De Fajardo,588,mu_sotillo
+par_loscaprichos,Los Caprichos,589,mu_josefelipemarquezcanizales
+par_loscedros,Los Cedros,590,mu_betijoque
+par_loscortijos,Los Cortijos,591,mu_sanfrancisco_zul
+par_losguasimitos,Los Guasimitos,592,mu_obispos
+par_losguayos,Los Guayos,593,mu_losguayos
+par_losnevados,Los Nevados,594,mu_libertador_mer
+par_lostacariguas,Los Tacariguas,595,mu_girardot_ara
+par_lostaques,Los Taques,596,mu_lostaques
+par_losteques,Los Teques,597,mu_guaicaipuro
+par_luisalbertogomez,Luis Alberto Gomez,598,mu_autonomoatures
+par_luisbeltranprietofigueroa,Luis Beltran Prieto Figueroa,599,mu_pedernales
+par_luisdevicente,Luis De Vicente,600,mu_mara
+par_luishurtadohiguera,Luis Hurtado Higuera,601,mu_maracaibo
+par_macapo,Macapo,602,mu_limablanco
+par_macarao,Macarao,603,mu_libertador_dis
+par_macarapana,Macarapana,604,mu_bermudez
+par_machurucuto,Machurucuto,605,mu_pedrogual
+par_macuto,Macuto,606,mu_vargas
+par_madremariadesanjose,Madre Maria De San Jose,607,mu_girardot_ara
+par_magdaleno,Magdaleno,608,mu_zamora_ara
+par_maiquetia,Maiquetia,609,mu_vargas
+par_mamo,Mamo,610,mu_independencia_anz
+par_mamporal,Mamporal,611,mu_buroz
+par_maneiro,Maneiro,612,mu_maneiro
+par_manicuare,Manicuare,613,mu_cruzsalmeronacosta
+par_mantecal,Mantecal,614,mu_munoz
+par_manueldagnino,Manuel Dagnino,615,mu_maracaibo
+par_manuelfeliperugeles,Manuel Felipe Rugeles,616,mu_libertad_tac
+par_manuelguanipamatos,Manuel Guanipa Matos,617,mu_baralt
+par_manuelmanriqueeze,Manuel Manrique,618,mu_ezequielzamora_coj
+par_manuelmanriquesim,Manuel Manrique,619,mu_simonbolivar_zul
+par_manuelmonge,Manuel Monge,620,mu_manuelmonge
+par_manuelmorillo,Manuel Morillo,621,mu_torres
+par_manuelpalaciofajardo,Manuel Palacio Fajardo,622,mu_barinas
+par_manuelpiar,Manuel Piar,623,mu_casacoima
+par_manuelrenaud,Manuel Renaud,624,mu_antoniodiaz
+par_manuelsalvadorulloa,Manuel Salvador Ulloa,625,mu_candelaria
+par_maparari,Maparari,626,mu_federacion
+par_mapire,Mapire,627,mu_josegregoriomonagas
+par_marabal,Marabal,628,mu_marino
+par_marawakatokyshamanana,Marawaka Toky Shamanana,629,mu_altoorinoco
+par_marcelinobriceno,Marcelino Briceno,630,mu_baralt
+par_marcialhernandez,Marcial Hernandez,631,mu_sanfrancisco_zul
+par_marhuanta,Marhuanta,632,mu_angosturadelorinoco
+par_mariadelaconcepcionpalaciosb,Maria De La Concepcion Palacios B,633,mu_tuliofebrescordero
+par_marianoparraleon,Mariano Parra Leon,634,mu_jesusenriquelossada
+par_marianopiconsalas,Mariano Picon Salas,635,mu_libertador_mer
+par_mariara,Mariara,636,mu_diegoibarra
+par_marino,Marino,637,mu_andreseloyblanco_suc
+par_mariscalantoniojosedesucre,Mariscal Antonio Jose De Sucre,638,mu_tucupita
+par_marizapa,Marizapa,639,mu_acevedo
+par_maroa,Maroa,640,mu_autonomomaroa
+par_masparrito,Masparrito,641,mu_cruzparedes
+par_mataruca,Mataruca,642,mu_colina
+par_matasiete,Matasiete,643,mu_gomez
+par_matrizcam,Matriz,644,mu_campoelias
+par_matriztru,Matriz,645,mu_trujillo
+par_mavakamavaka,Mavaka Mavaka,646,mu_altoorinoco
+par_medioventuari,Medio Ventuari,647,mu_autonomomanapiare
+par_mendozadelvalle,Mendoza del Valle,648,mu_valera
+par_menedemauroa,Mene De Mauroa,649,mu_mauroa
+par_mercedesdiaz,Mercedes Diaz,650,mu_valera
+par_mesabolivar,Mesa Bolivar,651,mu_antoniopintosalinas
+par_mesadelaspalmas,Mesa De Las Palmas,652,mu_antoniopintosalinas
+par_mesadequintero,Mesa De Quintero,653,mu_guaraque
+par_michelena,Michelena,654,mu_michelena
+par_migueloterosilva,Miguel Otero Silva,655,mu_simonrodriguez_anz
+par_miguelpena,Miguel Pena,656,mu_valencia
+par_milla,Milla,657,mu_libertador_mer
+par_miranda,Miranda,658,mu_miranda_mer
+par_mitare,Mitare,659,mu_miranda_fal
+par_moitaco,Moitaco,660,mu_sucre_bol
+par_monagas,Monagas,661,mu_almirantepadilla
+par_monsenorargimirogarcia,Monsenor Argimiro Garcia,662,mu_tucupita
+par_monsenorarturocelestinoalvarez,Monsenor Arturo Celestino alvarez,663,mu_sucre_zul
+par_monsenorcarrillo,Monsenor Carrillo,664,mu_trujillo
+par_monsenorfelicianogonz,Monsenor Feliciano Gonz,665,mu_franciscolinaresalcantara
+par_monsenorjauregui,Monsenor Jauregui,666,mu_bocono
+par_monsenormarcossergiogodoy,Monsenor Marcos Sergio Godoy,667,mu_mara
+par_monsenormiguelantoniosalas,Monsenor Miguel Antonio Salas,668,mu_jauregui
+par_montalbanmon,Montalban,669,mu_montalban
+par_montalbancam,Montalban,670,mu_campoelias
+par_montanaverde,Montana Verde,671,mu_torres
+par_montecarmelo,Monte Carmelo,672,mu_montecarmelo
+par_montesdeoca,Montes De Oca,673,mu_torres
+par_moralito,Moralito,674,mu_colon
+par_moran,Moran,675,mu_moran
+par_moronjua,Moron,676,mu_juanjosemora
+par_moronsan,Moron,677,mu_santabarbara
+par_moroturo,Moroturo,678,mu_urdaneta_lar
+par_moruy,Moruy,679,mu_falcon
+par_mosquey,Mosquey,680,mu_bocono
+par_motatan,Motatan,681,mu_motatan
+par_mucuchachi,Mucuchachi,682,mu_arzobispochacon
+par_mucuchies,Mucuchies,683,mu_rangel
+par_mucuritas,Mucuritas,684,mu_achaguas
+par_mucuruba,Mucuruba,685,mu_rangel
+par_mucutuy,Mucutuy,686,mu_arzobispochacon
+par_munduapo,Munduapo,687,mu_autonomoautana
+par_naguanagua,Naguanagua,688,mu_naguanagua
+par_naiguata,Naiguata,689,mu_vargas
+par_naricual,Naricual,690,mu_simonbolivar_anz
+par_negroprimero,Negro Primero,691,mu_valencia
+par_nicolaspulido,Nicolas Pulido,692,mu_antoniojosedesucre
+par_nirgua,Nirgua,693,mu_nirgua
+par_norte,Norte,694,mu_carirubana
+par_nuestrasenoradelrosariodebarut,Nuestra Senora Del Rosario De Barut,695,mu_baruta
+par_nuevaarcadia,Nueva Arcadia,696,mu_pedromariaurena
+par_nuevabolivia,Nueva Bolivia,697,mu_tuliofebrescordero
+par_nuevacua,Nueva Cua,698,mu_urdaneta_mir
+par_obispos,Obispos,699,mu_obispos
+par_ocumaredelacosta,Ocumare De La Costa,700,mu_ocumaredelacostadeoro
+par_ocumaredeltuy,Ocumare Del Tuy,701,mu_tomaslander
+par_olegariovillalobos,Olegario Villalobos,702,mu_maracaibo
+par_ollasdecaramacate,Ollas De Caramacate,703,mu_sancasimiro
+par_oncedeabril,Once De Abril,704,mu_caroni
+par_onoto,Onoto,705,mu_juanmanuelcajigal
+par_orinoco,Orinoco,706,mu_angosturadelorinoco
+par_ortiz,Ortiz,707,mu_ortiz
+par_ospino,Ospino,708,mu_ospino
+par_osunarodriguez,Osuna Rodriguez,709,mu_libertador_mer
+par_padrebarralsanfranciscodeguayo,Padre Barral San Francisco de Guayo,710,mu_antoniodiaz
+par_padrepedrochien,Padre Pedro Chien,711,mu_padrepedrochien
+par_paez,Paez,712,mu_pedraza
+par_palaciosfajardo,Palacios Fajardo,713,mu_rojas
+par_palmasola,Palmasola,714,mu_palmasola
+par_palmirajul,Palmira,715,mu_juliocesarsalas
+par_palmiragua,Palmira,716,mu_guasimos
+par_palonegro,Palo Negro,717,mu_libertador_ara
+par_palotal,Palotal,718,mu_bolivar_tac
+par_pampan,Pampan,719,mu_pampan
+par_pampanitoii,Pampanito II,720,mu_pampanito
+par_panamericana,Panamericana,721,mu_carache
+par_panapana,Panapana,722,mu_angosturadelorinoco
+par_panaquire,Panaquire,723,mu_acevedo
+par_paodezarate,Pao De Zarate,724,mu_josefelixribas_ara
+par_paparo,Paparo,725,mu_paez_mir
+par_papelon,Papelon,726,mu_papelon
+par_paracotos,Paracotos,727,mu_guaicaipuro
+par_paraisodesanjose,Paraiso De San Jose,728,mu_jimenez
+par_parapara,Parapara,729,mu_juangermanroscio
+par_parhuena,Parhuena,730,mu_autonomoatures
+par_pariaguan,Pariaguan,731,mu_franciscodemiranda_anz
+par_pasorealdemacaira,Paso Real De Macaira,732,mu_josetadeomonagas
+par_patanemo,Patanemo,733,mu_puertocabello
+par_pauji,Pauji,734,mu_federacion
+par_payara,Payara,735,mu_paez_por
+par_pecaya,Pecaya,736,mu_sucre_fal
+par_pedernales,Pedernales,737,mu_pedernales
+par_pedregal,Pedregal,738,mu_democracia
+par_pedrobricenomendez,Pedro Briceno Mendez,739,mu_ezequielzamora_bar
+par_pedrocova,Pedro Cova,740,mu_piar_bol
+par_pedrojoseovalles,Pedro Jose Ovalles,741,mu_girardot_ara
+par_pedrolucasurribarri,Pedro Lucas Urribarri,742,mu_santarita
+par_pedromariamorantes,Pedro Maria Morantes,743,mu_sancristobal
+par_penablanca,Pena Blanca,744,mu_monsenorjosevicentedeunda
+par_penalver,Penalver,745,mu_sanfernando
+par_petare,Petare,746,mu_sucre_mir
+par_piar,Piar,747,mu_josegregoriomonagas
+par_piedragrande,Piedra Grande,748,mu_democracia
+par_pijiguaos,Pijiguaos,749,mu_cedeno_bol
+par_pimpinela,Pimpinela,750,mu_paez_por
+par_pinango,Pinango,751,mu_miranda_mer
+par_piotamayo,Pio Tamayo,752,mu_andreseloyblanco_lar
+par_piritupir,Piritu,753,mu_piritu_anz
+par_pirituest,Piritu,754,mu_esteller
+par_platanillal,Platanillal,755,mu_autonomoatures
+par_porlamar,Porlamar,756,mu_santiagomarino_nue
+par_potosi,Potosi,757,mu_uribante
+par_potreritos,Potreritos,758,mu_lacanadadeurdaneta
+par_pozoverde,Pozo Verde,759,mu_caroni
+par_pozuelos,Pozuelos,760,mu_juanantoniosotillo
+par_pregonero,Pregonero,761,mu_uribante
+par_presidentebetancourt,Presidente Betancourt,762,mu_albertoadriani
+par_presidentepaez,Presidente Paez,763,mu_albertoadriani
+par_presidenteromulogallegos,Presidente Romulo Gallegos,764,mu_albertoadriani
+par_pueblocumarebo,Pueblo Cumarebo,765,mu_zamora_fal
+par_pueblollano,Pueblo Llano,766,mu_pueblollano
+par_pueblonuevo,Pueblo Nuevo,767,mu_santaana
+par_pueblonuevofal,Pueblo Nuevo,768,mu_falcon
+par_pueblonuevobar,Pueblo Nuevo,769,mu_baralt
+par_pueblonuevodelsur,Pueblo Nuevo Del Sur,770,mu_sucre_mer
+par_puertocumarebo,Puerto Cumarebo,771,mu_zamora_fal
+par_puertodenutrias,Puerto De Nutrias,772,mu_sosa
+par_puertolacruz,Puerto La Cruz,773,mu_juanantoniosotillo
+par_puertomiranda,Puerto Miranda,774,mu_camaguan
+par_puertopiritu,Puerto Piritu,775,mu_fernandodepenalver
+par_puertosanto,Puerto Santo,776,mu_arismendi_suc
+par_puertovivas,Puerto Vivas,777,mu_andreseloyblanco_bar
+par_pulidomendez,Pulido Mendez,778,mu_albertoadriani
+par_puntacardon,Punta Cardon,779,mu_carirubana
+par_puntademata,Punta De Mata,780,mu_ezequielzamora_mon
+par_puntadepiedras,Punta De Piedras,781,mu_valdez
+par_puntagorda,Punta Gorda,782,mu_cabimas
+par_purureche,Purureche,783,mu_democracia
+par_quebradahondadeguache,Quebrada Honda De Guache,784,mu_andreseloyblanco_lar
+par_queserasdelmedio,Queseras Del Medio,785,mu_achaguas
+par_quinimari,Quinimari,786,mu_junin
+par_quintero,Quintero,787,mu_munoz
+par_quiriquire,Quiriquire,788,mu_punceres
+par_rafaelmariabaralt,Rafael Maria Baralt,789,mu_simonbolivar_zul
+par_rafaelrangel,Rafael Rangel,790,mu_bocono
+par_rafaelurdanetavale,Rafael Urdaneta,791,mu_valencia
+par_rafaelurdanetasim,Rafael Urdaneta,792,mu_simonbolivar_zul
+par_rafaelurdanetaval,Rafael Urdaneta,793,mu_valmorerodriguez
+par_ramon_ignacio_mendez_bar,Ramon Ignacio Mendez,794,mu_barinas
+par_ramonignaciomendez,Ramon Ignacio Mendez,795,mu_ezequielzamora_bar
+par_ramonperaza,Ramon Peraza,796,mu_paez_por
+par_raulcuenca,Raul Cuenca,797,mu_valmorerodriguez
+par_raulleoniang,Raul Leoni,798,mu_angostura
+par_raulleonisuc,Raul Leoni,799,mu_sucre_zul
+par_raulleonimar,Raul Leoni,800,mu_maracaibo
+par_rendon,Rendon,801,mu_ribero
+par_reyesdevargas,Reyes de Vargas,802,mu_torres
+par_ribas,Ribas,803,mu_acevedo
+par_ricaurte,Ricaurte,804,mu_mara
+par_rinconhondo,Rincon Hondo,805,mu_munoz
+par_rioacarigua,Rio Acarigua,806,mu_araure
+par_riocaribe,Rio Caribe,807,mu_arismendi_suc
+par_riochico,Rio Chico,808,mu_paez_mir
+par_riogrande,Rio Grande,809,mu_padrepedrochien
+par_rio_negro_gua,Rio Negro,810,mu_guaraque
+par_rionegro,Rio Negro,811,mu_machiquesdeperija
+par_rioseco,Rio Seco,812,mu_miranda_fal
+par_rodriguezdominguez,Rodriguez Dominguez,813,mu_albertoarvelotorrealba
+par_romancardenas,Roman Cardenas,814,mu_independencia_tac
+par_romulobetancourtbar,Romulo Betancourt,815,mu_barinas
+par_romulobetancourtcab,Romulo Betancourt,816,mu_cabimas
+par_romulogallegosrom,Romulo Gallegos,817,mu_romulogallegos_apu
+par_romulogallegoscas,Romulo Gallegos,818,mu_casacoima
+par_romulogallegosand,Romulo Gallegos,819,mu_andreseloyblanco_suc
+par_romulogallegossuc,Romulo Gallegos,820,mu_sucre_tac
+par_roscio,Roscio,821,mu_roscio
+par_rubio,Rubio,822,mu_junin
+par_sabanademendoza,Sabana De Mendoza,823,mu_sucre_tru
+par_sabanadepiedra,Sabana De Piedra,824,mu_caripe
+par_sabanadeuchire,Sabana De Uchire,825,mu_manuelezequielbruzual
+par_sabanagrande,Sabana Grande,826,mu_bolivar_suc
+par_sabanalibre,Sabana Libre,827,mu_escuque
+par_sabanetaalb,Sabaneta,828,mu_albertoarvelotorrealba
+par_sabanetamir,Sabaneta,829,mu_miranda_fal
+par_sagrario,Sagrario,830,mu_libertador_mer
+par_salomros,Salom,831,mu_roscio
+par_salomnir,Salom,832,mu_nirgua
+par_samandeguere,Saman De Guere,833,mu_santiagomarino_ara
+par_samariapo,Samariapo,834,mu_autonomoautana
+par_sanagustinlib,San Agustin,835,mu_libertador_dis
+par_sanagustincar,San Agustin,836,mu_caripe
+par_sanandres,San Andres,837,mu_pena
+par_sanantonioaris,San Antonio,838,mu_arismendi_nue
+par_sanantoniomir,San Antonio,839,mu_miranda_fal
+par_sanantonioari,San Antonio,840,mu_aricagua
+par_sanantonioaco,San Antonio,841,mu_acosta_mon
+par_sanantoniodeirapa,San Antonio De Irapa,842,mu_marino
+par_sanantoniodelosaltos,San Antonio De Los Altos,843,mu_lossalias
+par_sanantoniodeyare,San Antonio De Yare,844,mu_simonbolivar_mir
+par_sanantoniodelgolfo,San Antonio del Golfo,845,mu_mejia
+par_sanantoniodeltachira,San Antonio del Tachira,846,mu_bolivar_tac
+par_sanbenito,San Benito,847,mu_cabimas
+par_sanbernardino,San Bernardino,848,mu_libertador_dis
+par_sanblas,San Blas,849,mu_valencia
+par_sancamilo,San Camilo,850,mu_paez_apu
+par_sancarlosdeaustria,San Carlos De Austria,851,mu_ezequielzamora_coj
+par_sancarlosderionegro,San Carlos De Rio Negro,852,mu_autonomorionegro
+par_sancasimiro,San Casimiro,853,mu_sancasimiro
+par_sancristobal_sim,San Cristobal,854,mu_simonbolivar_anz
+par_sancristobaldetorondoy,San Cristobal De Torondoy,855,mu_justobriceno
+par_sandiego,San Diego,856,mu_sandiego
+par_sandiegodecabrutica,San Diego De Cabrutica,857,mu_josegregoriomonagas
+par_sanfelipe,San Felipe,858,mu_sanfelipe
+par_sanfelixmau,San Felix,859,mu_mauroa
+par_sanfelixced,San Felix,860,mu_cedeno_bol
+par_sanfernando_san,San Fernando,861,mu_sanfernando
+par_sanfernando,San Fernando,862,mu_montes
+par_sanfernandodeatabapo,San Fernando de Atabapo,863,mu_autonomoatabapo
+par_sanfernandodelguapo,San Fernando Del Guapo,864,mu_paez_mir
+par_sanfranciscopir,San Francisco,865,mu_piritu_anz
+par_sanfranciscoang,San Francisco,866,mu_angostura
+par_sanfranciscosan,San Francisco,867,mu_sanfrancisco_zul
+par_sanfranciscotov,San Francisco,868,mu_tovar_mer
+par_sanfranciscoaco,San Francisco,869,mu_acosta_mon
+par_sanfranciscopen,San Francisco,870,mu_peninsulademacanao
+par_sanfranciscodeasis,San Francisco De Asis,871,mu_zamora_ara
+par_sanfranciscodecara,San Francisco De Cara,872,mu_urdaneta_ara
+par_sanfranciscodemacaira,San Francisco De Macaira,873,mu_josetadeomonagas
+par_sanfranciscodetiznados,San Francisco De Tiznados,874,mu_ortiz
+par_sanfranciscodeyare,San Francisco De Yare,875,mu_simonbolivar_mir
+par_sanfranciscojavierdelezama,San Francisco Javier de Lezama,876,mu_josetadeomonagas
+par_sangabriel,San Gabriel,877,mu_miranda_fal
+par_sanisidrosif,San Isidro,878,mu_sifontes
+par_sanisidromar,San Isidro,879,mu_maracaibo
+par_sanisidrolabrador,San Isidro Labrador,880,mu_turen
+par_sanjavier,San Javier,881,mu_sanfelipe
+par_san_joaquin_ana,San Joaquin,882,mu_anaco
+par_sanjoaquin,San Joaquin,883,mu_sanjoaquin
+par_sanjoaquindenavay,San Joaquin De Navay,884,mu_libertador_tac
+par_sanjoseval,San Jose,885,mu_valencia
+par_sanjosetuc,San Jose,886,mu_tucupita
+par_sanjoselib,San Jose,887,mu_libertador_dis
+par_sanjoseboc,San Jose,888,mu_bocono
+par_sanjosecan,San Jose,889,mu_candelaria
+par_sanjose,San Jose,890,mu_jesusenriquelossada
+par_sanjosemir,San Jose,891,mu_miranda_zul
+par_sanjosedeaerocuar,San Jose De Aerocuar,892,mu_andresmata
+par_sanjosedebarlovento,San Jose De Barlovento,893,mu_andresbello_mir
+par_sanjosedebolivar,San Jose de Bolivar,894,mu_franciscodemiranda_tac
+par_sanjosedeguanipaeltigrito,San Jose De Guanipa EL Tigrito,895,mu_sanjosedeguanipa
+par_sanjosedeguaribe,San Jose De Guaribe,896,mu_sanjosedeguaribe
+par_sanjosedelacosta,San Jose De La Costa,897,mu_piritu_fal
+par_sanjosedelamontana,San Jose De La Montana,898,mu_guanare
+par_sanjosedeperija,San Jose De Perija,899,mu_machiquesdeperija
+par_sanjosedesaguaz,San Jose De Saguaz,900,mu_sucre_por
+par_sanjosedetiznados,San Jose De Tiznados,901,mu_ortiz
+par_sanjosedeunare,San Jose De Unare,902,mu_pedrozaraza
+par_sanjosedelsur,San Jose Del Sur,903,mu_campoelias
+par_sanjosecito,San Josecito,904,mu_torbes
+par_sanjuanlib,San Juan,905,mu_libertador_dis
+par_sanjuansuc,San Juan,906,mu_sucre_mer
+par_san_juan_bautista_dia,San Juan Bautista,907,mu_diaz
+par_sanjuanbautista,San Juan Bautista,908,mu_sancristobal
+par_sanjuandecolon,San Juan de Colon,909,mu_ayacucho
+par_sanjuandeguanaguanare,San Juan De Guanaguanare,910,mu_guanare
+par_sanjuandelasgaldonas,San Juan De Las Galdonas,911,mu_arismendi_suc
+par_sanjuandeloscayos,San Juan De Los Cayos,912,mu_acosta_fal
+par_sanjuandelosmorros,San Juan De Los Morros,913,mu_juangermanroscio
+par_sanjuandemanapiare,San Juan de Manapiare,914,mu_autonomomanapiare
+par_sanjuandepayara,San Juan De Payara,915,mu_pedrocamejo
+par_sanjudastadeo,San Judas Tadeo,916,mu_sanjudastadeo
+par_sanlorenzo,San Lorenzo,917,mu_montes
+par_sanlorenzodetiznados,San Lorenzo De Tiznados,918,mu_ortiz
+par_sanluisbol,San Luis,919,mu_bolivar_fal
+par_sanluisval,San Luis,920,mu_valera
+par_sanmartindeporres,San Martin De Porres,921,mu_libertador_ara
+par_sanmateo,San Mateo,922,mu_libertad_anz
+par_sanmiguel,San Miguel,923,mu_fernandodepenalver
+par_sanmigueljim,San Miguel,924,mu_jimenez
+par_sanmiguelurd,San Miguel,925,mu_urdaneta_lar
+par_sanmiguelboc,San Miguel,926,mu_bocono
+par_sanpablo,San Pablo,927,mu_juanmanuelcajigal
+par_sanpablopan,San Pablo,928,mu_panamericano
+par_sanpablosuc,San Pablo,929,mu_sucre_tac
+par_sanpedrolib,San Pedro,930,mu_libertador_dis
+par_sanpedrogua,San Pedro,931,mu_guaicaipuro
+par_sanpedrodelrio,San Pedro Del Rio,932,mu_ayacucho
+par_sanrafaeltuc,San Rafael,933,mu_tucupita
+par_sanrafaelran,San Rafael,934,mu_rangel
+par_sanrafaelmar,San Rafael,935,mu_mara
+par_sanrafaeldealcazar,San Rafael De Alcazar,936,mu_obisporamosdelora
+par_sanrafaeldeatamaica,San Rafael De Atamaica,937,mu_sanfernando
+par_sanrafaeldelaya,San Rafael De Laya,938,mu_josefelixribas_gua
+par_sanrafaeldeorituco,San Rafael De Orituco,939,mu_josetadeomonagas
+par_sanrafaeldepaloalzado,San Rafael De Palo Alzado,940,mu_sucre_por
+par_sanrafaeldelpinal,San Rafael del Pinal,941,mu_fernandezfeo
+par_sansebastiansan,San Sebastian,942,mu_sansebastian
+par_sancristobal,San Sebastian,943,mu_sancristobal
+par_sansilvestre,San Silvestre,944,mu_barinas
+par_san_simon_mat,San Simon,945,mu_maturin
+par_sansimon,San Simon,946,mu_simonrodriguez_tac
+par_santimoteo,San Timoteo,947,mu_baralt
+par_sanvicentemun,San Vicente,948,mu_munoz
+par_sanvicentemat,San Vicente,949,mu_maturin
+par_santaana,Santa Ana,950,mu_santaana
+par_santaanacar,Santa Ana,951,mu_carirubana
+par_santaanamir,Santa Ana,952,mu_miranda_fal
+par_santaanagom,Santa Ana,953,mu_gomez
+par_santaanapam,Santa Ana,954,mu_pampan
+par_santaanadeltachira,Santa Ana del Tachira,955,mu_cordoba
+par_santaapoloniatul,Santa Apolonia,956,mu_tuliofebrescordero
+par_santaapoloniala,Santa Apolonia,957,mu_laceiba
+par_santabarbarafra,Santa Barbara,958,mu_franciscodelcarmencarvajal
+par_santabarbaraeze,Santa Barbara,959,mu_ezequielzamora_bar
+par_santabarbaraang,Santa Barbara,960,mu_angostura
+par_santabarbaratom,Santa Barbara,961,mu_tomaslander
+par_santabarbarasan,Santa Barbara,962,mu_santabarbara
+par_santabarbaracol,Santa Barbara,963,mu_colon
+par_santacatalinasos,Santa Catalina,964,mu_sosa
+par_santacatalinaber,Santa Catalina,965,mu_bermudez
+par_santaclara,Santa Clara,966,mu_josegregoriomonagas
+par_santacruz,Santa Cruz,967,mu_joseangellamas
+par_santacruztur,Santa Cruz,968,mu_turen
+par_santacruzrib,Santa Cruz,969,mu_ribero
+par_santacruzcar,Santa Cruz,970,mu_carache
+par_santacruzdebucaral,Santa Cruz De Bucaral,971,mu_union
+par_santacruzdeguacas,Santa Cruz De Guacas,972,mu_andreseloyblanco_bar
+par_santacruzdemora,Santa Cruz De Mora,973,mu_antoniopintosalinas
+par_santacruzdelzulia,Santa Cruz Del Zulia,974,mu_colon
+par_santaelenadearenales,Santa Elena De Arenales,975,mu_obisporamosdelora
+par_santaelenadeuairen,Santa Elena De Uairen,976,mu_gransabana
+par_santafe,Santa Fe,977,mu_sanrafaeldeonoto
+par_santaineslib,Santa Ines,978,mu_libertad_anz
+par_santainesbar,Santa Ines,979,mu_barinas
+par_santainessuc,Santa Ines,980,mu_sucre_suc
+par_santaisabel,Santa Isabel,981,mu_andresbello_tru
+par_santaluciabar,Santa Lucia,982,mu_barinas
+par_santaluciamar,Santa Lucia,983,mu_maracaibo
+par_santaluciadeltuy,Santa Lucia del Tuy,984,mu_pazcastillo
+par_santamaria,Santa Maria,985,mu_ribero
+par_santamariadecaparo,Santa Maria De Caparo,986,mu_padrenoguera
+par_santamariadeipire,Santa Maria De Ipire,987,mu_santamariadeipire
+par_santamariadelhorcon,Santa Maria Del Horcon,988,mu_montecarmelo
+par_santaritafra,Santa Rita,989,mu_franciscolinaresalcantara
+par_santaritaesc,Santa Rita,990,mu_escuque
+par_santaritasan,Santa Rita,991,mu_santarita
+par_santaritademanapire,Santa Rita De Manapire,992,mu_lasmercedes
+par_santarosa,Santa Rosa,993,mu_pedromariafreites
+par_santarosaval,Santa Rosa,994,mu_valencia
+par_santarosairi,Santa Rosa,995,mu_iribarren
+par_santarosaber,Santa Rosa,996,mu_bermudez
+par_santarosaroj,Santa Rosa,997,mu_rojas
+par_santarosalia,Santa Rosalia,998,mu_libertador_dis
+par_santarosaliadepalermo,Santa Rosalia de Palermo,999,mu_elhatillo
+par_santateresalib,Santa Teresa,1000,mu_libertador_dis
+par_santateresaber,Santa Teresa,1001,mu_bermudez
+par_santateresadeltuy,Santa Teresa Del Tuy,1002,mu_independencia_mir
+par_santiago,Santiago,1003,mu_urdaneta_mir
+par_santodomingocar,Santo Domingo,1004,mu_cardenalquintero
+par_santodomingofer,Santo Domingo,1005,mu_fernandezfeo
+par_santosdeabelgasaraguaimujo,Santos De Abelgas Araguaimujo,1006,mu_antoniodiaz
+par_santosmichelena,Santos Michelena,1007,mu_santosmichelena
+par_sarare,Sarare,1008,mu_simonplanas
+par_seboruco,Seboruco,1009,mu_seboruco
+par_seque,Seque,1010,mu_buchivacoa
+par_sierraparimaprimabe,Sierra Parima Primabe,1011,mu_altoorinoco
+par_simonbolivarsos,Simon Bolivar,1012,mu_sosa
+par_simonbolivarcar,Simon Bolivar,1013,mu_caroni
+par_simonbolivarbej,Simon Bolivar,1014,mu_bejuma
+par_simon_rodriguez_roj,Simon Rodriguez,1015,mu_rojas
+par_simonrodriguez,Simon Rodriguez,1016,mu_franciscojavierpulgar
+par_sinamaica,Sinamaica,1017,mu_guajira
+par_sipapo,Sipapo,1018,mu_autonomoautana
+par_siquisique,Siquisique,1019,mu_urdaneta_lar
+par_sixtozambrano,Sixto Zambrano,1020,mu_rosariodeperija
+par_solano,Solano,1021,mu_autonomorionegro
+par_soledad,Soledad,1022,mu_independencia_anz
+par_soro,Soro,1023,mu_marino
+par_sosa,Sosa,1024,mu_julianmellado
+par_sucrefer,Sucre,1025,mu_fernandodepenalver
+par_sucresuc,Sucre,1026,mu_sucre_mir
+par_sucregir,Sucre,1027,mu_girardot_coj
+par_sucrelib,Sucre,1028,mu_libertador_dis
+par_sucregom,Sucre,1029,mu_gomez
+par_tabasca,Tabasca,1030,mu_libertador_mon
+par_tabay,Tabay,1031,mu_santosmarquina
+par_tacariguacar,Tacarigua,1032,mu_carlosarvelo
+par_tacariguabri,Tacarigua,1033,mu_brion
+par_tacariguadelalaguna,Tacarigua De La Laguna,1034,mu_paez_mir
+par_tacata,Tacata,1035,mu_guaicaipuro
+par_taguay,Taguay,1036,mu_urdaneta_ara
+par_taguaya,Taguaya,1037,mu_piar_mon
+par_tamaca,Tamaca,1038,mu_iribarren
+par_tamare,Tamare,1039,mu_mara
+par_tariba,Tariba,1040,mu_cardenas
+par_taveraacosta,Tavera Acosta,1041,mu_andresmata
+par_temblador,Temblador,1042,mu_libertador_mon
+par_temerla,Temerla,1043,mu_nirgua
+par_teresen,Teresen,1044,mu_caripe
+par_thelmomorles,Thelmo Morles,1045,mu_sanrafaeldeonoto
+par_tiara,Tiara,1046,mu_santosmichelena
+par_ticoporo,Ticoporo,1047,mu_antoniojosedesucre
+par_timotes,Timotes,1048,mu_miranda_mer
+par_tinaquillo,Tinaquillo,1049,mu_tinaquillo
+par_tintorero,Tintorero,1050,mu_jimenez
+par_tocopero,Tocopero,1051,mu_tocopero
+par_tocuyito,Tocuyito,1052,mu_libertador_car
+par_tocuyodelacosta,Tocuyo De La Costa,1053,mu_monsenoriturriza
+par_tomasalfaro,Tomas Alfaro,1054,mu_sirarthurmcgregor
+par_torondoy,Torondoy,1055,mu_justobriceno
+par_torres,Torres,1056,mu_torres
+par_torunos,Torunos,1057,mu_barinas
+par_tovar,Tovar,1058,mu_tovar_mer
+par_tresdefebrero,Tres De Febrero,1059,mu_laceiba
+par_tresesquinas,Tres Esquinas,1060,mu_trujillo
+par_trinidaddelacapilla,Trinidad De La Capilla,1061,mu_guanarito
+par_trinidadsamuel,Trinidad Samuel,1062,mu_torres
+par_tubores,Tubores,1063,mu_tubores
+par_tucacas,Tucacas,1064,mu_joselaurenciosilva
+par_tucani,Tucani,1065,mu_caraccioloparraolmedo
+par_tucupido,Tucupido,1066,mu_josefelixribas_gua
+par_tumeremo,Tumeremo,1067,mu_sifontes
+par_tunapuicito,Tunapuicito,1068,mu_benitez
+par_tunapuy,Tunapuy,1069,mu_libertador_suc
+par_tuname,Tuname,1070,mu_urdaneta_tru
+par_turmero,Turmero,1071,mu_santiagomarino_ara
+par_ucatalajalisa,Ucata Laja Lisa,1072,mu_autonomoatabapo
+par_udonperez,Udon Perez,1073,mu_catatumbo
+par_unare,Unare,1074,mu_caroni
+par_unionpue,Union,1075,mu_puertocabello
+par_unioniri,Union,1076,mu_iribarren
+par_unionben,Union,1077,mu_benitez
+par_universidad,Universidad,1078,mu_caroni
+par_upata,Upata,1079,mu_piar_bol
+par_urachiche,Urachiche,1080,mu_urachiche
+par_uracoa,Uracoa,1081,mu_uracoa
+par_urama,Urama,1082,mu_juanjosemora
+par_urdanetapae,Urdaneta,1083,mu_paez_por
+par_urdanetaurd,Urdaneta,1084,mu_urdaneta_ara
+par_urena,Urena,1085,mu_pedromariaurena
+par_urica,Urica,1086,mu_pedromariafreites
+par_urimare,Urimare,1087,mu_vargas
+par_urribarri,Urribarri,1088,mu_colon
+par_urumaco,Urumaco,1089,mu_urumaco
+par_uvencioantoniovelasquez,Uvencio Antonio Velasquez,1090,mu_sucre_por
+par_uveral,Uveral,1091,mu_esteller
+par_uveritojos,Uverito,1092,mu_josegregoriomonagas
+par_uveritocam,Uverito,1093,mu_camaguan
+par_valentinvaliente,Valentin Valiente,1094,mu_sucre_suc
+par_valerita,Valerita,1095,mu_miranda_tru
+par_valledeeroa,Valle de Eroa,1096,mu_buchivacoa
+par_valledeguanape,Valle De Guanape,1097,mu_franciscodelcarmencarvajal
+par_valledelapascua,Valle De La Pascua,1098,mu_leonardoinfante
+par_vallemorin,Valle Morin,1099,mu_sancasimiro
+par_vallesdetucutunemo,Valles De Tucutunemo,1100,mu_zamora_ara
+par_valmorerodriguez,Valmore Rodriguez,1101,mu_sucre_zul
+par_vegadeguaramacal,Vega De Guaramacal,1102,mu_bocono
+par_venanciopulgar,Venancio Pulgar,1103,mu_maracaibo
+par_venezuela,Venezuela,1104,mu_lagunillas
+par_vicentefuentes,Vicente Fuentes,1105,mu_villalba
+par_victorino,Victorino,1106,mu_autonomomaroa
+par_vientofresco,Viento Fresco,1107,mu_cedeno_mon
+par_villabruzual,Villa Bruzual,1108,mu_turen
+par_villadecura,Villa De Cura,1109,mu_zamora_ara
+par_villarosa,Villa Rosa,1110,mu_sucre_por
+par_villalba,Villalba,1111,mu_villalba
+par_virgendelacoromoto,Virgen De La Coromoto,1112,mu_guanare
+par_virgendelcarmenlasmesas,Virgen del Carmen Las Mesas,1113,mu_antonioromulocosta
+par_virgendelvalle,Virgen Del Valle,1114,mu_tucupita
+par_vistaalsol,Vista Al Sol,1115,mu_caroni
+par_vistahermosa,Vista Hermosa,1116,mu_angosturadelorinoco
+par_xaguas,Xaguas,1117,mu_urdaneta_lar
+par_yacambu,Yacambu,1118,mu_andreseloyblanco_lar
+par_yagua,Yagua,1119,mu_guacara
+par_yaguaraparomar,Yaguaraparo,1120,mu_marcano
+par_yaguaraparocaj,Yaguaraparo,1121,mu_cajigal
+par_yapacana,Yapacana,1122,mu_autonomoatabapo
+par_yaritagua,Yaritagua,1123,mu_pena
+par_yocoima,Yocoima,1124,mu_caroni
+par_zabala,Zabala,1125,mu_diaz
+par_zaraza,Zaraza,1126,mu_pedrozaraza
+par_zazaridabuc,Zazarida,1127,mu_buchivacoa
+par_zazaridazam,Zazarida,1128,mu_zamora_fal
+par_zeaang,Zea,1129,mu_angosturadelorinoco
+par_zeazea,Zea,1130,mu_zea
+par_zuata,Zuata,1131,mu_josefelixribas_ara

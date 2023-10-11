@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <record model="ir.ui.menu" id="stock.menu_reordering_rules_replenish">
+        <field name="groups_id" eval="[(6,0,[ref('group_stock_reordering_rules')])]"/>
+    </record>
+
+    <record model="ir.ui.menu" id="stock.menu_reordering_rules_config">
+        <field name="groups_id" eval="[(6,0,[ref('group_stock_reordering_rules')])]"/>
+    </record>
+
+    <record model="ir.ui.menu" id="stock.menu_procurement_compute">
+        <field name="groups_id" eval="[(6,0,[ref('group_stock_reordering_rules')])]"/>
+    </record>
+
+    <record model="ir.ui.menu" id="mrp.menu_procurement_compute_mrp">
+        <field name="groups_id" eval="[(6,0,[ref('group_stock_reordering_rules')])]"/>
+    </record>
+</odoo>

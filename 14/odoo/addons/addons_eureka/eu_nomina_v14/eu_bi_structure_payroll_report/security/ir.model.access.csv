@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_eu_bi_payroll_report,eu_bi_payroll_report.bi_payroll_wiz,model_bi_payroll_wiz,base.group_user,1,1,1,1

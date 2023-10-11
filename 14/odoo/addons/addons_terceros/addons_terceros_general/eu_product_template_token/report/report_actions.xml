@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="paperformat_reports_inventory" model="report.paperformat">
+            <field name="name">Formato para reportes</field>
+            <field name="default" eval="True" />
+            <field name="format">Letter</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">33</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="action_label_transfer_template_pdf_modified" model="ir.actions.report">
+            <field name="name">Código de Barras del Paquete en Recepción (PDF)</field>
+            <field name="model">stock.picking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">eu_product_template_token.label_transfer_template_view_pdf</field>
+            <field name="report_file">eu_product_template_token.label</field>
+            <field name="binding_model_id" ref="stock.model_stock_picking"/>
+            <field name="binding_type">report</field>
+        </record>
+
+
+        <record id="action_report_product_template_template" model="ir.actions.report">
+            <field name="name">Ficha de Producto</field>
+            <field name="model">product.template</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">eu_product_template_token.token_woken</field>
+            <field name="report_file">eu_product_template_token.product_template_token</field>
+            <field name="print_report_name">'Ficha - %s' % object.name</field>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="action_report_minum_stock_moves" model="ir.actions.report">
+            <field name="name">minimo stock moves</field>
+            <field name="model">wiz.min.stock.moves</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="paperformat_id" ref="eu_product_template_token.paperformat_reports_inventory"/>
+            <field name="report_name">eu_product_template_token.minun_munim</field>
+            <field name="report_file">eu_product_template_token.product_minum_stock_report</field>
+            <field name="print_report_name">'Reporte de Reposicion'</field>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="binding_type">report</field>
+        </record>
+    
+    </data>
+    
+
+</odoo>

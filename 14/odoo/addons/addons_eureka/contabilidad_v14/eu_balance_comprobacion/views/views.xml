@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+        <record id="reporte_balance_comprobacion_form" model="ir.ui.view">
+            <field name="name">reporte_balance_comprobacion_form</field>
+            <field name="model">balance.comprobacion</field>
+            <field name="arch" type="xml">
+                <form string="Opciones para generar reporte">
+                    <group>
+                        <group>
+                            <field name="target_move" widget='radio' invisible="1"/>
+                            <field name="display_account" widget='radio'/>
+                        </group>
+                        <group>
+                            <label for="date_from" string="Fechas" />
+                            <div>
+                                <field name="date_from" class="oe_inline" />
+                                <field name="date_to" class="oe_inline" attrs="{'required': [('date_from', '!=', False)] }"/>
+                            </div>
+                            <field name="show_initial_balance" invisible="1"/>
+                        </group>
+                    </group>
+                    <p class="oe_grey">
+                        Nota: Si no hay cuentas principales configuradas, no se mostrará ninguna vista jerárquica.
+                    </p>
+                    <footer>
+                        <button string="Generar Reporte"
+                            name="print_report" type="object"
+                            class="oe_highlight" />
+                        o
+                        <button string="Cancelar" 
+                            class="oe_link" 
+                            special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="reporte_balance_comprobacion">
+            <field name="name">Balance de Comprobación</field>
+            <field name="res_model">balance.comprobacion</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_balance_comprobacion" name="Reporte Balance de Comprobación"
+                  parent="account.account_reports_management_menu" action="reporte_balance_comprobacion"
+                  sequence="100"/>
+
+    </data>
+</odoo>

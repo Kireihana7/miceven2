@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="sr_bank_reconcile_statement_report_template">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="web.internal_layout">
+						<div class="page">
+							<div class="oe_structure" />
+							<h2 class="mt16" style="text-align: center;">
+								Reporte de estado de reconciliación bancaria
+							</h2>
+							<br />
+							<div class="row mt32 mb32">
+								<div class="col-auto col-3 mw-100 mb-2">
+									<strong>Referencia:</strong>
+									<p class="m-0" t-field="doc.name" />
+								</div>
+								<div class="col-auto col-3 mw-100 mb-2">
+									<strong>Diario:</strong>
+									<p class="m-0" t-field="doc.journal_id" />
+								</div>
+								<div class="col-auto col-3 mw-100 mb-2">
+									<strong>Fecha:</strong>
+									<p class="m-0" t-field="doc.date"
+										t-options='{"widget": "date"}' />
+								</div>
+								<div class="col-auto col-3 mw-100 mb-2">
+									<strong>Balance inicial:</strong>
+									<p class="m-0" t-field="doc.balance_start" />
+								</div>
+								<div class="col-auto col-3 mw-100 mb-2">
+									<strong>Balance final:</strong>
+									<p class="m-0" t-field="doc.balance_end_real" />
+								</div>
+							</div>
+							<br />
+							<table class="table table-sm o_main_table">
+								<thead
+									style="display: table-row-group; background-color: #dfdfdf;">
+									<tr>
+										<th class="text-left">Fecha</th>
+										<th class="text-left">Entrada de diario</th>
+										<th class="text-left">Cuenta</th>
+										<th class="text-left">Contacto</th>
+										<th class="text-left">Etiqueta</th>
+										<th class="text-left">Débito</th>
+										<th class="text-left">Crédito</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<t t-set="debit" t-value="0" />
+									<t t-set="credit" t-value="0" />
+
+									<t t-foreach="doc.move_line_ids" t-as="line">
+										<tr class="text-left">
+											<t>
+												<td>
+													<span t-field="line.date" />
+												</td>
+												<td>
+													<span t-field="line.move_id" />
+												</td>
+												<td>
+													<span t-field="line.account_id" />
+												</td>
+												<td>
+													<span t-field="line.partner_id" />
+												</td>
+												<td>
+													<span t-field="line.name" />
+												</td>
+												<td>
+													<span t-field="line.debit" />
+													<t t-set="debit" t-value="debit + line.debit" />
+												</td>
+												<td>
+													<span t-field="line.credit" />
+													<t t-set="credit" t-value="credit + line.credit" />
+												</td>
+											</t>
+										</tr>
+									</t>
+									<tr
+										style="border: 1px solid #dfdfdf; background-color: #dfdfdf;">
+										<td colspan="5">
+										</td>
+										<td>
+											<span t-esc="'{:.2f}'.format(debit)" />
+										</td>
+										<td>
+											<span t-esc="'{:.2f}'.format(credit)" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

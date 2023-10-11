@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_clientes_prepago">
+            <t t-call="web.html_container">
+                <t t-set="company" t-value="env.company"/>
+                
+                <t t-set="tittle" t-value="'Clientes Prepago'"/>
+                <t t-set="desde" t-value="form.get('start_date')"/>
+                <t t-set="hasta" t-value="form.get('end_date')"/>
+              
+                <t t-call="eu_miceven_report_topper.header_report_miceven">
+                    <t t-foreach="form.get('documents')" t-as="docu">
+                        <style>
+                            .t-cuentas th, .t-cuentas td, .div-cuentas div {
+                                font-size: 10px !important;
+                            }
+                            
+                            .t-cuentas th strong {
+                                display: block!important;
+                                margin: auto!important;
+                            }
+                            
+                            .div-cuentas div {
+                                font-weight: bold !important;
+                            }
+                        </style>                        
+                        <div class="page">
+                            <div class="oe_structure"/>
+                            <!-- <center><h1>Clientes Prepago</h1></center> -->
+                            
+                            <!-- ================== Moneda ================== -->
+                            <t t-set="currency" t-value="docu.get('company_currency_id')"/>
+                            <t t-set="obj_currency" t-value="env['res.currency'].search([('id', '=', currency)])"/>    
+                            
+                            <!-- ================== Ventas ================== --> 
+                            <t t-if="docu.get('sales')">
+                                <br/>
+                                <t t-foreach="docu.get('sales')" t-as="line">
+                                    <!-- ================== Líneas de Ventas ================== -->
+                                    <table class="table table-sm t-cuentas">
+                                        <thead>
+                                            <tr>
+                                                <th style="background: #C8C8C8;" colspan="8" class="text-center"><strong>VENTA: <span t-esc="line.get('name')"/> - FECHA: <span t-esc="line.get('date_order')"/></strong></th>                            
+                                            </tr> 
+                                            <!-- <tr>
+                                                <th colspan="5" class="text-center"><strong>DETALLES</strong></th>                            
+                                            </tr>                                                                                             -->
+                                            <tr>
+                                                <th class="text-center" style="width: 25px !important;"><strong>ITEM</strong></th>
+                                                <th class="text-left" style="width: 220px !important;"><strong>PRODUCTO</strong></th>
+                                                <th class="text-right" style="width: 90px !important;"><strong>PRECIO UNITARIO</strong></th>
+                                                <th class="text-right" style="width: 90px !important;"><strong>CANT NEGOCIADA</strong></th>  
+                                                <th class="text-right" style="width: 90px !important;"><strong>CANT DESPACHADA</strong></th>
+                                                <th class="text-right" style="width: 90px !important;"><strong>MONTO NEGOCIADO</strong></th>                               
+                                                <th class="text-right" style="width: 90px !important;"><strong>MONTO DESPACHADO</strong></th>
+                                                <th class="text-right" style="width: 90px !important;"><strong>CANT X DESPACHAR</strong></th>
+                                            </tr>                                
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="count_sale_order_line" t-value="1"/>
+                                            <t t-foreach="line.get('sale_order_lines')" t-as="sale_order_line">
+                                                <tr style="page-break-inside: avoid;">
+                                                    <td class="text-center">
+                                                        <span t-esc="count_sale_order_line"/>                                                                                                    
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <span t-esc="sale_order_line.get('product_name')" style="text-transform: uppercase;"/>                                                                                                              
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-esc="sale_order_line.get('price_unit')" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                    </td>                                                                                                     
+                                                    <td class="text-right">
+                                                        <span t-esc="sale_order_line.get('product_uom_qty')" t-options='{"widget": "float", "precision": 2}'/>                                                                                                       
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-esc="sale_order_line.get('qty_delivered')" t-options='{"widget": "float", "precision": 2}'/>
+                                                    </td>  
+                                                    <td class="text-right">
+                                                        <span t-esc="sale_order_line.get('monto_negociado')" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                    </td> 
+                                                    <td class="text-right">
+                                                        <span t-esc="sale_order_line.get('monto_despachado')" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                    </td>  
+                                                    <td class="text-right">
+                                                        <span t-esc="sale_order_line.get('cantidad_x_despachar')" t-options='{"widget": "float", "precision": 2}'/>
+                                                    </td>                                                                                                                                                                                                                                                                                                                                         
+                                                </tr>      
+                                                <t t-set="count_sale_order_line" t-value="count_sale_order_line + 1"/>
+                                            </t>      
+                                        </tbody>                                                                             
+                                    </table>
+
+                                    <!-- ================== Movimientos ================== -->
+                                    <table class="table table-sm t-cuentas">                                  
+                                        <thead>
+                                            <tr>
+                                                <th colspan="10" class="text-center"><strong>MOVIMIENTOS</strong></th>                            
+                                            </tr>       
+                                            <tr>
+                                                <th class="text-center" style="width: 25px !important;"><strong>ITEM</strong></th>
+                                                <th class="text-left" style="width: 35px !important;"><strong>FECHA</strong></th>
+                                                <th class="text-left" style="width: 220px !important;"><strong>EMPRESA DESTINO</strong></th>
+                                                <th class="text-left" style="width: 70px !important;"><strong>REFERENCIA</strong></th>  
+                                                <th class="text-right" style="width: 90px !important;"><strong>CANTIDAD</strong></th>
+                                                <th class="text-left" style="width: 90px !important;"><strong>UNIDAD MEDIDA</strong></th>
+                                                <th class="text-right" style="width: 90px !important;"><strong>CANT X KILOS</strong></th>
+                                                <th class="text-left" style="width: 220px !important;"><strong>PRODUCTO</strong></th>          
+                                                <th class="text-left" style="width: 220px !important;"><strong>CONDUCTOR</strong></th>
+                                                <th class="text-left" style="width: 90px !important;"><strong>VEHÍCULO</strong></th>                                  
+                                            </tr>                                
+                                        </thead>
+                                        <t t-set="count_stock_move_line" t-value="1"/>
+                                        <t t-foreach="line.get('stock_move_lines')" t-as="stock_move_line">
+                                            <tr style="page-break-inside: avoid;">
+                                                <td class="text-center">
+                                                    <span t-esc="count_stock_move_line"/>                                                                                                    
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-esc="stock_move_line.get('date_done')"/>                                                                                                    
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-esc="stock_move_line.get('partner_id')"/>                                                                                                              
+                                                </td>                                                
+                                                <td class="text-left">
+                                                    <span t-esc="stock_move_line.get('name')"/>                                                                                                       
+                                                </td>        
+                                                <td class="text-right">
+                                                    <span t-esc="stock_move_line.get('cantidad_x_fardo')" t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>   
+                                                <td class="text-left">
+                                                    <span t-esc="stock_move_line.get('product_uom_name')"/>
+                                                </td>                                                       
+                                                <td class="text-right">
+                                                    <span t-esc="stock_move_line.get('cantidad_x_kg')" t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>                                                                                                                                                                             
+                                                <td class="text-left">
+                                                    <span t-esc="stock_move_line.get('product')"/>                                                                                                    
+                                                </td>       
+                                                <td class="text-left">
+                                                    <span t-esc="stock_move_line.get('driver_id')"/>
+                                                </td>    
+                                                <td class="text-left">
+                                                    <span t-esc="stock_move_line.get('vehicle_license_plate')"/>
+                                                </td>                                                                                                                                             
+                                            </tr>      
+                                            <t t-set="count_stock_move_line" t-value="count_stock_move_line + 1"/>
+                                        </t>                                                                                   
+                                    </table>
+                                </t>
+                                
+                                <br/><br/>
+                                <hr style="border-top: 1px solid black !important;"/>
+                                <!-- ================== Totales de la tabla ================== -->
+                                <div class="row div-cuentas">                                                                                                                                                                    
+                                    <div class="col-3 text-right text-success">
+                                        <span t-esc="docu.get('total_cantidad_fardos')" t-options='{"widget": "float", "precision": 2}' style="position: relative; left: 210px;"/>                                                                                                     
+                                    </div>        
+                                    <div class="col-3"/>
+                                    <div class="col-1 text-right text-success" style="position: relative; left: -20px;">
+                                        <span t-esc="docu.get('total_cantidad_x_kg')" t-options='{"widget": "float", "precision": 2}'/>                                                                                                     
+                                    </div>    
+                                    <div class="col-3"/>
+                                </div>
+
+                                <br/><br/>
+
+                                <!-- ================== Totales ================== -->
+                                <table class="table table-sm t-cuentas">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left" style="width: 90px !important;"><strong>TOTAL DESPACHOS</strong></th>           
+                                            <th class="text-right" style="width: 90px !important;"><strong>CANTIDAD POR FARDOS</strong></th>
+                                            <th class="text-right" style="width: 90px !important;"><strong>CANTIDAD POR KILOS</strong></th>                                  
+                                        </tr>                                
+                                    </thead>
+                                    <tbody>
+                                        <tr>                                                                                                                                                                         
+                                            <td class="text-left">
+                                                TOTAL CARGAS NEGOCIADAS                                                                                                    
+                                            </td>    
+                                            <td class="text-right">
+                                                <span t-esc="docu.get('total_cargas_negociadas')" t-options='{"widget": "float", "precision": 2}'/>                                                                                                    
+                                            </td>    
+                                            <td class="text-right">
+                                                <span t-esc="docu.get('total_qty_x_kg_cargas_negociadas')" t-options='{"widget": "float", "precision": 2}'/>                                                                                                    
+                                            </td>                                                                                                                                                                                                                                  
+                                        </tr>  
+                                        <tr>                                                                                                                                                                         
+                                            <td class="text-left">
+                                                TOTAL CARGAS DESPACHADAS                                                                                                    
+                                            </td>    
+                                            <td class="text-right">
+                                                <span t-esc="docu.get('total_cargas_despachadas')" t-options='{"widget": "float", "precision": 2}'/>                                                                                                    
+                                            </td>    
+                                            <td class="text-right">
+                                                <span t-esc="docu.get('total_qty_x_kg_cargas_despachadas')" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>                                                                                                                                                                                                                                  
+                                        </tr>
+                                        <tr class="bg-warning text-danger">                                                                                                                                                                         
+                                            <td class="text-left">
+                                                TOTAL CARGAS POR DESPACHAR                                                                                                    
+                                            </td>    
+                                            <td class="text-right">
+                                                <span t-esc="docu.get('total_cargas_x_despachar')" t-options='{"widget": "float", "precision": 2}'/>                                                                                                    
+                                            </td>    
+                                            <td class="text-right">
+                                                <span t-esc="docu.get('total_qty_x_kg_negociadas_despachadas')" t-options='{"widget": "float", "precision": 2}'/>                                                                                                    
+                                            </td>                                                                                                                                                                                                                                  
+                                        </tr>                                                                                                           
+                                    </tbody>
+                                </table>                                 
+                            </t>
+                            <div class="oe_structure"/>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

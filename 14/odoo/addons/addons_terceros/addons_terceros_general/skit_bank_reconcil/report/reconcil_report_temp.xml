@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="reconcil_report">
+		<t t-call="web.html_container">
+			<t t-set="data_report_margin_top" t-value="30" />
+			<t t-set="data_report_header_spacing" t-value="10" />
+			<t t-set="data_report_dpi" t-value="110" />
+			<t t-call="web.internal_layout">
+				<div class="page">
+				<div align="center"> 
+		        	<h3>Conciliaciones Pendientes</h3>
+		        	 <div class="row mt32">
+			        	<div class="col-4">
+			        		<strong>As of:</strong> 
+							<span><t t-if="data['skit_report_type']=='pdf'"><t t-esc="data['date_to']" t-options="{'widget': 'date'}"/></t>
+							<t t-else="data['skit_report_type']=='XLS'"><t t-esc="data['form']['date_to']" t-options="{'widget': 'date'}"/></t></span>
+						</div>
+						</div>
+				</div>
+					<table class="table table-condensed">
+						 <thead>
+							<tr>
+								<th></th>
+								<th>Fecha</th>
+								<th>Referencia</th>
+								<th>Monto</th>
+							</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>
+							 	<span><h6><strong>Libro Mayor Balance Virtual</strong></h6></span> 
+							</td>
+							<td><span></span></td>
+							<td><span></span></td>
+							<td class="text-right">
+	                           	<span t-att-style="style" t-esc="virtual_gl_balance" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+	                        </td>
+						</tr>
+						<tr>
+							<td>
+								<span><h6><strong>Balance actual de la cuenta: </strong><t t-esc="gl_code"/></h6></span> 
+							</td>
+							<td><span></span></td>
+							<td><span></span></td>
+							<td class="text-right">
+	                           <span t-att-style="style" t-esc="current_balance" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+	                        </td> 
+						</tr>
+						<tr>
+							<td>
+								<span><h6><strong>Operaciones por Procesar:</strong></h6></span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span><h6><strong>Líneas del Extracto no Conciliadas</strong></h6></span>
+							</td>
+						</tr> 
+						<t t-foreach="st_lines_left" t-as="st_line">								
+							<tr>
+								 <td>
+									<span t-esc="st_line['name']"/>  
+								 </td>
+								 <td>
+								 	<span><t t-esc="st_line['date']" t-options="{'widget': 'date'}"/></span>
+								 </td>
+								 <td>
+								 	<span t-esc="st_line['ref']"/>
+								 </td>
+								 <td class="text-right">
+	                           		<span t-att-style="style" t-esc="st_line['amount']" 
+								 			t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+								 </td>
+							</tr>	
+							</t>
+							<tr>
+								<td>
+									<span><h6><strong>Pagos Validados no Conciliados</strong></h6></span>
+								</td>
+							</tr>
+							<t t-foreach="payment_lines" t-as="pay">								
+								<tr>
+									 <td>
+										<span t-esc="pay['name']"/>  
+									 </td>
+									 <td>
+									 	<span><t t-esc="pay['payment_date']" t-options="{'widget': 'date'}"/></span>
+									 </td>
+									 <td>
+									 	<span t-esc="pay['ref']"/>
+									 </td>
+									  <td class="text-right">
+	                          				<span t-att-style="style" t-esc="pay['amount']"
+									 			t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+									 </td>
+								</tr>	
+							</t>
+							<tr>
+								<td>
+									<span><h6><strong>Saldo Final del Último Extracto</strong></h6></span> 
+								</td>
+								<td></td>
+								<td></td>
+								<td class="text-right">
+		                           	<span><span t-att-style="style"  t-esc="last_balance" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></span> 
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span><h6><strong>Diferencia no Explicada</strong></h6></span> 
+								</td>
+								<td></td>
+								<td></td>
+								<td>
+									<span><span t-esc="0"/></span> 
+								</td>
+							</tr>
+						</tbody> 
+						</table>
+				</div>
+			</t>
+		</t>
+	</template>
+</odoo>
+	

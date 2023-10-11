@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="report_template_corporate_journeys_day">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <t t-set="dayofweek" t-value="o.date_today.weekday()"/>
+                    <t t-set="empleados" t-value="o.env['hr.employee'].search([('secret_journey','!=',False)])"/>
+                    <t t-set="jornadasfull" t-value="empleados.mapped('secret_journey')"/>
+                    <t t-set="jornadas" t-value="jornadasfull.mapped('attendance_ids').filtered(lambda y: y.dayofweek==str(dayofweek) and y.check_count )"/>
+                    <div class="page">
+                        <div class="container">
+                            <t t-foreach="jornadas" t-as="jornada">
+                                <div class="row">
+                                    <div class="col-3"><span  t-esc="jornada.name"/></div>
+                                    <div class="col-3"><span  t-esc="jornada.hour_from" t-options='{"widget": "float_time"}'/></div>
+                                    <div class="col-3"><span  t-esc="jornada.hour_to" t-options='{"widget": "float_time"}'/></div>
+                                </div>
+                                <div class="row">
+                                    <t t-set="departments" t-value="list(set(empleados.filtered(lambda x:x.secret_journey==jornada.calendar_id).mapped('department_id')))"/>
+                                    <t t-foreach="departments" t-as="dep">
+                                        <table class="table table-sm">
+                                            <thead class="thead-dark ">
+                                                <tr class="text-center">
+                                                    <td>
+                                                        <span class="text-center" t-esc="dep.name"/>
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="text-left">
+                                                <t t-foreach="empleados.filtered(lambda x:x.department_id==dep)" t-as="e">
+                                                    <tr>
+                                                        <td>
+                                                            <span  t-esc="e.name"/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </t>
+                                    
+                                </div>
+                                
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_hr_wiz_journeys" model="ir.actions.report">
+        <field name="name">Jornadas Corporativas</field>
+        <field name="model">hr.wiz.journeys</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">eu_payslip_corporate_view.report_template_corporate_journeys_day</field>
+        <field name="report_file">eu_payslip_corporate_view.wizards.wizard_views</field>
+        <field name="print_report_name">'Jornada Corporativa para el %s' % object.date_today.strftime('%d %m %Y')</field>
+        <field name="binding_model_id" ref="model_hr_wiz_journeys"/>
+        <field name="binding_type">report</field>
+    </record>
+    <record id="hr_wiz_journeys_view_form" model="ir.ui.view">
+        <field name="name">hr.wiz.journeys.view.form</field>
+        <field name="model">hr.wiz.journeys</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="date_today" />
+                    </group>
+
+                </sheet>
+                <footer>
+                    <button
+                        name="print_report"
+                        string="Imprimir reporte"
+                        type="object"
+                        icon="fa-cog fa-spin"
+                        class="btn-secondary"
+                        
+                    />
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_journey_corporate_wiz_view" model="ir.actions.act_window">
+        <field name="name">Jornadas Corporativas Reporte</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.wiz.journeys</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hr_wiz_journeys_view_form"></field>
+        <field name="binding_view_types">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+        id="menu_journey_corporate_wiz_view"
+        name="Reporte Jornada corporativa"
+        action="eu_payslip_corporate_view.action_journey_corporate_wiz_view"
+        parent="eu_payslip_corporate_view.view_menu_corpo"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+
+        sequence="50"/>
+</odoo>

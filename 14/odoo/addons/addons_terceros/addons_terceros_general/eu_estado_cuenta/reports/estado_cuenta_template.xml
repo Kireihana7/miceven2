@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="estado_cuenta_template">
+		<t t-call="web.html_container">
+			<t t-call="web.external_layout">
+				<div class="page">
+					<style type="text/css">
+                        .table{
+				        	font-size: 12px;
+				        	line-height: 1.6;
+				        }
+
+                    </style>
+                	<table class="table table-sm table-borderless" style="width:100%;">
+                		<thead>
+                			<tr style="border-style:none;">
+                				<td colspan="7" style="border-style:none;">
+                					<div class="col-12 text-center" style="font-size:12px;">
+			                        	<h5><b>ESTADO DE <span t-esc="form.get('tipo')"/></b></h5>
+				                        <t t-if="form.get('partner_id_vat') or form.get('partner_id_name')">
+				                        	<t t-if="form.get('tipo') == 'CUENTAS POR PAGAR'">				                        		
+				                            	<b>PROVEEDOR: </b>
+				                        	</t>
+				                        	<t t-else="">
+				                            	<b>CLIENTE: </b>				                        		
+				                        	</t>
+				                        	<t t-if="form.get('partner_id_vat')">
+				                            	<b><spam t-esc="form.get('partner_id_vat')"/> - </b>
+				                        	</t>
+				                        	<t t-if="form.get('partner_id_name')">
+				                            	<b><spam t-esc="form.get('partner_id_name')"/></b>
+				                        	</t>
+				                        	<br/>
+				                        </t>
+			                    	</div>
+                				</td>
+                			</tr>
+                			<tr><td><br/><br/></td></tr>
+                			<tr>
+                				<th style="border-top:0px;width:20%;">
+                					<t t-if="form.get('tipo') == 'CUENTAS POR PAGAR'">
+		                            	<strong>Proveedor</strong>
+		                        	</t>
+		                        	<t t-else="">
+		                            	<strong>Cliente</strong>
+		                        	</t>
+                				</th>
+                				<th style="border-top:0px;width:10%;" class="text-right">
+                					<strong>Adeudado Bs</strong>
+                				</th>
+                				<th style="border-top:0px;width:10%;" class="text-right">
+                					<strong>Anticipos Bs</strong>
+                				</th>
+                				<th style="border-top:0px;width:10%;" class="text-right">
+                					<strong>Balance Bs</strong>
+                				</th>
+                				<th style="border-top:0px;width:10%;" class="text-right">
+                					<strong>Adeudado Usd</strong>
+                				</th>
+                				<th style="border-top:0px;width:10%;" class="text-right">
+                					<strong>Anticipos Usd</strong>
+                				</th>
+                				<th style="border-top:0px;width:10%;" class="text-right">
+                					<strong>Balance Usd</strong>
+                				</th>
+                			</tr>
+						</thead>
+						<tbody>
+							<t t-set="c1_total" t-value="0.0"/>
+							<t t-set="c2_total" t-value="0.0"/>
+							<t t-set="c3_total" t-value="0.0"/>
+							<t t-set="c1usd_total" t-value="0.0"/>
+							<t t-set="c2usd_total" t-value="0.0"/>
+							<t t-set="c4_total" t-value="0.0"/>							
+							<t t-foreach="form.get('invoices')" t-as="l">
+								<t t-if="l.get('c3')!= 0.0 and l.get('c4')!=0.0">
+									<t t-set="c1_total" t-value="c1_total + l.get('c1')"/>
+									<t t-set="c2_total" t-value="c2_total + l.get('c2')"/>
+									<t t-set="c3_total" t-value="c3_total + l.get('c3')"/>
+									<t t-set="c1usd_total" t-value="c1usd_total + l.get('c1usd')"/>
+									<t t-set="c2usd_total" t-value="c2usd_total + l.get('c2usd')"/>
+									<t t-set="c4_total" t-value="c4_total + l.get('c4')"/>
+									<tr>
+										<td>
+											<span t-esc="l.get('name')"/>
+										</td>
+										<td class="text-right">
+											<span t-esc="l.get('c1')" t-options='{"widget": "float", "precision": 2}'/>
+										</td>
+										<td class="text-right">
+											<span t-esc="l.get('c2')" t-options='{"widget": "float", "precision": 2}'/>
+										</td>
+										<td class="text-right">
+											<span t-esc="l.get('c3')" t-options='{"widget": "float", "precision": 2}'/>
+										</td>
+										<td class="text-right">
+											<span t-esc="l.get('c1usd')" t-options='{"widget": "float", "precision": 2}'/>
+										</td>
+										<td class="text-right">
+											<span t-esc="l.get('c2usd')" t-options='{"widget": "float", "precision": 2}'/>
+										</td>
+										<td class="text-right">
+											<span t-esc="l.get('c4')" t-options='{"widget": "float", "precision": 2}'/>
+										</td>
+									</tr>
+								</t>
+							</t>
+							<tr class="border-black">
+								<td class="text-right">
+									<span>TOTALES:</span>
+								</td>
+								<td class="text-right">
+									<span t-esc="c1_total" t-options='{"widget": "float", "precision": 2}'/>
+								</td>
+								<td class="text-right">
+									<span t-esc="c2_total" t-options='{"widget": "float", "precision": 2}'/>
+								</td>
+								<td class="text-right">
+									<span t-esc="c3_total" t-options='{"widget": "float", "precision": 2}'/>
+								</td>
+								<td class="text-right">
+									<span t-esc="c1usd_total" t-options='{"widget": "float", "precision": 2}'/>
+								</td>
+								<td class="text-right">
+									<span t-esc="c2usd_total" t-options='{"widget": "float", "precision": 2}'/>
+								</td>
+								<td class="text-right">
+									<span t-esc="c4_total" t-options='{"widget": "float", "precision": 2}'/>
+								</td>
+							</tr>
+						</tbody>
+                	</table>
+				</div>
+			</t>
+		</t>
+	</template>
+</odoo>
+

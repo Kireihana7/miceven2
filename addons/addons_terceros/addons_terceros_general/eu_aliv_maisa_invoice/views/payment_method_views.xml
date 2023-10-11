@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_forma_de_pago_form" model="ir.ui.view">
+            <field name="name">Formas de Pago</field>
+            <field name="model">metodo.pago.account</field>
+            <field name="arch" type="xml">
+                <form string="Metodos de Pagos">
+                    <header>
+                    </header>
+                    <sheet>
+                        <div name="button_box" class="oe_button_box">
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+         
+
+          <record id="view_forma_de_pago_tree" model="ir.ui.view">
+            <field name="name">metodo.pago.account.tree</field>
+            <field name="model">metodo.pago.account</field>
+            <field name="arch" type="xml">
+                <tree string="Formas de Pagos">
+                <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="forma_de_pago" model="ir.actions.act_window">
+            <field name="name">Formas de Pago</field>
+            <field name="res_model">metodo.pago.account</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="False"/>
+        </record>
+
+        <menuitem id="menu_forma_pagos" 
+            name="Formas de Pago" 
+            parent="account.menu_finance_configuration"
+            action="forma_de_pago" 
+            sequence="1" 
+            groups="account.group_account_invoice"/> 
+    </data>
+</odoo>

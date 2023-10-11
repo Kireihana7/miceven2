@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_chargue_consolidate_descuento_tree_romana" model="ir.ui.view">
+        <field name="name">chargue.consolidate.descuento.tree</field>
+        <field name="model">chargue.consolidate.descuento</field>
+        <field name="arch" type="xml">
+            <tree string="Control de descuento" edit="1" create="0" import="0" delete="0">
+                <field name="name"/>
+                <field name="product_id"/> 
+                <field name="qty_residual"/>
+                <field name="date_empty"/>
+                <field name="date_last_full"/>
+                <field name="user_empty"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_chargue_consolidate_descuento_form_romana" model="ir.ui.view">
+        <field name="name">chargue.consolidate.descuento.form</field>
+        <field name="model">chargue.consolidate.descuento</field>
+        <field name="arch" type="xml">
+            <form string="Control de descuento" create="0" edit="0">
+                <header>
+                    <button name="set_empty" 
+                    attrs="{'invisible': [('qty_residual','=',0)]}"
+                    type="object" 
+                    string="Entrada de Inventario" 
+                    class="btn-primary" 
+                    groups="eu_agroindustry.group_configuracion_romana"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button class="oe_stat_button" type="object" icon="fa-book" 
+                            attrs="{'invisible': [('picking_count','&lt;',1)]}"
+                            groups="stock.group_stock_user"
+                            name="open_pickings" 
+                            width="200px"
+                            >
+                            <field name="picking_count" 
+                                groups="stock.group_stock_user"
+                                string="Movimiento de Inventario" 
+                                widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="product_id" options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/> 
+                        <field name="qty_residual"/>
+                        <field name="date_empty"/>
+                        <field name="date_last_full"/>
+                        <field name="user_empty" options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                    </group>
+                </sheet>  
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="open_view_chargue_consolidate_descuento_tree" model="ir.actions.act_window">
+        <field name="name">Control de descuento</field>
+        <field name="res_model">chargue.consolidate.descuento</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_chargue_consolidate_descuento_tree_romana"></field>
+    </record>
+
+</odoo>

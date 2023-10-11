@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <template id="template_report_listado" >
+
+            <t t-call="web.html_container">
+                <!-- <t t-set="data_report_margin_top" t-value="10"/> -->
+                <t t-call="web.basic_layout">
+                    <style type="text/css">
+                        ::root{
+                            font-size: 0.8rem;
+                        }
+                        html{
+                            
+                            margin:0px;
+                            padding:0px;
+                        }
+                        #logos >span{
+                            font-size:10px;
+                        }
+                        .borrel{
+                            border: 2px solid black;
+                            border-radius: 12px;
+                        }
+
+                    </style>
+
+                    <!--variables seteadas  -->
+                    
+                    <t t-if="docs.type_selector=='active'">
+                        <t t-set="employees" t-value="docs.env['hr.employee'].search([])"/>
+                        <t t-set="tipo" t-value="'Personal Activo'"/>
+                    </t>
+                    <t t-elif="docs.type_selector=='terminated'">
+                        <t t-set="employees" t-value="docs.env['hr.employee'].with_context(active_test=False).search([('active','=',False),('fecha_fin','&lt;=',docs.to_date),('fecha_fin','&gt;=',docs.from_date)])"/>
+                        <t t-set="tipo" t-value="'Personal Egresado'"/>
+                    </t>
+                    <t t-elif="docs.type_selector=='on_vacation'">
+                        <t t-set="employees" t-value="docs.env['hr.employee'].search([('in_vacations_till','!=',False)])"/>
+                        <t t-set="tipo" t-value="'Personal en Vacaciones'"/>
+                    </t>
+                    <t t-elif="docs.type_selector=='present'">
+                        <t t-set="employees" t-value="docs.env['hr.employee'].search([]).filtered(lambda x:x.last_attendance_id and context_timestamp(x.last_attendance_id.check_in).date()==docs.from_date)"/>
+                        <t t-set="tipo" t-value="'Personal Asistente'"/>
+                    </t>
+                    <t t-elif="docs.type_selector=='leavism'">
+                        <t t-set="employees" t-value="docs.env['hr.employee'].search([('in_vacations_till','&lt;=',docs.to_date)])"/>
+                        <t t-set="tipo" t-value="'Reporte Ausentismo'"/>
+                    </t>
+                    <t t-else="">
+                        <t t-set="employees" t-value="docs.env['hr.employee'].search([('fecha_inicio','&lt;=',docs.to_date),('fecha_inicio','&gt;=',docs.from_date)])"/>
+                        <t t-set="tipo" t-value="'Personal Ingresado'"/>
+
+                    </t>
+                    <div class="borrel header">
+                        <div class="row">
+                            <div class="col-2">
+                                <img  t-if="docs.env.company.logo" t-att-src="image_data_uri(docs.env.company.logo)" height="60px" style="max-width: 150px;padding-left:5px; margin-top:10px;"/>
+                            </div>
+                            <div  class="col-8 text-center">
+                                <div class="container" style="font-size: 0.7rem;">
+                                    <div class="row">
+                                        <div class="col-12 text-center"><span t-esc="docs.env.company.name" style="font-size:1.1rem;"/></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <t t-if="tipo!='Reporte Ausentismo'">
+                                                ◄►Listado de <span t-esc="tipo"/>◄►
+                                            </t>
+                                            <t t-else="">
+                                                <span t-esc="tipo"/>
+                                            </t>    
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <t t-if="tipo not in['Personal Activo','Personal en Vacaciones'] ">
+                                                <t t-if="tipo !='Personal Asistente'">
+                                                    DEL: <span t-esc="docs.from_date"/> - AL: <span t-esc="docs.to_date"/>
+                                                </t>
+                                                <t t-else="">
+                                                    EL: <span t-esc="docs.from_date"/>
+                                                </t>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>            
+                                
+                            </div>
+                            <div class="col-2">
+                                <table class="table table-borderless table-sm" style="font-size:0.8rem;white-space:nowrap;padding-right:5px;">
+                                    
+                                    <tr>
+                                        <t t-set="date" t-value="datetime.datetime.today()"/>     
+                                        <td class="text-right"><b>FECHA:</b></td>
+                                        <td><span t-esc="date.strftime('%x')"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right" ><b>HORA:</b></td>
+                                        <td><span t-esc="date.strftime('%X')"/></td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <t t-set="departamentos" t-value="list(set(employees.mapped('department_id')))"/>
+                    <div class="page" style="page-break-inside: avoid;">
+                        <t t-if="tipo=='Reporte Ausentismo'">
+                            <table class="table table-borderless table-sm" style="font-size:0.6rem">
+                                <thead>
+                                    <tr class="table-secondary">
+                                        <t t-if="tipo=='Personal en Vacaciones'">
+                                            <th colspan="1" class="text-left text-break" width="5%">Codigo </th>
+                                            <th colspan="2" class="text-left" width="25%">Empleado </th>
+                                            <th colspan="1" class="text-left" width="5%">Cedula</th>
+                                            <th colspan="2" class="text-break text-left" width="25%">Cargo </th>
+                                            <th colspan="2" class="text-break text-center" width="10%">Año Correspondiente </th>
+                                            <th colspan="2" class="text-break text-center" width="20%">Periodo disfrute </th>
+                                            <th colspan="1" class="text-break text-right" width="10%">Fecha Regreso</th>
+                                        </t>
+                                        
+                                        <t t-else="">
+                                            <th colspan="1" class="text-left text-break" width="10%">Codigo </th>
+                                            <th colspan="2" class="text-left" width="35%">Empleado </th>
+                                            <th colspan="1" class="text-left" width="10%">Cedula</th>
+                                            <th colspan="2" class="text-break text-left" width="30%">Cargo </th>
+                                            <th colspan="1" class="text-break text-right" width="20%">
+                                                <t t-if="tipo=='Personal Egresado'">
+                                                    Fecha de salida
+                                                </t>
+                                                <t t-else="">
+                                                    Fecha de ingreso
+                                                </t>
+                                                </th>
+                                        </t>
+                                        
+                                    </tr>
+    
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="departamentos" t-as="departamento">
+                                
+                                    <t t-if="departamento.name">
+    
+                                        <tr class="text-center" style="line-height:0.5rem;">
+                                            <t t-if="tipo=='Personal en Vacaciones'">
+                                                <td colspan="11" class="text-center text-break" width="100%" style="border-bottom:2px solid black;"><span style="font-size:1rem"  t-esc="departamento.name"/></td>
+                                            </t>
+                                            <t t-else="">
+                                                <td colspan="7" class="text-center text-break" width="100%" style="border-bottom:2px solid black;"><span style="font-size:1rem"  t-esc="departamento.name"/></td>
+                                            </t>
+                                        </tr>          
+                                    </t>   
+                       
+                                    
+                                            
+                                               
+                                                <t t-foreach="employees.filtered(lambda x:x.department_id==departamento)" t-as="employee"> 
+                                                    <tr style="line-height:0.5rem;"> 
+                                                        <t t-if="tipo=='Personal en Vacaciones'">
+                                                            <t t-set="nominas_vacaciones" t-value="employee.slip_ids.filtered(lambda x: x.is_vacation).sorted(lambda x:x.date_from,reverse=True)"/>
+                                                            <t t-set="nomina_vacacion" t-value="nominas_vacaciones[0] if nominas_vacaciones else False"/>
+                                                            <td colspan="1" class="text-left text-break" width="5%"><span t-esc="employee.emp_id"></span></td>
+                                                            <td colspan="2" class="text-left" style="text-overflow: ellipsis;" width="25%"><span t-esc="employee.name"></span></td>
+                                                            <td colspan="1" class="text-left" width="5%"><span t-esc="employee.identification_id_2"/> </td>
+                                                            <td colspan="2" class="text-left" style="text-overflow: ellipsis;" width="25%"><span t-esc="employee.job_title"></span> </td>
+                                                            <td colspan="2" class="text-break text-center" width="10%"><span t-esc="nomina_vacacion.anno_vacaciones_designado"/></td>
+                                                            <td colspan="1" class="text-break text-center" width="10%"><span t-esc="nomina_vacacion.date_from.strftime('%d-%m-%Y') if nomina_vacacion.date_from else ''"/></td>
+                                                            <td colspan="1" class="text-break text-center" width="10%"><span t-esc="nomina_vacacion.date_to.strftime('%d-%m-%Y') if nomina_vacacion.date_from else ''"/></td>
+                                                            <td colspan="1" class="text-break text-right" width="10%"><span t-esc="employee.in_vacations_till.strftime('%d-%m-%Y') if employee.in_vacations_till else ''"></span>
+                                                            </td>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <td colspan="1" class="text-left text-break" width="10%"><span t-esc="employee.emp_id"></span></td>
+                                                            <td colspan="2" class="text-left" style="text-overflow: ellipsis;" width="35%"><span t-esc="employee.name"></span></td>
+                                                            <td colspan="1" class="text-left" width="10%"><span t-esc="employee.identification_id_2"/> </td>
+                                                            <td colspan="2" class="text-left" style="text-overflow: ellipsis;" width="30%"><span t-esc="employee.job_title"></span> </td>
+                                                            <td colspan="1" class="text-break text-right" width="20%">
+                                                                <t t-if="tipo=='Personal Egresado'">
+                                                                    <span t-esc="employee.fecha_fin.strftime('%d-%m-%Y') if employee.fecha_fin else ''"></span>
+                                                                </t>
+                                                                <t t-elif="tipo=='Personal Asistente'">
+                                                                   
+                                                                    <span t-esc="context_timestamp(employee.last_attendance_id.check_in).strftime('%H:%M:%S---%d-%m-%Y') if employee.last_attendance_id else ''"></span>
+                                                                </t>
+    
+                                                                <t t-else="">
+                                                                    <span t-esc="employee.fecha_inicio.strftime('%d-%m-%Y') if employee.fecha_inicio else ''"></span>
+                                                                </t>
+                                                            </td>
+                                                        </t>
+                                                        
+                                                    </tr>
+                                                </t>
+                                                
+                                                <tr class="table-secondary">
+                                                    <t t-if="tipo=='Personal en Vacaciones'">
+                                                        <td class="text-right" colspan="10">Total por departamento :</td>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <td class="text-right" colspan="6">Total por departamento :</td>
+                                                    </t>
+                                                    <td class="text-right" colspan="1"><span t-esc="len(employees.filtered(lambda x:x.department_id==departamento))"/></td>
+                                                </tr>
+                
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+
+                        <t t-else="">
+                            <table class="table table-borderless table-sm" style="font-size:0.6rem">
+                                <thead>
+                                    <tr class="table-secondary">
+                                        <t t-if="tipo=='Personal en Vacaciones'">
+                                            <th colspan="1" class="text-left text-break" width="5%">Codigo </th>
+                                            <th colspan="2" class="text-left" width="25%">Empleado </th>
+                                            <th colspan="1" class="text-left" width="5%">Cedula</th>
+                                            <th colspan="2" class="text-break text-left" width="25%">Cargo </th>
+                                            <th colspan="2" class="text-break text-center" width="10%">Año Correspondiente </th>
+                                            <th colspan="2" class="text-break text-center" width="20%">Periodo disfrute </th>
+                                            <th colspan="1" class="text-break text-right" width="10%">Fecha Regreso</th>
+                                        </t>
+                                        
+                                        <t t-else="">
+                                            <th colspan="1" class="text-left text-break" width="10%">Codigo </th>
+                                            <th colspan="2" class="text-left" width="35%">Empleado </th>
+                                            <th colspan="1" class="text-left" width="10%">Cedula</th>
+                                            <th colspan="2" class="text-break text-left" width="30%">Cargo </th>
+                                            <th colspan="1" class="text-break text-right" width="20%">
+                                                <t t-if="tipo=='Personal Egresado'">
+                                                    Fecha de salida
+                                                </t>
+                                                <t t-else="">
+                                                    Fecha de ingreso
+                                                </t>
+                                                </th>
+                                        </t>
+                                        
+                                    </tr>
+    
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="departamentos" t-as="departamento">
+                                
+                                    <t t-if="departamento.name">
+    
+                                        <tr class="text-center" style="line-height:0.5rem;">
+                                            <t t-if="tipo=='Personal en Vacaciones'">
+                                                <td colspan="11" class="text-center text-break" width="100%" style="border-bottom:2px solid black;"><span style="font-size:1rem"  t-esc="departamento.name"/></td>
+                                            </t>
+                                            <t t-else="">
+                                                <td colspan="7" class="text-center text-break" width="100%" style="border-bottom:2px solid black;"><span style="font-size:1rem"  t-esc="departamento.name"/></td>
+                                            </t>
+                                        </tr>          
+                                    </t>   
+                       
+                                    
+                                            
+                                               
+                                                <t t-foreach="employees.filtered(lambda x:x.department_id==departamento)" t-as="employee"> 
+                                                    <tr style="line-height:0.5rem;"> 
+                                                        <t t-if="tipo=='Personal en Vacaciones'">
+                                                            <t t-set="nominas_vacaciones" t-value="employee.slip_ids.filtered(lambda x: x.is_vacation).sorted(lambda x:x.date_from,reverse=True)"/>
+                                                            <t t-set="nomina_vacacion" t-value="nominas_vacaciones[0] if nominas_vacaciones else False"/>
+                                                            <td colspan="1" class="text-left text-break" width="5%"><span t-esc="employee.emp_id"></span></td>
+                                                            <td colspan="2" class="text-left" style="text-overflow: ellipsis;" width="25%"><span t-esc="employee.name"></span></td>
+                                                            <td colspan="1" class="text-left" width="5%"><span t-esc="employee.identification_id_2"/> </td>
+                                                            <td colspan="2" class="text-left" style="text-overflow: ellipsis;" width="25%"><span t-esc="employee.job_title"></span> </td>
+                                                            <td colspan="2" class="text-break text-center" width="10%"><span t-esc="nomina_vacacion.anno_vacaciones_designado"/></td>
+                                                            <td colspan="1" class="text-break text-center" width="10%"><span t-esc="nomina_vacacion.date_from.strftime('%d-%m-%Y') if nomina_vacacion.date_from else ''"/></td>
+                                                            <td colspan="1" class="text-break text-center" width="10%"><span t-esc="nomina_vacacion.date_to.strftime('%d-%m-%Y') if nomina_vacacion.date_from else ''"/></td>
+                                                            <td colspan="1" class="text-break text-right" width="10%"><span t-esc="employee.in_vacations_till.strftime('%d-%m-%Y') if employee.in_vacations_till else ''"></span>
+                                                            </td>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <td colspan="1" class="text-left text-break" width="10%"><span t-esc="employee.emp_id"></span></td>
+                                                            <td colspan="2" class="text-left" style="text-overflow: ellipsis;" width="35%"><span t-esc="employee.name"></span></td>
+                                                            <td colspan="1" class="text-left" width="10%"><span t-esc="employee.identification_id_2"/> </td>
+                                                            <td colspan="2" class="text-left" style="text-overflow: ellipsis;" width="30%"><span t-esc="employee.job_title"></span> </td>
+                                                            <td colspan="1" class="text-break text-right" width="20%">
+                                                                <t t-if="tipo=='Personal Egresado'">
+                                                                    <span t-esc="employee.fecha_fin.strftime('%d-%m-%Y') if employee.fecha_fin else ''"></span>
+                                                                </t>
+                                                                <t t-elif="tipo=='Personal Asistente'">
+                                                                   
+                                                                    <span t-esc="context_timestamp(employee.last_attendance_id.check_in).strftime('%H:%M:%S---%d-%m-%Y') if employee.last_attendance_id else ''"></span>
+                                                                </t>
+    
+                                                                <t t-else="">
+                                                                    <span t-esc="employee.fecha_inicio.strftime('%d-%m-%Y') if employee.fecha_inicio else ''"></span>
+                                                                </t>
+                                                            </td>
+                                                        </t>
+                                                        
+                                                    </tr>
+                                                </t>
+                                                
+                                                <tr class="table-secondary">
+                                                    <t t-if="tipo=='Personal en Vacaciones'">
+                                                        <td class="text-right" colspan="10">Total por departamento :</td>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <td class="text-right" colspan="6">Total por departamento :</td>
+                                                    </t>
+                                                    <td class="text-right" colspan="1"><span t-esc="len(employees.filtered(lambda x:x.department_id==departamento))"/></td>
+                                                </tr>
+                
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                                      
+                    </div>
+                    <div class="text-center">
+                        Total de empleados : <span style="font-size:0.8rem"  t-esc="len(employees)"></span>
+                    </div>   
+         
+                </t>
+            </t>
+    
+
+
+
+        </template>
+    
+        <template id="template_contracto_document" >
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.basic_layout">
+                        <style>
+                            .boxed{
+                                padding: 1% 10%;
+                                justify-content: space-between;
+                            }
+                            
+                        </style>
+                        <div class="boxed text-justify">
+                        <t t-if="o.is_indetermined">
+                            <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO INDETERMINADO'"/>
+                            <t t-set="time_contract" t-value="'tiempo indeterminado'"/>
+                            <t t-set="articulo" t-value="'al artículo 61'"/>
+
+                        </t>
+                        <t t-else="">
+                            <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO DETERMINADO'"/>
+                            <t t-set="time_contract" t-value="'tiempo determinado'"/>
+                            <t t-set="articulo" t-value="'al literal “b” del artículo 64'"/>
+                            <t t-if="o.number_of_renovations&gt;0">
+                                <t t-set="articulo" t-value="'al literal “d” artículo 62'"/>
+                            </t>
+                        </t>
+                        <t t-if="o.is_labor_determined">
+                            <t t-set="articulo" t-value="'al artículo 63'"/>
+                        </t>
+                            <p class="text-left"><span t-esc="o.company_id.lawyer_ref.name if o.company_id.lawyer_ref else ''"/></p>
+                            <p class="text-left">Abogado</p>
+                            <p class="text-left">IPSA N°:<span t-field="o.company_id.num_ipsa"/></p>
+                        <br/>
+                        <p  class="text-justify">
+                            Entre: <span t-field="o.company_id.name"/> empresa inscrita ante el "<span t-field='o.company_id.registrofiscal'/>",
+                            parte ésta que para los efectos del presente contrato se denominará LA COMPAÑÍA por una parte, y por la otra, 
+                            <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-field="o.employee_id.name"/>,
+                            nacionalidad <t t-if="o.employee_id.nationality=='V'"> Venezolana</t><t t-else="">Extranjera</t>,mayor de edad,
+                            con estado civil <span t-field="o.employee_id.marital_2"/>,titular de la cédula de identidad:<span> </span><strong t-field="o.employee_id.identification_id_2"/>,
+                            con fecha  de nacimiento : <span t-esc="o.employee_id.birthday.strftime('%d/%m/%Y') if o.employee_id.birthday else ''"/>, domiciliada en 
+                            <span t-field="o.employee_id.city_id.name"/>,<span t-field="o.employee_id.state_id.name"/>,<t t-if="o.employee_id.discapacidad">
+                                civilmente discapaz
+                            </t><t t-else=""> civilmente habil</t>,quien para los efectos del presente documento se denominará  <strong t-esc="dem_empleado"/>,
+                            se ha convenido en suscribir el presente contrato a <span t-esc="time_contract"/>,
+                            con base <span t-esc="articulo"/> de la Ley Orgánica del Trabajo,las Trabajadoras y los Trabajadores (LOTTT), el cual se regirá por las siguientes cláusulas:
+                        </p>
+                        <p class="text-justify">
+                            <strong>PRIMERA: </strong> <span t-esc="dem_empleado"/> se compromete  a prestar sus servicios a LA COMPAÑÍA, en el cargo de <strong t-field="o.job_id.name"/>,
+                            prestará servicios desde el día <strong t-esc="o.date_start.strftime('%d/%m/%Y') if o.date_start else ''"/>
+                            
+                            <t t-if="not o.is_indetermined">
+                                hasta el día <strong t-esc="o.date_end.strftime('%d/%m/%Y') if o.date_end else ''"/>, fecha en la que cesa el contrato de trabajo a tiempo determinado,debido a que en este tiempo existe la necesidad del servicio por motivos que en esta época del año se incremente las ventas del producto comercial de la empresa y la necesidad del servicio es por el tiempo específico, por lo que debido a la naturaleza del servicio nos obliga a contratar personal adicional a nuestros cargos y puestos de trabajo preestablecidos.
+                            </t>.Se requiere de la presencia diaria en la empresa, mantener una conducta acorde a las costumbres, usos locales y de equidad, especialmente buena presencia.
+                            <t t-if="not o.is_indetermined">
+                                Asimismo, podrá ser prorrogado cuando la circunstancia que justificó su celebración se extendiere por un tiempo superior al previsto al momento de la celebración de este contrato o cuando surgieren nuevas circunstancias de similar naturaleza.
+                            </t>
+                        </p>
+                        <p class="text-justify">
+                            <strong>SEGUNDA: </strong> las funciones de <span t-esc="dem_empleado"/> son:
+                        </p>
+                        <p class="text-justify" t-field="o.job_id.description"/>
+                        <p class="text-justify">
+                            <strong>TERCERA: </strong><span t-esc="dem_empleado"/> declara que los datos aportados a LA COMPAÑÍA para la suscripción del presente contrato,
+                             así como las referencias aportadas son ciertos, por lo cual ésta puede proceder a la verificación de dichos datos, referencias y demás circunstancias que soportan su hoja de ingreso.
+                        </p>
+                        <t t-set="das" t-value="{'0':'Lunes','1':'Martes','2':'Miercoles','3':'Jueves','4':'Viernes','5':'Sabado','6':'Domingo'} "/>
+                        <p class="text-justify">
+                            <strong>CUARTA: </strong><span t-esc="dem_empleado"/>EL TRABAJADOR se obliga a prestar sus servicios en condiciones de eficiencia, honradez, dentro de la jornada diaria, en los turnos y dentro de las horas señaladas por LA COMPAÑÍA, pudiendo éste hacer cambios o ajustes por razones justificadas, asi como, se compromete a prestar a LA COMPAÑÍA los servicios descritos en la Cláusula Segunda del presente contrato en la sede de LA COMPAÑÍA, ubicada en: 
+                            <span t-field="o.company_id.street"/>.. El horario de trabajo de <span t-esc="dem_empleado"/> establecido entre las partes. Con un descanso interjornada de <span t-field="o.resource_calendar_id.interjournal_rest"/> hora y teniendo <span t-field="o.resource_calendar_id.rest_days"/> días de descansos.
+                            <t t-if="o.resource_calendar_id">
+                                De <span t-esc="das[o.resource_calendar_id.attendance_ids[:1].dayofweek]"/> a <span t-esc="das[o.resource_calendar_id.attendance_ids[-1].dayofweek]"/>: <span t-esc="o.resource_calendar_id.attendance_ids[:1].day_period"/> 8:00 AM. A 12:00 M tarde 1:00 PM. A 5:00 PM y disfrutara de una hora  de descanso desde las 12:00 M a 1:00 PM
+                            </t>
+                        </p>
+                        <p class="text-justify">
+                            <strong>QUINTA: </strong>LA COMPAÑÍA se obliga a pagarle a <span t-esc="dem_empleado"/> y ésta así lo acepta, en el local donde funciona LA COMPAÑÍA,
+                             el salario mínimo establecido por el Poder Ejecutivo Nacional en moneda de curso legal, como contraprestación por los servicios señalados en la Cláusula Segunda.
+                             Además a <span t-esc="dem_empleado"/> disfrutara de <strong>quince (15) días hábiles de vacaciones</strong> una vez cumplido el primer año de servicio,
+                             los años sucesivos tendría derecho además de un <strong>(1) día adicional remunerado por cada año</strong> de servicio, hasta un máximo de quince (15) días hábiles,
+                             según lo pautado en el artículo 190 de la Ley Orgánica de Trabajo. Queda convenido, que en caso de fijación y/o aumento de salarios decretados por el Ejecutivo Nacional.
+                             PARRAFO UNICO: Adicionalmente <span t-esc="dem_empleado"/> al momento del disfrute de sus vacaciones, <strong>recibirá un bono vacacional de quince (15) días de salario</strong>
+                             calculados la base del salario normal, los años sucesivos tendría derecho además a un (1) día adicional de salario por cada año de servicio, hasta un máximo de treinta (30) días de salario.
+                             garantiza al <span t-esc="dem_empleado"/>  <strong><span t-field="o.company_id.cant_dias_utilidades"/> dias de utilidades</strong>, si ha prestado servicios durante todo el año calendario y si no lo ha hecho, este beneficio se calculará en proporción a los meses completos que haya prestado servicio durante el respectivo año,
+                             de conformidad con el artículo 131 de la Ley de Trabajo. El pago de la remuneración, y demás derechos, beneficios o indemnizaciones aplicables, se harán conforme a la modalidad más conveniente y establecida por LA COMPAÑÍA, que  EL <span t-esc="dem_empleado"/> conoce y acepta expresamente.
+                        </p>
+                        <p class="text-justify">
+                            <strong>SEXTA: </strong><span t-esc="dem_empleado"/>  se obliga a desempeñar su oficio en forma personal y directa, indistintamente en cualquiera de las áreas, lugares y/o ciudades donde LA COMPAÑÍA tenga sucursales y/o agencias y/o dependencias y/o intereses, representando tal exigencia una condición de estricto cumplimiento por parte de <span t-esc="dem_empleado"/>.  se obliga a resguardar la mercancía ubicada en LA COMPAÑÍA donde labora, como un buen padre de familia,
+                             por lo que el <span t-esc="dem_empleado"/> se obliga a evitar su deterioro, extravío, pérdida o hurto.
+                        </p>
+                        <p class="text-justify">
+                            <strong>SEPTIMA: </strong><span t-esc="dem_empleado"/> acepta así lo reconoce, que ha sido adiestrado y advertido tanto de forma verbal como por escrito de todos y cada uno de los riesgos que rodea no solo las actividades de LA COMPAÑIA, sino también de aquellos riesgos inherentes a las tareas y/o actividades de todas aquellas empresas que están presentes en el sitio de la obra trabajos y/o actividades que constituyen EL OBJETO DEL PRESENTE CONTRATO DE TRABAJO, todos los cuales se obligan a prevenir.  Así mismo, reconoce que LA COMPAÑIA le ha hecho entrega y ha sido adiestrado en el uso de los útiles de higiene y seguridad industrial requeridos para las tareas,  trabajos y/o actividades que constituyen el objeto del CONTRATO y Reglamento se obliga a respetar y/o cumplir las disposiciones de la Ley Orgánica del Trabajo, Ley Orgánica de Prevención, Condiciones  y Medio Ambiente del Trabajo (LOPCYMAT) su reglamento parcial, Reglamento Parcial de las Condiciones de Higiene y Seguridad en el Trabajo y los reglamentos y o normas establecidas por LA COMPAÑIA especialmente en el Programa de Seguridad y Salud Laboral y/o por las otras empresas que están en los distintos sitios donde se encuentren prestando su servicio, reportando a LA COMPAÑIA y/o a sus representantes, con la mayor brevedad, cualquier condición insegura que hubiere observado en la ejecución de sus funciones. 
+                        </p>
+                        <p class="text-justify">
+                            <strong>OCTAVA: </strong>EL <span t-esc="dem_empleado"/> deja expresa e inequívoca constancia de querer vincularse a la Empresa mediante presente Contrato de Trabajo Tiempo Determinado únicamente con ocasión de Tiempo Determinado establece en la Cláusula Segunda, así como de haber recibido por parte de LA COMPAÑIA los siguientes documentos 1. Un Ejemplar original del presente Contrato a Tiempo Determinado 2.  Carta Legal de Notificación de Riesgos Laborales; 3. Reglamento Interno de LA COMPAÑIA; 3. Un ejemplar del Programa de Seguridad y Salud Laboral; 4. Original de mi Descripción de Cargo firmada por mi persona y el representante Legal de la Empresa, 5. Notificación de la ubicación de Servicio de Seguridad y Salud Laboral 6.  Recibido el adiestramiento necesario sobre el Programa de Seguridad y Salud Laboral del trabajo; 7. Adiestramiento sobre el uso de los Equipos de Protección Personal (de Seguridad) que me fueron suministrados por la Empresa.  Así mismo declaro que he realizado adiestramiento en la Prevención para evitar ocurrencias de Accidentes Laborales Enfermedades y de los documentos arriba señalados
+                        </p>
+                        <p class="text-justify">
+                            <strong>NOVENA: </strong>Se consideran causas justificadas para poner fin al presente contrato, las contempladas para cada una de las partes en la Ley Orgánica del Trabajo vigente.  Este contrato podrá ser rescindido, siempre y cuando ambos contratantes lleguen a un común acuerdo; de lo contrario la parte que resultare culpable de su rescisión, sin justificarla, se obliga a pagar a la contraparte la indemnización de daños y perjuicios que surjan como secuela inmediata de la terminación contemplados en el artículo 110 de la Ley Orgánica del Trabajo. 
+                        </p>
+                        <p class="text-justify">
+                            <strong>DECIMA: </strong>EL <span t-esc="dem_empleado"/>, está residenciada en <span t-field="o.employee_id.street"/>,<span t-field="o.employee_id.house"/> <span t-field="o.employee_id.piso"/>,<span t-esc="o.employee_id.e_municipio.name if o.employee_id.e_municipio else ''"/>
+                            <span t-esc="','+o.employee_id.city_id.name if o.employee_id.city_id else ''"/><span t-esc="','+o.employee_id.state_id.name if o.employee_id.state_id else ''"/>.EL <span t-esc="dem_empleado"/> se obliga a notificar cualquier cambio en su residencia a LA COMPAÑÍA. 
+                            El incumplimiento de esta norma constituirá falta grave a las obligaciones que impone la relación de trabajo, en los términos establecidos en el literal “i” del artículo 79 de la Ley Orgánica del Trabajo, las Trabajadoras y las Trabajadores.
+                        </p>
+                        <p class="text-justify">
+                            <strong>DÉCIMA PRIMERA: </strong>Para todo aquello que no se encuentre especialmente previsto o acordado por las partes en el presente contrato, rigen las disposiciones de la Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores y demás leyes especiales.
+                            Se hacen dos (2) ejemplares a un solo tenor y al mismo efecto, uno de los cuales se le entrega a EL <span t-esc="dem_empleado"/> y el otro queda en posesión de LA COMPAÑÍA. Anótese en el Libro de contratos.
+                            
+                        </p>
+                        <BR/>
+                        <p class="text-justify">En <span t-field="o.company_id.city"/>,<span t-esc="datetime.date.today().strftime('el día %d del mes %B del año %Y')"/></p>
+
+
+                        <div class="row">
+                            <div class="col-6 text-center">
+                                POR LA COMPAÑIA:
+                            </div>
+                            <div class="col-6 text-center">
+                                EL <span t-esc="dem_empleado"/>:
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 text-center">
+                                <hr/>
+                            </div>
+                            <div class="col-6 text-center">
+                                <hr/>
+                            </div>
+                        </div>
+
+                    </div>
+                    </t>
+                </t>
+            </t>
+
+        </template>
+        <template id="template_contracto_document_miceven" >
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.basic_layout">
+                        <style>
+                            .boxed{
+                                padding: 1% 10%;
+                                justify-content: space-between;
+                            }
+                            
+                        </style>
+                        <div class="boxed text-justify">
+                        <t t-set="das" t-value="{'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Ocutbre','11':'Noviembre','12':'Diciembre'} "/>
+
+                        <t t-if="o.is_indetermined">
+                            <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO INDETERMINADO'"/>
+                            <t t-set="time_contract" t-value="'tiempo indeterminado'"/>
+                            <t t-set="articulo" t-value="'al artículo 61'"/>
+
+                        </t>
+                        <t t-else="">
+                            <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO DETERMINADO'"/>
+                            <t t-set="time_contract" t-value="'tiempo determinado'"/>
+                            <t t-set="articulo" t-value="'al literal “b” del artículo 64'"/>
+                            <t t-if="o.number_of_renovations&gt;0">
+                                <t t-set="articulo" t-value="'al literal “d” artículo 62'"/>
+                            </t>
+                        </t>
+                        <t t-if="o.is_labor_determined">
+                            <t t-set="articulo" t-value="'al artículo 63'"/>
+                        </t>
+                            <!-- <p class="text-left"><span t-esc="o.company_id.lawyer_ref.name if o.company_id.lawyer_ref else ''"/></p>
+                            <p class="text-left">Abogado</p>
+                            <p class="text-left">IPSA N°:<span t-field="o.company_id.num_ipsa"/></p> -->
+                        <br/>
+                        <t t-if="o.date_end">
+                            <t t-set="timeduration" t-value="o.date_end-o.date_start"/>
+                        <t t-set="meses" t-value="int(timeduration.days/30)"/>
+                        <t t-if="meses>0">
+                            <t t-set="tiempoaescribir" t-value="str(meses)+' meses'"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="dias" t-value="timeduration.days"/>
+                            <t t-set="tiempoaescribir" t-value="str(dias)+' dias'"/>
+                        </t>
+                        </t>
+                        <t t-else="">
+                            <t t-set="tiempoaescribir" t-value="'Indefinido'"/>
+                        </t>
+                        <div class="row" style="margin-top:-30px;margin-bottom:20px;">
+
+                            <div class="col-12 text-center" >
+                                <strong><u>
+                                    CONTRATO DE TRABAJO A <span t-esc="time_contract.upper()"/>
+                                </u></strong>
+                            </div>
+
+                        </div>
+
+                        <p class="class-justify">
+                            Entre JIANHUILUO, extranjero, mayor de edad, de este domicilio y titular de la cédula de identidad N°. E- 82.278.422 quien actúa en su carácter de Presidente, de la entidad de trabajo MICEVEN C.A.
+                            firma mercantil registrada por ante el Registro Mercantil Segundo de la Circunscripción Judicial del Estado Portuguesa,
+                            debidamente facultado para ello en el acta Constitutiva Estatutaria, en lo sucesivo denominada <strong>EL PATRONO</strong>, por una parte;
+                            y por la otra la ciudadano (a) <strong t-field="o.employee_id.name"/>, de nacionalidad venezolano (a), mayor de edad, domiciliado (a) en
+                            <span t-field="o.employee_id.street"/>,<span t-field="o.employee_id.city_id.name"/>,<span t-field="o.employee_id.state_id.name"/>,
+                            titular de la cédula de identidad N° C.I: <strong t-field="o.employee_id.identification_id_2"/> en lo sucesivo denominado (a) <strong>EL TRABAJADOR</strong>, por la otra,
+                            por el presente documento declaramos que hemos convenido en celebrar, como en efecto celebramos, un “<strong>CONTRATO A </strong><strong t-esc="time_contract.upper()"/>”,
+                            de conformidad a lo establecido en los artículos 62 y 64 de la Ley Orgánica del Trabajo vigente, el cual se regirá por las siguientes cláusulas:
+                        </p>
+
+                         
+                        <p class="text-justify">
+                            <strong>PRIMERA: EL TRABAJADOR</strong> se compromete a prestar sus servicios personales <strong>a EL PATRONO ejerciendo el cargo de</strong> <strong t-field="o.job_id.name"/>,
+                            de forma exclusiva y en atención a las actividades que la empresa según descripción de cargo y cualquier otra labor inherente o conexa a su cargo. Que comprenden las funciones de <strong t-field="o.job_id.name"/><strong> por <span t-esc="time_contract"/>;
+                              debido a que en este tiempo existe la necesidad del servicio por motivos que en esta época del año se incremente las ventas del producto comercial de la empresa y la necesidad del servicio es por el tiempo específico</strong>
+                                por lo que debido a la naturaleza del servicio nos obliga a contratar personal adicional a nuestros cargos y puestos de trabajo preestablecidos realizando las siguientes funciones:
+
+                        </p>
+                        <p class="text-justify" t-field="o.job_id.description"/>
+                        
+                        <p class="text-justify">
+                            Se requiere de la presencia diaria en la empresa, mantener una conducta acorde a las costumbres, usos locales y de equidad, especialmente buena presencia.
+                        </p>
+                        <p class="text-justify">
+                            <strong>SEGUNDA: </strong>En consecuencia, este contrato el cual tendrá una duración de <span t-esc="tiempoaescribir"/> continuos y comienza el <strong><span t-esc="o.date_start.strftime('%d de ')"/><span t-esc="das[o.date_start.strftime('%m')]"/><span t-esc="o.date_start.strftime(' de %Y')"/></strong> hasta el <strong><span t-esc="o.date_end.strftime('%d de ') if o.date_end else ''"/><span t-esc="das[o.date_end.strftime('%m')] if o.date_end else ''"/><span t-esc="o.date_end.strftime(' de %Y') if o.date_end else ''"/></strong>. Asimismo,
+                            podrá ser prorrogado cuando la circunstancia que justificó su celebración se extendiere por un tiempo superior al previsto al momento de la celebración de este contrato o cuando surgieren nuevas circunstancias de similar naturaleza. 
+                        </p>
+                        <p class="text-justify">
+                            <strong>TERCERA: EL TRABAJADOR</strong> es entendido y aceptado por las partes que<strong> EL TRABAJADOR</strong>, cumplirá su horario de trabajo, establecido de la siguiente manera horario de trabajo: De lunes a viernes: Mañana 8:00 AM. A 12:00 M tarde 1:00 PM. A 5:00 PM y disfrutara de una hora  de descanso desde las 12:00 M a 1:00 PM. 
+                        </p>
+                        <p class="text-justify">
+                            <strong>CUARTA: EL TRABAJADOR</strong> se obliga a prestar sus servicios en condiciones de eficiencia, honradez, dentro de la jornada diaria, en los turnos y dentro de las horas señaladas por <strong>EL PATRONO</strong>, pudiendo éste hacer cambios o ajustes por razones justificadas.      
+                        </p>
+                        <p class="text-justify">
+                            <strong>QUINTA: EL PATRONO</strong> pagará a <span t-esc="o.numero_to_letras_contract(o.wage)"/> BOLIVARES (Bs.<span t-esc="o.wage" t-options='{"widget": "float", "precision": 2}'/>), MENSUALES, a razón de <span t-esc="o.numero_to_letras_contract(round(o.wage/30,2))" /> (Bs <span t-esc="round(o.wage/30,2)" t-options='{"widget": "float", "precision": 2}'/>) diarios, 
+                            que serán cancelados de manera semanal, en moneda de curso legal.  Cláusula SEGUNDA, La empresa cancelara al trabajador o (a) un bono de alimentación de <span t-esc="o.numero_to_letras_contract(o.cesta_ticket)"/> bolívares (BS. <span t-esc="o.cesta_ticket" t-options='{"widget": "float", "precision": 2}'/>) mensuales, 
+                            a razón de  <span t-esc="o.numero_to_letras_contract(round(o.cesta_ticket/30,2))"/> (<span t-esc="round(o.cesta_ticket/30,2)" t-options='{"widget": "float", "precision": 2}'/>) diario más un bono de ayuda Alimentaria no salarial.
+                        </p>
+                        <p class="text-justify">
+                            <strong>SEXTA: EL TRABAJADOR</strong> se obliga a desempeñar su oficio en forma personal y directa, indistintamente en cualquiera de las áreas, lugares y/o ciudades donde LA EMPRESA tenga sucursales y/o agencias y/o dependencias y/o intereses, representando tal exigencia una condición de estricto cumplimiento por parte de <strong>EL TRABAJADOR</strong>.
+                        </p>
+                        <p class="text-justify">
+                            <strong>SEPTIMA: EL TRABAJADOR</strong> acepta así lo reconoce, que ha sido adiestrado y advertido tanto de forma verbal como por escrito de todos y cada uno de los riesgos que rodea no solo las actividades de LA COMPAÑIA, sino también de aquellos riesgos inherentes a las tareas y/o actividades de todas aquellas empresas que están presentes en el sitio de la obra trabajos y/o actividades que constituyen EL OBJETO DEL PRESENTE CONTRATO DE TRABAJO, todos los cuales se obligan a prevenir.  Así mismo, reconoce que LA COMPAÑIA le ha hecho entrega y ha sido adiestrado en el uso de los útiles de higiene y seguridad industrial requeridos para las tareas,  trabajos y/o actividades que constituyen el objeto del CONTRATO y Reglamento se obliga a respetar y/o cumplir las disposiciones de la Ley Orgánica del Trabajo, Ley Orgánica de Prevención, Condiciones  y Medio Ambiente del Trabajo (LOPCYMAT) su reglamento parcial,
+                            Reglamento Parcial de las Condiciones de Higiene y Seguridad en el Trabajo y los reglamentos y o normas establecidas por LA COMPAÑIA especialmente en el Programa de Seguridad y Salud Laboral y/o por las otras empresas que están en los distintos sitios donde se encuentren prestando su servicio, reportando a LA COMPAÑIA y/o a sus representantes, con la mayor brevedad, cualquier condición insegura que hubiere observado en la ejecución de sus funciones. 
+                        </p>
+                        <p class="text-justify">
+                            <strong>OCTAVA: EL TRABAJADOR</strong> deja expresa e inequívoca constancia de querer vincularse a la Empresa mediante presente Contrato de Trabajo Tiempo Determinado únicamente con ocasión de Tiempo Determinado establece en la Cláusula Segunda, así como de haber recibido por parte de LA EMPRESA los siguientes documentos
+                             1. Un Ejemplar original del presente Contrato a Tiempo Determinado 2.  Carta Legal de Notificación de Riesgos Laborales; 
+                             3. Reglamento Interno de La EMPRESA; 3. Un ejemplar del Programa de Seguridad y Salud Laboral; 
+                             4. Original de mi Descripción de Cargo firmada por mi persona y el representante Legal de la Empresa, 
+                             5. Notificación de la ubicación de Servicio de Seguridad y Salud Laboral 
+                             6.  Recibido el adiestramiento necesario sobre el Programa de Seguridad y Salud Laboral del trabajo; 
+                             7. Adiestramiento sobre el uso de los Equipos de Protección Personal (de Seguridad) que me fueron suministrados por la Empresa.  Así mismo declaro que he realizado adiestramiento en la Prevención para evitar ocurrencias de Accidentes Laborales Enfermedades y de los documentos arriba señalados
+                        </p>
+                        <p class="text-justify">
+                            <strong>NOVENA: </strong>Se consideran causas justificadas para poner fin al presente contrato, las contempladas para cada una de las partes en la Ley Orgánica del Trabajo vigente.  Este contrato podrá ser rescindido, siempre y cuando ambos contratantes lleguen a un común acuerdo; de lo contrario la parte que resultare culpable de su rescisión, sin justificarla, se obliga a pagar a la contraparte la indemnización de daños y perjuicios que surjan como secuela inmediata de la terminación contemplados en el artículo 110 de la Ley Orgánica del Trabajo.
+                        </p>
+
+                        <BR/>
+                        <p class="text-justify">
+                            Se hacen dos (2) ejemplares de un mismo tenor y a un solo efecto, uno para EL TRABAJADOR y otro para EL PATRONO en
+                           <strong> <span t-field="o.company_id.city"/> a los <span t-esc="datetime.date.today().strftime('%d dias del mes de ')"/><span t-esc="das[datetime.date.today().strftime('%m')]"/><span t-esc="datetime.date.today().strftime(' del año %Y')"/>.</strong>
+</p>
+
+                        <div class="row mt-5">
+                            <div class="col-6 text-center">
+                                <hr/>
+                            </div>
+                            <div class="col-6 text-center">
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-6 text-center">
+                               <strong> POR EL PATRONO:</strong>
+                            </div>
+                            <div class="col-6 text-center">
+                               <strong> EL TRABAJADOR (A):</strong>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-6 text-center">
+                              <strong>  SELLO:</strong>
+                            </div>
+                            <div class="col-6 text-center">
+                               <strong> HUELLA:</strong>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-6 text-center">
+                                
+                            </div>
+                            <div class="col-6 text-center">
+                                <table class="table table-bordered" >
+                                  <tr style="height: 114px;">
+                                    <td>
+                                    
+                                    </td>
+                                    <td>
+                                      
+                                    </td>
+                                  </tr>
+                                  
+                                </table>
+                            </div>
+                        </div>
+                        
+                        
+
+                    </div>
+                    </t>
+                </t>
+            </t>
+
+        </template>
+    </data>
+    
+
+</odoo>

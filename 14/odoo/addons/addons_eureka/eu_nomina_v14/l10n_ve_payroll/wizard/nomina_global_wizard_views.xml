@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_nomina_global_form" model="ir.ui.view">
+        <field name="name">Nomina Global Wizard</field>
+        <field name="model">nomina.global.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Imprimir">
+                <group>
+                    <field name="fecha_inicio" required="1"/>
+                    <field name="fecha_final" required="1"/>
+                    <field name="type_nomina" required="1"/>
+                    <field name="structure"  required="1" domain="[('struct_category','=',type_nomina)]"/>
+                    <field name="filtro" required="1" />
+                    
+                </group>
+                <footer>
+                    <button
+                        name="print_report"
+                        string="Relación Nomina"
+                        type="object"
+                        class="btn-primary"
+                        
+                    />
+                    <button
+                        name="print_report2"
+                        string="Relacion Depositos de sueldo"
+                        type="object"
+                        class="btn-primary"
+                        
+                    />
+                    <button
+                        name="print_report3"
+                        string="Acum. relación nómina S. variables"
+                        type="object"
+                        class="btn-primary"
+                        
+                    />
+                    <button
+                        name="print_report4"
+                        string="Reporte relación nómina Vertical"
+                        type="object"
+                        class="btn-primary"
+                        
+                    />
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_view_nomina_global" model="ir.actions.act_window">
+        <field name="name">Nomina global</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">nomina.global.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_nomina_global_form"></field>
+        <field name="binding_view_types">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+        id="nomina_report_global"
+        name="Reporte General de Nómina"
+        action="l10n_ve_payroll.action_view_nomina_global"
+        parent="hr_payroll.menu_hr_payroll_report"
+        sequence="10"/>
+        
+</odoo>

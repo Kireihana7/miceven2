@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="template_sales_by_month_products">
+            <t t-call="web.html_container">
+                <t t-set="company" t-value="env.company" />
+
+                <t t-set="tittle" t-value="'Ventas por Mes y por Productos'" />
+                <t t-set="desde" t-value="start_date" />
+                <t t-set="hasta" t-value="end_date" />
+
+                <t t-call="eu_miceven_report_topper.header_report_miceven">
+                    <style>
+                        .underline {
+                            text-decoration: underline;
+                        }
+                        .total-border {
+                            border-top: 1px solid black;
+                            border-bottom: 1px solid black;
+                        }
+                    </style>
+                    <div class="page">
+                        <div class="oe_structure" />
+                        <br />
+                        <t t-set="obj_currency"
+                            t-value="env['res.currency'].search([('id', '=', 2)])" />
+                        <t t-set="obj_currency_ref"
+                            t-value="env['res.currency'].search([('id', '=', 3)])" />
+
+
+                        <!-- ===================== VENTAS MENSUALES ===================== -->
+                        <p class="underline"
+                            style="background-color: #d1f3b4; font-size: 12px; width: 220px; padding: 2px 0px; font-weight: bold;">VENTAS
+                            MENSUALES</p>
+                        <table class="table table-sm"
+                            style="text-transform: uppercase; font-size: 12px;">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width: 16.66% !important;">
+                                        <strong class="underline">MES</strong>
+                                    </th>
+                                    <th class="text-center" style="width: 16.66% !important;">
+                                        <strong class="underline">HARINA DE MAÍZ</strong>
+                                    </th>
+                                    <th class="text-center" style="width: 16.66% !important;">
+                                        <strong class="underline">SUB-PRODUCTO</strong>
+                                    </th>
+                                    <th class="text-center" style="width: 16.66% !important;">
+                                        <strong class="underline">VENTA DE AZÚCAR</strong>
+                                    </th>
+                                    <th class="text-center" style="width: 16.66% !important;">
+                                        <strong class="underline">OTROS PRODUCTOS</strong>
+                                    </th>
+                                    <th class="text-center" style="width: 16.66% !important;">
+                                        <strong class="underline">TOTAL MES</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Enero</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="enero_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="enero_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="enero_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="enero_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="enero_harina_maiz + enero_subproducto + enero_venta_azucar + enero_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Febrero</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="febrero_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="febrero_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="febrero_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="febrero_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="febrero_harina_maiz + febrero_subproducto + febrero_venta_azucar + febrero_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Marzo</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="marzo_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="marzo_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="marzo_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="marzo_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="marzo_harina_maiz + marzo_subproducto + marzo_venta_azucar + marzo_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Abril</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="abril_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="abril_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="abril_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="abril_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="abril_harina_maiz + abril_subproducto + abril_venta_azucar + abril_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Mayo</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="mayo_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="mayo_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="mayo_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="mayo_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="mayo_harina_maiz + mayo_subproducto + mayo_venta_azucar + mayo_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Junio</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="junio_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="junio_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="junio_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="junio_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="junio_harina_maiz + junio_subproducto + junio_venta_azucar + junio_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Julio</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="julio_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="julio_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="julio_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="julio_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="julio_harina_maiz + julio_subproducto + julio_venta_azucar + julio_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Agosto</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="agosto_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="agosto_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="agosto_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="agosto_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="agosto_harina_maiz + agosto_subproducto + agosto_venta_azucar + agosto_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Septiembre</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="septiembre_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="septiembre_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="septiembre_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="septiembre_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="septiembre_harina_maiz + septiembre_subproducto + septiembre_venta_azucar + septiembre_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Octubre</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="octubre_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="octubre_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="octubre_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="octubre_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="octubre_harina_maiz + octubre_subproducto + octubre_venta_azucar + octubre_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Noviembre</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="noviembre_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="noviembre_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="noviembre_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="noviembre_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="noviembre_harina_maiz + noviembre_subproducto + noviembre_venta_azucar + noviembre_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Diciembre</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="diciembre_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="diciembre_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="diciembre_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="diciembre_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>
+                                            <t t-esc="diciembre_harina_maiz + diciembre_subproducto + diciembre_venta_azucar + diciembre_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="total-border">
+                                    <t t-set="total_harina_maiz" t-value="enero_harina_maiz + febrero_harina_maiz + marzo_harina_maiz + abril_harina_maiz + mayo_harina_maiz + junio_harina_maiz + julio_harina_maiz + agosto_harina_maiz + septiembre_harina_maiz + octubre_harina_maiz + noviembre_harina_maiz + diciembre_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                    <t t-set="total_subproducto" t-value="enero_subproducto + febrero_subproducto + marzo_subproducto + abril_subproducto + mayo_subproducto + junio_subproducto + julio_subproducto + agosto_subproducto + septiembre_subproducto + octubre_subproducto + noviembre_subproducto + diciembre_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                    <t t-set="total_venta_azucar" t-value="enero_venta_azucar + febrero_venta_azucar + marzo_venta_azucar + abril_venta_azucar + mayo_venta_azucar + junio_venta_azucar + julio_venta_azucar + agosto_venta_azucar + septiembre_venta_azucar + octubre_venta_azucar + noviembre_venta_azucar + diciembre_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                    <t t-set="total_otros_productos" t-value="enero_otros_productos + febrero_otros_productos + marzo_otros_productos + abril_otros_productos + mayo_otros_productos + junio_otros_productos + julio_otros_productos + agosto_otros_productos + septiembre_otros_productos + octubre_otros_productos + noviembre_otros_productos + diciembre_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                    <t t-set="total_totales" t-value="total_harina_maiz + total_subproducto + total_venta_azucar + total_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+
+                                    <td class="text-left" style="font-weight: bold;">
+                                        <span>Total General</span>
+                                    </td>
+                                    <td class="text-right" style="font-weight: bold;">
+                                        <span>
+                                            <t t-esc="total_harina_maiz" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>
+                                    </td>
+                                    <td class="text-right" style="font-weight: bold;">
+                                        <span>
+                                            <t t-esc="total_subproducto" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>                                        
+                                    </td>
+                                    <td class="text-right" style="font-weight: bold;">
+                                        <span>
+                                            <t t-esc="total_venta_azucar" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>                                      
+                                    </td>
+                                    <td class="text-right" style="font-weight: bold;">
+                                        <span>
+                                            <t t-esc="total_otros_productos" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>                                         
+                                    </td>
+                                    <td class="text-right" style="font-weight: bold;">
+                                        <span>
+                                            <t t-esc="total_totales" t-options="{'widget': 'float', 'precision': 2}" />
+                                        </span>                                             
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <br />
+                        <br />
+                        <br />
+
+                        <!-- ===================== Resumen de Productos ===================== -->
+                        <t t-if="resumen_productos">
+                            <table class="table table-sm"
+                                style="width: 100%; text-transform: uppercase; font-size: 12px;"
+                                align="left">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width: 16.66% !important;">
+                                            <strong></strong>
+                                        </th>
+                                        <th class="text-center" style="width: 16.66% !important;">
+                                            <strong class="underline">FARDO VENDIDOS ANUAL</strong>
+                                        </th>
+                                        <th class="text-center" style="width: 16.66% !important;">
+                                            <strong class="underline">MONTO EN $ ANUAL</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="total_quantity_resumen" t-value="0"/>
+                                    <t t-set="total_amount_resumen" t-value="0"/>
+
+                                    <t t-foreach="resumen_productos" t-as="line_resumen">
+                                        <tr>
+                                            <td class="text-left">
+                                                <span class="underline">
+                                                    <t t-esc="line_resumen.get('product_name')" />
+                                                </span>
+                                            </td>
+                                            <td class="text-right">
+                                                <span class="underline">
+                                                    <t t-esc="line_resumen.get('total_quantity')" t-options="{'widget': 'float', 'precision': 2}" />
+                                                    <t t-set="total_quantity_resumen" t-value="total_quantity_resumen + line_resumen.get('total_quantity')"/>
+                                                </span>
+                                            </td>
+                                            <td class="text-right">
+                                                <span class="underline">
+                                                    <t t-esc="line_resumen.get('total_amount')" t-options="{'widget': 'float', 'precision': 2}" />
+                                                    <t t-set="total_amount_resumen" t-value="total_amount_resumen + line_resumen.get('total_amount')"/>
+                                                </span>
+                                            </td>                                        
+                                        </tr>                                
+                                    </t>                            
+                                    <tr class="total-border">
+                                        <td class="text-left"></td>
+                                        <td class="text-right">
+                                            <span class="underline">
+                                                <t t-esc="total_quantity_resumen" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </span>                                        
+                                        </td>
+                                        <td class="text-right">
+                                            <span class="underline">
+                                                <t t-esc="total_amount_resumen" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </span>                                                
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </t>
+
+                        <div class="oe_structure" />
+                    </div>
+                </t>
+            </t>
+        </template>    
+    </data>
+</odoo>

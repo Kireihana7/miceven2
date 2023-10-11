@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jose Mazzei - 6 -->
+<odoo>
+    <data>
+        <record id="paperformat_eu_reporte_payment_date" model="report.paperformat">
+            <field name="name">Formato de Papel para Reporte de Cobros por Fecha</field>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+        </record>
+
+        <record id="action_report_eu_reporte_payment_date" model="ir.actions.report">
+            <field name="name">Reporte de Cobros por Fecha</field>
+            <field name="model">eu.reporte.payment.date</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">eu_account_reports.report_eu_reporte_payment_date</field>
+            <field name="report_file">eu_account_reports.report_eu_reporte_payment_date</field>
+            <field name="print_report_name">Reporte de Cobros por Fecha</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_eu_reporte_payment_date"/>
+        </record>
+
+        <template id="report_eu_reporte_payment_date">
+            <t t-call="web.html_container">
+                <t t-set="company" t-value="env.company"/>
+                
+                <t t-set="tittle" t-value="'Reporte de Cobros por Fecha'"/>
+                <t t-set="desde" t-value="form.get('start_date')"/>
+                <t t-set="hasta" t-value="form.get('end_date')"/>
+              
+                <t t-call="eu_miceven_report_topper.header_report_miceven">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                            <br/>
+                            <t t-set="obj_currency" t-value="env['res.currency'].search([('id', '=', 2)])"/>    
+                            <t t-set="obj_currency_ref" t-value="env['res.currency'].search([('id', '=', 3)])"/>    
+                            <table class="table table-sm" style="font-size:10px;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width: 5% !important;"><strong>Fecha</strong></th>
+                                        <th class="text-center" style="width: 5% !important;"><strong>Número</strong></th>
+                                        <th class="text-center" style="width: 25% !important;"><strong>Cliente</strong></th>
+                                        <th class="text-center" style="width: 10% !important;"><strong>N° Doc</strong></th>
+                                        <th class="text-center" style="width: 20% !important;"><strong>Descripción</strong></th>  
+                                        <th class="text-center" style="width: 5% !important;"><strong>Tasa</strong></th>
+                                        <th class="text-center" style="width: 15% !important;"><strong>Monto</strong></th>
+                                        <!-- <th class="text-center" style="width: 10% !important;"><strong>Moneda del Pago</strong></th> -->
+                                        <th class="text-center" style="width: 15% !important;"><strong>Monto REF</strong></th>
+                                    </tr>                                
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="form.get('invoices')" t-as="payment">
+                                        <tr>
+                                            <td class="text-center">
+                                                <span t-esc="payment.get('date')"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="payment.get('payment_id')"/>
+                                            </td>
+                                            <td class="text-left">
+                                                <span t-esc="payment.get('partner_id')"/>
+                                            </td>
+                                            <td class="text-left">
+                                                <span t-esc="payment.get('ref')"/>
+                                            </td>
+                                            <td class="text-left">
+                                                <span t-esc="payment.get('description')"/>
+                                            </td>        
+                                            <td class="text-right">
+                                                <span t-esc="float(payment.get('rate'))" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="float(payment.get('amount'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                            </td>
+                                            <!-- <td class="text-center">
+                                                <span t-esc="payment.get('currency_id')"/>
+                                            </td>  -->      
+                                            <td class="text-right">
+                                                <span t-esc="float(payment.get('amount_ref'))" t-options='{"widget": "monetary", "display_currency": obj_currency_ref}'/>
+                                            </td>
+                                        </tr>      
+                                    </t> 
+                                    <tr>
+                                        <td class="text-right" colspan="6">
+                                            <span>Totales</span>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="float(form.get('total_amount'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="float(form.get('total_amount_ref'))" t-options='{"widget": "monetary", "display_currency": obj_currency_ref}'/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table> 
+                            
+                            <br/><br/>
+                            
+                             <div class="col-xs-4" align="center">
+                                <table class="table table-sm" style="width:100%;font-size:12px;" >
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="width: 75% !important;"><strong>Diario</strong></th>
+                                            <th class="text-center" style="width: 25% !important;"><strong>Monto</strong></th>
+                                        </tr>                                
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="form.get('journals')" t-as="journal">
+                                            <tr>
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <span t-esc="journal.get('journal_id')"/>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-esc="float(journal.get('monto_moneda_diario'))" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                                        <span t-esc="journal.get('journal_currency')"/>
+                                                    </td>
+                                                </tr>
+                                            </tr>  
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-xs-4" align="center">
+                                <table class="table table-sm" style="width:75%;font-size:14px;" >
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="width: 25% !important;"><strong>Método de Pago</strong></th>
+                                            <th class="text-center" style="width: 25% !important;"><strong>Monto</strong></th>
+                                            <th class="text-center" style="width: 25% !important;"><strong>Monto Ref</strong></th>
+                                        </tr>                                
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <span>Efectivo</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('efectivo_usd'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('efectivo_bs'))" t-options='{"widget": "monetary", "display_currency": obj_currency_ref}'/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <span>Transferencia</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('banco_usd'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('banco_bs'))" t-options='{"widget": "monetary", "display_currency": obj_currency_ref}'/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <span>Totales</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('total_amount'))" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="float(form.get('total_amount_ref'))" t-options='{"widget": "monetary", "display_currency": obj_currency_ref}'/>
+                                                </td>
+                                            </tr>
+                                        </tr>  
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

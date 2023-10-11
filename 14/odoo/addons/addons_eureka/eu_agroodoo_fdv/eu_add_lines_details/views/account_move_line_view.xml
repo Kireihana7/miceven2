@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- <record id="view_move_line_tree_grouped" model="ir.ui.view">
+            <field name="name">account.move.line.tree.grouped</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_tree_grouped"/>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='account_id']" position="before">
+                    <field name="product_id" />
+                </xpath>
+            </field>
+        </record> -->
+
+        <record id="view_move_line_tree_sdp_credit" model="ir.ui.view">
+            <field name="name">account.move.line.tree</field>
+            <field name="model">account.move.line</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Journal Items" create="false" edit="false">
+                    <field name="date" optional="show"/>
+                    <field name="product_id" optional="show"/>
+                    <field name="categ_id" readonly="1"/>
+                    <field name="quantity" optional="show"/>
+                    <field name="weight_total" optional="show" sum="Total Peso"/>
+                    <field name="weight_uom" optional="show"/>
+                    <field name="journal_id" options='{"no_open":True}' optional="hide"/>
+                    <field name="move_id" optional="show"/>
+                    <field name="account_id" options="{'no_open': True}" optional="hide" groups="account.group_account_user"/>
+                    <field name="partner_id" optional="show"/>
+                    <field name="statement_id" invisible="1"/>
+                    <field name="ref" optional="hide"/>
+                    <field name="name" optional="show"/>
+                    <field name="analytic_account_id" groups="account.group_account_user" optional="hide"/>
+                    <field name="analytic_tag_ids" widget="many2many_tags" groups="analytic.group_analytic_tags" optional="hide"/>
+                    <field name="tax_ids" widget="many2many_tags" width="0.5" optional="show"/>
+                    <field name="debit" sum="Total Debit" optional="show"/>
+                    <field name="credit" sum="Total Credit" optional="show"/>
+                    <field name="balance" sum="Balance" optional="show"/>
+                    <field name="amount_currency" groups="base.group_multi_currency" optional="hide"/>
+                    <field name="full_reconcile_id" optional="hide"/>
+                    <field name="reconcile_model_id" invisible="1"/>
+                    <field name="reconciled" invisible="1"/>
+                    <field name="date_maturity" optional="hide"/>
+                    <field name="currency_id" readonly="1" invisible="1"/>
+                    <field name="company_currency_id" invisible="1"/>
+                    <field name="parent_state" invisible="1"/>
+                    <field name="move_type" invisible="1"/>
+                    <field name="user_ids" string="Comercial" optional="show" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_move_line_tree_sdp_debit" model="ir.ui.view">
+            <field name="name">account.move.line.tree</field>
+            <field name="model">account.move.line</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Journal Items" create="false" edit="false">
+                    <field name="date" optional="show"/>
+                    <field name="product_id" optional="show"/>
+                    <field name="categ_id" readonly="1"/>
+                    <field name="quantity" optional="show"/>
+                    <field name="weight_total" optional="show" sum="Total Peso"/>
+                    <field name="weight_uom" optional="show"/>
+                    <field name="journal_id" options='{"no_open":True}' optional="hide"/>
+                    <field name="move_id" optional="show"/>
+                    <field name="account_id" options="{'no_open': True}" optional="hide" groups="account.group_account_user"/>
+                    <field name="partner_id" optional="show"/>
+                    <field name="statement_id" invisible="1"/>
+                    <field name="move_type" invisible="1"/>
+                    <field name="ref" optional="hide"/>
+                    <field name="name" optional="show"/>
+                    <field name="analytic_account_id" groups="account.group_account_user" optional="hide"/>
+                    <field name="analytic_tag_ids" widget="many2many_tags" groups="analytic.group_analytic_tags" optional="hide"/>
+                    <field name="tax_ids" widget="many2many_tags" width="0.5" optional="show"/>
+                    <field name="debit" sum="Total Debit" optional="show"/>
+                    <field name="credit" sum="Total Credit" optional="show"/>
+                    <field name="balance" sum="Balance" optional="show"/>
+                    <field name="amount_currency" groups="base.group_multi_currency" optional="hide"/>
+                    <field name="full_reconcile_id" optional="hide"/>
+                    <field name="reconcile_model_id" invisible="1"/>
+                    <field name="reconciled" invisible="1"/>
+                    <field name="date_maturity" optional="hide"/>
+                    <field name="currency_id" readonly="1" invisible="1"/>
+                    <field name="company_currency_id" invisible="1"/>
+                    <field name="parent_state" invisible="1"/>
+                    <field name="user_ids" string="Comercial" optional="show" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_move_line_reces">
+            <field name="name">Detalles de Facturas</field>
+            <field name="res_model">account.move.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('move_type', 'in', ('out_invoice', 'out_refund')),('product_id','!=', False)]</field>
+            <field name="view_id" ref="view_move_line_tree_sdp_credit"/>
+        </record>
+
+        <menuitem id="account_move_menu_line_out"
+                name="Detalles de Facturas"
+                parent="account.menu_finance_receivables"
+                action="action_move_line_reces"
+                groups="account.group_account_user"
+                sequence="1"/>
+        
+        <record model="ir.actions.act_window" id="action_move_line_payas">
+            <field name="name">Detalles de Facturas</field>
+            <field name="res_model">account.move.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('move_type', 'in', ('in_invoice', 'in_refund')),('product_id','!=', False)]</field>
+            <field name="view_id" ref="view_move_line_tree_sdp_debit"/>
+        </record>
+
+        <menuitem id="account_move_menu_line_in"
+                name="Detalles de Facturas"
+                parent="account.menu_finance_payables"
+                action="action_move_line_payas"
+                groups="account.group_account_user"
+                sequence="1"/>
+</odoo>

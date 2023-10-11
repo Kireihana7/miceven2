@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="purchase_order_form_inherit_views_moneda_pago" model="ir.ui.view">
+        <field name="name">purchase_moneda_pago_form_inherit_views</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="moneda_pago" options="{'no_open': True, 'no_create_edit': True, 'no_quick_create': True, 'no_create': True}"></field>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem 
+        id="menu_stock_quant_partner" 
+        name="Inventario de Clientes" 
+        sequence="2" 
+        action="eu_partner_stock.open_stock_quant_partner" 
+        parent="eu_sales_kpi_kg.eu_sales_kpi_kg_operaciones"
+        groups="eu_partner_stock.group_stock_quant_partner_manager"
+    />
+    
+</odoo>

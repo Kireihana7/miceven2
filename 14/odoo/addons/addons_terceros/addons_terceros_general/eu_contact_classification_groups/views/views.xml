@@ -1,0 +1,138 @@
+<odoo>
+  <data>
+
+    <record id="eu_table_classification_partner" model="ir.ui.view">
+      <field name="name">res.partner.table_classification</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form" />
+      <field name="arch" type="xml">
+
+        <xpath expr="//page[@name='sales_purchases']" position="inside">
+            <group name="classification" string="Clasificaciones">
+              <group name="client_class" string="Cliente">
+                <field name="client_agroupation" options="{'no_create':True,'no_open':True}" domain="[('state','=','open')]"/>
+              </group>
+              <group name="provider_class" string="Proveedor">
+                <field name="provider_agroupation" options="{'no_create':True,'no_open':True}" domain="[('state','=','open')]"/>
+              </group>
+            </group>
+        </xpath>
+        <xpath expr="//field[@name='residence_type']" position="after">
+              <field name="contact_code" />
+        </xpath>
+
+      </field>
+    </record>
+    <record id="eu_table_class_view_tree" model="ir.ui.view">
+      <field name="name">class.partner.table.view.tree</field>
+      <field name="model">class.partner.table</field>
+      <field name="arch" type="xml">
+        <tree string="">
+          <field name="name" />
+          <field name="description" />
+          <field name="state" />
+        </tree>
+      </field>
+    </record>
+    <record id="eu_class_table_view_form" model="ir.ui.view">
+      <field name="name">class.partner.table.view.form</field>
+      <field name="model">class.partner.table</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <header>
+            <button name="button_return_draft" groups="eu_contact_classification_groups.eu_class_table_group" string="Pasar a Borrador" type="object" class="oe_stat_button"/>
+            <button name="button_open_close" string="Abrir/Cerrar" type="object" class="oe_stat_button"/>
+            <button name="button_cancel" groups="eu_contact_classification_groups.eu_class_table_group" string="cancelar" type="object" class="oe_stat_button"/>
+            <field name="state" widget="statusbar"/>
+
+          </header>
+          <sheet>
+            <div class="oe_title">
+              <label for="name"/>
+              <h1>
+                  <field name="name" required="1"/>
+              </h1>
+            </div>
+            <group>
+              <field name="usual_type" />
+              <field name="description" />
+            </group>
+            <group>
+              
+              <group name="clients" string="Clientes">
+                <field name="client_partners_id" readonly="1" force_save="1">
+                  <tree>
+                    <field name="name" />
+                  </tree>
+                  </field>
+              </group>
+              <group name="providers" string="Proveedores">
+                <field name="provider_partners_id" readonly="1" force_save="1">
+                  <tree>
+                    <field name="name" />
+                  </tree>
+                </field>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="eu_open_table_class_view_tree" model="ir.actions.act_window">
+      <field name="name">Clasificaciones</field>
+      <field name="res_model">class.partner.table</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="eu_table_class_view_tree"></field>
+  </record>
+    <menuitem
+      id="eu_table_class_menu"
+      name="Clasificaciones"
+      action="eu_open_table_class_view_tree"
+      parent="contacts.res_partner_menu_config"
+      sequence="10"/>
+  
+
+      <!-- filtros -->
+      <record id="res_partner_table_view_search" model="ir.ui.view">
+        <field name="name">res.partner.class.table.select.search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='name']" position="after">
+            <field name="contact_code" />
+
+          </xpath>
+            <xpath expr="//search/filter[1]" position="before">
+              <filter name="provider" string="Clasifica como proveedor" domain="[('provider_agroupation', '!=', False)]" />
+              <filter name="client" string="Clasifica como cliente" domain="[('client_agroupation', '!=', False)]" />
+            </xpath>
+            <xpath expr="//group[@name='group_by']" position="replace">
+              <filter name="providerg" string="Agrupar por clasificacion proveedor"  context="{'group_by': 'provider_agroupation'}" />
+              <filter name="clientg" string="Agrupar por clasificacion cliente"  context="{'group_by': 'client_agroupation'}" />
+
+            </xpath>
+        </field>
+    </record>
+    <record id="class_partner_table_view_search" model="ir.ui.view">
+      <field name="name">class.partner.table.view.search</field>
+      <field name="model">class.partner.table</field>
+      <field name="arch" type="xml">
+        <search string="Busqueda Clasificaciones">
+                    <field name="name" string="Titulo" />
+                    <separator/>
+                    <filter string="Abierta" name="open" domain="[('state', '=', 'open')]"/>
+                    <filter string="cerrada" name="close" domain="[('state', '=', 'close')]"/>
+                    <separator/>
+                    <filter string="mayormente proveedores" name="usual_typep" domain="[('usual_type', '=', 'provider')]"/>
+                    <filter string="mayormente clientes" name="usual_typec" domain="[('usual_type', '=', 'client')]"/>
+                    <separator/>
+                    <group expand="0" name="group_by" string="Agrupar por">
+                        <filter name="usual_types" string="Contacto usual" domain="[]" context="{'group_by' : 'usual_type'}"/>
+                        <filter name="states" string="Estado" context="{'group_by': 'state'}"/>
+                    </group>
+        </search>
+      </field>
+    </record>
+      
+  </data>
+</odoo>

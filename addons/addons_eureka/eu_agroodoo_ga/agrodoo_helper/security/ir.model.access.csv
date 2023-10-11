@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_seed_type,agrodoo_helper.seed.type,model_seed_type,base.group_user,1,1,1,1
+access_seed_variety,agrodoo_helper.seed.variety,model_seed_variety,base.group_user,1,1,1,1

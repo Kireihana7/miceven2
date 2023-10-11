@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="mrp_production_wizard_view">
+        <field name="name">mrp.production.report.wizard form</field>
+        <field name="model">mrp.production.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="date_start"/>
+					<field name="date_end"/>
+                </group>
+                <footer>
+                    <button name="print_report" string="Generar Reporte" type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+	<record model="ir.actions.act_window" id="mrp_production_wizard_action">
+            <field name="name">Lista de Producciones</field>
+            <field name="res_model">mrp.production.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+     </record>
+
+    <menuitem id="menu_mrp_production_wizard" name="Lista de Producciones"
+          parent="mrp.menu_mrp_reporting" action="mrp_production_wizard_action"
+          sequence="102"/>
+</odoo>

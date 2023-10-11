@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_romana" model="ir.ui.view">
+        <field name="name">product.template.product.form.romana</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+        	<div name="options" position="inside">
+                <div>
+                    <field name="need_romana" />
+                    <label for="need_romana"/>
+                </div>
+                <div attrs="{'invisible':[('need_romana', '=', False)]}">
+                    <field name="auto_validate" />
+                    <label for="auto_validate"/>
+                </div>   
+                <div attrs="{'invisible':[('need_romana', '=', False)]}">
+                    <field name="with_excedente" />
+                    <label for="with_excedente"/>
+                </div> 
+                <div attrs="{'invisible':[('with_excedente', '=', False)]}">
+                    <label for="product_excedente"/>
+                    <field name="product_excedente" attrs="{'required':[('with_excedente', '=', True)]}" options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                </div>              
+            </div>
+            <xpath expr="//field[@name='weight']" position="attributes">
+                <attribute name="attrs">{'required':[('need_romana', '=', True)]}</attribute>
+            </xpath>
+            <field name="hs_code" position="after">
+                <field name="registro_sanitario" />
+                <field name="cpe" />
+            </field>
+        </field>
+    </record>
+
+    <record id="romana_product_product_search_view" model="ir.ui.view">
+        <field name="name">romana.product.product.search</field>
+        <field name="model">product.product</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="product.product_search_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='consumable']" position="after">
+                <filter string="Necesita Romana" name="need_romana" domain="[('need_romana', '!=', False)]"/>
+                <separator/>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_search_form_view_romana" model="ir.ui.view">
+        <field name="name">product.template.search.romana.form</field>
+        <field name="model">product.template</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='consumable']" position="after">
+                <filter name="need_romana" string="Necesita Romana" domain="[('need_romana','=',True)]"/>
+                <separator/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

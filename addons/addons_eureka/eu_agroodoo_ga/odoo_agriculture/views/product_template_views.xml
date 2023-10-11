@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="product_agriculture_template_tree_view_inherit" model="ir.ui.view">
+            <field name="name">product.agriculture.template.product.tree.inherited</field>
+            <field name="model">product.template</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="product_variant_count" invisible="1"/>
+                    <field name="sale_ok" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="cost_currency_id" invisible="1"/>
+    
+                    <field name="sequence" widget="handle" readonly="1"/>
+                    <field name="name" string="Product Name"/>
+                    <field name="default_code" optional="show"/>
+                    <field name="barcode" optional="hide" attrs="{'readonly': [('product_variant_count', '>', 1)]}"/>
+                    <field name="company_id" options="{'no_create_edit': True}"
+                        groups="base.group_multi_company" optional="hide"/>
+                    <field name="list_price" string="Sales Price" widget='monetary' options="{'currency_field': 'currency_id'}" optional="show" decoration-muted="not sale_ok"/>
+                    <field name="standard_price" widget='monetary' options="{'currency_field': 'cost_currency_id'}" optional="show" readonly="1"/>
+                    <field name="categ_id" optional="hide"/>
+                    <field name="type" optional="hide" readonly="1"/>
+                    <field name="uom_id" readonly="1" optional="show" groups="uom.group_uom"/>
+                    <field name="active" invisible="1"/>
+                    <field name="activity_exception_decoration" widget="activity_exception"/>
+               </tree>                
+            </field>            
+        </record>
+
+        <record id="product_agriculture_template_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.template.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="priority">5</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="agricultural_internal_type" />                    
+                </xpath>
+                <xpath expr="//page[@name='purchase']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+        
+                    <field name="maintenance_ok" position="attributes">
+                        <attrs name='invisible'>{[('sale_ok','=',False)]}</attrs>
+                    </field>                    
+                </xpath>
+                
+                <xpath expr="//div[@name='options'][1]" position="after">
+                    <div>
+                        <field name="is_agriculture"/>
+                        <label for="is_agriculture"/>
+                    </div>
+                    <div attrs="{'invisible': [('is_agriculture', '=', False)]}">
+                        <field name="equipo_agricola"/>
+                        <label for="equipo_agricola"/>
+                    </div>  
+                    <div attrs="{'invisible': [('is_agriculture', '=', False)]}">
+                        <field name="maintenance_ok" force_save="1"/>
+                        <label for="maintenance_ok"/>
+                    </div>                                                            
+                    <div>
+                        <field name="maintenance_as_product"/>
+                        <label for="maintenance_as_product"/>
+                    </div>       
+                    <div>
+                        <field name="mano_de_obra"/>
+                        <label for="mano_de_obra"/>
+                    </div>                      
+                </xpath>              
+
+                <xpath expr="//field[@name='type']" position="attributes">
+                    <attribute name="attrs">{'readonly': ['|', ('maintenance_ok', '=', True), ('mano_de_obra', '=', True)]}</attribute>
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+                <!-- <page name="invoicing" position="after">
+                    <page string="Agriculture" name="agriculture">
+                        <group>
+                            <group>
+                                <field name="is_agriculture"/>
+                            </group>
+                            <group>
+                                <field name="equipo_agricola"/>
+                            </group>                            
+                        </group>
+                    </page>
+                </page> -->
+            </field>  
+        </record>
+        <!-- 
+        <record id="product_agriculture_template_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.template.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="priority">5</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='purchase']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+                </xpath>
+                <page name="invoicing" position="after">
+                    <page string="Agriculture" name="agriculture">
+                        <group>
+                            <group>
+                                <field name="is_agriculture"/>
+                            </group>
+                            <group>
+                                <field name="equipo_agricola"/>
+                            </group>                            
+                        </group>
+                    </page>
+                </page>
+            </field>  
+        </record> 
+        -->
+
+
+        <!-- <record id="product_agriculture_vehicle_template_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.agriculture.vehicle.template.form.view.inherited</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <page name="invoicing" position="after">
+                    <page string="Vehicle" name="vehicle">
+                        <group>
+                            <group>
+                                <field name="vehicle_ids"/>
+                            </group>                      
+                        </group>
+                    </page>
+                </page>
+            </field>  
+        </record>  -->
+
+
+        <record id="product_template_agriculture_search_view_inherit" model="ir.ui.view">
+            <field name="name">product.template.agriculture.search.view.inherited</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/field[@name='attribute_line_ids']" position="before">
+                    <filter string="Agricultural Equipment" name="filter_agricultural_equipment" 
+                        domain="[
+                            ('is_agriculture','=', True), 
+                            ('equipo_agricola', '=', True), 
+                            ('maintenance_ok', '=', True)
+                        ]"/>
+
+                    <filter string="Crop Material" name="filter_crop_material" 
+                        domain="[
+                            ('is_agriculture','=', True), 
+                            ('type', '=', 'product'),
+                            ('equipo_agricola', '=', False), 
+                            ('maintenance_ok', '=', False),
+                            ('maintenance_as_product', '=', False),
+                            ('mano_de_obra', '=', False)
+                        ]"/>                        
+                    <separator/>
+                </xpath>             
+            </field>            
+        </record>
+
+        <record id="product_griculture_template_action" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('is_agriculture', '=', True)]</field>
+            <field name="view_id" ref="product_agriculture_template_tree_view_inherit"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new product
+                </p><p>
+                    You must define a product for everything you sell or purchase,
+                    whether it's a storable product, a consumable or a service.
+                </p>
+            </field>
+        </record>   
+        
+	  	<menuitem 
+		  	id="implementos_topmenu"
+		    name="Products" 
+			sequence='6'
+		    action="product_griculture_template_action" 
+		    parent="configuration_topmenu"/>        
+        
+    </data>
+</odoo>

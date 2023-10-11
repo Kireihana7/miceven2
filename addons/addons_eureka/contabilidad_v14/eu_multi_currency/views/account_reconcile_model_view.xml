@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_reconcile_model_form" model="ir.ui.view">
+            <field name="name">account.reconcile.model.form</field>
+            <field name="model">account.reconcile.model</field>
+            <field name="inherit_id" ref="account.view_account_reconcile_model_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='match_text_location_reference']" position="after">
+                    <label for="match_text_location_reference_estrict" string="Referencia Estricta"/>
+                    <field name="match_text_location_reference_estrict"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

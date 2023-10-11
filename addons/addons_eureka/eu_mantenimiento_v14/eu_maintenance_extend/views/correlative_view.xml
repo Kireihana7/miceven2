@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <odoo>
+    <data>
+        <record id="correlative_view" model="ir.ui.view">
+            <field name="name">name_correlative_view</field>
+            <field name="model">maintenance.request</field>
+            <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/div[2]" position="after">
+                    <h2 class="oe_title">
+                        <label for="correlative_name" class="o_form_label">Secuencia</label><br />
+                        <field name="correlative_name" readonly="1" />
+                    </h2>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

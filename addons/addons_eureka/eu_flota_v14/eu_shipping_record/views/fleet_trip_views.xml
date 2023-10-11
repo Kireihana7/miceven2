@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fleet_trip_view_tree" model="ir.ui.view">
+        <field name="name">fleet.trip.view.tree</field>
+        <field name="model">fleet.trip</field>
+        <field name="arch" type="xml">
+            <tree string="Viajes" js_class="trip-dashboard">
+                <header>
+                    <button 
+                        string="Facturar"
+                        name="action_create_invoice"
+                        type="object"
+                        class="oe_highlight" 
+                    />
+                </header>
+                <field name="name" />
+                <field name="route_type" optional="hide" />
+                <field name="origin_branch_id" />
+                <field name="origin_city_id" />
+                <field name="destination_branch_id" />
+                <field name="destination_city_id" />
+                <field name="shipping_date" />
+                <field name="shipping_weight" />
+                <field name="vehicle_id" />
+                <field name="orden_despacho" optional="hide" />
+                <field name="driver_id" />
+                <field name="invoice_id" optional="hide" />
+                <field name="picking_guide_id" optional="hide" />
+                <field name="driver_cedula" optional="hide" />
+                <field name="license_plate" optional="hide" />
+                <field name="numero_clientes" optional="hide" />
+                <field name="leave_date" optional="hide" />
+                <field name="arrive_date" optional="hide" />
+                <field name="cost" optional="show" />
+                <field 
+                    name="state" 
+                    widget="badge" 
+                    decoration-primary="state == 'planificado'"
+                    decoration-warning="state == 'en_proceso'"
+                    decoration-success="state == 'finalizado'"
+                    decoration-danger="state == 'cancelado'"
+                />
+            </tree>
+        </field>
+    </record>
+    <record id="fleet_trip_view_search" model="ir.ui.view">
+        <field name="name">fleet.trip.view.search</field>
+        <field name="model">fleet.trip</field>
+        <field name="arch" type="xml">
+            <search string="Viajes">
+                <field name="name" />
+                <field name="branch_id" />
+                <field name="destination_branch_id" />
+                <field name="destination_city_id" />
+                <field name="shipping_date" />
+                <field name="vehicle_id" />
+                <field name="driver_id" />
+                <field name="driver_cedula" />
+                <field name="license_plate" />
+                <field name="state" />
+                <field name="picking_guide_id" />
+                <!-- Filters -->
+                <filter 
+                    name="filter_state_inicio" 
+                    string="Planificado" 
+                    domain="[('state', '=', 'planificado')]"
+                />
+                <filter
+                    name="filter_state_facturado" 
+                    string="Facturado" 
+                    domain="[('state', '=', 'facturado')]"
+                />
+                <filter 
+                    name="filter_state_en_proceso" 
+                    string="En Proceso" 
+                    domain="[('state', '=', 'en_proceso')]"
+                />
+                <filter 
+                    name="filter_state_finalizado" 
+                    string="Finalizado" 
+                    domain="[('state', '=', 'finalizado')]"
+                />
+                <filter 
+                    string ="Cancelado"
+                    name="filter_state_cancelado"
+                    domain="[('state', '=', 'cancelado')]"
+                />
+                <separator />
+                <filter 
+                    name="filter_city_city"
+                    string="Ciudad-ciudad" 
+                    domain="[('route_type','=','city_city')]" 
+                />
+                <filter 
+                    name="filter_branch_branch"
+                    string="Sucursal-sucursal" 
+                    domain="[('route_type','=','branch_branch')]" 
+                />
+                <filter 
+                    name="filter_city_branch"
+                    string="Ciudad-sucursal" 
+                    domain="[('route_type','=','city_branch')]" 
+                />
+                <filter 
+                    name="filter_branch_city"
+                    string="Sucursal-ciudad" 
+                    domain="[('route_type','=','branch_city')]" 
+                />
+                <separator />
+                <filter 
+                    name="filter__has_picking"
+                    string="Tiene picking" 
+                    domain="[('has_picking','=',True)]" 
+                />
+                <filter 
+                    name="filter_not_has_picking"
+                    string="No tiene picking" 
+                    domain="[('has_picking','=',False)]" 
+                />
+                <!-- Group by -->
+                <filter 
+                    name="filter_origin_branch_id" 
+                    string="Sucursal salida" 
+                    context="{'group_by': 'origin_branch_id'}" 
+                />
+                <filter 
+                    name="filter_origin__city_id" 
+                    string="Ciudad de salida salida" 
+                    context="{'group_by': 'origin_city_id'}" 
+                />
+                <filter 
+                    string="Sucursal destino"
+                    name="group_by_destination_branch_id" 
+                    context="{'group_by': 'destination_branch_id'}" 
+                />
+                <filter 
+                    string="Ciudad de destino" 
+                    name="filter_destination_city" 
+                    context="{'group_by': 'destination_city_id'}" 
+                />
+                <filter 
+                    string="Tipo de ruta" 
+                    name="filter_route_type" 
+                    context="{'group_by': 'route_type'}" 
+                />
+                <filter 
+                    string="Por picking"
+                    name="group_has_picking"
+                    context="{'group_by': 'has_picking'}"
+                />
+                <filter 
+                    string="Fecha de despacho"
+                    name="group_by_shipping_date" 
+                    context="{'group_by': 'shipping_date'}" 
+                />
+                <filter 
+                    string="Vehículo"
+                    name="group_by_vehicle_id" 
+                    context="{'group_by': 'vehicle_id'}" 
+                />
+                <filter 
+                    string="Chófer"
+                    name="group_by_driver_id" 
+                    context="{'group_by': 'driver_id'}" 
+                />
+                <filter 
+                    string="Estatus"
+                    name="group_by_state" 
+                    context="{'group_by': 'state'}" 
+                />
+            </search>
+        </field>
+    </record>
+    <record id="fleet_trip_view_form" model="ir.ui.view">
+        <field name="name">fleet.trip.view.form</field>
+        <field name="model">fleet.trip</field>
+        <field name="arch" type="xml">
+            <form string="Viajes">
+                <header>
+                    <button 
+                        string="Cancelar" 
+                        name="action_cancel_trip" 
+                        type="object" 
+                        class="bg-danger"
+                        confirm="Esta acción no se puede deshacer"
+                        attrs="{'invisible':[('state', '=', 'cancelado')]}"
+                        groups="eu_fleet_group.fleet_supervisor_group"
+                    />
+                    <button 
+                        string="En proceso"
+                        context="{'state': 'en_proceso'}"
+                        name="action_set_state"
+                        type="object"
+                        class="oe_highlight"
+                        confirm="Esta acción no se puede deshacer"
+                        attrs="{'invisible': [('state', '!=', 'planificado')]}"
+                        groups="eu_fleet_group.fleet_supervisor_group"
+                    />
+                    <button
+                        string="Finalizado"
+                        context="{'state': 'finalizado'}"
+                        name="action_set_state"
+                        type="object"
+                        class="oe_highlight"
+                        confirm="Esta acción no se puede deshacer"
+                        attrs="{'invisible': [('state', '!=', 'en_proceso')]}"
+                        groups="eu_fleet_group.fleet_supervisor_group"
+                    />
+                    <button 
+                        string="Transbordar" 
+                        name="action_do_transhipment" 
+                        type="object" 
+                        class="oe_highlight"
+                        confirm="Esta seguro?"
+                        states="en_proceso"
+                        groups="eu_fleet_group.fleet_manager_group"
+                    />
+                    <field name="can_invoice_trip" invisible="1" />
+                    <button 
+                        string="Facturar"
+                        name="action_create_invoice"
+                        type="object"
+                        class="oe_highlight"
+                        attrs="{
+                            'invisible':[
+                                '|','|',
+                                ('can_invoice_trip','=',False),
+                                ('invoice_id', '!=', False),
+                                ('state', '!=', 'finalizado'),
+                            ],
+                        }"
+                        groups="eu_fleet_group.fleet_manager_group"
+                    />
+                    <button 
+                        string="Reporte del viaje"
+                        name="action_report_trip_driver"
+                        type="object"
+                        class="bg-primary text-light"
+                    />
+                    <field name="state" invisible="1" />
+                    <field 
+                        name="state_with_invoice" 
+                        widget="statusbar" 
+                        attrs="{'invisible': [('can_invoice_trip','=',True)]}"
+                        statusbar_visible="planificado,en_proceso,finalizado,cancelado"
+                    />
+                    <field 
+                        name="state_without_invoice" 
+                        widget="statusbar"
+                        attrs="{'invisible': [('can_invoice_trip','=',False)]}"
+                        statusbar_visible="planificado,en_proceso,finalizado,facturado,cancelado"
+                    />
+                </header>
+                <div class="o_notification_alert alert alert-warning" attrs="{'invisible':[('shipping_weight','&lt;=','weight_limit')]}" role="alert">
+                    La cantidad de kilos a despachar excede la capacidad del vehículo por <field name="remaining_weight" nolabel="1" />
+                </div>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button 
+                            name="action_create_odometer" 
+                            type="object" 
+                            class="oe_stat_button" 
+                            icon="fa-tachometer"
+                        >
+                            <field name="odometer_count" widget="statinfo"/>
+                        </button>
+                        <button 
+                            name="action_create_fuel_log" 
+                            type="object" 
+                            class="oe_stat_button" 
+                            icon="fa-car"
+                        >
+                            <field name="fuel_log_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <widget 
+                        name="web_ribbon" 
+                        title="Cancelada" 
+                        bg_color="bg-danger" 
+                        attrs="{'invisible':[('state', '!=', 'cancelado')]}"
+                    />
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1>
+                            <field name="name" readonly="1" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="user_is_manager" invisible="1" />
+                            <field
+                                name="branch_id"
+                                attrs="{'readonly':['|',('state', '!=', 'planificado'),('user_is_manager','=',False)]}"
+                                force_save="1"
+                                required="1"
+                            />
+                            <field name="route_type" required="1" />
+                            <field 
+                                name="origin_branch_id" 
+                                attrs="{
+                                    'invisible':[('route_type','not in',['branch_branch','branch_city'])],
+                                }"
+                                force_save="1"
+                                options="{'no_create': True}"
+                            />
+                            <field 
+                                name="origin_city_id" 
+                                attrs="{
+                                    'invisible':[('route_type','not in',['city_city','city_branch'])],
+                                }"
+                                force_save="1"
+                                options="{'no_create': True}"
+                            />
+                            <field 
+                                name="destination_branch_id" 
+                                attrs="{
+                                    'invisible':[('route_type','not in',['branch_branch','city_branch'])],
+                                }"
+                                force_save="1"
+                                options="{'no_create': True}"
+                            />
+                            <field 
+                                name="destination_city_id" 
+                                attrs="{
+                                    'invisible':[('route_type','not in',['city_city','branch_city'])],
+                                }"
+                                force_save="1"
+                                options="{'no_create': True}"
+                            />
+                            <field 
+                                name="leave_date" 
+                                attrs="{'readonly':[('state', '!=', 'planificado')]}"
+                                required="1"
+                            />
+                            <field
+                                name="shipping_date" 
+                                states="en_proceso,finalizado"
+                                attrs="{'required':[('state', '=', ['en_proceso', 'finalizado'])]}"
+                            />
+                            <field 
+                                name="arrive_date" 
+                                states="en_proceso,finalizado" 
+                                attrs="{'required':[('state', '=', ['en_proceso', 'finalizado'])]}"
+                            />
+                            <field name="shipping_weight" />
+                            <field name="shipped_weight" attrs="{'invisible':[('state', 'not in', ['cancelado', 'finalizado'])]}"/>
+                        </group>
+                        <group>
+                            <field name="invoice_id" readonly="1" attrs="{'invisible': [('can_invoice_trip','=',False)]}"/>
+                            <field 
+                                name="type_id" 
+                                required="1" 
+                                options="{'no_create':True}" 
+                                attrs="{'readonly': [('state', '!=', 'planificado')]}" 
+                            />
+                            <field 
+                                name="partner_id" 
+                                domain="[('is_company', '=', True)]"
+                                attrs="{'readonly': [('state', '!=', 'planificado')]}" 
+                                required="1"
+                                options="{'no_create': True}"
+                            />
+                            <field 
+                                name="vehicle_id" 
+                                attrs="{'readonly':[('state', '!=', 'planificado')]}"
+                                domain="[
+                                    ('license_plate', '!=', False),
+                                    ('branch_id','=',branch_id),
+                                ]" 
+                                required="1" 
+                                options="{'no_create': True}"
+                            />
+                            <field name="initial_odometer" readonly="1" force_save="1" />
+                            <field name="initial_fuel" readonly="1" force_save="1" />
+                            <field 
+                                name="driver_id" 
+                                domain="[
+                                    ('is_driver','=',True),
+                                    ('cedula','!=',False),
+                                    ('branch_id','=',branch_id),
+                                ]" 
+                                required="1"
+                                force_save="1"
+                                attrs="{'readonly': [('state', '!=', 'planificado')]}" 
+                                options="{'no_create': True}"
+                            />
+                            <field name="weight_limit" />
+                            <field name="driver_cedula" />
+                            <field name="license_plate" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Datos del viaje">
+                            <group>
+                                <group>
+                                    <field 
+                                        name="numero_clientes" 
+                                        options="{'type': 'number'}"
+                                        attrs="{'readonly':[('state', '!=', 'planificado')]}"
+                                    />
+                                    <field name="orden_despacho" />
+                                </group>
+                                <group>
+                                    <field name="observation" />
+                                </group>
+                            </group>
+                            <field 
+                                name="milestone_ids"
+                                required="1"
+                                attrs="{'readonly':[('state', '!=', 'planificado')]}"
+                            />
+                        </page>
+                        <page string="Cancelación" attrs="{'invisible':[('state', '!=', 'cancelado')]}">
+                            <group>
+                                <field name="fecha_cancelacion" readonly="1" />
+                                <field name="motivo_cancelacion" attrs="{'required':[('state', '=', 'cancelado')]}"/>
+                            </group>
+                        </page>
+                        <page string="Productos">
+                            <group>
+                                <field name="has_picking" />
+                                <field 
+                                    name="picking_guide_id" 
+                                    attrs="{
+                                        'invisible': [('has_picking','=',False)],
+                                        'required': [('has_picking','=',True)],
+                                    }"
+                                />
+                                <field 
+                                    name="line_ids" 
+                                    attrs="{
+                                        'required': [('has_picking','=',False)],
+                                        'invisible': [('has_picking','=',True)],
+                                        'readonly': [('state', '!=', 'planificado')]
+                                    }"
+                                >
+                                    <tree string="Productos de viajes">
+                                        <field name="product_id" />
+                                        <field name="quantity" />
+                                        <field name="weight" />
+                                        <field name="to_ship_weight" />
+                                        <field name="delivered_weight" />
+                                        <field name="returned_weight" />
+                                        <field name="total_measure" />
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page 
+                            string="Devoluciones"
+                            attrs="{'invisible': [('has_picking','=',True)]}"
+                        >
+                            <group>
+                                <field 
+                                    name="returned_line_ids" 
+                                    attrs="{'readonly': [('state', 'in', ['finalizado', 'cancelado'])]}"
+                                >
+                                    <tree>
+                                        <field name="line_id" />
+                                        <field name="weight" />
+                                        <field name="quantity" />
+                                        <field name="total_measure" />
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <field name="fleet_trip_id" invisible="1" />
+                                                <field 
+                                                    name="line_id" 
+                                                    required="1"
+                                                    options="{'no_create': True}"
+                                                    domain="[('fleet_trip_id', '=', fleet_trip_id)]"
+                                                />
+                                                <field name="quantity" required="1" />
+                                                <field name="weight" />
+                                                <field name="reason" required="1"/>
+                                                <field name="total_measure" />
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </group>
+                        </page>
+                        <page name="viaticum" string="Viáticos">
+                            <group>
+                                <field 
+                                    name="fleet_viaticum_id" 
+                                    options="{'no_create': True}" 
+                                    domain="[('state','=','confirm'),('partner_id','=',driver_id)]"
+                                />
+                                <field name="balance" />
+                            </group>
+                        </page>
+                        <page name="validations" string="Validaciones" groups="eu_fleet_group.fleet_supervisor_group">
+                            <field name="fleet_trip_validation_ids" groups="eu_fleet_group.fleet_supervisor_group">
+                                <tree create="0" delete="0" editable="bottom">
+                                    <field name="name" readonly="1" />
+                                    <field 
+                                        name="employee_id" 
+                                        widget="many2one_avatar_employee" 
+                                        required="1"
+                                        options="{'no_create': True}"
+                                    />
+                                    <field name="validation_date" readonly="1" force_save="1" />
+                                    <field name="checked" required="1" />
+                                </tree>
+                                <form>
+                                    <sheet>
+                                        <group>
+                                            <field name="name" readonly="1" />
+                                            <field 
+                                                name="employee_id" 
+                                                widget="many2one_avatar_employee" 
+                                                required="1"
+                                                options="{'no_create': True}"
+                                            />
+                                            <field 
+                                                name="validation_date" 
+                                                readonly="1" 
+                                                force_save="1" 
+                                            />
+                                            <field name="checked" required="1" />
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+</odoo>

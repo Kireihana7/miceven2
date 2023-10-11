@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_move_form_inherit_views_descuadre" model="ir.ui.view">
+        <field name="name">account_move_form_inherit_views</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="debit_total" invisible="1"/>
+                <field name="credit_total" invisible="1"/>
+                <field name="descuadrado" invisible="1"/>
+            </xpath>
+            <xpath expr="//form/header" position="after">
+                <field name="descuadrado" invisible="1"/>
+                <div 
+                    class="alert alert-danger" role="alert" style="margin-bottom:0px;"
+                    attrs="{'invisible': ['|',('descuadrado','=',False),('move_type','!=','entry')]}">
+                    El asiento se encuentra DESCUADRADO, por favor, verifique que esté haciendo todo correctamente o llame a su supervisor.
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

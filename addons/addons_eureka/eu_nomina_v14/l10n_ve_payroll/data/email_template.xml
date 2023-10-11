@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="eu_dom_payroll.email_template_mass_send" model="mail.template">
+        <field name="name">Payslips: Mass Delivery Email</field>
+        <field name="email_from">${object.company_id.email |safe}</field>
+        <field name="subject">${object.name or 'n/a'}</field>
+        <field name="email_to">${(object.employee_id.work_email or '') |safe}</field>
+        <field name="model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="report_template" ref="l10n_ve_payroll.action_report_payslip_nomina"/>
+        <field name="report_name">Nómina ${(object.employee_id.name or '')}</field>
+        <field name="body_html" type="html">
+            <div>
+                <p>Estimado ${object.employee_id.name}.</p>
+                <p>Adjunto encontrará su volante de pago.</p>
+            </div>
+        </field>
+    </record>
+
+    <!-- MENSAJE NOTIFICACION -->
+
+    <record id="expiring_contracts_notification_channel" model="mail.channel">
+        <field name="name">Nómina</field>
+        <field name="public">groups</field>
+        <field name="group_public_id" ref="hr_payroll.group_hr_payroll_manager"/>
+        <field name="group_ids" eval="(4,ref('hr_payroll.group_hr_payroll_manager'))"/>
+        <field name="description">¡Aqui se te entregara info de nómina!</field>
+        <field name="image_128" type="base64" file="l10n_ve_payroll/static/img/oie_transparent.png"/>
+    </record>
+    
+    <record id="expiring_contracts_activity_type" model="mail.activity.type">
+        <field name="name">Type activity contracts</field>
+        <field name="summary">note</field>
+        <field name="category">default</field>
+        <field name="res_model_id" ref="model_hr_contract"/>
+        <field name="icon">fa-tasks</field>
+        <field name="delay_count">0</field>
+    </record>
+
+    <!-- <record id="expiring_contracts_notification" model="mail.message">
+        <field name="subject">¡Algunos contratos estan por expirar!</field>
+        <field name="email_from">Nómine</field>
+        <field name="message_type">notification</field>
+        <field name="is_internal">True</field>
+        <field name="model">hr.contract</field>
+        <field name="channel_ids" eval="(4,ref('l10n_ve_payroll.expiring_contracts_notification_channel'))"/>
+        
+        <field name="body" type="html">
+            <div>
+                <p>Estimado Administrador de Nómina.</p>
+                <p>Existen algunos contratos que estan proximos a vencer.</p>
+                <p>Quizas le interese revisar.</p>
+            </div>
+        </field>
+    </record> -->
+    
+
+</odoo>

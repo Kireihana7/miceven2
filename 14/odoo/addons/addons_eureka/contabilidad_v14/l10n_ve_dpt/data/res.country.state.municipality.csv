@@ -1,0 +1,336 @@
+id,name,code,country_id:id,state_id:id,city_id:id
+mu_autonomoautana,Autonomo Autana,1,base.ve,state_amazonas,city_carmenderaton
+mu_altoorinoco,Alto Orinoco,2,base.ve,state_amazonas,city_laesmeralda
+mu_autonomomaroa,Autonomo Maroa,3,base.ve,state_amazonas,city_maroa
+mu_autonomoatures,Autonomo Atures,4,base.ve,state_amazonas,city_puertoayacucho
+mu_autonomorionegro,Autonomo Rio Negro,5,base.ve,state_amazonas,city_sancarlosderionegro
+mu_autonomoatabapo,Autonomo Atabapo,6,base.ve,state_amazonas,city_sanfernandodeatabapo
+mu_autonomomanapiare,Autonomo Manapiare,7,base.ve,state_amazonas,city_sanjuandemanapiare
+mu_anaco,Anaco,8,base.ve,state_anzoategui,city_anaco
+mu_aragua,Aragua,9,base.ve,state_anzoategui,city_barcelona
+mu_simonbolivar_anz,Simon Bolivar,10,base.ve,state_anzoategui,city_barcelona
+mu_sanjuandecapistrano,San Juan De Capistrano,11,base.ve,state_anzoategui,city_bocadeuchire
+mu_pedromariafreites,Pedro Maria Freites,12,base.ve,state_anzoategui,city_cantaura
+mu_manuelezequielbruzual,Manuel Ezequiel Bruzual,13,base.ve,state_anzoategui,city_clarines
+mu_sirarthurmcgregor,Sir Arthur Mc Gregor,14,base.ve,state_anzoategui,city_elchaparro
+mu_simonrodriguez_anz,Simon Rodriguez,15,base.ve,state_anzoategui,city_eltigre
+mu_sanjosedeguanipa,San Jose De Guanipa,16,base.ve,state_anzoategui,city_eltrigrito
+mu_guanta,Guanta,17,base.ve,state_anzoategui,city_guanta
+mu_diegobautistaurbaneja,Diego Bautista Urbaneja,18,base.ve,state_anzoategui,city_lecheria
+mu_josegregoriomonagas,Jose Gregorio Monagas,19,base.ve,state_anzoategui,city_mapire
+mu_juanmanuelcajigal,Juan Manuel Cajigal,20,base.ve,state_anzoategui,city_onoto
+mu_franciscodemiranda_anz,Francisco De Miranda,21,base.ve,state_anzoategui,city_pariaguan
+mu_piritu_anz,Piritu,22,base.ve,state_anzoategui,city_piritu
+mu_juanantoniosotillo,Juan Antonio Sotillo,23,base.ve,state_anzoategui,city_puertolacruz
+mu_fernandodepenalver,Fernando De Penalver,24,base.ve,state_anzoategui,city_puertopiritu
+mu_libertad_anz,Libertad,25,base.ve,state_anzoategui,city_sanmateo
+mu_santaana,Santa Ana,26,base.ve,state_anzoategui,city_santaana
+mu_independencia_anz,Independencia,27,base.ve,state_anzoategui,city_soledad
+mu_franciscodelcarmencarvajal,Francisco Del Carmen Carvajal,28,base.ve,state_anzoategui,city_valledeguanape
+mu_achaguas,Achaguas,29,base.ve,state_apure,city_achaguas
+mu_biruaca,Biruaca,30,base.ve,state_apure,city_biruaca
+mu_munoz,Munoz,31,base.ve,state_apure,city_bruzual
+mu_romulogallegos_apu,Romulo Gallegos,32,base.ve,state_apure,city_elorza
+mu_paez_apu,Paez,33,base.ve,state_apure,city_guasdualito
+mu_sanfernando,San Fernando,34,base.ve,state_apure,city_sanfernandodeapure
+mu_pedrocamejo,Pedro Camejo,35,base.ve,state_apure,city_sanjuandepayara
+mu_urdaneta_ara,Urdaneta,36,base.ve,state_aragua,city_barbacoas
+mu_sucre_ara,Sucre,37,base.ve,state_aragua,city_cagua
+mu_camatagua,Camatagua,38,base.ve,state_aragua,city_camatagua
+mu_tovar_ara,Tovar,39,base.ve,state_aragua,city_coloniatovar
+mu_joserafaelrevenga,Jose Rafael Revenga,40,base.ve,state_aragua,city_elconsejo
+mu_mariobricenoiragorry,Mario Briceno Iragorry,41,base.ve,state_aragua,city_ellimon
+mu_santosmichelena,Santos Michelena,42,base.ve,state_aragua,city_lastejerias
+mu_josefelixribas_ara,Jose Felix Ribas,43,base.ve,state_aragua,city_lavictoria
+mu_girardot_ara,Girardot,44,base.ve,state_aragua,city_maracay
+mu_ocumaredelacostadeoro,Ocumare De La Costa De Oro,45,base.ve,state_aragua,city_ocumaredelacosta
+mu_libertador_ara,Libertador,46,base.ve,state_aragua,city_palonegro
+mu_sancasimiro,San Casimiro,47,base.ve,state_aragua,city_sancasimiro
+mu_bolivar_ara,Bolivar,48,base.ve,state_aragua,city_sanmateo
+mu_sansebastian,San Sebastian,49,base.ve,state_aragua,city_sansebastian
+mu_joseangellamas,Jose Angel Lamas,50,base.ve,state_aragua,city_santacruzdearagua
+mu_franciscolinaresalcantara,Francisco Linares Alcantara,51,base.ve,state_aragua,city_santarita
+mu_santiagomarino_ara,Santiago Marino,52,base.ve,state_aragua,city_turmero
+mu_zamora_ara,Zamora,53,base.ve,state_aragua,city_villadecura
+mu_arismendi_bar,Arismendi,54,base.ve,state_barinas,city_arismendi
+mu_barinas,Barinas,55,base.ve,state_barinas,city_barinas
+mu_bolivar_bar,Bolivar,56,base.ve,state_barinas,city_barinitas
+mu_cruzparedes,Cruz Paredes,57,base.ve,state_barinas,city_barrancas
+mu_pedraza,Pedraza,58,base.ve,state_barinas,city_ciudadbolivia
+mu_sosa,Sosa,59,base.ve,state_barinas,city_ciudaddenutrias
+mu_andreseloyblanco_bar,Andres Eloy Blanco,60,base.ve,state_barinas,city_elcanton
+mu_rojas,Rojas,61,base.ve,state_barinas,city_libertaddebarinas
+mu_obispos,Obispos,62,base.ve,state_barinas,city_obispos
+mu_albertoarvelotorrealba,Alberto Arvelo Torrealba,63,base.ve,state_barinas,city_sabaneta
+mu_ezequielzamora_bar,Ezequiel Zamora,64,base.ve,state_barinas,city_santabarbara
+mu_antoniojosedesucre,Antonio Jose De Sucre,65,base.ve,state_barinas,city_socopo
+mu_cedeno_bol,Cedeno,66,base.ve,state_bolivar,city_caicaradelorinoco
+mu_angosturadelorinoco,Angostura del Orinoco,67,base.ve,state_bolivar,city_ciudadbolivar
+mu_caroni,Caroni,68,base.ve,state_bolivar,city_ciudadguayana
+mu_angostura,Angostura,69,base.ve,state_bolivar,city_ciudadpiar
+mu_elcallao,El Callao,70,base.ve,state_bolivar,city_elcallao
+mu_padrepedrochien,Padre Pedro Chien,71,base.ve,state_bolivar,city_elpalmar
+mu_roscio,Roscio,72,base.ve,state_bolivar,city_guasipati
+mu_sucre_bol,Sucre,73,base.ve,state_bolivar,city_maripa
+mu_gransabana,Gran Sabana,74,base.ve,state_bolivar,city_santaelenadeuairen
+mu_sifontes,Sifontes,75,base.ve,state_bolivar,city_tumeremo
+mu_piar_bol,Piar,76,base.ve,state_bolivar,city_upata
+mu_bejuma,Bejuma,77,base.ve,state_carabobo,city_bejuma
+mu_guacara,Guacara,78,base.ve,state_carabobo,city_guacara
+mu_carlosarvelo,Carlos Arvelo,79,base.ve,state_carabobo,city_guigue
+mu_losguayos,Los Guayos,80,base.ve,state_carabobo,city_losguayos
+mu_diegoibarra,Diego Ibarra,81,base.ve,state_carabobo,city_mariara
+mu_miranda_car,Miranda,82,base.ve,state_carabobo,city_miranda
+mu_montalban,Montalban,83,base.ve,state_carabobo,city_montalban
+mu_juanjosemora,Juan Jose Mora,84,base.ve,state_carabobo,city_moron
+mu_naguanagua,Naguanagua,85,base.ve,state_carabobo,city_naguanagua
+mu_puertocabello,Puerto Cabello,86,base.ve,state_carabobo,city_puertocabello
+mu_sandiego,San Diego,87,base.ve,state_carabobo,city_sandiego
+mu_sanjoaquin,San Joaquin,88,base.ve,state_carabobo,city_sanjoaquin
+mu_libertador_car,Libertador,89,base.ve,state_carabobo,city_tocuyito
+mu_valencia,Valencia,90,base.ve,state_carabobo,city_valencia
+mu_anzoategui,Anzoategui,91,base.ve,state_cojedes,city_ciudaddecojedes
+mu_girardot_coj,Girardot,92,base.ve,state_cojedes,city_elbaul
+mu_paodesanjuanbautista,Pao De San Juan Bautista,93,base.ve,state_cojedes,city_elpao
+mu_romulogallegos_coj,Romulo Gallegos,94,base.ve,state_cojedes,city_lasvegas
+mu_ricaurte,Ricaurte,95,base.ve,state_cojedes,city_libertaddecojedes
+mu_limablanco,Lima Blanco,96,base.ve,state_cojedes,city_macapo
+mu_ezequielzamora_coj,Ezequiel Zamora,97,base.ve,state_cojedes,city_sancarlos
+mu_tinaco,Tinaco,98,base.ve,state_cojedes,city_tinaco
+mu_tinaquillo,Tinaquillo,99,base.ve,state_cojedes,city_tinaquillo
+mu_antoniodiaz,Antonio Diaz,100,base.ve,state_deltaamacuro,city_curiapo
+mu_pedernales,Pedernales,101,base.ve,state_deltaamacuro,city_pedernales
+mu_casacoima,Casacoima,102,base.ve,state_deltaamacuro,city_sierraimataca
+mu_tucupita,Tucupita,103,base.ve,state_deltaamacuro,city_tucupita
+mu_libertador_dis,Libertador,104,base.ve,state_distritocapital,city_caracas
+mu_petit,Petit,105,base.ve,state_falcon,city_cabure
+mu_buchivacoa,Buchivacoa,106,base.ve,state_falcon,city_capatarida
+mu_monsenoriturriza,Monsenor Iturriza,107,base.ve,state_falcon,city_chichiriviche
+mu_federacion,Federacion,108,base.ve,state_falcon,city_churuguara
+mu_miranda_fal,Miranda,109,base.ve,state_falcon,city_coro
+mu_dabajuro,Dabajuro,110,base.ve,state_falcon,city_dabajuro
+mu_jacura,Jacura,111,base.ve,state_falcon,city_jacura
+mu_colina,Colina,112,base.ve,state_falcon,city_laveladecoro
+mu_lostaques,Los Taques,113,base.ve,state_falcon,city_lostaques
+mu_mauroa,Mauroa,114,base.ve,state_falcon,city_menedemauroa
+mu_sanfrancisco_fal,San Francisco,115,base.ve,state_falcon,city_mirimire
+mu_palmasola,Palmasola,116,base.ve,state_falcon,city_palmasola
+mu_democracia,Democracia,117,base.ve,state_falcon,city_pedregal
+mu_piritu_fal,Piritu,118,base.ve,state_falcon,city_piritu
+mu_falcon,Falcon,119,base.ve,state_falcon,city_pueblonuevofalcon
+mu_zamora_fal,Zamora,120,base.ve,state_falcon,city_puertocumarebo
+mu_carirubana,Carirubana,121,base.ve,state_falcon,city_puntofijo
+mu_acosta_fal,Acosta,122,base.ve,state_falcon,city_sanjuandeloscayos
+mu_bolivar_fal,Bolivar,123,base.ve,state_falcon,city_sanluis
+mu_union,Union,124,base.ve,state_falcon,city_santacruzdebucaral
+mu_sucre_fal,Sucre,125,base.ve,state_falcon,city_taratara
+mu_tocopero,Tocopero,126,base.ve,state_falcon,city_tocopero
+mu_joselaurenciosilva,Jose Laurencio Silva,127,base.ve,state_falcon,city_tucacas
+mu_urumaco,Urumaco,128,base.ve,state_falcon,city_urumaco
+mu_caciquemanaure,Cacique Manaure,129,base.ve,state_falcon,city_yaracal
+mu_josetadeomonagas,Jose Tadeo Monagas,130,base.ve,state_guarico,city_altagraciadeorituco
+mu_franciscodemiranda_gua,Francisco De Miranda,131,base.ve,state_guarico,city_calabozo
+mu_camaguan,Camaguan,132,base.ve,state_guarico,city_camaguan
+mu_chaguaramas,Chaguaramas,133,base.ve,state_guarico,city_chaguaramas
+mu_elsocorro,El Socorro,134,base.ve,state_guarico,city_elsocorro
+mu_julianmellado,Julian Mellado,135,base.ve,state_guarico,city_elsombrero
+mu_sangeronimodeguayabal,San Geronimo De Guayabal,136,base.ve,state_guarico,city_guayabal
+mu_lasmercedes,Las Mercedes,137,base.ve,state_guarico,city_lasmercedes
+mu_ortiz,Ortiz,138,base.ve,state_guarico,city_ortiz
+mu_sanjosedeguaribe,San Jose De Guaribe,139,base.ve,state_guarico,city_sanjosedeguaribe
+mu_juangermanroscio,Juan German Roscio,140,base.ve,state_guarico,city_sanjuandelosmorros
+mu_santamariadeipire,Santa Maria De Ipire,141,base.ve,state_guarico,city_santamariadeipire
+mu_josefelixribas_gua,Jose Felix Ribas,142,base.ve,state_guarico,city_tucupido
+mu_leonardoinfante,Leonardo Infante,143,base.ve,state_guarico,city_valledelapascua
+mu_pedrozaraza,Pedro Zaraza,144,base.ve,state_guarico,city_zaraza
+mu_vargas,Vargas,145,base.ve,state_laguaira,city_laguaira
+mu_iribarren,Iribarren,146,base.ve,state_lara,city_barquisimeto
+mu_palavecino,Palavecino,147,base.ve,state_lara,city_cabudare
+mu_torres,Torres,148,base.ve,state_lara,city_carora
+mu_crespo,Crespo,149,base.ve,state_lara,city_duaca
+mu_moran,Moran,150,base.ve,state_lara,city_eltocuyo
+mu_jimenez,Jimenez,151,base.ve,state_lara,city_quibor
+mu_andreseloyblanco_lar,Andres Eloy Blanco,152,base.ve,state_lara,city_sanare
+mu_simonplanas,Simon Planas,153,base.ve,state_lara,city_sarare
+mu_urdaneta_lar,Urdaneta,154,base.ve,state_lara,city_siquisique
+mu_juliocesarsalas,Julio Cesar Salas,155,base.ve,state_merida,city_arapuey
+mu_aricagua,Aricagua,156,base.ve,state_merida,city_aricagua
+mu_rivasdavila,Rivas Davila,157,base.ve,state_merida,city_bailadores
+mu_arzobispochacon,Arzobispo Chacon,158,base.ve,state_merida,city_canagua
+mu_campoelias,Campo Elias,159,base.ve,state_merida,city_ejido
+mu_albertoadriani,Alberto Adriani,160,base.ve,state_merida,city_elvigia
+mu_guaraque,Guaraque,161,base.ve,state_merida,city_guaraque
+mu_andresbello_mer,Andres Bello,162,base.ve,state_merida,city_laazulita
+mu_sucre_mer,Sucre,163,base.ve,state_merida,city_lagunillas
+mu_libertador_mer,Libertador,164,base.ve,state_merida,city_merida
+mu_rangel,Rangel,165,base.ve,state_merida,city_mucuchies
+mu_tuliofebrescordero,Tulio Febres Cordero,166,base.ve,state_merida,city_nuevabolivia
+mu_pueblollano,Pueblo Llano,167,base.ve,state_merida,city_pueblollano
+mu_antoniopintosalinas,Antonio Pinto Salinas,168,base.ve,state_merida,city_santacruzdemora
+mu_obisporamosdelora,Obispo Ramos De Lora,169,base.ve,state_merida,city_santaelenadearenales
+mu_padrenoguera,Padre Noguera,170,base.ve,state_merida,city_santamariadecaparo
+mu_cardenalquintero,Cardenal Quintero,171,base.ve,state_merida,city_santodomingo
+mu_santosmarquina,Santos Marquina,172,base.ve,state_merida,city_tabay
+mu_miranda_mer,Miranda,173,base.ve,state_merida,city_timotes
+mu_justobriceno,Justo Briceno,174,base.ve,state_merida,city_torondoy
+mu_tovar_mer,Tovar,175,base.ve,state_merida,city_tovar
+mu_caraccioloparraolmedo,Caracciolo Parra Olmedo,176,base.ve,state_merida,city_tucani
+mu_zea,Zea,177,base.ve,state_merida,city_zea
+mu_baruta,Baruta,178,base.ve,state_miranda,city_baruta
+mu_carrizal,Carrizal,179,base.ve,state_miranda,city_carrizal
+mu_acevedo,Acevedo,180,base.ve,state_miranda,city_caucagua
+mu_chacao,Chacao,181,base.ve,state_miranda,city_chacao
+mu_cristobalrojas,Cristobal Rojas,182,base.ve,state_miranda,city_charallave
+mu_urdaneta_mir,Urdaneta,183,base.ve,state_miranda,city_cua
+mu_pedrogual,Pedro Gual,184,base.ve,state_miranda,city_cupira
+mu_elhatillo,El Hatillo,185,base.ve,state_miranda,city_elhatillo
+mu_plaza,Plaza,186,base.ve,state_miranda,city_guarenas
+mu_zamora_mir,Zamora,187,base.ve,state_miranda,city_guatire
+mu_brion,Brion,188,base.ve,state_miranda,city_higuerote
+mu_guaicaipuro,Guaicaipuro,189,base.ve,state_miranda,city_losteques
+mu_buroz,Buroz,190,base.ve,state_miranda,city_mamporal
+mu_tomaslander,Tomas Lander,191,base.ve,state_miranda,city_ocumaredeltuy
+mu_sucre_mir,Sucre,192,base.ve,state_miranda,city_petare
+mu_paez_mir,Paez,193,base.ve,state_miranda,city_riochico
+mu_lossalias,Los Salias,194,base.ve,state_miranda,city_sanantoniodelosaltos
+mu_simonbolivar_mir,Simon Bolivar,195,base.ve,state_miranda,city_sanfranciscodeyare
+mu_andresbello_mir,Andres Bello,196,base.ve,state_miranda,city_sanjosedebarlovento
+mu_pazcastillo,Paz Castillo,197,base.ve,state_miranda,city_santaluciadeltuy
+mu_independencia_mir,Independencia,198,base.ve,state_miranda,city_santateresadeltuy
+mu_aguasay,Aguasay,199,base.ve,state_monagas,city_aguasay
+mu_piar_mon,Piar,200,base.ve,state_monagas,city_araguadematurin
+mu_sotillo,Sotillo,201,base.ve,state_monagas,city_barrancasdelorinoco
+mu_cedeno_mon,Cedeno,202,base.ve,state_monagas,city_caicaradematurin
+mu_caripe,Caripe,203,base.ve,state_monagas,city_caripe
+mu_bolivar_mon,Bolivar,204,base.ve,state_monagas,city_caripito
+mu_maturin,Maturin,205,base.ve,state_monagas,city_maturin
+mu_ezequielzamora_mon,Ezequiel Zamora,206,base.ve,state_monagas,city_puntademata
+mu_punceres,Punceres,207,base.ve,state_monagas,city_quiriquire
+mu_acosta_mon,Acosta,208,base.ve,state_monagas,city_sanantoniodematurin
+mu_santabarbara,Santa Barbara,209,base.ve,state_monagas,city_santabarbara
+mu_libertador_mon,Libertador,210,base.ve,state_monagas,city_temblador
+mu_uracoa,Uracoa,211,base.ve,state_monagas,city_uracoa
+mu_peninsulademacanao,Peninsula De Macanao,212,base.ve,state_nuevaesparta,city_bocaderio
+mu_garcia,Garcia,213,base.ve,state_nuevaesparta,city_elvalledelespiritusanto
+mu_marcano,Marcano,214,base.ve,state_nuevaesparta,city_juangriego
+mu_arismendi_nue,Arismendi,215,base.ve,state_nuevaesparta,city_laasuncion
+mu_maneiro,Maneiro,216,base.ve,state_nuevaesparta,city_pampatar
+mu_antolindelcampo,Antolin Del Campo,217,base.ve,state_nuevaesparta,city_paraguachi
+mu_santiagomarino_nue,Santiago Marino,218,base.ve,state_nuevaesparta,city_porlamar
+mu_tubores,Tubores,219,base.ve,state_nuevaesparta,city_puntadepiedras
+mu_diaz,Diaz,220,base.ve,state_nuevaesparta,city_sanjuanbautista
+mu_villalba,Villalba,221,base.ve,state_nuevaesparta,city_sanpedrodecoche
+mu_gomez,Gomez,222,base.ve,state_nuevaesparta,city_santaana
+mu_paez_por,Paez,223,base.ve,state_portuguesa,city_acarigua
+mu_aguablanca,Agua Blanca,224,base.ve,state_portuguesa,city_aguablanca
+mu_araure,Araure,225,base.ve,state_portuguesa,city_araure
+mu_sucre_por,Sucre,226,base.ve,state_portuguesa,city_biscucuy
+mu_sangenarodeboconoito,San Genaro De Boconoito,227,base.ve,state_portuguesa,city_boconoito
+mu_monsenorjosevicentedeunda,Monsenor Jose Vicente De Unda,228,base.ve,state_portuguesa,city_chabasquen
+mu_santarosalia,Santa Rosalia,229,base.ve,state_portuguesa,city_elplayon
+mu_guanare,Guanare,230,base.ve,state_portuguesa,city_guanare
+mu_guanarito,Guanarito,231,base.ve,state_portuguesa,city_guanarito
+mu_ospino,Ospino,232,base.ve,state_portuguesa,city_ospino
+mu_papelon,Papelon,233,base.ve,state_portuguesa,city_papelon
+mu_esteller,Esteller,234,base.ve,state_portuguesa,city_piritu
+mu_sanrafaeldeonoto,San Rafael de Onoto,235,base.ve,state_portuguesa,city_sanrafaeldeonoto
+mu_turen,Turen,236,base.ve,state_portuguesa,city_villabruzual
+mu_cruzsalmeronacosta,Cruz Salmeron Acosta,237,base.ve,state_sucre,city_araya
+mu_ribero,Ribero,238,base.ve,state_sucre,city_cariaco
+mu_bermudez,Bermudez,239,base.ve,state_sucre,city_carupano
+mu_andreseloyblanco_suc,Andres Eloy Blanco,240,base.ve,state_sucre,city_casanay
+mu_sucre_suc,Sucre,241,base.ve,state_sucre,city_cumana
+mu_montes,Montes,242,base.ve,state_sucre,city_cumanacoa
+mu_benitez,Benitez,243,base.ve,state_sucre,city_elpilar
+mu_valdez,Valdez,244,base.ve,state_sucre,city_guira
+mu_marino,Marino,245,base.ve,state_sucre,city_irapa
+mu_bolivar_suc,Bolivar,246,base.ve,state_sucre,city_mariguitar
+mu_arismendi_suc,Arismendi,247,base.ve,state_sucre,city_riocaribe
+mu_mejia,Mejia,248,base.ve,state_sucre,city_sanantoniodelgolfo
+mu_andresmata,Andres Mata,249,base.ve,state_sucre,city_sanjosedeaerocuar
+mu_libertador_suc,Libertador,250,base.ve,state_sucre,city_tunapuy
+mu_cajigal,Cajigal,251,base.ve,state_sucre,city_yaguaraparo
+mu_libertador_tac,Libertador,252,base.ve,state_tachira,city_abejales
+mu_independencia_tac,Independencia,253,base.ve,state_tachira,city_capachonuevo
+mu_libertad_tac,Libertad,254,base.ve,state_tachira,city_capachoviejo
+mu_panamericano,Panamericano,255,base.ve,state_tachira,city_coloncito
+mu_andresbello_tac,Andres Bello,256,base.ve,state_tachira,city_cordero
+mu_rafaelurdaneta,Rafael Urdaneta,257,base.ve,state_tachira,city_delicias
+mu_josemariavargas,Jose Maria Vargas,258,base.ve,state_tachira,city_elcobre
+mu_garciadehevia,Garcia De Hevia,259,base.ve,state_tachira,city_lafria
+mu_jauregui,Jauregui,260,base.ve,state_tachira,city_lagrita
+mu_antonioromulocosta,Antonio Romulo Costa,261,base.ve,state_tachira,city_lasmesas
+mu_samueldariomaldonado,Samuel Dario Maldonado,262,base.ve,state_tachira,city_latendida
+mu_lobatera,Lobatera,263,base.ve,state_tachira,city_lobatera
+mu_michelena,Michelena,264,base.ve,state_tachira,city_michelena
+mu_guasimos,Guasimos,265,base.ve,state_tachira,city_palmira
+mu_uribante,Uribante,266,base.ve,state_tachira,city_pregonero
+mu_sucre_tac,Sucre,267,base.ve,state_tachira,city_queniquea
+mu_junin,Junin,268,base.ve,state_tachira,city_rubio
+mu_bolivar_tac,Bolivar,269,base.ve,state_tachira,city_sanantoniodeltachira
+mu_sancristobal,San Cristobal,270,base.ve,state_tachira,city_sancristobal
+mu_torbes,Torbes,271,base.ve,state_tachira,city_sanjosecito
+mu_franciscodemiranda_tac,Francisco De Miranda,272,base.ve,state_tachira,city_sanjosedebolivar
+mu_ayacucho,Ayacucho,273,base.ve,state_tachira,city_sanjuandecolon
+mu_fernandezfeo,Fernandez Feo,274,base.ve,state_tachira,city_sanrafaeldelpinal
+mu_simonrodriguez_tac,Simon Rodriguez,275,base.ve,state_tachira,city_sansimon
+mu_cordoba,Cordoba,276,base.ve,state_tachira,city_santaanadeltachira
+mu_seboruco,Seboruco,277,base.ve,state_tachira,city_seboruco
+mu_cardenas,Cardenas,278,base.ve,state_tachira,city_tariba
+mu_sanjudastadeo,San Judas Tadeo,279,base.ve,state_tachira,city_umuquena
+mu_pedromariaurena,Pedro Maria Urena,280,base.ve,state_tachira,city_urena
+mu_betijoque,Betijoque,281,base.ve,state_trujillo,city_betijoque
+mu_bocono,Bocono,282,base.ve,state_trujillo,city_bocono
+mu_juanvicentecampoelias,Juan Vicente Campo Elias,283,base.ve,state_trujillo,city_campoelias
+mu_carache,Carache,284,base.ve,state_trujillo,city_carache
+mu_sanrafaeldecarvajal,San Rafael De Carvajal,285,base.ve,state_trujillo,city_carvajal
+mu_candelaria,Candelaria,286,base.ve,state_trujillo,city_chejende
+mu_miranda_tru,Miranda,287,base.ve,state_trujillo,city_eldividive
+mu_josefelipemarquezcanizales,Jose Felipe Marquez Canizales,288,base.ve,state_trujillo,city_elparadero
+mu_escuque,Escuque,289,base.ve,state_trujillo,city_escuque
+mu_urdaneta_tru,Urdaneta,290,base.ve,state_trujillo,city_laquebrada
+mu_montecarmelo,Monte Carmelo,291,base.ve,state_trujillo,city_montecarmelo
+mu_motatan,Motatan,292,base.ve,state_trujillo,city_motatan
+mu_pampan,Pampan,293,base.ve,state_trujillo,city_pampan
+mu_pampanito,Pampanito,294,base.ve,state_trujillo,city_pampanito
+mu_sucre_tru,Sucre,295,base.ve,state_trujillo,city_sabanademendoza
+mu_bolivar_tru,Bolivar,296,base.ve,state_trujillo,city_sabanagrande
+mu_laceiba,La Ceiba,297,base.ve,state_trujillo,city_santaapolonia
+mu_andresbello_tru,Andres Bello,298,base.ve,state_trujillo,city_santaisabel
+mu_trujillo,Trujillo,299,base.ve,state_trujillo,city_trujillo
+mu_valera,Valera,300,base.ve,state_trujillo,city_valera
+mu_bolivar_yar,Bolivar,301,base.ve,state_yaracuy,city_aroa
+mu_latrinidad,La Trinidad,302,base.ve,state_yaracuy,city_boraure
+mu_bruzual,Bruzual,303,base.ve,state_yaracuy,city_chivacoa
+mu_cocorote,Cocorote,304,base.ve,state_yaracuy,city_cocorote
+mu_josejuaquinveroes,Jose Juaquin Veroes,305,base.ve,state_yaracuy,city_farriar
+mu_sucre_yar,Sucre,306,base.ve,state_yaracuy,city_guama
+mu_independencia_yar,Independencia,307,base.ve,state_yaracuy,city_independencia
+mu_nirgua,Nirgua,308,base.ve,state_yaracuy,city_nirgua
+mu_joseantoniopaez,Jose Antonio Paez,309,base.ve,state_yaracuy,city_sabanadeparra
+mu_sanfelipe,San Felipe,310,base.ve,state_yaracuy,city_sanfelipe
+mu_aristidesbastidas,Aristides Bastidas,311,base.ve,state_yaracuy,city_sanpablo
+mu_urachiche,Urachiche,312,base.ve,state_yaracuy,city_urachiche
+mu_pena,Pena,313,base.ve,state_yaracuy,city_yaritagua
+mu_manuelmonge,Manuel Monge,314,base.ve,state_yaracuy,city_yumare
+mu_valmorerodriguez,Valmore Rodriguez,315,base.ve,state_zulia,city_bachaqueros
+mu_sucre_zul,Sucre,316,base.ve,state_zulia,city_bobures
+mu_cabimas,Cabimas,317,base.ve,state_zulia,city_cabimas
+mu_jesusmariasemprun,Jesus Maria Semprun,318,base.ve,state_zulia,city_casiguaelcubo
+mu_lagunillas,Lagunillas,319,base.ve,state_zulia,city_ciudadojeda
+mu_lacanadadeurdaneta,La Canada De Urdaneta,320,base.ve,state_zulia,city_concepcion
+mu_almirantepadilla,Almirante Padilla,321,base.ve,state_zulia,city_eltoro
+mu_catatumbo,Catatumbo,322,base.ve,state_zulia,city_encontrado
+mu_jesusenriquelossada,Jesus Enrique Lossada,323,base.ve,state_zulia,city_laconcepcion
+mu_miranda_zul,Miranda,324,base.ve,state_zulia,city_lospuertosdealtagracia
+mu_machiquesdeperija,Machiques De Perija,325,base.ve,state_zulia,city_machiques
+mu_maracaibo,Maracaibo,326,base.ve,state_zulia,city_maracaibo
+mu_franciscojavierpulgar,Francisco Javier Pulgar,327,base.ve,state_zulia,city_pueblonuevofalcon
+mu_colon,Colon,328,base.ve,state_zulia,city_sancarlosdelzulia
+mu_sanfrancisco_zul,San Francisco,329,base.ve,state_zulia,city_sanfrancisco
+mu_mara,Mara,330,base.ve,state_zulia,city_sanrafaeldeelmojan
+mu_santarita,Santa Rita,331,base.ve,state_zulia,city_santarita_zu
+mu_baralt,Baralt,332,base.ve,state_zulia,city_santimoteo
+mu_guajira,Guajira,333,base.ve,state_zulia,city_sinamaica
+mu_simonbolivar_zul,Simon Bolivar,334,base.ve,state_zulia,city_tiajuana
+mu_rosariodeperija,Rosario De Perija,335,base.ve,state_zulia,city_villadelrosario

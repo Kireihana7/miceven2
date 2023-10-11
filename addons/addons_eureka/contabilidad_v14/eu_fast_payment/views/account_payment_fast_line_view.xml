@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_payment_fast_line_tree" model="ir.ui.view">
+        <field name="name">account.payment.fast.line.tree</field>
+        <field name="model">account.payment.fast.line</field>
+        <field name="arch" type="xml">
+            <tree string="Líneas Pagos Rápido">
+                <field name="fast_payment" invisible="1"/>
+                <field name="name" />
+		        <field name="referencia" />
+                <field name="partner_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                <field name="journal_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                <field name="rate" />
+                <field name="amount" />
+                <field name="amount_bs" />
+                <field name="currency_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                <field name="payment_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                <field name="company_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_account_payment_fast_line_form" model="ir.ui.view">
+        <field name="name">account.payment.fast.line.form</field>
+        <field name="model">account.payment.fast.line</field>
+        <field name="arch" type="xml">
+            <form string="Líneas Pagos Rápido">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="fast_payment" invisible="1"/>
+                            <field name="user_id" invisible="1"/>
+                            <field name="name" />
+                            <field name="referencia" />
+                            <field name="partner_id" domain ="[('user_id','=',user_id)]" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                            <field name="journal_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                            <field name="rate" />
+                            <field name="amount" />
+                            <field name="amount_bs" />
+                        </group>
+                        <group>
+                            <field name="currency_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                            <field name="payment_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                    </group>                   
+                </sheet>  
+            </form>
+        </field>
+    </record>
+
+    <record id="open_account_payment_fast_line" model="ir.actions.act_window">
+        <field name="name">Líneas Pagos Rápido</field>
+        <field name="res_model">account.payment.fast.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_account_payment_fast_line_tree"></field>
+    </record>
+
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_oem" model="ir.ui.view">
+        <field name="name">product.template.product.form.oem</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="nro_part" string="Código ERP"/>
+                <field name="product_brand_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_product_form_oem" model="ir.ui.view">
+        <field name="name">product.product.product.form.oem</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="nro_part" string="Código ERP" readonly="1"/>
+                <field name="product_brand_id" />
+            </xpath>
+           
+        </field>
+    </record>
+
+    <record id="product_template_tree_view_oem" model="ir.ui.view">
+        <field name="name">product.template.tree.oem</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="nro_part" string="Código ERP" />
+                <field name="product_brand_id" />
+            </xpath>
+            
+        </field>
+    </record>
+    <record id="product_template_search_form_view_oem" model="ir.ui.view">
+        <field name="name">product.template.search.oem.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="nro_part" string="Código ERP" />
+                <field name="default_code" string="Referencia Interna" />
+                <field name="product_brand_id" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

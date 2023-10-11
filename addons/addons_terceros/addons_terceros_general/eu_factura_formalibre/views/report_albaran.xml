@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+    <template id="reporte_albaran_formalibre">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout" >
+                <t t-set="data_report_margin_top" t-value="40" /> 
+                <div class="header" >
+                    <t t-set="data_report_margin_top"/>
+                    <t t-set="company" t-value="env.company"/>
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" height="45px" style="max-width: 130px;"/><br />
+                    <span style="font-size: 12px;" t-field="company.name" /><br />
+                    <span style="font-size: 12px;" t-field="company.street" /><br />
+                    <span style="font-size: 12px;" t-field="company.city" />
+                    <span style="font-size: 12px;" t-field="company.state_id.code" />
+                    <span style="font-size: 12px;" t-field="company.zip" /><br />
+                    <span style="font-size: 12px;" t-field="company.country_id.name" />
+                    <div class="row">
+                        <t t-foreach="docs" t-as="o">
+
+                            <div class="col-6">
+                                <h6 style="font-size: 12px;">
+                                    <strong>ALBARAN:</strong>
+                                    <span t-field="o.name"/>
+                                </h6>
+                            </div>
+                            <div  class="col-6">
+                                <h6 style="font-size: 12px;">
+                                    <strong>PEDIDO:</strong>
+                                    <span t-field="o.origin"/>
+                                </h6>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+                <div class="page" >
+                    <t t-foreach="docs" t-as="o">
+                        <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                        <!-- <div class="row mt16" style="margin-left:70%;">
+                            <div t-if="o.scheduled_date" name="scheduled_date">
+                                <strong>Fecha Programada:</strong>
+                                <span t-esc="(o.scheduled_date).strftime('%d-%m-%Y')"/>
+                            </div>
+                        </div> -->
+                        <div class="row" style="margin-left:70%;">
+                            <div t-if="o.date_done" name="date_done" style="font-size: 13px;">
+                                <strong>Fecha Efectiva:</strong>
+                                <span t-esc="(o.date_done).strftime('%d-%m-%Y')"/>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row mt-2">
+                            <div style="font-size: 13px;" class="col-12">
+                                <strong>Cliente:</strong>
+                                <span t-field="o.partner_id.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div style="font-size: 13px;" class="col-12">
+                                <strong>Dirección:</strong>
+                                <span t-field="o.direccion_completa"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div style="font-size: 13px;"  class="col-6">
+                                <strong>Rif:</strong>
+                                <span t-field="o.partner_id.rif"/>
+                            </div>
+                            <div class="col-6" style="font-size: 13px;">
+                                <strong>Teléfono:</strong>
+                                <t t-if="o.partner_id.mobile">
+                                    <span t-esc="o.partner_id.mobile"/>
+                                </t>
+                                <t t-elif="o.partner_id.phone">
+                                    <span t-esc="o.partner_id.phone"/>
+                                </t>
+                                <t t-else="">
+                                    <span/>
+                                </t>
+                            </div>                            
+                        </div>
+                        <div class="row mt16">
+                            <div style="font-size: 13px;" class="col-12" t-if="o.user_id" name="user_id">
+                                <strong>Vendedor:</strong>
+                                <span t-field="o.user_id.name"/>
+                            </div>
+                        </div>
+
+
+                        <table class="table table-sm table-borderless o_main_table mt-4 " name="albaran_line_table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th name="th_codigo" style="min-width:180px" class="text-left"><span>Código</span></th>
+                                    <th name="th_description" class="text-left"><span>Descripción</span></th>
+                                    <th name="th_quantity" class="text-right"><span>Cant.</span></th>
+                                    <th name="th_espacio" width="5%" class="text-right"></th>
+                                    <th name="th_ubicacion" style="min-width:180px"  class="text-left"><span>Ubicación</span></th>
+                                    <th name="th_description" class="text-left"><span>Marca</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="invoice_tbody">
+                                <t t-set="cont" t-value="0"/>
+                                <t t-foreach="o.move_line_ids_without_package.sorted(lambda x: x.location_id.display_name)" t-as="line">
+                                    <t t-set="cont" t-value="cont+1"/>
+                                    <tr>
+                                        <td id="product" class="text-center">
+                                            <span t-esc="cont"/>
+                                        </td>
+                                        <td style="min-width:180px"></td>
+                                        <td class="text-left"><span t-field="line.product_id.name" t-options="{'widget': 'text'}"/></td>
+                                        <td class="text-right">
+                                            <t t-if="o.state != &quot;done&quot;">                                            
+                                                <span t-field="line.product_uom_qty"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span t-field="line.qty_done"/>
+                                            </t>
+                                        </td>
+                                        <td class="text-left" width="5%"></td>                                        
+                                        <td class="text-left" style="min-width:180px"><span t-field="line.location_id.complete_name" t-options="{'widget': 'text'}"/></td>                                        
+                                        <td class="text-left"></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        
+                    </t>
+                </div>
+                <div class="clearfix footer o_standard_footer" style="">
+                    <t t-foreach="docs" t-as="o">
+                    
+                        <table width="100%" border="0" style="font-size:12px;">
+                            <tr>
+                                <th width="31%" height="25px" style="border: 1px solid black;text-align:center;">Almacenista: <span t-esc="o.create_uid.name"/></th>
+                                <th width="3%" height="25px"/>
+                                <th width="32%" height="25px" style="border: 1px solid black;text-align:center;">Chequeador: </th>
+                                <th width="3%" height="25px"/>
+                                <th width="31%" height="25px" style="border: 1px solid black;text-align:center;">Embalador: </th>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <td width="31%" height="50px" style="border: 1px solid black;"/>
+                                <td width="3%" height="50px"/>
+                                <td width="32%" height="50px" style="border: 1px solid black;"/>
+                                <td width="3%" height="50px"/>
+                                <td width="31%" height="50px" style="border: 1px solid black;"/>
+                            </tr>
+                        </table>
+
+                        <div class="text-center" style="font-size: 12px;">
+                            Página: <span class="page"/> / <span class="topage"/> --
+                            Fecha de Impresión: <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y')"/> 
+                        </div>
+                    </t>
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

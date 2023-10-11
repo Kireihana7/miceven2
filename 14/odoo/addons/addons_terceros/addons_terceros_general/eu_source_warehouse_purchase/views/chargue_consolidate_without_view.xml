@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_guide_consolidate_purchase_source_warehouse_form_without">
+        <field name="name">chargue.consolidate.purchase.source.warehouse.form</field>
+        <field name="model">chargue.consolidate</field>
+        <field name="inherit_id" ref="eu_agroindustry.view_guide_consolidate_form_without"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='purchase_id']" position="after">
+                <field name="purchase_source_warehouse_id" attrs="{'invisible': [('operation_type', '=', 'venta')], 'readonly': [('operation_type', '=', 'compra')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='vehicle_type_property']" position="after">
+                <field name="vehicle_owner"/>
+            </xpath>            
+        </field>
+    </record>
+</odoo>

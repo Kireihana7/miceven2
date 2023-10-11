@@ -1,0 +1,729 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<templates id='template' xml:space='preserve'>
+    <t t-name="echarts_bargraph_template">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <form class="form-inline">
+                        <div class="form-group col-lg-4">
+                            <label>Fecha:</label>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="date" class="o_input" id="o_date_kpi"/>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <input type="date" class="o_input" id="o_date_kpi_2"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="o_view_nocontent" style="top:8%;">
+            <div class="container">
+                <div class="row">
+                    <div id="count_extraccion_blanco" class="col" style="height:300px">
+                        <script>
+                            //var echarts = require('echarts');
+                            var chartDom = document.getElementById('count_extraccion_blanco');
+                            var myChart_one = echarts.init(chartDom);
+                            var option;
+                            var location_href = location.href;
+                            //alert(location_href);
+                            option = {
+                                series: [{
+                                    type: 'gauge',
+                                    axisLine: {
+                                        lineStyle: {
+                                            width: 20,
+                                            color: [
+                                                [0.666, '#E42323'],
+                                                [0.833, '#FFE948'],
+                                                [1, '#4ADD55']
+                                            ]
+                                        }
+                                    },
+                                    pointer: {
+                                        itemStyle: {
+                                            color: '#000'
+                                        },
+                                        length: 80,
+                                        width:4
+                                    },
+                                    axisTick: {
+                                        distance: -30,
+                                        length: 8,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 2
+                                        }
+                                    },
+                                    splitLine: {
+                                        distance: -30,
+                                        length: 20,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 4
+                                        }
+                                    },
+                                    axisLabel: {
+                                        color: '#000',
+                                        distance: 2,
+                                        fontSize: 15
+                                    },
+                                    title: {
+                                        offsetCenter: [0, '80%'],
+                                        fontSize: 20
+                                    },      
+
+                                    min: 69,
+                                    max: 75,
+                                    splitNumber: 4,
+
+                                    detail: {
+                                        valueAnimation: true,
+                                        formatter: '{value}%',
+                                        color: '#6A6767',
+                                        fontSize: 18,
+                                    },
+                                    data: [{
+                                        value: 74,
+                                        name: 'Extraccion Maiz Blanco'
+                                    }]
+                                }]
+                            };
+
+                            $( "#o_date_kpi" ).change(function() {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_extraccion_blanco',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option.series[0].data[0].value = parseFloat(result)
+                                        myChart_one.setOption(option, true);
+                                        myChart_one.setOption(option);
+                                    },
+                                    error: function() {
+                                        option.series[0].data.push(0);
+                                    },
+                                });
+                            });
+                            
+                            
+                            setInterval(function () {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_extraccion_blanco',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option.series[0].data[0].value = parseFloat(result)
+                                        myChart_one.setOption(option, true);
+                                        myChart_one.setOption(option);
+                                    },
+                                    error: function() {
+                                        option.series[0].data.push(0);
+                                    },
+                                });
+                            }, 5000);
+                            myChart_one.setOption(option);
+
+                        </script>
+                    </div>
+                    <div id="count_extraccion_amarillo" class="col" style="height:300px">
+                        <script>
+                            //var echarts = require('echarts');
+                            var chartDomTwo = document.getElementById('count_extraccion_amarillo');
+                            var myChart_two = echarts.init(chartDomTwo);
+                            var option_two;
+                            var location_href = location.href;
+
+                            option_two = {
+                                series: [{
+                                    type: 'gauge',
+                                    axisLine: {
+                                        lineStyle: {
+                                            width: 20,
+                                            color: [
+                                                [0.499, '#E42323'],
+                                                [0.599, '#FFE948'],
+                                                [1, '#4ADD55']
+                                            ]
+                                        }
+                                    },
+                                    pointer: {
+                                        itemStyle: {
+                                            color: '#000'
+                                        },
+                                        length: 80,
+                                        width:4
+                                    },
+                                    axisTick: {
+                                        distance: -30,
+                                        length: 8,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 2
+                                        }
+                                    },
+                                    splitLine: {
+                                        distance: -30,
+                                        length: 20,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 4
+                                        }
+                                    },
+                                    axisLabel: {
+                                        color: '#000',
+                                        distance: 2,
+                                        fontSize: 15
+                                    },
+                                    title: {
+                                        offsetCenter: [0, '80%'],
+                                        fontSize: 20
+                                    },      
+
+                                    min: 65,
+                                    max: 75,
+                                    splitNumber: 4,
+
+                                    detail: {
+                                        valueAnimation: true,
+                                        formatter: '{value}%',
+                                        color: '#6A6767',
+                                        fontSize: 18,
+                                    },
+                                    data: [{
+                                        value: 70,
+                                        name: 'Extraccion Maiz Amarillo'
+                                    }]
+                                }]
+                            };
+
+                            $( "#o_date_kpi" ).change(function() {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_extraccion_amarillo',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option_two.series[0].data[0].value = parseFloat(result)
+                                        myChart_two.setOption(option_two, true);
+                                        myChart_two.setOption(option_two);
+                                    },
+                                    error: function() {
+                                        option_two.series[0].data.push(0);
+                                    },
+                                });
+                            });
+                            
+
+                            setInterval(function () {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_extraccion_amarillo',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option_two.series[0].data[0].value = parseFloat(result)
+                                        myChart_two.setOption(option_two, true);
+                                        myChart_two.setOption(option_two);
+                                    },
+                                    error: function() {
+                                        option_two.series[0].data.push(0);
+                                    },
+                                });
+                            }, 5000);
+                            myChart_two.setOption(option_two);
+                        </script>
+                    </div>
+                    <div id="count_empaque_primario" class="col" style="height:300px">
+                        <script>
+                            //var echarts = require('echarts');
+                            var chartDomThree = document.getElementById('count_empaque_primario');
+                            var myChart_three = echarts.init(chartDomThree);
+                            var option_three;
+                            var location_href = location.href;
+
+
+                            option_three = {
+                                series: [{
+                                    type: 'gauge',
+                                    axisLine: {
+                                        lineStyle: {
+                                            width: 20,
+                                            color: [
+                                                [0.66, '#4ADD55'],
+                                                [0.92, '#FFE948'],
+                                                [1, '#E42323']
+                                            ]
+                                        }
+                                    },
+                                    pointer: {
+                                        itemStyle: {
+                                            color: '#000'
+                                        },
+                                        length: 80,
+                                        width:4
+                                    },
+                                    axisTick: {
+                                        distance: -30,
+                                        length: 8,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 2
+                                        }
+                                    },
+                                    splitLine: {
+                                        distance: -30,
+                                        length: 20,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 4
+                                        }
+                                    },
+                                    axisLabel: {
+                                        color: '#000',
+                                        distance: 2,
+                                        fontSize: 15
+                                    },
+                                    title: {
+                                        offsetCenter: [0, '80%'],
+                                        fontSize: 20
+                                    },      
+
+                                    min: 175,
+                                    max: 181,
+                                    splitNumber: 4,
+
+                                    detail: {
+                                        valueAnimation: true,
+                                        formatter: '{value}Kg',
+                                        color: '#6A6767',
+                                        fontSize: 18,
+                                    },
+                                    data: [{
+                                        value: 180.6,
+                                        name: 'Consumo de Empaque Primario'
+                                    }]
+                                }]
+                            };
+                            $( "#o_date_kpi" ).change(function() {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_empaque_primario',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option_three.series[0].data[0].value = parseFloat(result)
+                                        myChart_three.setOption(option_three, true);
+                                        myChart_three.setOption(option_three);
+                                    },
+                                    error: function() {
+                                        option_three.series[0].data.push(0);
+                                    },
+                                });
+                            });
+
+                            setInterval(function () {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_empaque_primario',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option_three.series[0].data[0].value = parseFloat(result)
+                                        myChart_three.setOption(option_three, true);
+                                        myChart_three.setOption(option_three);
+                                    },
+                                    error: function() {
+                                        option_three.series[0].data.push(0);
+                                    },
+                                });
+                            }, 5000);
+                            myChart_three.setOption(option_three);
+                        </script>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="count_empaque_secundario" class="col-4" style="height:300px">
+                        <script>
+                            //var echarts = require('echarts');
+                            var chartDomFour = document.getElementById('count_empaque_secundario');
+                            var myChart_four = echarts.init(chartDomFour);
+                            var option_four;
+                            var location_href = location.href;
+
+                            option_four = {
+                                series: [{
+                                    type: 'gauge',
+                                    axisLine: {
+                                        lineStyle: {
+                                            width: 20,
+                                            color: [
+                                                [0.50, '#4ADD55'],
+                                                [0.666, '#FFE948'],
+                                                [1, '#E42323']
+                                            ]
+                                        }
+                                    },
+                                    pointer: {
+                                        itemStyle: {
+                                            color: '#000'
+                                        },
+                                        length: 80,
+                                        width:4
+                                    },
+                                    axisTick: {
+                                        distance: -30,
+                                        length: 8,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 2
+                                        }
+                                    },
+                                    splitLine: {
+                                        distance: -30,
+                                        length: 20,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 4
+                                        }
+                                    },
+                                    axisLabel: {
+                                        color: '#000',
+                                        distance: 2,
+                                        fontSize: 15
+                                    },
+                                    title: {
+                                        offsetCenter: [0, '80%'],
+                                        fontSize: 20
+                                    },      
+
+                                    min: 72,
+                                    max: 78,
+                                    splitNumber: 4,
+
+                                    detail: {
+                                        valueAnimation: true,
+                                        formatter: '{value}Kg',
+                                        color: '#6A6767',
+                                        fontSize: 18,
+                                    },
+                                    data: [{
+                                        value: 75.1,
+                                        name: 'Consumo de Empaque Secundario'
+                                    }]
+                                }]
+                            };
+
+                            $( "#o_date_kpi" ).change(function() {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_empaque_secundario',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option_four.series[0].data[0].value = parseFloat(result)
+                                        myChart_four.setOption(option_four, true);
+                                        myChart_four.setOption(option_four);
+                                    },
+                                    error: function() {
+                                        option_four.series[0].data.push(0);
+                                    },
+                                });
+                            });
+                            
+
+                            setInterval(function () {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_empaque_secundario',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option_four.series[0].data[0].value = parseFloat(result)
+                                        myChart_four.setOption(option_four, true);
+                                        myChart_four.setOption(option_four);
+                                    },
+                                    error: function() {
+                                        option_four.series[0].data.push(0);
+                                    },
+                                });
+                            }, 5000);
+                            myChart_four.setOption(option_four);
+                        </script>
+                    </div>
+                    <div id="count_cinta_codificadora" class="col-4" style="height:300px">
+                        <script>
+                            //var echarts = require('echarts');
+                            var chartDomFive = document.getElementById('count_cinta_codificadora');
+                            var myChart_five = echarts.init(chartDomFive);
+                            var option_five;
+                            var location_href = location.href;
+
+                            option_five = {
+                                series: [{
+                                    type: 'gauge',
+                                    axisLine: {
+                                        lineStyle: {
+                                            width: 20,
+                                            color: [
+                                                [0.667, '#4ADD55'],
+                                                [0.917, '#FFE948'],
+                                                [1, '#E42323']
+                                            ]
+                                        }
+                                    },
+                                    pointer: {
+                                        itemStyle: {
+                                            color: '#000'
+                                        },
+                                        length: 80,
+                                        width:4
+                                    },
+                                    axisTick: {
+                                        distance: -30,
+                                        length: 8,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 2
+                                        }
+                                    },
+                                    splitLine: {
+                                        distance: -30,
+                                        length: 20,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 4
+                                        }
+                                    },
+                                    axisLabel: {
+                                        color: '#000',
+                                        distance: 2,
+                                        fontSize: 15
+                                    },
+                                    title: {
+                                        offsetCenter: [0, '80%'],
+                                        fontSize: 20
+                                    },      
+
+                                    min: 300,
+                                    max: 306,
+                                    splitNumber: 4,
+
+                                    detail: {
+                                        valueAnimation: true,
+                                        formatter: '{value}Mts',
+                                        color: '#6A6767',
+                                        fontSize: 18,
+                                    },
+                                    data: [{
+                                        value: 305.5,
+                                        name: 'Consumo Cinta Codificadora'
+                                    }]
+                                }]
+                            };
+
+                            $( "#o_date_kpi" ).change(function() {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_cinta_codificadora',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option_five.series[0].data[0].value = parseFloat(result)
+                                        myChart_five.setOption(option_five, true);
+                                        myChart_five.setOption(option_five);
+                                    },
+                                    error: function() {
+                                        option_five.series[0].data.push(0);
+                                    },
+                                });
+                            });
+                            
+
+                            setInterval(function () {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_cinta_codificadora',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option_five.series[0].data[0].value = parseFloat(result)
+                                        myChart_five.setOption(option_five, true);
+                                        myChart_five.setOption(option_five);
+                                    },
+                                    error: function() {
+                                        option_five.series[0].data.push(0);
+                                    },
+                                });
+                            }, 5000);
+                            myChart_five.setOption(option_five);
+                        </script>
+                    </div>
+                    <div id="count_consumo_teflon" class="col-4" style="height:300px">
+                        <script>
+                            //var echarts = require('echarts');
+                            var chartDomSix = document.getElementById('count_consumo_teflon');
+                            var myChart_six = echarts.init(chartDomSix);
+                            var option_six;
+                            var location_href = location.href;
+
+                            option_six = {
+                                series: [{
+                                    type: 'gauge',
+                                    axisLine: {
+                                        lineStyle: {
+                                            width: 20,
+                                            color: [
+                                                [0.255, '#4ADD55'],
+                                                [0.51, '#FFE948'],
+                                                [1, '#E42323']
+                                            ]
+                                        }
+                                    },
+                                    pointer: {
+                                        itemStyle: {
+                                            color: '#000'
+                                        },
+                                        length: 80,
+                                        width:4
+                                    },
+                                    axisTick: {
+                                        distance: -30,
+                                        length: 8,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 2
+                                        }
+                                    },
+                                    splitLine: {
+                                        distance: -30,
+                                        length: 20,
+                                        lineStyle: {
+                                            color: '#fff',
+                                            width: 4
+                                        }
+                                    },
+                                    axisLabel: {
+                                        color: '#000',
+                                        distance: 2,
+                                        fontSize: 15
+                                    },
+                                    title: {
+                                        offsetCenter: [0, '80%'],
+                                        fontSize: 20
+                                    },      
+
+                                    min: 1.4,
+                                    max: 1.8,
+                                    splitNumber: 4,
+
+                                    detail: {
+                                        valueAnimation: true,
+                                        formatter: '{value}Mts',
+                                        color: '#6A6767',
+                                        fontSize: 18,
+                                    },
+                                    data: [{
+                                        value: 1.61,
+                                        name: 'Consumo Teflón'
+                                    }]
+                                }]
+                            };
+
+                            $( "#o_date_kpi" ).change(function() {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_consumo_teflon',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option_six.series[0].data[0].value = parseFloat(result)
+                                        myChart_six.setOption(option_six, true);
+                                        myChart_six.setOption(option_six);
+                                    },
+                                    error: function() {
+                                        option_six.series[0].data.push(0);
+                                    },
+                                });
+                            });
+                            
+
+                            setInterval(function () {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/count_consumo_teflon',
+                                    data: {
+                                        desde: $("#o_date_kpi").val(),
+                                        hasta: $("#o_date_kpi_2").val(),
+                                        location: location_href,
+                                    },
+                                    success: function (result) {
+                                        //var $el = $(result);
+                                        option_six.series[0].data[0].value = parseFloat(result)
+                                        myChart_six.setOption(option_six, true);
+                                        myChart_six.setOption(option_six);
+                                    },
+                                    error: function() {
+                                        option_six.series[0].data.push(0);
+                                    },
+                                });
+                            }, 5000);
+                            myChart_six.setOption(option_six);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

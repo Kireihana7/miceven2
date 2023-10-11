@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de la acción del informe -->
+        <record id="action_report_facturas_vencidas" model="ir.actions.act_window">
+            <field name="name">Reporte de Facturas Vencidas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">report.facturas.vencidas</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Vista del formulario del modelo del informe -->
+        <record id="view_report_facturas_vencidas" model="ir.ui.view">
+            <field name="name">report.facturas.vencidas</field>
+            <field name="model">report.facturas.vencidas</field>
+            <field name="arch" type="xml">
+                <form string="Reporte de Facturas Vencidas" >
+                    <group>
+                        <group>
+                            <field name="name" readonly="1" invisible="1"/>
+                            <field name="fecha" required="1" />
+                            <field name="report_data" readonly="1" filename="name" />
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="generate_report" string="Generar Reporte" type="object" class="oe_highlight" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <menuitem
+            name="Facturas Vencidas"
+            id="menu_facturas_vencidas"
+            parent="account.menu_finance_reports"
+            action="action_report_facturas_vencidas"
+        />
+    </data>
+</odoo>

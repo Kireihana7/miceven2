@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_survey_user_input_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <!-- <h4 t-field="o.name"/> -->
+                            <div class="row mt16 mb16">
+                                <div t-if="o.survey_id" class="col-auto" name="div_survey_id">
+                                    <strong>Encuesta:</strong>
+                                    <p t-field="o.survey_id.title"/>
+                                </div>
+                                <div t-if="o.email" name="div_email" class="col-auto">
+                                    <strong>Email:</strong>
+                                    <p t-field="o.email"/>
+                                </div>
+                            </div>
+                            <div class="row mt16 mb16">
+                                <div t-if="o.create_date"  name="div_create_date" class="col-auto">
+                                    <strong>Fecha:</strong>
+                                    <p t-field="o.create_date"/>
+                                </div>
+                                <div t-if="o.partner_id" name="div_partner_id" class="col-auto">
+                                    <strong>Empresa:</strong>
+                                    <p t-field="o.partner_id.name"/>
+                                </div>
+                            </div>
+                            <table class="table table-sm" t-if="o.user_input_line_ids" style="font-size:10px">
+                                <thead>
+                                    <tr>
+                                        <th name="th_pregunta">
+                                            <strong>Pregunta</strong>
+                                        </th>
+                                        <th name="th_seccion">
+                                            <strong>Sección</strong>
+                                        </th>
+                                        <th name="th_tipo_pregunta">
+                                            <strong>Tipo de Pregunta</strong>
+                                        </th>
+                                        <th name="th_omitida">
+                                            <strong>Omitida</strong>
+                                        </th>
+                                        <th name="th_creado_en">
+                                            <strong>Creado en</strong>
+                                        </th>
+                                        <!-- <th name="th_correcto" >
+                                            <strong>Correcto</strong>
+                                        </th> -->
+                                        <th name="th_respuesta">
+                                            <strong>Respuesta</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.user_input_line_ids" t-as="move">
+                                        <tr>
+                                            <td>
+                                                <span t-field="move.question_id.title"/><br/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.page_id.title" />
+                                            </td>
+                                            <td>
+                                                <t t-if="move.answer_type == 'text_box'">
+                                                    <span>Texto Libre</span>
+                                                </t>
+                                                <t t-if="move.answer_type == 'char_box'">
+                                                    <span>Texto</span>
+                                                </t>
+                                                <t t-if="move.answer_type == 'numerical_box'">
+                                                    <span>Número</span>
+                                                </t>
+                                                <t t-if="move.answer_type == 'date'">
+                                                    <span>Fecha</span>
+                                                </t>
+                                                <t t-if="move.answer_type == 'datetime'">
+                                                    <span>Fecha y Hora</span>
+                                                </t>
+                                                <t t-if="move.answer_type == 'suggestion'">
+                                                    <span>Sugerencia</span>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-if="move.skipped">
+                                                    <span>Si</span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span>No</span>
+                                                </t>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="move.create_date"/>
+                                            </td>
+                                            <!-- <td class="text-right">
+                                                <t t-if="move.answer_is_correct">
+                                                    <span>Si</span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span>No</span>
+                                                </t>
+                                            </td> -->
+                                            <td>
+                                                <t t-if="move.value_char_box" >
+                                                    <span t-field="move.value_char_box"/>
+                                                </t>
+                                                <t t-if="move.value_numerical_box" >
+                                                    <span t-field="move.value_numerical_box"/>
+                                                </t>
+                                                <t t-if="move.value_date" >
+                                                    <span t-field="move.value_date"/>
+                                                </t>
+                                                <t t-if="move.value_datetime" >
+                                                    <span t-field="move.value_datetime"/>
+                                                </t>
+                                                <t t-if="move.value_text_box" >
+                                                    <span t-field="move.value_text_box"/>
+                                                </t> 
+                                                <t t-if="move.suggested_answer_id" >
+                                                    <span t-field="move.suggested_answer_id.value"/>
+                                                </t>                                            
+                                            </td>
+                                        </tr>
+                                    </t>
+                                  </tbody>
+                            </table>
+                            <br/>
+                            <br/>
+                            <table width="100%" border="0" style="font-size:12px;">
+                                <tr>
+                                    <th width="31%" height="30px" style="border: 1px solid black;text-align:center;" >Elaborado por: <span  t-esc="user.name"/></th>
+                                    <th width="3%"  height="30px" ></th>
+                                    <th width="32%" height="30px" style="border: 1px solid black;text-align:center;" >Autorizado por: </th>
+                                    <th width="3%"  height="30px" ></th>
+                                    <th width="31%" height="30px" style="border: 1px solid black;text-align:center;" >Recibido por: </th>
+                                </tr>
+                                <tr>
+                                </tr>
+                                <tr>
+                                    <td width="31%" height="50px" style="border: 1px solid black;"></td>
+                                    <td width="3%"  height="50px" ></td>
+                                    <td width="32%" height="50px" style="border: 1px solid black;"></td>
+                                    <td width="3%"  height="50px" ></td>
+                                    <td width="31%" height="50px" style="border: 1px solid black;"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    
+
+
+<!-- Report action -->
+    <report
+        id="action_survey_user_input_report_audit"
+        string="Imprimir Respuestas"
+        model="survey.user_input"
+        report_type="qweb-pdf"
+        name="eu_audit_request_survey.report_survey_user_input_report"
+        file="eu_audit_request_survey.report_survey_user_input_report"
+    />
+    </data>
+</odoo>

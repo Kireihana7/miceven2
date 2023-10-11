@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    	<record id="group_restrict_warehouse" model="res.groups">
+            <field name="name">Resrict Stock warehouses</field>
+        </record>
+
+        <record id="filter_user_stock_picking_type_allowed_new" model="ir.rule">
+            <field name="name">Filter Stock Picking Type Allowed new</field>
+            <field name="model_id" search="[('model','=','stock.picking.type')]" model="ir.model"/>
+            <field name="groups" eval="[(4, ref('group_restrict_warehouse'))]"/>
+            <field name="domain_force">['|','|',('company_id', '=', company_id),('company_id','=', False),('company_id','in', company_ids),('id','in', [ p.id for p in user.default_picking_type_ids])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record id="filter_user_stock_picking_type_allowed_new_two" model="ir.rule">
+            <field name="name">Filter Stock Picking Type Allowed new Two</field>
+            <field name="model_id" search="[('model','=','stock.picking.type')]" model="ir.model"/>
+            <field name="groups" eval="[(4, ref('group_restrict_warehouse'))]"/>
+            <field name="domain_force">['|','|',('company_id', '=', company_id),('company_id','=', False),('company_id','in', company_ids),('id','in', [ p.id for p in user.default_picking_type_ids])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record id="filter_user_stock_warehouse_allowed_new" model="ir.rule">
+            <field name="name">Filter Stock Warehouse Allowed new</field>
+            <field name="model_id" search="[('model','=','stock.warehouse')]" model="ir.model"/>
+            <field name="groups" eval="[(4, ref('group_restrict_warehouse'))]"/>
+            <field name="domain_force">['|','|',('company_id','=', False),('company_id','in', company_ids),('id','in', [ p.id for p in user.default_picking_type_ids.mapped('warehouse_id')])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record id="filter_user_stock_quant_allowed_new" model="ir.rule">
+            <field name="name">Filter Stock quant Allowed new</field>
+            <field name="model_id" search="[('model','=','stock.quant')]" model="ir.model"/>
+            <field name="groups" eval="[(4, ref('group_restrict_warehouse'))]"/>
+            <field name="domain_force">['|','|',('company_id', '=', company_id),('company_id','=', False),('company_id','in', company_ids),('location_id','child_of', [ p.id for p in user.default_picking_type_ids.warehouse_id.view_location_id])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="filter_user_stock_location_allowed" model="ir.rule">
+            <field name="name">Filter Stock Location Allowed</field>
+            <field name="model_id" search="[('model','=','stock.location')]" model="ir.model"/>
+            <field name="groups" eval="[(4, ref('group_restrict_warehouse'))]"/>
+            <field name="domain_force">['|','|',('company_id', '=', company_id),('company_id','=', False),('company_id','in', company_ids),('id','child_of', [ p.id for p in user.stock_location_ids])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

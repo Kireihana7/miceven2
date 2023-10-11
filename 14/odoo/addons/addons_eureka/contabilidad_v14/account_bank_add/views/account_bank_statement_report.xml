@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_account_bank_statement_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h1 t-field="o.name" class="mt0 float-left"/>
+                            <div class="row mt16 mb16">
+                                <div t-if="o.journal_id" class="col-auto" name="div_journal_id">
+                                    <strong>Diario:</strong>
+                                    <p t-field="o.journal_id.name"/>
+                                </div>
+                                <div class="col-auto" name="div_balance_start">
+                                    <strong>Saldo Inicial:</strong>
+                                    <p t-field="o.balance_start"/>
+                                </div>
+                            </div>
+                            <div class="row mt16 mb16">
+                                <div t-if="o.date" class="col-auto" name="div_origin">
+                                    <strong>Fecha:</strong>
+                                    <p t-field="o.date"/>
+                                </div>
+                                <div class="col-auto" name="div_balance_end_real">
+                                    <strong>Saldo Final:</strong>
+                                    <p t-field="o.balance_end_real"/>
+                                </div>
+                            </div>
+                            <table class="table table-sm" t-if="o.line_ids">
+                                <thead>
+                                    <tr>
+                                        <th name="th_fecha">
+                                            <strong>Fecha</strong>
+                                        </th>
+                                        <th name="th_etiqueta">
+                                            <strong>Etiqueta</strong>
+                                        </th>
+                                        <th name="th_ref">
+                                            <strong>Referencia</strong>
+                                        </th>
+                                        <th name="th_debe">
+                                            <strong>Debe</strong>
+                                        </th>
+                                        <th name="th_haber" >
+                                            <strong>Haber</strong>
+                                        </th>
+                                        <th name="th_partner_id">
+                                            <strong>Contacto</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.line_ids" t-as="move">
+                                        <tr>
+                                            <td>
+                                                <span t-field="move.date"/><br/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.payment_ref" />
+                                            </td>
+                                            <td>
+                                                <span t-field="move.ref" />
+                                            </td>
+                                            <td>
+                                                <span t-field="move.should" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.tohave" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.partner_id.name" />
+                                            </td>
+                                        </tr>
+                                    </t>
+                                  </tbody>
+                            </table>
+                            <div class="clearfix" name="so_total_summary">
+                                <div id="total" class="row" name="total">
+                                    <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                        <table class="table table-sm">
+                                            <tr class="border-black o_subtotal" style="">
+                                                <td name="td_debe_label"><strong>Debe</strong></td>
+                                                <td name="td_debe" class="text-right">
+                                                    <span t-field="o.should"/>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-black o_subtotal" style="">
+                                                <td name="td_haber_label"><strong>Haber</strong></td>
+                                                <td name="td_haber" class="text-right">
+                                                    <span t-field="o.tohave"/>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-black o_total">
+                                                <td name="td_balance_end_label"><strong>Balance Calculado</strong></td>
+                                                <td name="td_balance_end" class="text-right">
+                                                    <span t-field="o.balance_end"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <table width="100%" border="0" style="font-size:12px;">
+                                <tr>
+                                    <th width="31%" height="30px" style="border: 1px solid black;text-align:center;" >Elaborado por: <span  t-esc="user.name"/></th>
+                                    <th width="3%"  height="30px" ></th>
+                                    <th width="32%" height="30px" style="border: 1px solid black;text-align:center;" >Autorizado por: </th>
+                                    <th width="3%"  height="30px" ></th>
+                                    <th width="31%" height="30px" style="border: 1px solid black;text-align:center;" >Recibido por: </th>
+                                </tr>
+                                <tr>
+                                </tr>
+                                <tr>
+                                    <td width="31%" height="50px" style="border: 1px solid black;"></td>
+                                    <td width="3%"  height="50px" ></td>
+                                    <td width="32%" height="50px" style="border: 1px solid black;"></td>
+                                    <td width="3%"  height="50px" ></td>
+                                    <td width="31%" height="50px" style="border: 1px solid black;"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    
+
+
+<!-- Report action -->
+    <report
+        id="action_account_bank_statement_report"
+        string="Extracto Bancario"
+        model="account.bank.statement"
+        report_type="qweb-pdf"
+        name="account_bank_add.report_account_bank_statement_report"
+        file="account_bank_add.report_account_bank_statement_report"
+    />
+    </data>
+</odoo>

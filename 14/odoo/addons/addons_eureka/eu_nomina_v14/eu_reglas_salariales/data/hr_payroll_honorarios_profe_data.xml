@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="hr_estructura_tipo_mensual" model="hr.payroll.structure.type">
+            <field name="name">Base (MENSUAL)</field>
+            <field name="wage_type">monthly</field>
+            <field name="default_schedule_pay">bi-weekly</field>
+            <field name="country_id" eval="False"/>
+        </record>
+
+        <record id="eu_estructura_honorarios" model="hr.payroll.structure">
+            <field name="name">Honorarios Profesionales</field>
+            <field name="schedule_pay">annually</field>
+            <field name="journal_id" search="[('code', '=', 'OV1')]"/>
+            <field name="use_worked_day_lines">True</field>
+            <field name="auto_post">True</field>
+            <field name="struct_category">normal</field>
+            <field name="code">NOM_QNAL</field>
+            <field name="type_id" ref="hr_estructura_tipo_mensual"/>
+            <!-- <field name="regular_pay" eval="True"/> -->
+            <field name="country_id" eval="False"/>
+        </record>
+
+        <record id="hr_salary_rule_162_0b2e4b84" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.complemento</field>
+            <field name="name">HONORARIOS PROFESIONALES</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="code">HON_PROF</field>
+            <field name="sequence" eval="1"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210202002" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_610205001" />
+            <field name="struct_id" ref="eu_estructura_honorarios"/>
+        </record>
+
+        <record id="hr_salary_rule_162_1b2e4c84" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.complemento</field>
+            <field name="name">HONORARIOS PROFESIONALES</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="code">HON_PROF</field>
+            <field name="sequence" eval="1"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210202002" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_610205001" />
+            <field name="struct_id" ref="eu_estructura_honorarios"/>
+        </record>
+
+        <record id="hr_salary_rule_163_0b2e4b9f" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result= (contract.complemento)* 3 / 100 - 0.050</field>
+            <field name="name">RETENCION ISLR</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="code">RET_ISLR_HONPROF</field>
+            <field name="sequence" eval="2"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210303001" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210202002" />
+            <field name="struct_id" ref="eu_estructura_honorarios"/>
+        </record>
+
+        <record id="hr_salary_rule_163_1b2e5b9f" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result= (contract.complemento)* 3 / 100 - 0.050</field>
+            <field name="name">RETENCION ISLR</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="code">RET_ISLR_HONPROF</field>
+            <field name="sequence" eval="2"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210303001" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210202002" />
+            <field name="struct_id" ref="eu_estructura_honorarios"/>
+        </record>
+    </data>
+</odoo>

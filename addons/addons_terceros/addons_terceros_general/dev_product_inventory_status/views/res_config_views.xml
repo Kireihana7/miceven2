@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="dev_res_config_product_inventory" model="ir.ui.view">
+        <field name="name">dev.res.config.product.inventory</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="50"/>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@data-key='sale_management']//h2" position="before">
+            	<h2>Product Inventory Status</h2>
+            	<div class="row mt16 o_settings_container" id="product_deposit">
+				        <div class="col-xs-12 o_setting_box">
+				            <group>
+				                <field name="product_inventory_status" style="width:80%%"/>
+				            </group>
+				            <group>
+				                <group>
+				                    <field name="user_id" style="width:80%%" attrs="{'invisible':[('product_inventory_status','=',False)], 'required':[('product_inventory_status','!=',False)]}"  widget="many2many_tags" />
+						    	<field name="filter_by" style="width:80%%" attrs="{'invisible':[('product_inventory_status','=',False)],'required':[('product_inventory_status','!=',False)]}" />
+						    	<field name="category_id" style="width:80%%" attrs="{'invisible':['|',('product_inventory_status','=',False),('filter_by','=','product')], 'required':[('product_inventory_status','!=',False)]}" />
+				                </group>
+				                <group>
+				                    <field name="order_by"  attrs="{'invisible':[('product_inventory_status','=',False)], 'required':[('product_inventory_status','!=',False)]}"/>
+						    	 <label for="execute_every" string="Execute Every" attrs="{'invisible':[('product_inventory_status','=',False)]}"/>
+						    	<div>
+						    	    <field name="execute_every" placeholder="Execute Every" class="oe_inline" style="width:40%%" attrs="{'invisible':[('product_inventory_status','=',False)], 'required':[('product_inventory_status','!=',False)]}" />
+						        	<field name="send_by" class="oe_inline" attrs="{'invisible':[('product_inventory_status','=',False)], 'required':[('product_inventory_status','!=',False)]}" style="margin-left:2px;width:40%%;height:25px"/>
+					        	</div>
+				                </group>
+				            </group>
+				        </div>
+			    	</div>
+            </xpath>
+        </field>
+	</record>        
+    
+</odoo>  
+
+

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fiscal_book,access_fiscal_book,model_fiscal_book,account.group_account_manager,1,1,1,1
+access_fiscal_book_line,access_fiscal_book_line,model_fiscal_book_line,account.group_account_manager,1,1,1,1
+access_fiscal_book_issues,access_fiscal_book_issues,model_fiscal_book_issues,account.group_account_manager,1,1,1,1
+access_fiscal_book_retention,access_fiscal_book_retention,model_fiscal_book_retention,account.group_account_manager,1,1,1,1

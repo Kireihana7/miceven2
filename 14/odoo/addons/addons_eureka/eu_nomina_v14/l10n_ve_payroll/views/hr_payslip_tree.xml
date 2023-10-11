@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <record id="hr_payslip_tree_inherit_views_fls" model="ir.ui.view">
+            <field name="name">hr_payslip_tree_inherit_views_lunes</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="decoration-info" separator="" add="" remove="" value="">comprometida == True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='net_wage']" position="replace">
+                    <field name="currency_id_dif" invisible="1"/>
+
+                    <field name="comprometida" invisible="1"/>
+                    <field name="total_sum" widget="monetary" sum="total_sum" options="{'currency_field': 'currency_id'}" decoration-bf="1" decoration-info="state == 'draft'" decoration-warning="state == 'verify'" decoration-success="state in ('done','paid')"/>
+                    <field name="total_costo" widget="monetary" sum="total_costo" options="{'currency_field': 'currency_id'}" decoration-bf="1" decoration-info="state == 'draft'" decoration-warning="state == 'verify'" decoration-success="state in ('done','paid')"/>
+                </xpath>
+        
+                <xpath expr="//field[@name='basic_wage']" position="replace">
+                    <field name="bank_journal_id" readonly="1" force_save="1"/>
+                    <field name="brute_sum" widget="monetary" sum="brute_sum" options="{'currency_field': 'currency_id'}" decoration-info="state == 'draft'" decoration-warning="state == 'verify'" decoration-success="state in ('done','paid')"/>
+                </xpath>
+                <xpath expr="//field[@name='real_worked_hours']" position="replace">
+                    
+                </xpath>
+                <xpath expr="//field[@name='total_to_pay']" position="replace">
+                    
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_payslip_tree_vacaciones_views_fls" model="ir.ui.view">
+            <field name="name">hr_payslip_tree_inherit_views_lunes</field>
+            <field name="model">hr.payslip</field>
+            <field name="arch" type="xml">
+                <tree string="Vacaciones" decoration-info="comprometida == True" js_class="hr_payroll_payslip_tree" sample="1">
+                    <field name="currency_id" invisible="1"/>
+                    <field name="currency_id_dif" invisible="1"/>
+
+                    <field name="number" decoration-bf="1"/>
+                    <field name="employee_id" widget="many2one_avatar_employee"/>
+                    <field name="payslip_run_id"/>
+                    <field name="anno_vacaciones_designado"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="state" invisible="1"/>
+                    <field name="comprometida" invisible="1"/>
+                    <field name="bank_journal_id" readonly="1" force_save="1"/>
+                    <field name="brute_sum" widget="monetary" options="{'currency_field': 'currency_id'}" decoration-info="state == 'draft'" decoration-warning="state == 'verify'" decoration-success="state in ('done','paid')"/>
+                    <field name="total_sum" widget="monetary" options="{'currency_field': 'currency_id'}" decoration-bf="1" decoration-info="state == 'draft'" decoration-warning="state == 'verify'" decoration-success="state in ('done','paid')"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="eu_hr_payslip_view_search_extra" model="ir.ui.view">
+            <field name="name">hr.payslip.view.form.search.extra</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='employee_id']" position="replace">
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="employee_id"/>
+                </xpath>
+                
+            </field>
+        </record>
+
+        
+    </data>
+</odoo>

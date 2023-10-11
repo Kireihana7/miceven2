@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acl_sales_target_report,eu_sales_target_report.sales_target_report,model_sales_target_wizard,base.group_user,1,1,1,1

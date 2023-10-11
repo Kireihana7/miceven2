@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_quality_check_tabla_tree_romana" model="ir.ui.view">
+        <field name="name">quality.check.tabla.tree</field>
+        <field name="model">quality.check.tabla</field>
+        <field name="arch" type="xml">
+            <tree string="Controles de Calidad" edit="0" create="0" import="0" delete="0">
+                <field name="quality_check"/>
+                <field name="product_id"/> 
+                <field name="propiedades"/>
+                <field name="operation"/>
+                <field name="qty_expected"/>
+                <field name="qty"/>
+                <field name="diferencia"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_quality_check_tabla_form_romana" model="ir.ui.view">
+        <field name="name">quality.check.tabla.form</field>
+        <field name="model">quality.check.tabla</field>
+        <field name="arch" type="xml">
+            <form string="Controles de Calidad">
+                <sheet>
+                    <group>
+                        <field name="quality_check"/>
+                        <field name="product_id"/> 
+                        <field name="resultado" />
+                        <field name="propiedades"/>
+                        <field name="operation"/>
+                        <field name="qty_expected"/>
+                        <field name="qty"/>
+                        <field name="resultado_esperado" />
+                        <field name="diferencia"/>
+                    </group>
+                </sheet>  
+            </form>
+        </field>
+    </record>
+
+    <record id="open_view_quality_check_tabla_tree" model="ir.actions.act_window">
+        <field name="name">Controles de Calidad</field>
+        <field name="res_model">quality.check.tabla</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_quality_check_tabla_tree_romana"></field>
+    </record>
+
+</odoo>
+

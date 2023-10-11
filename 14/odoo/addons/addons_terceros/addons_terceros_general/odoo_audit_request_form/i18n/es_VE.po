@@ -1,0 +1,1815 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* odoo_audit_request_form
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-14 14:43+0000\n"
+"PO-Revision-Date: 2022-07-14 14:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: odoo_audit_request_form
+#: model:mail.template,body_html:odoo_audit_request_form.custom_email_template_audit_request_confirm_probc
+msgid ""
+"<div style=\"font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size:                     12px; color: rgb(34, 34, 34); background-color: #FFF;\">\n"
+"                    <p>Dear ${object.audit_user_id.name},</p>\n"
+"                    <br/>\n"
+"                    <p>Please find attached audit request report.</p>\n"
+"                    <br/>\n"
+"                    <p>Thank You,</p>\n"
+"                    <p>${object.responsible_user_id.name}</p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+"<div style=\"font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size:                     12px; color: rgb(34, 34, 34); background-color: #FFF;\">\n"
+"                    <p>Estimado ${object.audit_user_id.name},</p>\n"
+"                    <br/>\n"
+"                    <p> Hola, reciba un cordial saludo. El presente correo lleva adjunto el Informe de Auditoria Planifiacada.</p>\n"
+"                    <br/>\n"
+"                    <p>Gracias,</p>\n"
+"                    <p>${object.responsible_user_id.name}</p>\n"
+"                </div>\n"
+"            "
+
+#. module: odoo_audit_request_form
+#: model:mail.template,body_html:odoo_audit_request_form.custom_email_template_audit_request_done_probc
+msgid ""
+"<div style=\"font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size:                     12px; color: rgb(34, 34, 34); background-color: #FFF;\">\n"
+"                    <p>Dear ${object.responsible_user_id.name},</p>\n"
+"                    <br/>\n"
+"                    <p>Please find attached audit request report.</p>\n"
+"                    <br/>\n"
+"                    <p>Thank You,</p>\n"
+"                    <p>${object.audit_user_id.name}</p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+"<div style=\"font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size:                     12px; color: rgb(34, 34, 34); background-color: #FFF;\">\n"
+"                    <p>Estimado ${object.responsible_user_id.name},</p>\n"
+"                    <br/>\n"
+"                    <p> Hola, reciba un cordial saludo. El presente correo lleva adjunto el Informe de Auditoria Planifiacada.</p>\n"
+"                    <br/>\n"
+"                    <p>Gracias,</p>\n"
+"                    <p>${object.audit_user_id.name}</p>\n"
+"                </div>\n"
+"            "
+
+#. module: odoo_audit_request_form
+#: model:mail.template,body_html:odoo_audit_request_form.custom_email_send_template_all_audit_request_state_probc
+msgid ""
+"<div style=\"font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size:                     12px; color: rgb(34, 34, 34); background-color: #FFF;\">\n"
+"                    <p>Dear All,</p>\n"
+"                    <br/>\n"
+"                    <p>Please find attached audit request report.</p>\n"
+"                    <br/>\n"
+"                    <p>Thank You,</p>\n"
+"                    <p>${object.audit_user_id.name}</p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+"<div style=\"font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size:                     12px; color: rgb(34, 34, 34); background-color: #FFF;\">\n"
+"                    <p>Estimados todos,</p>\n"
+"                    <br/>\n"
+"                    <p> Hola, reciba un cordial saludo. El presente correo lleva adjunto el Informe de Auditoria Planifiacada.</p>\n"
+"                    <br/>\n"
+"                    <p>Gracias,</p>\n"
+"                    <p>${object.audit_user_id.name}</p>\n"
+"                </div>\n"
+"            "
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_view_form
+msgid "<span class=\"pl-1\">Auditoría</span>"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<span>Audit Category</span>"
+msgstr "<span>Tipo de auditoría</span>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<span>Audit Date</span>"
+msgstr "<span>Fecha de auditoría</span>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<span>Audit Method</span>"
+msgstr "<span>Método de auditoría</span>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<span>Audit Request Name</span>"
+msgstr "<span>Nombre de Auditoría</span>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<span>Audit Responsible</span>"
+msgstr "<span>Responsable de Auditoría</span>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<span>Created Date</span>"
+msgstr "<span>Fecha de creación</span>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<span>Created by</span>"
+msgstr "<span>Creado por</span>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<span>Deadline Date</span>"
+msgstr "<span>Fecha límite</span>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "<span>Departamento : Auditoría</span>"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<span>External Audit Partner</span>"
+msgstr "<span>Socio de auditoría externa</span>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Approved Date:</strong>"
+msgstr "<strong>Fecha de aprobación:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Approved by:</strong>"
+msgstr "<strong>Aprobado por:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Approver Date:____________________</strong>"
+msgstr "<strong>Aprobador Fecha:____________________</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Approver Signature:____________________</strong>"
+msgstr "<strong>Firma del aprobador:____________________</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Audit Completed Date:</strong>"
+msgstr "<strong>Fecha de finalización de la auditoría:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Audit Completed by:</strong>"
+msgstr "<strong>Auditoría completada por:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_kanban_probc
+msgid "<strong>Audit Request Name:</strong>"
+msgstr "<strong>Nombre de Auditoría:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_kanban_probc
+msgid "<strong>Audit Request Number:</strong>"
+msgstr "<strong>Número de Auditoría:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Audit Request Report</strong>"
+msgstr "<strong>Informe de Auditoría</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_kanban_probc
+msgid "<strong>Audit Responsible:</strong>"
+msgstr "<strong>Responsable de Auditoría:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Audit Tags</strong>"
+msgstr "<strong>Etiquetas de auditoría</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Confirmed Date:</strong>"
+msgstr "<strong>Fecha confirmada:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Confirmed by:</strong>"
+msgstr "<strong>Confirmado por:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_kanban_probc
+msgid "<strong>Created by:</strong>"
+msgstr "<strong>Creado por:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_view_form
+msgid "<strong>Departamento</strong>"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Refused Date:</strong>"
+msgstr "<strong>Fecha de rechazo:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Refused by:</strong>"
+msgstr "<strong>Rechazado por:</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Requester Date:____________________</strong>"
+msgstr "<strong>Solicitante Fecha:____________________</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_request_probc
+msgid "<strong>Requester Signature:____________________</strong>"
+msgstr "<strong>Firma del Solicitante:____________________</strong>"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_kanban_probc
+msgid "<strong>State:</strong>"
+msgstr "<strong>Estado:</strong>"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__audit_action_ids
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_actions_view_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_actions_view_tree
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_view_form
+msgid "Acciones"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Acciones Especificas"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_specific_action
+msgid "Acciones de auditorías"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_plan_actions
+msgid "Acciones de la planificación de auditorias"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_audit_specific_action_action
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__audit_specific_action_ids
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_audit_specific_action_menu
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_actions_view_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_specific_action_view_tree
+msgid "Acciones específicas"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__audit_action_id
+msgid "Acción de planificación"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_needaction
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_needaction
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_needaction
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_needaction
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_needaction
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_needaction
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_needaction
+msgid "Action Needed"
+msgstr "Acción requerida"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Actividad a Realizar"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__audit_activity_id
+msgid "Actividad a realizar"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__audit_activity_id
+msgid "Actividad de auditoría"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_activity__name
+msgid "Actividades"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_activity_view_tree
+msgid "Actividades a realizar"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_audit_plan_actions_action
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_audit_plan_actions_menu
+msgid "Actividades de auditoría"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_activity
+msgid "Actividades de auditorías"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_audit_activity_action
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_audit_activity_menu
+msgid "Actividades específicas"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__activity_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__activity_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__activity_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__activity_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__activity_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__activity_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__activity_exception_decoration
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__activity_exception_decoration
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__activity_exception_decoration
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__activity_exception_decoration
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__activity_exception_decoration
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__activity_exception_decoration
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Decoración de Actividad  de Excepción"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__activity_state
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__activity_state
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__activity_state
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__activity_state
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__activity_state
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__activity_state
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__activity_type_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__activity_type_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__activity_type_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__activity_type_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__activity_type_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__activity_type_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Ícono de tipo de actvidad"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__alcance
+msgid "Alcance"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_my_audit_request_done_menu_probc
+msgid "All Audit Requests"
+msgstr "Todas las solicitudes de auditoría"
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_alternar_hallazgo
+msgid "Alternar el estado de los hallazgos"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.alternar_hallazgo_view_form
+msgid "Alternar hallazgo"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_request__state__c_approve
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Approved"
+msgstr "Aprobado"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__date_approve
+msgid "Approved Date"
+msgstr "Fecha de aprobación"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__approve_user_id
+msgid "Approved by"
+msgstr "Aprobado por"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_plan__status__aprobado
+msgid "Aprobado"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__file
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__file
+msgid "Archivo"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_attachment_count
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_attachment_count
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_attachment_count
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_attachment_count
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_attachment_count
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_attachment_count
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_attachment_count
+msgid "Attachment Count"
+msgstr "Recuento de archivos adjuntos"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Audit Approved by"
+msgstr "Auditoría Aprobada por"
+
+#. module: odoo_audit_request_form
+#: model:res.groups,name:odoo_audit_request_form.custom_group_audit_approve_probc
+msgid "Audit Approver"
+msgstr "Aprobador de auditoría"
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_action_audit_category_probc
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_category
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__audit_category_id
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_audit_type_menu_probc
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_category_view_form_probc
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_category_view_tree_probc
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Audit Category"
+msgstr "Categoría de auditoría"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Audit Complete"
+msgstr "Auditoría completa"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_request__state__d_done
+msgid "Audit Completed"
+msgstr "Auditoría completada"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__date_done
+msgid "Audit Completed Date"
+msgstr "Fecha de finalización de la auditoría"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__done_user_id
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Audit Completed by"
+msgstr "Auditoría completada por"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Audit Confirmed by"
+msgstr "Auditoría Confirmada por"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Audit Created by"
+msgstr "Auditoría Creado por"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__audit_date
+msgid "Audit Date"
+msgstr "Fecha de auditoría"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__type
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Audit Method"
+msgstr "Método de auditoría"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_refuse_wizard_probc
+msgid "Audit Refuse"
+msgstr "Rechazo de auditoría"
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_refuse_wizard
+msgid "Audit Refuse Wizard"
+msgstr "Asistente de rechazo de auditoría"
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_action_audit_refuse_reason_wizard_probc
+msgid "Audit Refused Reason"
+msgstr "Motivo del rechazo de la auditoría"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Audit Refused by"
+msgstr "Auditoría rechazada por"
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.report,name:odoo_audit_request_form.custom_action_report_audit_planning
+msgid "Audit Report Planning"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_request
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__audit_request_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__audit_request_id
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_tree_probc
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_calendar_probc
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_graph_probc
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_pivot_probc
+msgid "Audit Request"
+msgstr "Auditoría"
+
+#. module: odoo_audit_request_form
+#: model:mail.template,subject:odoo_audit_request_form.custom_email_send_template_all_audit_request_state_probc
+#: model:mail.template,subject:odoo_audit_request_form.custom_email_template_audit_request_confirm_probc
+#: model:mail.template,subject:odoo_audit_request_form.custom_email_template_audit_request_done_probc
+msgid "Audit Request (${object.sequence_name})"
+msgstr "Auditoría (${object.sequence_name})"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__name
+msgid "Audit Request Name"
+msgstr "Nombre de Auditoría"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__sequence_name
+msgid "Audit Request Number"
+msgstr "Número de Auditoría"
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.report,name:odoo_audit_request_form.custom_action_report_audit_request_probc
+msgid "Audit Request Report"
+msgstr "Informe de Auditoría"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Audit Request Title"
+msgstr "Título de Auditoria"
+
+#. module: odoo_audit_request_form
+#: model:res.groups,name:odoo_audit_request_form.custom_group_audit_requester_probc
+msgid "Audit Requester"
+msgstr "Solicitante de auditoría"
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_action_audit_request_type_probc
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_audit_request_menu_probc
+msgid "Audit Requests"
+msgstr "Auditorías"
+
+#. module: odoo_audit_request_form
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_approve_my_audit_request_menu_probc
+msgid "Audit Requests to         Approve"
+msgstr "Auditorías para aprobar"
+
+#. module: odoo_audit_request_form
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_complete_my_audit_request_menu_probc
+msgid "Audit Requests to         Complete"
+msgstr "Auditorías para completar"
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_action_audit_request_toapprove_probc
+msgid "Audit Requests to Approve"
+msgstr "Auditorías para aprobar"
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_tocomplete_action_audit_request_probc
+msgid "Audit Requests to Complete"
+msgstr "Auditorías para completar"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__audit_user_id
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Audit Responsible"
+msgstr "Responsable de Auditoría"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__audit_status
+msgid "Audit Status"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_action_audit_tag_probc
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_tag
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__audit_tag_ids
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_audit_method_menu_probc
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_tag_view_form_probc
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_tag_view_tree_probc
+msgid "Audit Tags"
+msgstr "Etiquetas de auditoría"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Audit audit_Status"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:res.groups,name:odoo_audit_request_form.custom_group_registrar_hallazgo
+msgid "Audit finding"
+msgstr "Hallazgo de auditoría"
+
+#. module: odoo_audit_request_form
+#: model:res.groups,name:odoo_audit_request_form.custom_group_audit_planner
+msgid "Audit planner"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__audit_request_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__audit_request_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__audit_request_id
+msgid "Auditoria"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request_objetive__audit_request_id
+msgid "Auditoría"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_specific_action__name
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_audit_request_main_menu_root
+msgid "Auditorías"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_refuse_wizard_probc
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.alternar_hallazgo_view_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.registrar_hallazgo_view_form
+msgid "Cancelar"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_request__state__e_cancel
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__checked
+msgid "Chequeada"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_category__code
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_tag__code
+msgid "Code"
+msgstr "Código"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_tag__color
+msgid "Color Index"
+msgstr "Índice de Colores"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__company_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_requirements__status__completado
+msgid "Completado"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Completed"
+msgstr "Terminado"
+
+#. module: odoo_audit_request_form
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_audit_plan_menu
+msgid "Configuración de plan"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_audit_request_configuration_menu
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_request__state__b_confirm
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__date_confirm
+msgid "Confirmed Date"
+msgstr "Fecha confirmada"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__confirm_user_id
+msgid "Confirmed by"
+msgstr "Confirmado por"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__accorded
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__is_conforme
+msgid "Conforme"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_actions_view_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_view_form
+msgid "Crear auditoria"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__create_date
+msgid "Created Date"
+msgstr "Fecha de creación"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_alternar_hallazgo__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_activity__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_category__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_media__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_observation__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_refuse_wizard__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__responsible_user_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request_objetive__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_specific_action__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_tag__create_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_alternar_hallazgo__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_activity__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_category__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_media__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_observation__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_refuse_wizard__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request_objetive__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_specific_action__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_tag__create_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__duration_end
+msgid "Culminación de la auditoría"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__lapse_end
+msgid "Culminación del periodo"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Cumplimiento"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_plan_actions__status__danger
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_request__audit_status__danger
+msgid "Danger"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__deadline_date
+msgid "Deadline Date"
+msgstr "Fecha límite"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__department_id
+msgid "Departamento a auditar"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_hr_department__is_audit_department
+msgid "Departamento de auditoría"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_hr_department
+msgid "Department"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__name
+msgid "Descripción"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Desde:"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__alternar_hallazgo__state__disabled
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_finding__state__disabled
+msgid "Deshabilitado"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_alternar_hallazgo__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_activity__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_category__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_media__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_observation__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_refuse_wizard__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request_objetive__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_specific_action__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_tag__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_hr_department__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_mail_message__display_name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__audit_documentation_ids
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_documentation_view_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_documentation_view_tree
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_actions_view_form
+msgid "Documentación"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_documentation
+msgid "Documentación de auditorias"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_request__state__a_draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__company_ids
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Empresa"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_requirements__status__en_proceso
+msgid "En proceso"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_view_form
+msgid "Enviar correo"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_actions_view_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_view_form
+msgid "Esta seguro?"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_alternar_hallazgo__state
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__state
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__status
+msgid "Estatus"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.alternar_hallazgo_view_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.registrar_hallazgo_view_form
+msgid "Esto no se puede deshacer"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_request__type__external
+msgid "External"
+msgstr "Externo"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__partner_id
+msgid "External Audit Partner"
+msgstr "Socio de auditoría externa"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__name
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Fecha"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Fecha :"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__fecha_emision
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__fecha_emision
+msgid "Fecha del hallazgo"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__filename
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__filename
+msgid "Filename"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_follower_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_follower_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_follower_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_follower_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_follower_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_follower_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_channel_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_channel_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_channel_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_channel_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_channel_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_channel_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_partner_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_partner_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_partner_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_partner_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_partner_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_partner_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Contactos)"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__activity_type_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__activity_type_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__activity_type_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__activity_type_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__activity_type_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__activity_type_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Icono de Font Awesome ej. fa-tasks"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__alternar_hallazgo__state__enabled
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_finding__state__enabled
+msgid "Habilitado"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_finding_view_form
+msgid "Habilitar"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__audit_finding_ids
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_finding_view_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_finding_view_tree
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Hallazgos"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_finding
+msgid "Hallazgos de auditorías"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Hasta:"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_alternar_hallazgo__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_activity__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_category__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_media__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_observation__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_refuse_wizard__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request_objetive__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_specific_action__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_tag__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_hr_department__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_mail_message__id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__id
+msgid "ID"
+msgstr "IDENTIFICACIÓN"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__activity_exception_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__activity_exception_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__activity_exception_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__activity_exception_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__activity_exception_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__activity_exception_icon
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__activity_exception_icon
+msgid "Icon"
+msgstr "Icono"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__activity_exception_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__activity_exception_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__activity_exception_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__activity_exception_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__activity_exception_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__activity_exception_icon
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icono para indicar una actividad de excepción."
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__message_needaction
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__message_unread
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__message_needaction
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__message_unread
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__message_needaction
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__message_unread
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__message_needaction
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__message_unread
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__message_needaction
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__message_unread
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__message_needaction
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__message_unread
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__message_needaction
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado hay nuevos mensajes que requieren su atención."
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__message_has_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__message_has_sms_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__message_has_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__message_has_sms_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__message_has_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__message_has_sms_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__message_has_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__message_has_sms_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__message_has_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__message_has_sms_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__message_has_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__message_has_sms_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__message_has_error
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__to_print
+msgid "Imprimir"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__not_accorded
+msgid "Inconforme"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Información adicional"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Información de estatus"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_finding_view_form
+msgid "Inhabilitar"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__duration_start
+msgid "Inicio de auditoría"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__lapse_start
+msgid "Inicio del periodo"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_request__type__internal
+msgid "Internal"
+msgstr "Interno"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_mail_mail__is_finding
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_mail_message__is_finding
+msgid "Is Finding"
+msgstr "Está encontrando"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_is_follower
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_is_follower
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_is_follower
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_is_follower
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_is_follower
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_is_follower
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__is_image
+msgid "Is Image"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_alternar_hallazgo____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_activity____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_category____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_media____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_observation____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_refuse_wizard____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request_objetive____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_specific_action____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_tag____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_hr_department____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_mail_message____last_update
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo____last_update
+msgid "Last Modified on"
+msgstr "Modificada por última vez"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_alternar_hallazgo__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_activity__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_category__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_media__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_observation__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_refuse_wizard__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request_objetive__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_specific_action__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_tag__write_uid
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_alternar_hallazgo__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_activity__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_category__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_media__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_observation__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_refuse_wizard__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request_objetive__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_specific_action__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_tag__write_date
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_main_attachment_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_main_attachment_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_main_attachment_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_main_attachment_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_main_attachment_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_main_attachment_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Archivo adjunto principal"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_actions_view_form
+msgid "Media"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_media__name
+msgid "Medios"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Medios de Verificación"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_audit_media_action
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__audit_media_ids
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_audit_media_menu
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_media_view_tree
+msgid "Medios de verificación"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_media
+msgid "Medios de verificación de auditorías"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_mail_message
+msgid "Message"
+msgstr "Mensaje"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_has_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_has_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_has_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_has_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_has_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_has_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_plan__status__modificar
+msgid "Modificar"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__my_activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__my_activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__my_activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__my_activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__my_activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__my_activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Fecha límite de mi actividad"
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_action_my_audit_request_type_probc
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_my_audit_request_type_menu_probc
+msgid "My Audit Requests"
+msgstr "Mis Auditorías"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_category__name
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_tag__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__activity_date_deadline
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Siguiente plazo de actividad"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__activity_summary
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__activity_summary
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__activity_summary
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__activity_summary
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__activity_summary
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__activity_summary
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__activity_type_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__activity_type_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__activity_type_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__activity_type_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__activity_type_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__activity_type_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__title
+msgid "Nombre"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_needaction_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_needaction_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_needaction_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_needaction_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_needaction_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_needaction_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_has_error_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_has_error_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_has_error_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_has_error_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_has_error_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_has_error_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_has_error_counter
+msgid "Number of errors"
+msgstr "Numero de errores"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__message_needaction_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__message_needaction_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__message_needaction_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__message_needaction_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__message_needaction_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__message_needaction_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__message_has_error_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__message_has_error_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__message_has_error_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__message_has_error_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__message_has_error_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__message_has_error_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__message_unread_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__message_unread_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__message_unread_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__message_unread_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__message_unread_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__message_unread_counter
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leidos"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__objetivo_general
+msgid "Objectivo general"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__objetivo
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request_objetive__objetive
+msgid "Objetivo"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Objetivo General :"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_request_objetive
+msgid "Objetivo de auditoría"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__audit_objetives_ids
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Objetivos"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__observation_ids
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_view_form
+msgid "Observaciones"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_plan_observation
+msgid "Observaciones de planificacion de auditoría"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__observation
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_observation__name
+msgid "Observación"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_alternar_hallazgo__parent_id
+msgid "Parent"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Periodo"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__audit_plan_id
+msgid "Plan de auditoria"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Planificacion de Auditoría"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_observation__audit_plan_id
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_view_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_view_tree
+msgid "Planificación"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.actions.act_window,name:odoo_audit_request_form.custom_audit_plan_action
+#: model:ir.ui.menu,name:odoo_audit_request_form.custom_audit_planification_menu
+msgid "Planificación de auditoría"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_plan
+msgid "Planificación de auditorías"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_alternar_hallazgo__disabled_reason
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__disabled_reason
+msgid "Razón para deshabilitar"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_alternar_hallazgo__enabled_reason
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__enabled_reason
+msgid "Razón para habilitar"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__done
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request_objetive__done
+msgid "Realizado"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__refuse_reason
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_refuse_wizard_probc
+msgid "Reason"
+msgstr "Motivo"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_plan__status__rechazado
+msgid "Rechazado"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__audit_recommendation_ids
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Recomendaciones"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_recommendation
+msgid "Recomendaciones de auditorías"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__name
+msgid "Recomendación"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_refuse_wizard_probc
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Refuse"
+msgstr "Rechazar"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Refuse Information"
+msgstr "Rechazar información"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_refuse_wizard__refuse_reason
+msgid "Refuse Reason"
+msgstr "Motivo de rechazo"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_request__state__f_refuse
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Refused"
+msgstr "Rechazado"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__date_refuse
+msgid "Refused Date"
+msgstr "Fecha de rechazo"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__refuse_user_id
+msgid "Refused by"
+msgstr "Rechazado por"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.registrar_hallazgo_view_form
+msgid "Registrar hallazgo"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__name
+msgid "Requerimiento"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__audit_requirements_ids
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Requerimientos"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_custom_audit_requirements
+msgid "Requerimientos de auditorías"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Reset to Draft"
+msgstr "Restablecer a borrador"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__user_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__responsible_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_registrar_hallazgo__user_id
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Responsable"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__responsible_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__responsible_id
+msgid "Responsable del departamento"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__activity_user_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__activity_user_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__activity_user_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__activity_user_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__activity_user_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__activity_user_id
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__checked
+msgid "Revisado"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_plan__status__revision
+msgid "Revision"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_has_sms_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_has_sms_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_has_sms_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_has_sms_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_has_sms_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_has_sms_error
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error de entrega del SMS"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_view_audit_request_search_probc
+msgid "Search Audit Request"
+msgstr "Auditoria de búsqueda"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_request_view_form_probc
+msgid "Send by Email"
+msgstr "Enviar por correo electrónico"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__memo_sequence
+msgid "Sequencia de memo"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Sin Fecha"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__state
+msgid "State"
+msgstr "Estado"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__status
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__status
+msgid "Status"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__activity_state
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__activity_state
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__activity_state
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__activity_state
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__activity_state
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__activity_state
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Estado basado en actividades\n"
+"Vencida: la fecha tope ya ha pasado\n"
+"Hoy: La fecha tope es hoy\n"
+"Planificada: futuras actividades."
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_plan_actions__status__success
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_request__audit_status__success
+msgid "Success"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Sucursal"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__branch_ids
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_plan_actions_view_form
+msgid "Sucursales"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_report_audit_planning
+msgid "Tiempo de Duracion"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__activity_exception_decoration
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__activity_exception_decoration
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__activity_exception_decoration
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__activity_exception_decoration
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__activity_exception_decoration
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__activity_exception_decoration
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo de actividad de excepción registrada."
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_unread
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_unread
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_unread
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_unread
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_unread
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_unread
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes sin leer"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__message_unread_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__message_unread_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__message_unread_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__message_unread_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__message_unread_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__message_unread_counter
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes no leídos"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_plan_actions__status__warning
+#: model:ir.model.fields.selection,name:odoo_audit_request_form.selection__custom_audit_request__audit_status__warning
+msgid "Warning"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_documentation__website_message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_finding__website_message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan__website_message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_plan_actions__website_message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__website_message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_request__website_message_ids
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_requirements__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_documentation__website_message_ids
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_finding__website_message_ids
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan__website_message_ids
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_plan_actions__website_message_ids
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_recommendation__website_message_ids
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_request__website_message_ids
+#: model:ir.model.fields,help:odoo_audit_request_form.field_custom_audit_requirements__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+
+#. module: odoo_audit_request_form
+#: model:ir.model,name:odoo_audit_request_form.model_registrar_hallazgo
+msgid "Wizard para registrar hallazgos"
+msgstr "Asistente para registro de instalación"
+
+#. module: odoo_audit_request_form
+#: code:addons/odoo_audit_request_form/models/audit_request.py:0
+#, python-format
+msgid "You cannot delete a audit request which is not draft or cancelled!"
+msgstr "¡No puede eliminar una Auditoria que no sea borrador o cancelada!"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_refuse_wizard_probc
+msgid "or"
+msgstr "o"
+
+#. module: odoo_audit_request_form
+#: model_terms:ir.ui.view,arch_db:odoo_audit_request_form.custom_audit_finding_view_form
+msgid "¿Debes confirmar?"
+msgstr ""
+
+#. module: odoo_audit_request_form
+#: model:ir.model.fields,field_description:odoo_audit_request_form.field_custom_audit_recommendation__department_id
+msgid "Área de departamento"
+msgstr ""

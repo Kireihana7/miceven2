@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <div t-name="QuickInvoiceAction" class="o_quick_sale">
+        <div class="o_form_view" style="background:#f0eeee !important;">
+            <div class="quick_sale_order">
+                <div class="container-fluid">
+                    <div class="row content" style="height: calc( 100vh - 85px );overflow:hidden;">
+                        <div class="col-sm-5" style="border-right: 1px solid #c6c6c6;height: 100%;">
+                            <div class="search_product_container">
+                                <div class="search-product">
+                                    <input id="product-input" type="text" class="quick_so" placeholder="Escanea o escribe un producto" style="font-size: larger;"/>
+                                </div>
+                            </div>
+                            <t t-call="CartItems"/>
+                            <t t-call="SaleNumpad"/>
+                        </div>
+                        <div class="col-sm-7">
+                            <form class="form-inline" style="margin: 10px 0;">
+                                <div class="form-group mx-auto">
+                                    <label class="sale_label customer_vendor_label" for="customer">Cliente</label>
+                                    <div class="input-group">
+                                        <input 
+                                            type="text" 
+                                            class="form-control field_required quick_so" 
+                                            id="customer_txt"
+                                            autocomplete="off"
+                                            spellcheck="false"
+                                        />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-system create-customer" type="button">Crear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mx-auto">
+                                    <label class="sale_label" for="tasa">Tasa</label>
+                                    <input 
+                                        type="text"
+                                        readonly="true" 
+                                        class="form-control" 
+                                        id="tasa"
+                                        name="tasa"
+                                    />
+                                </div>
+                            </form>
+                            <section id="sidebar" class="recent-section closed bg-100 shadow">
+                                <button type="button" class="btn btn-system toggle-nav shadow" title="Toggle sidebar">
+                                    <i class="fa fa-chevron-left"></i>
+                                </button>
+                                <section class="px-2 py-4">
+                                    <h2 class="text-center border-bottom m-0">
+                                        Ordenes recientes
+                                    </h2>
+                                </section>
+                            </section>
+                            <article class="border-top pt-4">
+                                <div class="d-flex align-items-center justify-content-center pb-2 payment-box">
+                                    <h2 class="text-center m-0 payment-status">
+                                        Monto adeudado: <strong class="due_payment_amt" t-esc="widget.format_currency(0)" />
+                                    </h2>
+                                    <div class="payment-methods" />
+                                </div>
+                                <div class="credit-lines" />
+                                <t t-call="PaymentLine-Container" />
+                           </article>
+                            <div class="clearfix"/>
+                            <div class="control-buttons my-3">
+                                <button class="btn btn-danger reset-order">Reiniciar</button>
+                                <button class="btn-system create-order">Create</button>
+                            </div>
+                            <div class="payment-divider"/>
+                            <div class="order-summary">
+                                <table class="table">
+                                    <tr>
+                                        <td>Monto base: </td>
+                                        <td><span class="order_untaxes"><t t-esc="widget.format_currency(0)"/></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Impuestos: </td>
+                                        <td><span class="order_taxes"><t t-esc="widget.format_currency(0)"/></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total: </td>
+                                        <td><span class="order_total"><t t-esc="widget.format_currency(0)"/></span></td>
+                                    </tr>
+                                </table>
+                                <h1 class="text-danger text-center return-amount font-weight-bold"></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sale Order Confirmation</h5>
+                        <button type="button" class="close model-close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                         <p>System have to make delivery order done before creating invoice due to following products of your cart.</p>
+                         <div>
+                             <span class="delivery_products"/>
+                         </div>
+                         Press continue to proceed.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="custom_btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary delivery-confirm">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <t t-name="DeliveryProducts">
+        <ul>
+            <li><t t-esc="line.product_id[1]"/></li>
+        </ul>
+    </t>
+
+    <article t-name="CardLine" t-att-data-cartline-id="line.id" class="cartline">
+        <h5 class="d-flex justify-content-between">
+            <span t-esc="line.product_id[1]" />
+            <button class="product-delete align-self-center btn-danger" t-att-data-id="line.id">
+                <i class="fa fa-times" title="Remove item"/>
+            </button>
+        </h5>
+        <p class="font-weight-bold d-flex justify-content-between m-0">
+            <output>
+                <t t-esc="widget.format_currency(line.display_price)" />
+                /
+                <t t-esc="widget.format_currency(line.display_price * widget.tasa(), widget.ref_currency)" />
+            </output>
+            <span>
+                <span>
+                    <t t-esc="line.discount" /> %
+                </span>
+                <button class="discount-delete" t-att-data-id="line.id">
+                    <i class="fa fa-times" title="Remove Discount"/>
+                </button>
+            </span>
+        </p>
+        <div class="input-group mb-3">
+            <input 
+                type="number" 
+                class="form-control"
+                name="quantity" 
+                t-att-value="line.quantity" 
+                autocomplete="off"
+                title="Quantity"
+            />
+            <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">
+                    Disponible: <t t-esc="line.qty_available"/> unidades
+                </span>
+            </div>
+          </div>
+
+    </article>
+
+    <t t-name="CartItems">
+        <div class="chekcout-cart-item-collection">
+            <div class='empty-cart' style="display:none;">
+                <i class='fa fa-shopping-cart' />
+                <h3>Cart is empty !!</h3>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="PaymentLine-Container">
+        <div class="paymentline-container">
+            <h1 class="paymentlines-empty">
+                <span class="order_total"/>
+            </h1>
+            <section class="payment-line payment_line_area" style="display:none;"></section>
+        </div>
+    </t>
+
+    <article t-name="PaymentLine" class="d-flex align-items-center py-1 px-2 paymentline selected" t-att-data-id="journal.id">
+        <h3 class="m-0 flex-grow-1" t-esc="journal.display_name" />
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" t-esc="widget.currency.symbol" />
+            </div>
+            <input
+                type="number" 
+                class="form-control payment-input"
+                min="0"
+                t-att-data-payment-name="journal.code"
+                t-att-title="journal.display_name"
+                t-att-value="widget.get_due_amount().toFixed(2)"
+            />
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" t-esc="widget.ref_currency.symbol" />
+            </div>
+            <input
+                type="number" 
+                class="form-control payment-input-ref"
+                min="0"
+                t-att-data-payment-name="journal.code"
+                t-att-title="journal.display_name + ' ref'"
+            />
+        </div>
+        <button class="btn btn-danger delete-payment-line ml-auto" t-att-data-id="journal.id">
+            <i class="fa fa-times-circle"></i>
+        </button>
+    </article>
+
+    <t t-name="SaleNumpad">
+        <div class="sale-numpad">
+            <div class="numpad">
+                <button class="btn-system btn-dialog" data-mode="discount" value="discount">Descuento (%)</button>
+                <button class="btn-system btn-dialog" data-mode="price" value="price">Precio</button>
+            </div>
+        </div>
+    </t>
+
+    <section t-name="CreditLines" class="p-3">
+        <h3 class="text-center">Pagos pendientes</h3>
+        <div class="row">
+            <article t-foreach="widget.credits" t-as="line" t-key="'credit_' + line.id" class="col-md-6">
+                <input 
+                    type="checkbox" 
+                    class="credit-line"
+                    t-att-name="line.journal_name" 
+                    t-att-id="line.journal_name" 
+                    t-att-data-line-id="line.id" 
+                />
+                <label t-att-for="line.journal_name">
+                    <t t-esc="line.journal_name" />
+                    <t t-esc="line.payment_date" />
+                </label>
+                <strong>
+                    <t t-esc="Math.abs(line.amount)" />
+                    <t t-esc="currency" />
+                </strong>
+            </article>
+        </div>
+    </section>
+
+    <div class="dropdown" t-name="Payment-Method">
+        <button class="btn btn-system dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+            Añadir método de pago
+        </button>
+        <div class="dropdown-menu">
+            <button
+                t-foreach="journals || []" 
+                t-as="journal" 
+                t-key="journal.code"
+                t-esc="journal.display_name"
+                class="dropdown-item payment_method" 
+                t-att-data-id="journal.id"
+            />
+        </div>
+    </div>
+
+    <section t-name="SaleOrderLine" id="orders-history">
+        <nav t-if="sale_orders.length &gt; 0" class="recent-orders">
+            <ol>
+                <li t-foreach="sale_orders" t-as="sale_order" t-key="'sale_order_' + sale_order.id">
+                    <span class="recent-invoice">
+                        <a
+                            target="_blank"
+                            class="border-bottom"
+                            t-attf-href="#{url}#model=account.move&amp;id=#{sale_order.id}"
+                            t-att-data-oe-id="sale_order.id" 
+                            data-oe-model="account.move"
+                        >
+                            <span t-esc="sale_order.name or 'Draft'"/>
+                            <span t-esc="sale_order.partner_id"/>
+                            <span t-esc="widget.format_currency(sale_order.amount_total || 0)"/>
+                        </a>
+                        <button class="btn btn-info" t-att-data-invoice-id="sale_order.id" title="Print">
+                            <i class="fa fa-print"></i>
+                        </button>
+                    </span>
+                </li>
+            </ol>
+        </nav>
+        <h4 t-else="" class="text-center">
+            Recent invoices not found
+        </h4>
+    </section>
+
+</templates>

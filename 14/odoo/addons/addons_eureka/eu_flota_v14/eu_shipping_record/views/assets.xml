@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="eu_shipping_record_assets" name="Shipping Dashboard Assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/eu_shipping_record/static/src/js/TripDashboard.js"/>
+            <link rel="stylesheet" type="text/scss" href="/eu_shipping_record/static/src/scss/TripDashboard.scss"/>
+        </xpath>
+    </template>
+
+</odoo>

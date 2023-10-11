@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fleet_vehicle_view_form_inherit" model="ir.ui.view">
+        <field name="name">fleet.vehicle.view.form.inherit</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <header position="inside">
+                <button 
+                    string="Crear equipo" 
+                    name="action_create_equipment" 
+                    type="object" 
+                    class="oe_highlight"
+                    attrs="{'invisible':[('mro_equipment_id','!=',False)]}"
+                />
+            </header>
+            <field name="vehicle_owner" position="after">
+                <field name="mro_equipment_id" readonly="1" />
+            </field>
+        </field>
+    </record>
+    
+    <record id="fleet_vehicle_log_services_view_form_inherit" model="ir.ui.view">
+        <field name="name">fleet.vehicle.log.services.view.form.inherit</field>
+        <field name="model">fleet.vehicle.log.services</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_view_form" />
+        <field name="arch" type="xml">
+            <header position="inside">
+                <button 
+                    string="Crear solicitud de mantenimiento" 
+                    name="action_create_mro_request" 
+                    type="object"
+                    attrs="{
+                        'invisible':[
+                            '|', '|',
+                            ('mro_request_id', '!=', False),
+                            ('mro_order_id', '!=', False),
+                            ('state', 'in', ['done','cancel','cancelled']),
+                        ]
+                    }"
+                    class="oe_highlight"
+                />
+            </header>
+            <field name="team_id" position="after">
+                <field 
+                    name="with_mr" 
+                    attrs="{'readonly':['|',('mro_request_id', '!=', False),('mro_order_id', '!=', False)]}" 
+                />
+            </field>
+            <notebook position="inside">
+                <page 
+                    name="maintenance" 
+                    string="Mantenimiento" 
+                    attrs="{'invisible':[('with_mr','=',False)]}"
+                >
+                    <group>
+                        <field 
+                            name="vehicle_inspection_id" 
+                            attrs="{'required':[('with_mr','=',True)]}"
+                            domain="[('state','=','confirmada')]"
+                        />
+                        <field 
+                            name="mro_request_id" 
+                            readonly="1" 
+                            attrs="{'invisible':[('mro_request_id', '=', False)]}" 
+                        />
+                        <field 
+                            name="mro_order_id" 
+                            readonly="1" 
+                            attrs="{'invisible':[('mro_order_id', '=', False)]}" 
+                        />
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="fleet_vehicle_log_services_view_tree_inherit" model="ir.ui.view">
+        <field name="name">fleet.vehicle.log.services.view.tree.inherit</field>
+        <field name="model">fleet.vehicle.log.services</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[last()]" position="after">
+                <field name="with_mr" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

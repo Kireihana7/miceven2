@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_report_active_leave_wiz_form" model="ir.ui.view">
+        <field name="name">Report active/leave Wizard</field>
+        <field name="model">hr.active.leave.list.wiz</field>
+        <field name="arch" type="xml">
+            <form string="Imprimir">
+                <group>
+                    <field name="type_selector" required="1"/>
+                    <field name="from_date" attrs="{'required':[('type_selector','in',['added','leavism','terminated','present'])],'invisible':['|',('type_selector','=','active'),('type_selector','=','on_vacation')]}"/>
+                    <field name="to_date" attrs="{'required':[('type_selector','in',['added','leavism','terminated'])],'invisible':['|','|',('type_selector','=','active'),('type_selector','=','on_vacation'),('type_selector','=','present')]}"/>
+                    
+                    
+                </group>
+                <footer>
+                    <button
+                        name="printo"
+                        string="Imprimir"
+                        type="object"
+                        icon="fa-cog fa-spin fa-inverse text-white"
+                        class="btn-primary"
+                        
+                    />
+                    
+                    
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_view_active_leave_wiz_wizard" model="ir.actions.act_window">
+        <field name="name"> Reporte active/leave wiz</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.active.leave.list.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_report_active_leave_wiz_form"></field>
+        <field name="binding_view_types">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+        id="list_activo_egresado_wiz"
+        name="Listado de Personal"
+        action="l10n_ve_payroll.action_view_active_leave_wiz_wizard"
+        parent="hr_payroll.menu_hr_payroll_report"
+        sequence="13"/>
+        
+</odoo>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="tax_miniature">
+        <div class="tax_bubble p-1 bg-light">
+            <span t-esc="tax.name"/>
+        </div>
+    </template>
+    <template id="value_miniature">
+        <div class="tax_bubble p-1 bg-light">
+            <span t-esc="value.name"/>
+        </div>
+    </template>
+    <template id="product_template_token" >
+        <t t-call="web.basic_layout">
+            <style>
+                .tax_bubble{
+                    border-radius:10px;
+                    border: 2px solid black;
+                    display:inline-block;
+                    margin-left:0.5rem;
+                    margin-right:0.5rem;
+                    font-size:0.8rem;
+                }
+                .thumb{
+                    width:150px;
+                    height:150px;
+                    margin-bottom:10px;
+                }
+            </style>
+            <!-- falta marca, codigo erp y hacer que el codigo de barra sea imagen -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 align-middle mx">
+                        <img class="thumb shadow-lg" t-if="doc.image_1920" t-att-src="image_data_uri(doc.image_1920)"  />
+                    </div>
+                    <div class="col-8 align-middle" > 
+                        <div class="container align-middle" >
+                            <div class="row text-center">
+                                <div class="col-12 font-weight-bold" style="font-size:1.4rem;">
+                                    <span t-field="doc.name"/>
+                                </div>   
+                            </div>
+                            <div class="row align-middle" style="margin-top:3rem;">
+                                <div class="col-4 align-middle">
+                                    <div class="row">
+                                        <div class="col-12 font-weight-bold text-center">
+                                            Código ERP
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <span t-field="doc.nro_part"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 align-middle">
+                                    <div class="row">
+                                        <div class="col-12 font-weight-bold text-center">
+                                            Marca
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <span t-field="doc.product_brand_id.name"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 align-middle">
+                                    <div class="row">
+                                        <div class="col-12 font-weight-bold text-center">
+                                            Categoría
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <span t-field="doc.categ_id.name"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row text-center bg-light" style="font-size:1.2rem;">
+                            <div class="col-12">Producto y Unidades de medida</div>
+                        </div>
+                        <div class="row">
+                            <t t-if="doc.is_secondary_unit">
+                                <div class="col-2 font-weight-bold">Tipo Producto</div>
+                                <div class="col-1 text-center"><span t-field="doc.type"/></div>
+                                <div class="col-2 font-weight-bold">UDM. Primaria</div>
+                                <div class="col-1 text-center"><span t-field="doc.uom_id.name"/></div>
+                                <div class="col-2 font-weight-bold">UDM. Secundaria</div>
+                                <div class="col-1 text-center"><span t-field="doc.secondary_uom.name"/></div>
+                                <div class="col-2 font-weight-bold">Und. de Compra</div>
+                                <div class="col-1 text-center"><span t-field="doc.uom_po_id.name"/></div>
+                            </t>
+                            <t t-else="">
+                                <div class="col-2 font-weight-bold">Tipo de Producto</div>
+                                <div class="col-2 text-center"><span t-field="doc.type"/></div>
+                                <div class="col-2 font-weight-bold">UDM. Primaria</div>
+                                <div class="col-2 text-center"><span t-field="doc.uom_id.name"/></div>
+                                <div class="col-2 font-weight-bold">Und. de Compra</div>
+                                <div class="col-2 text-center"><span t-field="doc.uom_po_id.name"/></div>
+                            </t>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row text-center bg-light" style="font-size:1.2rem;">
+                            <div class="col-12">Precios y Costos</div>
+                        </div>
+                        <div class="row">
+                                <div class="col-2 font-weight-bold">Precio de Venta</div>
+                                <div class="col-1 text-right"><span t-field="doc.list_price" t-options='{"widget": "float", "precision": 2}'/></div>
+                                <div class="col-2 font-weight-bold">Costo</div>
+                                <div class="col-1 text-right"><span t-field="doc.standard_price" t-options='{"widget": "float", "precision": 2}'/></div>
+                                <div class="col-2 font-weight-bold">Impuestos</div>
+                                <div class="col-4 text-center"><t t-foreach="doc.taxes_id" t-as="tax">
+                                    <t t-call="eu_product_template_token.tax_miniature"/>
+                                </t></div>      
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row text-center bg-light" style="font-size:1.2rem;">
+                            <div class="col-12">Variantes</div>
+                        </div>
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th width="15%">Referencia</th>
+                                    <th width="85%">Caracteristicas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.product_variant_ids" t-as="var">
+                                    <tr>
+                                        <td ><span t-esc="var.default_code"/></td>
+                                        <td ><t t-foreach="var.product_template_attribute_value_ids" t-as="value">
+                                            <t t-call="eu_product_template_token.value_miniature"/>
+                                        </t></td>      
+                                    </tr>
+                                </t>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row text-center bg-light" style="font-size:1.2rem;">
+                            <div class="col-12">Descripción Larga</div>
+                        </div>
+                        <div class="row text-center"><span t-field="doc.large_description"/></div>
+                    </div>
+                    
+                </div>
+            </div>
+        </t>
+    </template>
+    
+    
+    <template id="token_woken" >
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="eu_product_template_token.product_template_token"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

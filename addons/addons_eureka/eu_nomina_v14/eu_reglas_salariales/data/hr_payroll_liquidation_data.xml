@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="hr_estructura_tipo_mensual" model="hr.payroll.structure.type">
+            <field name="name">Base (MENSUAL)</field>
+            <field name="wage_type">monthly</field>
+            <field name="default_schedule_pay">bi-weekly</field>
+            <field name="country_id" eval="False"/>
+        </record>
+
+        <record id="eu_estructura_liquidation" model="hr.payroll.structure">
+            <field name="name">Liquidación</field>
+            <field name="schedule_pay">annually</field>
+            <field name="journal_id" search="[('code', '=', 'OV1')]"/>
+            <field name="use_worked_day_lines">False</field>
+            <field name="struct_category">normal</field>
+            <field name="code">LIQ_PREST_SOC</field>
+            <field name="type_id" ref="hr_estructura_tipo_mensual"/>
+            <!-- <field name="regular_pay" eval="True"/> -->
+            <field name="country_id" eval="False"/>
+        </record>
+
+        <record id="hr_salary_rule_517_f7d56e81" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+if slip and employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result=True
+else:
+    result=False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+sal=sum(sum(y.total for y in x.line_ids.filtered(lambda line: line.code == 'PROV_VAC')) for x in slip)
+result= categories.BASIC - sal</field>
+            <field name="name">DIFERENCIAL DE PROVISIONES VACACIONES</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">dif_provv</field>
+            <field name="sequence" eval="10"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210502006" />
+            <field name="account_debit" ref="eu_reglas_salariales.account_activa_account_57115543441" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_517_f7d77e81" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+if slip and employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result=True
+else:
+    result=False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+sal=sum(sum(y.total for y in x.line_ids.filtered(lambda line: line.code == 'PROV_VAC')) for x in slip)
+result= categories.BASIC - sal</field>
+            <field name="name">DIFERENCIAL DE PROVISIONES VACACIONES</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">dif_provv</field>
+            <field name="sequence" eval="10"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210502006" />
+            <field name="account_debit" ref="eu_reglas_salariales.account_activa_account_57115543441" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_518_11c0431e" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+if slip and employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result=True
+else:
+    result=False         
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+sal=sum(sum(y.total for y in x.line_ids.filtered(lambda line: line.code == 'PROV_UTI')) for x in slip)
+result= categories.BASIC - sal
+            </field>
+            <field name="name">DIFERENCIAL DE PROVISIONES UTILIDADES</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">dif_provu</field>
+            <field name="sequence" eval="11"/>
+            <field name="appears_on_payslip">False</field>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210502005" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_520101009" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_518_1fc04a1e" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+if slip and employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result=True
+else:
+    result=False         
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+sal=sum(sum(y.total for y in x.line_ids.filtered(lambda line: line.code == 'PROV_UTI')) for x in slip)
+result= categories.BASIC - sal
+            </field>
+            <field name="name">DIFERENCIAL DE PROVISIONES UTILIDADES</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">dif_provu</field>
+            <field name="sequence" eval="11"/>
+            <field name="appears_on_payslip">False</field>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210502005" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_520101009" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_535_0af19ce4" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result_qty=payslip.company_id.dias_vac_base
+result_qty= payslip.liquidation_id.days_of_utilidades
+result=inputs.UTIL.amount / payslip.liquidation_id.days_of_utilidades</field>
+            <field name="name">UTILIDADES</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="code">UTIL_LIQ</field>
+            <field name="sequence" eval="5"/>
+            <field name="appears_on_payslip">True</field>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501007" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502005" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_535_0ac19fe4" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result_qty=payslip.company_id.dias_vac_base
+result_qty= payslip.liquidation_id.days_of_utilidades
+result=inputs.UTIL.amount / payslip.liquidation_id.days_of_utilidades</field>
+            <field name="name">UTILIDADES</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="code">UTIL_LIQ</field>
+            <field name="sequence" eval="5"/>
+            <field name="appears_on_payslip">True</field>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501007" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502005" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_536_f7fb61f5" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if inputs.IND_92.amount >0 and employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result=True
+else:
+    result=False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.IND_92.amount</field>
+            <field name="name">INDEMINZACION ART.92</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">IND_ART92</field>
+            <field name="sequence" eval="4"/>
+            <field name="appears_on_payslip">True</field>
+            <field name="account_credit" ref="eu_reglas_salariales.account_activa_account_271143" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502001" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_536_f7ab61f5" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if inputs.IND_92.amount >0 and employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result=True
+else:
+    result=False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.IND_92.amount</field>
+            <field name="name">INDEMINZACION ART.92</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">IND_ART92</field>
+            <field name="sequence" eval="4"/>
+            <field name="appears_on_payslip">True</field>
+            <field name="account_credit" ref="eu_reglas_salariales.account_activa_account_271143" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502001" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_540_69ee5d58" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">if payslip.BON_FIN:
+    result= BON_FIN * ((employee.company_id.por_empleado_rpe / 100))
+else:
+    result= UTIL_LIQ * ((employee.company_id.por_empleado_rpe / 100))</field>
+            <field name="name">RETENCIÓN INCES</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="code">RET_INCES_LIQ</field>
+            <field name="sequence" eval="8"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501013" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502005" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_540_69ef5d68" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">if payslip.BON_FIN:
+    result= BON_FIN * ((employee.company_id.por_empleado_rpe / 100))
+else:
+    result= UTIL_LIQ * ((employee.company_id.por_empleado_rpe / 100))</field>
+            <field name="name">RETENCIÓN INCES</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="code">RET_INCES_LIQ</field>
+            <field name="sequence" eval="8"/>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501013" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502005" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_541_72cb8c42" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.loan_ids and employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result=True
+else:
+    result=False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">cuotas= employee.loan_ids.filtered(lambda x:x.state=='approved').mapped("loan_line_ids").filtered(lambda x: not x.paid)
+result= sum(cuotas.mapped('dues'))</field>
+            <field name="name">PRESTAMO</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="code">prest_liq</field>
+            <field name="sequence" eval="7"/>
+            <field name="appears_on_payslip">True</field>
+            <field name="account_credit" ref="eu_reglas_salariales.account_activa_account_11231010041" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502001" />
+            <field name="struct_id" ref="eu_estructura_liquidation" />
+        </record>
+
+        <record id="hr_salary_rule_541_b2ab8c42" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.loan_ids and employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result=True
+else:
+    result=False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">cuotas= employee.loan_ids.filtered(lambda x:x.state=='approved').mapped("loan_line_ids").filtered(lambda x: not x.paid)
+result= sum(cuotas.mapped('dues'))</field>
+            <field name="name">PRESTAMO</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="code">prest_liq</field>
+            <field name="sequence" eval="7"/>
+            <field name="appears_on_payslip">True</field>
+            <field name="account_credit" ref="eu_reglas_salariales.account_activa_account_11231010041" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502001" />
+            <field name="struct_id" ref="eu_estructura_liquidation" />
+        </record>
+
+        <record id="hr_salary_rule_494_8f060b78" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if inputs.LIT_C.amount> inputs.PRESTACIONES.amount and employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result = True
+else:
+    result= False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result_qty= payslip.liquidation_id.dias_literal_c
+result = inputs.LIT_C.amount / payslip.liquidation_id.dias_literal_c</field>
+            <field name="name">PRESTACIONES SOCIALES ART.142 LITERAL C</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">PREST_SOC</field>
+            <field name="sequence" eval="2"/>
+            <field name="appears_on_payslip">True</field>
+            <field name="account_credit" ref="eu_reglas_salariales.account_activa_account_271143" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502001" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_494_8f060b00" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if inputs.LIT_C.amount> inputs.PRESTACIONES.amount and employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result = True
+else:
+    result= False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result_qty= payslip.liquidation_id.dias_literal_c
+result = inputs.LIT_C.amount / payslip.liquidation_id.dias_literal_c</field>
+            <field name="name">PRESTACIONES SOCIALES ART.142 LITERAL C</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">PREST_SOC</field>
+            <field name="sequence" eval="2"/>
+            <field name="appears_on_payslip">True</field>
+            <field name="account_credit" ref="eu_reglas_salariales.account_activa_account_271143" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502001" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <!-- <record id="hr_salary_rule_491_10af64a0" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">if inputs.PRESTACIONES.amount> inputs.LIT_C.amount:
+    result = True
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.PRESTACIONES.amount</field>
+            <field name="name">PPRESTACIONES SOCIALES ACUMULADAS ART.142 LITERAL A</field>
+            <field name="category_id" ref="eu_reglas_salariales.hr_net"/>
+            <field name="code">PREST_SOC</field>
+            <field name="sequence" eval="1"/>
+            <field name="appears_on_payslip">True</field>
+            <field name="account_credit" ref="eu_reglas_salariales.account_activa_account_271143" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502001" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record> -->
+
+        <record id="hr_salary_rule_508_04b6fac7" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+<field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.INT_PREST.amount</field>
+            <field name="name">INTERESES SOBRE PRESTACIONES SOCIALES</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">INT_PREST</field>
+            <field name="sequence" eval="3"/>
+            <field name="account_credit" ref="eu_reglas_salariales.account_activa_account_27119927431" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502002" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_578_04c6fac7" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+<field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.INT_PREST.amount</field>
+            <field name="name">INTERESES SOBRE PRESTACIONES SOCIALES</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">INT_PREST</field>
+            <field name="sequence" eval="3"/>
+            <field name="account_credit" ref="eu_reglas_salariales.account_activa_account_27119927431" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210502002" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_509_2c5793d2" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+<field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=inputs.BON.amount * (1/contract.tax_today)</field>
+            <field name="name">BONIFICACIÓN</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="code">BONIF</field>
+            <field name="sequence" eval="6"/>
+            <field name="appears_on_payslip">True</field>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501003" />
+            <field name="account_debit" ref="eu_reglas_salariales.account_activa_account_57115641413" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_509_2c5f93d2" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+<field name="condition_python">if employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result = True
+else:
+    result = False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=inputs.BON.amount * (1/contract.tax_today)</field>
+            <field name="name">BONIFICACIÓN</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="code">BONIF</field>
+            <field name="sequence" eval="6"/>
+            <field name="appears_on_payslip">True</field>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501003" />
+            <field name="account_debit" ref="eu_reglas_salariales.account_activa_account_57115641413" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_516_bfda8325" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+if slip and employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO'):
+    result=True
+else:
+    result=False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+sal=sum(sum(y.total for y in x.line_ids.filtered(lambda line: line.code == 'PROV_PREST')) for x in slip)
+result= categories.BASIC - sal</field>
+            <field name="name">DIFERENCIAL DE PROVISIONES PRESTACIONES SOCIALES</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">dif_prop</field>
+            <field name="sequence" eval="9"/>
+            <field name="appears_on_payslip">False</field>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210502001" />
+            <field name="account_debit" ref="eu_reglas_salariales.account_activa_account_57115543430" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_516_bfda8a25" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+if slip and employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO'):
+    result=True
+else:
+    result=False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+sal=sum(sum(y.total for y in x.line_ids.filtered(lambda line: line.code == 'PROV_PREST')) for x in slip)
+result= categories.BASIC - sal</field>
+            <field name="name">DIFERENCIAL DE PROVISIONES PRESTACIONES SOCIALES</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">dif_prop</field>
+            <field name="sequence" eval="9"/>
+            <field name="appears_on_payslip">False</field>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210502001" />
+            <field name="account_debit" ref="eu_reglas_salariales.account_activa_account_57115543430" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_518_11c0431e" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">sslip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+if slip and employee.category_ids.filtered(lambda x: x.name.upper()=='GASTO') :
+    result=True
+else:
+    result=False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+sal=sum(sum(y.total for y in x.line_ids.filtered(lambda line: line.code == 'PROV_UTI')) for x in slip)
+result= categories.BASIC - sal</field>
+            <field name="name">DIFERENCIAL DE PROVISIONES UTILIDADES</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">dif_provu</field>
+            <field name="sequence" eval="11"/>
+            <field name="appears_on_payslip">False</field>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+
+        <record id="hr_salary_rule_518_f1c0431e" model="hr.salary.rule">
+            <field name="condition_select">python</field>
+            <field name="condition_python">sslip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+if slip and employee.category_ids.filtered(lambda x: x.name.upper()=='COSTO') :
+    result=True
+else:
+    result=False
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">slip=employee.slip_ids.filtered(lambda x: x.date_to.year==payslip.date_from.year and not x.is_vacation and not x.is_utility and not x.is_anihilation and x.type_struct_category in ['normal','especial'])
+sal=sum(sum(y.total for y in x.line_ids.filtered(lambda line: line.code == 'PROV_UTI')) for x in slip)
+result= categories.BASIC - sal</field>
+            <field name="name">DIFERENCIAL DE PROVISIONES UTILIDADES</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">dif_provu</field>
+            <field name="sequence" eval="11"/>
+            <field name="appears_on_payslip">False</field>
+            <field name="account_credit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="account_debit" ref="l10n_ve_account_SH.account_activa_account_210501001" />
+            <field name="struct_id" ref="eu_estructura_liquidation"/>
+        </record>
+    </data>
+</odoo>

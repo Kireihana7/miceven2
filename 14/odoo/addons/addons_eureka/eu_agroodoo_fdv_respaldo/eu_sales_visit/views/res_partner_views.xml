@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_partner_inherit_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='sale']/field[1]" position="after">
+                <field name="last_visit_id" readonly="1" />
+                <field name="last_sale_order_id" readonly="1" />
+                <field name="sale_amount_due" readonly="1" />
+                <field name="default_frequency_id" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_inherit_tree_inherit" model="ir.ui.view">
+        <field name="name">res.partner.view.tree.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="last_visit_id" optional="hide" />
+                <field name="last_sale_order_id" optional="hide" />
+                <field name="default_frequency_id" optional="hide" />
+                <field name="sale_amount_due" />
+            </field>
+        </field>
+    </record>
+
+    <record id="res_partner_inherit_search_inherit" model="ir.ui.view">
+        <field name="name">res.partner.view.search.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='salesperson']" position="after">
+                <filter 
+                    name="filter_has_visit" 
+                    string="Con visitas" 
+                    domain="[('visit_ids', '!=', False)]" 
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_inherit_kanban_inherit" model="ir.ui.view">
+        <field name="name">res.partner.view.kanban.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+        <field name="arch" type="xml">
+            <field name="id" position="after">
+                <field name="last_visit_id" />
+            </field>
+            <xpath expr="//ul" position="inside">
+                <li t-if="record.last_visit_id.raw_value" class="text-center">
+                    <strong class="badge bg-info p-2">
+                        Tiene visitas programadas
+                    </strong>
+                </li>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,96 @@
+<odoo>
+    <template id="ficha_inspections_template" name="Template reporte ficha de inspeccion">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-call="eu_vehicle_inspection.header_ficha_inspections" />
+                <style>
+                    .table th, .table td {
+                        padding: .18rem;
+                    }
+                </style>
+                <div class="page">
+                    <p class="h6 pt-3 text-center" style="font-size:12px;">
+                        <u>REPORTE FICHA DE INSPECCIÓN</u>
+                    </p>
+                    <t t-foreach="docs" t-as="o">
+                        <table class="table table-bordered mt-3" style="font-size:11px;">
+                            <tbody class="text-center">
+                                <tr >
+                                    <td colspan="2">
+                                        <span> Conductor:  <span t-if="o.driver_id.name" t-field="o.driver_id.name" /></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Vehiculo: <span t-if="o.vehicle_id.name" t-field="o.vehicle_id.name" /></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Último Odómetro:  <span t-if="o.odometer" t-field="o.odometer" /></span>
+                                    </td>
+                                    <td>
+                                        <span>Fecha de Inspeccion:  <span t-if="o.inspection_date" t-field="o.inspection_date" /></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="h6 mt-1 text-center" style="font-size:12px;">
+                            <u>INSPECCIONES</u>
+                        </p>
+                        
+                        <t t-foreach="o.inspection_line_ids.filtered(lambda x: not x.parent_id )" t-as="line">
+                            <table class="table table-bordered mt-3" style="font-size:11px;">
+                                <p style="font-size:12px;"><span t-field="line.name"/></p>
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Bueno</th>
+                                        <th>Medio</th>
+                                        <th>Deficiente</th>
+                                        <th>NM</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.inspection_line_ids.filtered(lambda y: y.parent_id.id == line.id )" t-as="child">
+                                        
+                                        <tr>
+                                            <td><span t-field="child.part_id.name"/></td>
+                                            <td class="text-center">
+                                                <t t-if="child.state == 'bueno' ">
+                                                    <span>X</span>
+                                                </t>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-if="child.state == 'medio' ">
+                                                    <span>X</span>
+                                                </t>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-if="child.state == 'deficiente' ">
+                                                    <span>X</span>
+                                                </t>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-if="child.state == 'nm' ">
+                                                    <span>X</span>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                        <p class="pt-5 text-center">
+                            <span>-------------------------------------------</span><br />
+                            <span>INSPECTOR</span>
+                        </p>
+                    </t>
+                </div>
+                <div class="footer text-center" style="font-size:11px;">
+                    <span>Página: <span class="page"/> / <span class="topage"/> </span>
+                </div>
+            </t>
+        </t>        
+    </template>
+</odoo>

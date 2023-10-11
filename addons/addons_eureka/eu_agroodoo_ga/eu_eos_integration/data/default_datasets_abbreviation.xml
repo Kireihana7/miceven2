@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="dataset_abb_s2" model="eos.datasets.abbreviation">
+        <field name="name">S2</field>	
+    </record>  
+    <record id="dataset_abb_s2l2a" model="eos.datasets.abbreviation">
+        <field name="name">S2L2A</field>	
+    </record>  
+    <record id="dataset_abb_s1" model="eos.datasets.abbreviation">
+        <field name="name">S1</field>	
+    </record>            
+    <record id="dataset_abb_l7" model="eos.datasets.abbreviation">
+        <field name="name">L7</field>	
+    </record>  
+    <record id="dataset_abb_l8" model="eos.datasets.abbreviation">
+        <field name="name">L8</field>	
+    </record>  
+    <record id="dataset_abb_l4mss" model="eos.datasets.abbreviation">
+        <field name="name">L4MSS</field>	
+    </record>  
+    <record id="dataset_abb_l4tm" model="eos.datasets.abbreviation">
+        <field name="name">L4TM</field>	
+    </record>               
+    <record id="dataset_abb_l5mss" model="eos.datasets.abbreviation">
+        <field name="name">L5MSS</field>
+    </record>        
+    <record id="dataset_abb_l5tm" model="eos.datasets.abbreviation">
+        <field name="name">L5TM</field>	
+    </record>     
+    <record id="dataset_abb_modis" model="eos.datasets.abbreviation">
+        <field name="name">MODIS</field>	
+    </record>     
+    <record id="dataset_abb_naip" model="eos.datasets.abbreviation">
+        <field name="name">NAIP</field>	
+    </record> 
+    <record id="dataset_abb_cbers4mux" model="eos.datasets.abbreviation">
+        <field name="name">CBERS4MUX</field>	
+    </record> 
+    <record id="dataset_abb_cbers4awfi" model="eos.datasets.abbreviation">
+        <field name="name">CBERS4AWFI</field>	
+    </record> 
+    <record id="dataset_abb_cbers4pan1om" model="eos.datasets.abbreviation">
+        <field name="name">CBERS4PAN10M</field>	
+    </record>  
+    <record id="dataset_abb_cbers4pan5m" model="eos.datasets.abbreviation">
+        <field name="name">CBERS4PAN5M</field>	
+    </record>                     
+</odoo>

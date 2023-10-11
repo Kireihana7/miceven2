@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="reporte_vendedores_articulos_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <t t-set="currency" t-value="env['res.currency'].browse(currency_id or env.company.currency_id)" />
+                    <t t-set="qty_total" t-value="0" />
+                    <h2 class="text-center" >
+                        Vendedores con más ventas por artículo
+                        <br />
+                        <span t-if="start_date and end_date" class="h3">
+                            Desde <t t-esc="start_date" /> Hasta <t t-esc="end_date"/>
+                        </span>
+                    </h2>
+                    <table class="table">
+                        <thead>
+                            <tr class="text-right">
+                                <th>#</th>
+                                <th>Vendedor</th>
+                                <th>Unid</th>
+                                <th>Cantidad</th>
+                                <th>Monto base</th>
+                                <th>Total %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="datas" t-as="product" t-key="product">
+                                <t t-set="qty_subtotal" t-value="0"/>
+                                <t t-set="amount_subtotal" t-value="0"/>
+                                <t t-set="total_subtotal" t-value="0" />
+                                <tr class="text-center">
+                                    <td t-esc="product" colspan="6" />
+                                </tr>
+                                <tr 
+                                    t-foreach="enumerate(datas[product].items())" 
+                                    t-as="item" 
+                                    t-key="item[0]"
+                                    class="text-right"
+                                >
+                                    <t t-set="line" t-value="item[1][1]"/>
+                                    <td t-esc="item[0] + 1" />
+                                    <td t-esc="item[1][0]" />
+                                    <td t-esc="line['uom']" />
+                                    <td>
+                                        <t t-esc="line['quantity']" />
+                                        <t t-set="qty_subtotal" t-value="qty_subtotal + line['quantity']" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="line['amount']" t-options="{'widget':'monetary', 'display_currency': currency}" />
+                                        <t t-set="amount_subtotal" t-value="amount_subtotal + line['amount']" />
+                                    </td>
+                                    <td>
+                                        <t t-set="percentage" t-value="round((line['amount'] * 100) / total, 4)" />
+                                        <span t-esc="percentage" />
+                                        <t t-set="total_subtotal" t-value="total_subtotal + percentage" />
+                                    </td>
+                                </tr>
+                                <tr class="text-right">
+                                    <td colspan="3">Subtotal</td>
+                                    <td>
+                                        <t t-esc="round(qty_subtotal, 4)" />
+                                        <t t-set="qty_total" t-value="qty_total + qty_subtotal" />
+                                    </td>
+                                    <td
+                                        t-esc="amount_subtotal"
+                                        t-options="{'widget':'monetary', 'display_currency': currency}"
+                                    />
+                                    <td t-esc="round(total_subtotal, 4)" />
+                                </tr>
+                            </t>
+                            <tr class="text-right">
+                                <td colspan="3">Total</td>
+                                <td t-esc="round(qty_total, 4)" />
+                                <td
+                                    t-esc="total"
+                                    t-options="{'widget':'monetary', 'display_currency': currency}"
+                                />
+                                <td>100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+    <record id="reporte_vendedores_articulos_action_report" model="ir.actions.report">
+        <field name="name">Reporte vendedores por artículo</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">eu_kaly_reportes.reporte_vendedores_articulos_template</field>
+        <field name="report_file">eu_kaly_reportes.reporte_vendedores_articulos_report</field>
+        <field name="print_report_name">Reporte vendedores artículo</field>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

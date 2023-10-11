@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.module.category" id="module_category_fast_payment">
+        <field name="name">Pagos Rápido</field>
+        <field name="description">Límita los permisos de los usuarios en las diferentes fases.</field>
+        <field name="sequence">101</field>
+    </record>
+
+
+    <record id="group_registrar_pago_rapido" model="res.groups">
+        <field name="name">Registrar Pago Rápido</field>
+        <field name="category_id"
+            ref="eu_fast_payment.module_category_fast_payment" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_crear_pago_rapido" model="res.groups">
+        <field name="name">Crear Pagos (Validar)</field>
+        <field name="category_id"
+            ref="eu_fast_payment.module_category_fast_payment" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_confirmar_pago_rapido" model="res.groups">
+        <field name="name">Confirmar Pago Rápido</field>
+        <field name="category_id"
+            ref="eu_fast_payment.module_category_fast_payment" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_cancelar_pago_rapido" model="res.groups">
+        <field name="name">Cancelar Pago Rápido</field>
+        <field name="category_id"
+            ref="eu_fast_payment.module_category_fast_payment" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_borrar_pago_rapido" model="res.groups">
+        <field name="name">Borrar Pago Rápido</field>
+        <field name="category_id"
+            ref="eu_fast_payment.module_category_fast_payment" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_gerente_pago_rapido" model="res.groups">
+        <field name="name">Gerente Pago Rápido</field>
+        <field name="category_id"
+            ref="eu_fast_payment.module_category_fast_payment" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_usuario_pago_rapido" model="res.groups">
+        <field name="name">Usuario Pago Rápido</field>
+        <field name="category_id"
+            ref="eu_fast_payment.module_category_fast_payment" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+</odoo>

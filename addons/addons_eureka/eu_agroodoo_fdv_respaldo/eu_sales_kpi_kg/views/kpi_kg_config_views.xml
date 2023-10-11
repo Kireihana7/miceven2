@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="kpi_kg_config_view_tree" model="ir.ui.view">
+        <field name="name">kpi.kg.config.view.tree</field>
+        <field name="model">kpi.kg.config</field>
+        <field name="arch" type="xml">
+            <tree string="KPI Kg">
+                <field name="name" optional="show"/>
+                <field name="year" optional="show"/>
+                <field name="goal" optional="show"/>
+                <field name="distributed_goal" optional="show"/>
+                <field name="salesperson_goal" optional="show"/>
+                <field name="progress" optional="show"/>
+                <field name="progress_percent" optional="show"/>
+                <field name="start_date" optional="hide"/>
+                <field name="end_date" optional="hide"/>
+                <field name="status" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="kpi_kg_config_view_form" model="ir.ui.view">
+        <field name="name">kpi.kg.config.view.form</field>
+        <field name="model">kpi.kg.config</field>
+        <field name="arch" type="xml">
+            <form string="Kpi Kg">
+                <header>
+                    <field name="status" widget="statusbar" clickable="1" />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" 
+                                type="object" 
+                                icon="fa-cubes"
+                                name="action_show_branch_ids"
+                                width="200px"
+                                attrs="{'invisible': [('branch_count', '=', 0)]}"
+                                context="{
+                                'default_kpi_kg_config_id': active_id,
+                                }" 
+                                >
+                        <field name="branch_count" widget="statinfo"/>
+                        </button>
+                        <button class="oe_stat_button" 
+                                type="object" 
+                                icon="fa-group"
+                                name="action_show_salesperson_id"
+                                width="200px"
+                                attrs="{'invisible': [('salesperson_count', '=', 0)]}"
+                                context="{
+                                'default_kpi_kg_config_id': active_id,
+                                }" 
+                                >
+                        <field name="salesperson_count" widget="statinfo"/>
+                        </button>
+                        <button class="oe_stat_button" 
+                                type="object" 
+                                icon="fa-group"
+                                name="action_show_category_id"
+                                width="200px"
+                                attrs="{'invisible': [('category_count', '=', 0)]}"
+                                context="{
+                                'default_kpi_kg_config_id': active_id,
+                                }" 
+                                >
+                        <field name="category_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" required="1" />
+                            <field name="month" required="1" />
+                            <field name="start_date" />
+                            <field name="end_date" />
+                            <field name="kpi_tabla" options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                        </group>
+                        <group>
+                            <field name="year" required="1" />
+                            <field name="goal" required="1" />
+                            <field name="distributed_goal" />
+                            <field name="salesperson_goal" />
+                            <field name="progress" />
+                            <field name="progress_percent" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <field name="id" invisible="1" />
+
+                        <page name="categorias" string="Familias">
+                            <group>
+                                <field name="pricelist_id" required="1" />
+                            </group>
+                            <field name="kpi_categ_ids" nolabel="1" />
+                        </page>
+                        <page 
+                            name="sucursales" 
+                            string="Sucursales" 
+                            attrs="{'invisible': ['|',('kpi_categ_ids', '=', False),('id', '=', False)]}"
+                        >
+                            <field name="kpi_branch_ids" />
+                        </page>
+                        <page 
+                            name="vendedores" 
+                            string="Vendedores" 
+                            attrs="{'invisible': ['|',('kpi_branch_ids', '=', False),('id', '=', False)]}"
+                        >
+                            <field name="kpi_salesperson_id" readonly="1" />
+                        </page>
+                        <page 
+                            name="distribucion" 
+                            string="Distribución" 
+                            attrs="{'invisible': ['|',('kpi_branch_ids', '=', False),('id', '=', False)]}"
+                        >
+                            <field name="kpi_branch_category_id" readonly="1" >
+                                <tree >
+                                    <field name="kpi_category_id"/>
+                                    <field name="branch_id"/>
+                                    <field name="goal" sum="Total objetivo"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+</odoo>

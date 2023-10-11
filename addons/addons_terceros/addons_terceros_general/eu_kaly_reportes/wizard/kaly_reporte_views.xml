@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="kaly_reporte_view_form" model="ir.ui.view">
+        <field name="name">kaly.reporte.view.form</field>
+        <field name="model">kaly.reporte</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="everything" />
+                        <field 
+                            name="start_date" 
+                            widget="daterange" 
+                            options="{'related_end_date': 'end_date'}"
+                            attrs="{
+                                'invisible':[('everything','=',True)],
+                                'required':[('everything','=',False)]
+                            }"
+                        />
+                        <field 
+                            name="end_date" 
+                            widget="daterange" 
+                            options="{'related_start_date': 'start_date'}"
+                            attrs="{
+                                'invisible':[('everything','=',True)],
+                                'required':[('everything','=',False)]
+                            }"
+                        />
+                        <field 
+                            name="currency_id"
+                            required="1" 
+                            options="{'no_create': True,'no_open': True}" 
+                        />
+                        <field 
+                            name="user_ids" 
+                            widget="many2many_tags" 
+                            options="{'no_create': True,'no_open': True}" 
+                        />
+                    </group>
+                </sheet>
+                <footer>
+                    <button
+                        string="Imprimir" 
+                        class="btn btn-primary"
+                        type="object"
+                        name="action_print_report"
+                    />
+                    <button
+                        string="Cancelar" 
+                        class="btn-secondary"
+                        special="cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

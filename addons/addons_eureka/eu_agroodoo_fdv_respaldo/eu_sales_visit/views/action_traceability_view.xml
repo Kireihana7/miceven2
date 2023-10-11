@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_traceability_action" model="ir.actions.act_window">
+        <field name="name">Trazabilidad</field>
+        <field name="res_model">res.traceability</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="eu_sales_visit.res_traceability_view_tree"/>
+    </record>
+
+    <menuitem
+    id="res_traceability_menu_item"
+    name="Trazabilidad"
+    action="eu_sales_visit.res_traceability_action"
+    parent="eu_sales_kpi_kg.menu_sales_kpi"
+    sequence="10"/>
+
+</odoo>

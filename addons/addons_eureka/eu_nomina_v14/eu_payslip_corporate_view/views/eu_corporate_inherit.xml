@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_payroll.hr_payslip_action_view_to_pay" model="ir.actions.act_window">
+        <field name="name">Payslips To Pay</field>
+
+        <field name="domain">[('state', 'in', ['draft', 'verify']),('is_vacation', '=', False),('is_utility', '=', False),('corporate_type', '=', False)]</field>
+    </record>
+    <record id="hr_payroll.action_view_hr_payslip_month_form" model="ir.actions.act_window">
+
+        <field name="domain">[('is_vacation', '=', False),('is_utility', '=', False),('corporate_type', '=', False)]</field>
+    </record>
+    <record id="hr_payroll.action_hr_payslip_run_tree" model="ir.actions.act_window">
+
+        <field name="domain">[('vacation', '=', False),('is_utility', '=', False),('corporate_type', '=', False)]</field>
+    </record>
+    
+
+    <record id="l10n_ve_payroll.action_view_payslip_vacation_a_pagar" model="ir.actions.act_window">
+        <field name="name">A pagar</field>
+
+        <field name="domain">[('state','in',['draft','verify']),('is_vacation','=',True),('corporate_type', '=', False)]</field>
+    </record>
+    <record id="l10n_ve_payroll.action_view_payslip_vacation_todas" model="ir.actions.act_window">
+
+        <field name="domain">[('is_vacation','=',True),('corporate_type', '=', False)]</field>
+    </record>
+    <record id="l10n_ve_payroll.action_hr_payslip_run_tree" model="ir.actions.act_window">
+
+        <field name="domain">[('vacation','=',True),('corporate_type', '=', False)]</field>
+    </record>
+    <record id="l10n_ve_payroll.action_view_payslip_Utilities_a_pagar" model="ir.actions.act_window">
+
+        <field name="domain">[('state','in',['draft','verify']),('is_utility','=',True),('corporate_type', '=', False)]</field>
+    </record>
+    <record id="l10n_ve_payroll.action_view_payslip_Utilities_todas" model="ir.actions.act_window">
+
+        <field name="domain">[('is_utility','=',True),('corporate_type', '=', False)]</field>
+    </record>
+    <record id="l10n_ve_payroll.action_hr_payslip_run_Utilities_tree" model="ir.actions.act_window">
+
+        <field name="domain">[('is_utility','=',True),('corporate_type', '=', False)]</field>
+    </record>
+
+    <!-- Menues y vista corporativa -->
+    <record id="hr_struct_add_corporate_view_form" model="ir.ui.view">
+        <field name="name">hr.payroll.structure.add.corporate.form</field>
+        <field name="model">hr.payroll.structure</field>
+        <field name="inherit_id" ref="l10n_ve_payroll.hr_struct_add_bools_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='use_for_proyection']" position="after">
+                <field name="its_super_secret" />
+                <field name="corporate_type" groups="eu_payslip_corporate_view.corporate_payslip_group"/>
+            </xpath>
+           
+        </field>
+    </record>
+    <record id="hr_run_secret_corporate_view_form" model="ir.ui.view">
+        <field name="name">hr.payslip.run.add.corporate.form</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="inherit_id" ref="eu_special_struct.hr_payslip_run_form_struct"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='check_special_struct']" position="after">
+                <field name="its_super_secret" />
+            </xpath>
+           
+        </field>
+    </record>
+ 
+    <record id="hr_payslip_tree_corporate_fls" model="ir.ui.view">
+        <field name="name">hr_payslip_tree_corporate_view</field>
+        <field name="model">hr.payslip</field>
+        <field name="arch" type="xml">
+            
+            <tree decoration-info="comprometida == True" js_class="hr_payroll_payslip_tree" sample="1">
+                <field name="currency_id" invisible="1"/>
+                <field name="number" decoration-bf="1"/>
+                <field name="employee_id" widget="many2one_avatar_employee"/>
+                <field name="payslip_run_id"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                <field name="bank_journal_id" readonly="1" force_save="1"/>
+                <field name="brute_sum" widget="monetary" sum="brute_sum" options="{'currency_field': 'currency_id'}" decoration-info="state == 'draft'" decoration-warning="state == 'verify'" decoration-success="state in ('done','paid')"/>
+                <field name="currency_id_dif" invisible="1"/>
+                <field name="comprometida" invisible="1"/>
+                <field name="total_sum" widget="monetary" sum="total_sum" options="{'currency_field': 'currency_id'}" decoration-bf="1" decoration-info="state == 'draft'" decoration-warning="state == 'verify'" decoration-success="state in ('done','paid')"/>
+                <field name="total_costo" widget="monetary" sum="total_costo" options="{'currency_field': 'currency_id'}" decoration-bf="1" decoration-info="state == 'draft'" decoration-warning="state == 'verify'" decoration-success="state in ('done','paid')"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-warning="state == 'verify'" decoration-success="state in ('done','paid')"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- normales -->
+    <record id="action_view_payslip_corporate_a_pagar" model="ir.actions.act_window">
+        <field name="name">A pagar</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.payslip</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="eu_payslip_corporate_view.hr_payslip_tree_corporate_fls"/>
+        <field name="domain">[('state','in',['draft','verify']),('corporate_type','=',True)]</field>
+        <field name="binding_view_types">tree</field>
+        <field name="target">current</field>
+        <field name="context">{'default_corporate_type':True}</field>
+    </record>
+    <record id="action_view_payslip_corporate_todas" model="ir.actions.act_window">
+        <field name="name">Todas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.payslip</field>
+        <field name="view_id" ref="eu_payslip_corporate_view.hr_payslip_tree_corporate_fls"/>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('corporate_type','=',True)]</field>
+        <field name="binding_view_types">tree</field>
+        <field name="target">current</field>
+        <field name="context">{'default_corporate_type':True}</field>
+    </record>
+    <record id="action_hr_payslip_run_corporate_tree" model="ir.actions.act_window">
+        <field name="name">Nomina por lote</field>
+        <field name="res_model">hr.payslip.run</field>
+        <field name="view_id" ref="hr_payroll.hr_payslip_run_tree"/>
+        <field name="view_mode">tree,form</field>
+        <field name="binding_view_types">tree</field>
+        <field name="target">current</field>
+        <field name="domain">[('corporate_type','=',True)]</field>
+        <field name="search_view_id" ref="hr_payroll.hr_payslip_run_filter"/>
+        <field name="context">{'default_corporate_type':True,'default_check_special_struct':True}</field>
+    </record>
+    <menuitem
+        id="view_menu_corpo"
+        name="Corporativas"
+        parent="hr_work_entry_contract.menu_hr_payroll_root"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="80"/>
+    <menuitem
+        id="view_payslip_corpo"
+        name="Nóminas"
+        parent="eu_payslip_corporate_view.view_menu_corpo"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="5"/>
+
+    <menuitem
+        id="view_payslip_corpo_a_pagar"
+        name="A pagar"
+        action="eu_payslip_corporate_view.action_view_payslip_corporate_a_pagar"
+        parent="eu_payslip_corporate_view.view_payslip_corpo"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="1"/>
+
+     <menuitem
+        id="view_payslip_corpo_todsas"
+        name="Todas"
+        action="eu_payslip_corporate_view.action_view_payslip_corporate_todas"
+        parent="eu_payslip_corporate_view.view_payslip_corpo"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="2"/> 
+    
+        <menuitem
+        id="view_payslip_corpo_lotes"
+        name="Lotes"
+        action="eu_payslip_corporate_view.action_hr_payslip_run_corporate_tree"
+        parent="eu_payslip_corporate_view.view_payslip_corpo"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="3"/>
+
+        <!--  -->
+        <!-- VACACIONES -->
+        <record id="action_view_payslip_corporate_a_pagar_vac" model="ir.actions.act_window">
+            <field name="name">A pagar</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.payslip</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="eu_payslip_corporate_view.hr_payslip_tree_corporate_fls"/>
+            <field name="domain">[('state','in',['draft','verify']),('corporate_type','=',True),('is_vacation','=',True)]</field>
+            <field name="binding_view_types">tree</field>
+            <field name="target">current</field>
+            <field name="context">{'default_corporate_type':True,'default_is_vacation':True}</field>
+        </record>
+        <record id="action_view_payslip_corporate_todas_vac" model="ir.actions.act_window">
+            <field name="name">Todas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.payslip</field>
+            <field name="view_id" ref="eu_payslip_corporate_view.hr_payslip_tree_corporate_fls"/>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('corporate_type','=',True),('is_vacation','=',True)]</field>
+            <field name="binding_view_types">tree</field>
+            <field name="target">current</field>
+            <field name="context">{'default_corporate_type':True,'default_is_vacation':True}</field>
+        </record>
+        <record id="action_hr_payslip_run_corporate_tree_vac" model="ir.actions.act_window">
+            <field name="name">Nomina por lote</field>
+            <field name="res_model">hr.payslip.run</field>
+            <field name="view_id" ref="hr_payroll.hr_payslip_run_tree"/>
+            <field name="view_mode">tree,form</field>
+            <field name="binding_view_types">tree</field>
+            <field name="target">current</field>
+            <field name="domain">[('corporate_type','=',True),('vacation','=',True)]</field>
+            <field name="search_view_id" ref="hr_payroll.hr_payslip_run_filter"/>
+            <field name="context">{'default_corporate_type':True,'default_check_special_struct':True,'default_vacation':True}</field>
+        </record>
+        <menuitem
+        id="view_payslip_corpo_vacaciones"
+        name="Vacaciones"
+        parent="eu_payslip_corporate_view.view_menu_corpo"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="6"/>
+
+    <menuitem
+        id="view_payslip_corpo_a_pagar_vacaciones"
+        name="A pagar"
+        action="eu_payslip_corporate_view.action_view_payslip_corporate_a_pagar_vac"
+        parent="eu_payslip_corporate_view.view_payslip_corpo_vacaciones"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="1"/>
+
+     <menuitem
+        id="view_payslip_corpo_todsas_vacaciones"
+        name="Todas"
+        action="eu_payslip_corporate_view.action_view_payslip_corporate_todas_vac"
+        parent="eu_payslip_corporate_view.view_payslip_corpo_vacaciones"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="2"/> 
+    
+        <menuitem
+        id="view_payslip_corpo_lotes_vacaciones"
+        name="Lotes"
+        action="eu_payslip_corporate_view.action_hr_payslip_run_corporate_tree_vac"
+        parent="eu_payslip_corporate_view.view_payslip_corpo_vacaciones"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="3"/>
+        <!--  -->
+        <!-- UTILIDADES -->
+        <record id="action_view_payslip_corporate_a_pagar_uti" model="ir.actions.act_window">
+            <field name="name">A pagar</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.payslip</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="eu_payslip_corporate_view.hr_payslip_tree_corporate_fls"/>
+            <field name="domain">[('state','in',['draft','verify']),('corporate_type','=',True),('is_utility','=',True)]</field>
+            <field name="binding_view_types">tree</field>
+            <field name="target">current</field>
+            <field name="context">{'default_corporate_type':True,'default_is_utility':True}</field>
+        </record>
+        <record id="action_view_payslip_corporate_todas_uti" model="ir.actions.act_window">
+            <field name="name">Todas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.payslip</field>
+            <field name="view_id" ref="eu_payslip_corporate_view.hr_payslip_tree_corporate_fls"/>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('corporate_type','=',True),('is_utility','=',True)]</field>
+            <field name="binding_view_types">tree</field>
+            <field name="target">current</field>
+            <field name="context">{'default_corporate_type':True,'default_is_utility':True}</field>
+        </record>
+        <record id="action_hr_payslip_run_corporate_tree_uti" model="ir.actions.act_window">
+            <field name="name">Nomina por lote</field>
+            <field name="res_model">hr.payslip.run</field>
+            <field name="view_id" ref="hr_payroll.hr_payslip_run_tree"/>
+            <field name="view_mode">tree,form</field>
+            <field name="binding_view_types">tree</field>
+            <field name="target">current</field>
+            <field name="domain">[('corporate_type','=',True),('is_utility','=',True)]</field>
+            <field name="search_view_id" ref="hr_payroll.hr_payslip_run_filter"/>
+            <field name="context">{'default_corporate_type':True,'default_check_special_struct':True,'default_is_utility':True}</field>
+        </record>
+        <menuitem
+        id="view_payslip_corpo_utili"
+        name="Utilidades"
+        parent="eu_payslip_corporate_view.view_menu_corpo"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="6"/>
+
+    <menuitem
+        id="view_payslip_corpo_a_pagar_utility"
+        name="A pagar"
+        action="eu_payslip_corporate_view.action_view_payslip_corporate_a_pagar_uti"
+        parent="eu_payslip_corporate_view.view_payslip_corpo_utili"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="1"/>
+
+     <menuitem
+        id="view_payslip_corpo_todsas_utility"
+        name="Todas"
+        action="eu_payslip_corporate_view.action_view_payslip_corporate_todas_uti"
+        parent="eu_payslip_corporate_view.view_payslip_corpo_utili"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="2"/> 
+    
+        <menuitem
+        id="view_payslip_corpo_lotes_utility"
+        name="Lotes"
+        action="eu_payslip_corporate_view.action_hr_payslip_run_corporate_tree_uti"
+        parent="eu_payslip_corporate_view.view_payslip_corpo_utili"
+        groups="eu_payslip_corporate_view.corporate_payslip_group"
+        sequence="3"/>
+        <!--  -->
+</odoo>

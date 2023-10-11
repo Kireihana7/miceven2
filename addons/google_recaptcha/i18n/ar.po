@@ -1,0 +1,198 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* google_recaptcha
+# 
+# Translators:
+<<<<<<< HEAD
+# Martin Trigaux, 2022
+=======
+# Sherif Abd Ekmoniem <sherif.tsupport@gmail.com>, 2020
+# Mustafa Rawi <mustafa@cubexco.com>, 2020
+# Osama Ahmaro <osamaahmaro@gmail.com>, 2020
+# Waleed Mohsen <mohsen.waleed@gmail.com>, 2021
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+# Malaz Abuidris <msea@odoo.com>, 2023
+# 
+msgid ""
+msgstr ""
+<<<<<<< HEAD
+"Project-Id-Version: Odoo Server saas~14.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-12 07:50+0000\n"
+"PO-Revision-Date: 2022-09-22 05:46+0000\n"
+=======
+"Project-Id-Version: Odoo Server saas~13.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-01 07:29+0000\n"
+"PO-Revision-Date: 2020-09-07 08:12+0000\n"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+"Last-Translator: Malaz Abuidris <msea@odoo.com>, 2023\n"
+"Language-Team: Arabic (https://app.transifex.com/odoo/teams/41243/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#. module: google_recaptcha
+#: model_terms:ir.ui.view,arch_db:google_recaptcha.res_config_settings_view_form
+<<<<<<< HEAD
+msgid "<i class=\"fa fa-arrow-right\"/> Generate reCAPTCHA v3 keys"
+msgstr "<i class=\"fa fa-arrow-right\"/> إنشاء مفاتيح reCAPTCHA v3 "
+=======
+msgid ""
+"<i class=\"fa fa-arrow-right\"/> Generate site/secret keys for v3 reCaptcha "
+"type"
+msgstr ""
+"<i class=\"fa fa-arrow-right\"/> إنشاء مفاتيح الموقع / السرية لنوع v3 "
+"reCaptcha"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: google_recaptcha
+#: model:ir.model,name:google_recaptcha.model_res_config_settings
+msgid "Config Settings"
+<<<<<<< HEAD
+msgstr "تهيئة الإعدادات "
+=======
+msgstr "ضبط الاعدادات"
+
+#. module: google_recaptcha
+#: model:ir.model.fields,field_description:google_recaptcha.field_ir_http__display_name
+#: model:ir.model.fields,field_description:google_recaptcha.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: google_recaptcha
+#: model:ir.model,name:google_recaptcha.model_ir_http
+msgid "HTTP Routing"
+msgstr "مسار HTTP"
+
+#. module: google_recaptcha
+<<<<<<< HEAD
+#: model_terms:ir.ui.view,arch_db:google_recaptcha.res_config_settings_view_form
+msgid "If no keys are provided, no checks will be done."
+msgstr "إذا لم يتم توفير أي مفاتيح، لن يتم تنفيذ أي عمليات تحقق. "
+=======
+#: model:ir.model.fields,field_description:google_recaptcha.field_ir_http__id
+#: model:ir.model.fields,field_description:google_recaptcha.field_res_config_settings__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: google_recaptcha
+#: model:ir.model.fields,field_description:google_recaptcha.field_ir_http____last_update
+#: model:ir.model.fields,field_description:google_recaptcha.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: google_recaptcha
+#: model:ir.model.fields,field_description:google_recaptcha.field_res_config_settings__recaptcha_min_score
+msgid "Minimum score"
+msgstr "الحد الأدنى من النقاط"
+
+#. module: google_recaptcha
+#. openerp-web
+#: code:addons/google_recaptcha/static/src/js/recaptcha.js:0
+#, python-format
+msgid "No recaptcha site key set."
+<<<<<<< HEAD
+msgstr "لم يتم تعيين مجموعة مفاتيح موقع recaptcha. "
+=======
+msgstr "لا يوجد مجموعة مفاتيح موقع recaptcha."
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: google_recaptcha
+#. openerp-web
+#: code:addons/google_recaptcha/static/src/xml/recaptcha.xml:0
+#, python-format
+msgid "Privacy Policy"
+msgstr "سياسة الخصوصية"
+
+#. module: google_recaptcha
+#. openerp-web
+#: code:addons/google_recaptcha/static/src/xml/recaptcha.xml:0
+#, python-format
+msgid "Protected by reCAPTCHA,"
+<<<<<<< HEAD
+msgstr "محمي بواسطة reCAPTCHA، "
+=======
+msgstr "محمية بواسطة reCAPTCHA،"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: google_recaptcha
+#: model:ir.model.fields,field_description:google_recaptcha.field_res_config_settings__recaptcha_private_key
+msgid "Secret Key"
+<<<<<<< HEAD
+msgstr "المفتاح السري "
+
+#. module: google_recaptcha
+#: model:ir.model.fields,help:google_recaptcha.field_res_config_settings__recaptcha_min_score
+msgid ""
+"Should be between 0.0 and 1.0.\n"
+"1.0 is very likely a good interaction, 0.0 is very likely a bot"
+msgstr ""
+"يجب أن يكون بين 0.0 و 1.0.\n"
+"1.0 في الغالب هو تفاعل جيد، 0.0 في الغالب Bot. "
+=======
+msgstr "مفتاح سري"
+
+#. module: google_recaptcha
+#: model:ir.model.fields,help:google_recaptcha.field_res_config_settings__recaptcha_min_score
+msgid "Should be between 0.0 and 1.0"
+msgstr "يجب أن يكون بين 0.0 و 1.0"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: google_recaptcha
+#: model:ir.model.fields,field_description:google_recaptcha.field_res_config_settings__recaptcha_public_key
+msgid "Site Key"
+msgstr "مفتاح الموقع"
+
+#. module: google_recaptcha
+#. openerp-web
+#: code:addons/google_recaptcha/static/src/xml/recaptcha.xml:0
+#, python-format
+msgid "Terms of Service"
+msgstr "شروط الخدمة"
+
+#. module: google_recaptcha
+#: code:addons/google_recaptcha/models/ir_http.py:0
+#, python-format
+msgid "The reCaptcha private key is invalid."
+<<<<<<< HEAD
+msgstr "مفتاح reCaptcha الخاص غير صالح. "
+=======
+msgstr "المفتاح الخاص reCaptcha غير صالح."
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: google_recaptcha
+#: code:addons/google_recaptcha/models/ir_http.py:0
+#, python-format
+msgid "The reCaptcha token is invalid."
+msgstr "رمز reCaptcha غير صالح."
+
+#. module: google_recaptcha
+#. openerp-web
+#: code:addons/google_recaptcha/static/src/js/recaptcha.js:0
+#, python-format
+msgid "The recaptcha site key is invalid."
+msgstr "مفتاح موقع recaptcha غير صالح."
+
+#. module: google_recaptcha
+#: code:addons/google_recaptcha/models/ir_http.py:0
+#, python-format
+msgid "The request is invalid or malformed."
+msgstr "الطلب غير صالح أو مشوه."
+
+#. module: google_recaptcha
+#: code:addons/google_recaptcha/models/ir_http.py:0
+#, python-format
+msgid "Your request has timed out, please retry."
+msgstr "لقد انتهت مهلة طلبك، يرجى إعادة المحاولة. "
+
+#. module: google_recaptcha
+#. openerp-web
+#: code:addons/google_recaptcha/static/src/xml/recaptcha.xml:0
+#, python-format
+msgid "apply."
+msgstr "تطبيق."

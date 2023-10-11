@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="paperformat_solicitud_prestaciones" model="report.paperformat">
+            <field name="name">Solicitud de Prestaciones</field>
+            <field name="default" eval="True" />
+            <field name="format">custom</field>
+            <field name="page_height">220</field>
+            <field name="page_width">297</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">80</field>
+        </record>
+
+        <record id="action_report_request_benefits" model="ir.actions.report">
+            <field name="name">report.request.benefits</field>
+            <field name="model">res.request.benefits</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="paperformat_id" ref="eu_solicitud_prestaciones.paperformat_solicitud_prestaciones"/>
+            <field name="report_name">eu_solicitud_prestaciones.print_report_solicitud_prestaciones</field>
+            <field name="report_file">eu_solicitud_prestaciones.print_report_solicitud_prestaciones</field>
+            <field name="print_report_name">'Solicitud Prestaciones - %s' % (object.employee_id.name)</field>
+            <field name="binding_model_id" ref="model_res_request_benefits"/>
+            <field name="binding_type">report</field>
+        </record>
+
+
+    
+    </data>
+    
+
+</odoo>

@@ -1,0 +1,153 @@
+<odoo>
+    <data>
+        <template id="print_declaracion_igtf">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="data_report_margin_top" t-value="0"/>
+                    <t t-call="web.basic_layout">
+                        <table class="text-center" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th colspan="9">
+                                        <!-- <div style="border:1px solid black;border-radius:20px;">
+                                            <table class="text-center" style="margin-left:0%;width:100%;font-size:13px;">
+                                                <tr>
+                                                    <th><span t-field="o.company_id.name"></span></th>
+                                                </tr>
+                                                <tr t-if="o.company_id.vat">
+                                                    <th><span t-field="o.company_id.vat"></span></th>
+                                                </tr>
+                                                <tr>
+                                                    <th>DEL: <span t-field="o.date_ini" t-options='{"widget": "date"}'/>
+                                                    AL: <span t-field="o.date_fin" t-options='{"widget": "date"}'/></th>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        Diario Pagador: <span t-field="o.journal_id.name"/>
+                                                    </th>
+                                                </tr>
+                                            </table>
+                                        </div> -->
+                                        <h4><span t-field="o.company_id.name"/></h4>        
+                                        <h4>Declaración de IGTF: <span t-field="o.name"/></h4>
+                                        <div class="row mt16 mb16" style="font-size:11px">
+                                            <div class="col-3">
+                                                <strong>Desde:</strong><br/>
+                                                <span t-field="o.date_ini" t-options='{"widget": "date"}'/>
+                                            </div>
+                                            <div class="col-3">
+                                                <strong>Hasta:</strong><br/>
+                                                <span t-field="o.date_fin" t-options='{"widget": "date"}'/>
+                                            </div>
+                                            <div class="col-3">
+                                                <strong>Diario Pagador:</strong><br/>
+                                                <span t-field="o.journal_id.name"/>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td colspan="9">
+                                        <br/>
+                                    </td>
+                                </tr>
+                                <tr style="font-size:12px;">
+                                    <th class="text-center"> <!-- 1 -->
+                                        <strong>Oper</strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 2 -->
+                                        <strong>Documento</strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 3 -->
+                                        <strong>Diario</strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 4 -->
+                                        <strong>Fecha</strong>
+                                    </th>
+                                    <th class="text-center"><!-- 5 -->
+                                        <strong>Cliente</strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 6 -->
+                                        <strong>Base Imponible</strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 7 -->
+                                        <strong>Monto</strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 8 -->
+                                        <strong>B.Imponible Ref</strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 9 -->
+                                        <strong>Monto Ref</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <t t-set="oper" t-value="1"/>
+                            <tbody style="font-size:10px;">
+                                <t t-foreach="o.lines.sorted(key=lambda m: m.journal_id.name)" t-as="l">  
+                                    <tr>
+                                        <td class="text-left" style="width:2%;"> <!-- 1 -->
+                                            <span t-esc="oper" />
+                                        </td>
+                                        <td class="text-left" style="width:12%;"> <!-- 2 -->
+                                            <span t-esc="l.name.name" />
+                                        </td>
+                                        <td class="text-left" style="width:10%;"> <!-- 3 -->
+                                            <span t-esc="l.journal_id.name" />
+                                        </td>
+                                        <td class="text-left" style="width:8%;"> <!-- 4 -->
+                                            <span t-esc="l.date" t-options='{"widget": "date"}'/>
+                                        </td>
+                                        <td class="text-left" style="width:28%;"><!-- 5 -->
+                                            <span t-esc="l.partner_id.name"/>
+                                        </td>
+                                        <td class="text-right" style="width:10%;"> <!-- 6 -->
+                                            <span t-esc="l.amount/0.03" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <td class="text-right" style="width:10%;"> <!-- 7 -->
+                                            <span t-esc="l.amount" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <td class="text-right" style="width:10%;"> <!-- 8 -->
+                                            <span t-esc="l.amount_ref/0.03" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <td class="text-right" style="width:10%;"> <!-- 9 -->
+                                            <span t-esc="l.amount_ref" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                    </tr>
+                                    <t t-set="oper" t-value="oper+1"/>
+                                </t>
+                                <!--TOTALES-->
+                                <tr  class="border-top" style="font-size:13px;">
+                                    <td class="text-right"  colspan="5"><!-- 1 al 5 -->
+                                        <span>TOTAL:</span>
+                                    </td>
+                                    <td class="text-right"><!-- 6 -->
+                                        <span t-esc="o.amount_total/0.03" t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-right"><!-- 7 -->
+                                        <span t-esc="o.amount_total" t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-right"><!-- 8 -->
+                                       <span t-esc="o.amount_total_ref/0.03" t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-right"><!-- 9 -->
+                                       <span t-esc="o.amount_total_ref" t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                </tr>  
+                            </tbody>
+                        </table>
+                        <br/>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <report id="igtf_report_declaracion"
+            model="igtf.declaration"
+            string="Reporte de Declaración IGTF (Clientes)"
+            name="eu_withholding_itf.print_declaracion_igtf"
+            file="eu_withholding_itf.print_declaracion_igtf"
+            report_type="qweb-pdf"
+            menu="True"
+        />
+    </data>
+</odoo>

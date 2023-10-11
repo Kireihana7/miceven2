@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="Expand.Buttons">
+        <nav class="btn-group oe_group_by_expand_buttons d-none">
+            <button class="btn btn-secondary dropdown-toggle fa fa-arrows-alt" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+	            <button
+	                class="dropdown-item btn btn-secondary fa fa-expand"
+	                id="oe_group_by_expand"
+	                title="Expand groups"
+	                type="button"
+	            >   Expand</button>
+	            <button
+	                class="dropdown-item btn btn-secondary fa fa-compress"
+	                id="oe_group_by_collapse"
+	                title="Collapse groups"
+	                type="button"
+	            >   Collapse</button>
+			</div>
+        </nav>
+    </t>
+    
+    <t t-name="PdfExcel.ReportButtons">
+			<button class="btn btn-secondary dropdown-toggle fa fa-file" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<a class="dropdown-item fa fa-file-pdf-o" id="button_export_pdf" title="Print PDF" href="javascript:void(0)"> PDF</a>
+	        	<a class="dropdown-item fa fa-file-excel-o" id="button_export_excel" title="Print Excel" href="javascript:void(0)"> Excel</a>
+			</div>
+    </t>
+</templates>

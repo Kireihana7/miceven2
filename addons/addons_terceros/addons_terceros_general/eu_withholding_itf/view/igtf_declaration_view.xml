@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_igtf_declaration_form" model="ir.ui.view">
+        <field name="name">igtf.declaration.form</field>
+        <field name="model">igtf.declaration</field>
+        <field name="arch" type="xml">
+            <form string="Declaración de IGTF" copy="0">
+                <header>
+                    <button name="confirm_declaration" type="object" string="Confirmar Declaración" states="draft" class="btn-primary" />
+                    <button name="action_declared" type="object" string="Declarar" states="confirmed" class="btn-primary" />
+                    <button name="button_cancel" type="object" string="Cancel" states="draft,confirmed" confirm="¿Quiere Cancelar la declaración?, Deberá crear una nueva" class="btn-primary"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,declared,done" readonly="1"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                    </div>
+                    <div class="oe_title">
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/><br/>
+                            </h1>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" invisible="1" />
+                            <field name="date_ini" />
+                            <field name="date_fin" />
+                        </group>
+                        <group>
+                            <field name="journal_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' attrs="{'readonly':[('state', 'in', ['done', 'confirmed','declared'])],'required':[('state', 'not in', ['draft'])]}"/>
+                            <field name="partner_id" attrs="{'readonly':[('state', 'not in', ['draft'])],'required':[('state', 'not in', ['draft'])]}" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                            <field name="product_id" attrs="{'readonly':[('state', 'not in', ['draft'])],'required':[('state', 'in', ['draft'])]}" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                            <field name="move_paid_id" attrs="{'invisible':[('move_paid_id', '=', False)]}"/>
+                            <field name="payment_id" attrs="{'invisible':[('payment_id', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="IGTF Realizados" name="lines_igtf"  attrs="{'readonly':[('state', 'in', ['done','confirmed','cancel'])]}" >
+                            <field name="lines" attrs="{'readonly':[('state', 'in', ['done','confirmed', 'cancel'])]}">
+                                <tree editable="bottom">
+                                    <field name="name" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                                    <field name="move_id" invisible="1"/>
+                                    <field name="journal_id" readonly="1" />
+                                    <field name="date" readonly="1"/>
+                                    <field name="partner_id" readonly="1" />
+                                    <field name="amount" readonly="1" force_save="1"/>
+                                    <field name="amount_ref" readonly="1" force_save="1"/>
+                                    <field name="currency_id" readonly="1" />
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="name" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                                            <field name="move_id" invisible="1"/>
+                                            <field name="journal_id" readonly="1" />
+                                            <field name="date" readonly="1"/>
+                                        </group>
+                                        <group>
+                                            <field name="partner_id" readonly="1" />
+                                            <field name="amount" force_save="1" readonly="1"/>
+                                            <field name="amount_ref" force_save="1" readonly="1"/>
+                                            <field name="currency_id" readonly="1" />
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2">
+                                <label for="amount_total"/>
+                                <field name="amount_total" nolabel="1"/>
+                                <label for="amount_total_ref"/>
+                                <field name="amount_total_ref" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_igtf_declaration_tree" model="ir.ui.view">
+        <field name="name">igtf.declaration.tree</field>
+        <field name="model">igtf.declaration</field>
+        <field name="arch" type="xml">
+            <tree string="Declaración de IGTF">
+                <field name="name"        string="Nombre" />
+                <field name="date_ini"    string="Desde"  />
+                <field name="date_fin"    string="Hasta"  />
+                <field name="journal_id"  string="Diario" />
+                <field name="state"       string="Estado" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_igtf_declaration_search" model="ir.ui.view">
+        <field name="name">igtf.declaration search</field>
+        <field name="model">igtf.declaration</field>
+        <field name="arch" type="xml">
+            <search string="Busqueda de Declaración">
+                <field name="name" />
+                <field name="journal_id" />
+                <field name="date_ini" />
+                <field name="date_fin" />
+                <field name="state" attrs="{'readonly':1}"/>
+                <group expand="0" string="Agrupado por">
+                    <filter name="name"       string="Nombre" context="{'group_by':'name'}"/>
+                    <filter name="journal_id" string="Diario" context="{'group_by':'journal_id'}"/>
+                    <filter name="state"      string="Estado" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+        <record id="view_igtf_declaration_kanban" model="ir.ui.view">
+           <field name="name">igtf.declaration.kanban</field>
+           <field name="model">igtf.declaration</field>
+           <field name="priority">10</field>
+           <field name="arch" type="xml">
+               <kanban string="Declaración de IGTF" quick_create="false" draggable="false" edit="false" default_group_by="state" default_order_by="asc" modifiers="{}">
+                    <templates modifiers="{}">
+                        <t t-name="kanban-box" modifiers="{}">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click" >
+                                <div class="o_kanban_card_content" modifiers="{}">
+                                    <field name="name" modifiers="{'readonly':true}"/>
+                                    <field name="journal_id" display="full" />
+                                    <field name="date_ini" display="full" />
+                                    <field name="date_fin" display="full" />
+                                    <field name="state" attrs="{'readonly':1}" bold="True" display="full" modifiers="{}"/>
+                                </div>
+                                <div class="oe_kanban_bottom_left" name="button_left" modifiers="{}">
+                                    <field string="Total" name="amount_total" />
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+    <record id="open_igtf_declaration" model="ir.actions.act_window">
+        <field name="name">Declaración de IGTF (Clientes)</field>
+        <field name="res_model">igtf.declaration</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
+        <field name="view_id" eval="False"/>
+    </record>
+
+    <menuitem id="igtf_declaration_menu" name="Declaración de IGTF"  sequence="4"  action="eu_withholding_itf.open_igtf_declaration" parent="account.menu_finance_receivables"/>
+
+</odoo>

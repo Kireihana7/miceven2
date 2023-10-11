@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.module.category" id="module_category_sales_kpi">
+            <field name="name">Gestión de KPI</field>
+            <field name="description">Límita los permisos de los usuarios en KPI.</field>
+            <field name="sequence">100</field>
+        </record>
+        
+        <record id="group_ver_kpi" model="res.groups">
+            <field name="name">Puede ver un KPI</field>
+            <field name="category_id"
+            ref="eu_sales_kpi_kg.module_category_sales_kpi" />
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_crear_kpi" model="res.groups">
+            <field name="name">Puede crear un KPI</field>
+            <field name="category_id"
+            ref="eu_sales_kpi_kg.module_category_sales_kpi" />
+            <field name="implied_ids" eval="[(4, ref('eu_sales_kpi_kg.group_ver_kpi'))]"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="quick_access_currency_rate.Preview">
+        <div class="o_currency_rate_systray_dropdown_item o_currency_rate_preview">
+            <div class="o_preview_info">
+                <span class="o_input_rate">
+                    <span class="usd_title">1 <t t-esc="base_currency.name" /> = </span>
+                    <span class="currency_title">
+                        <input type="text" class="ui-autocomplete-input" title="Rate" placeholder="Rate" autocomplete="off" tabindex="1" autofocus="1"
+                            t-att-value="preview.rate"
+                            t-att-id="'quick-currency-' + preview.id"
+                        />
+                        <span t-if="preview.name" t-esc="preview.name" class="btn-input-rate" title="Rate" role="img" aria-label="Rate" />
+                    </span>
+                    <span class="o_preview_date">
+                        (<t t-esc="preview.date"/>)
+                    </span>
+                </span>
+            </div>
+        </div>
+    </t>
+</templates>

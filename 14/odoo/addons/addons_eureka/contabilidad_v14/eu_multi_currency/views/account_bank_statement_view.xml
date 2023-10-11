@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="account_bank_statement_form_inherit_views_ref_line" model="ir.ui.view">
+            <field name="name">account_bank_statement_form_inherit_views</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account.view_bank_statement_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_currency']" position="after">
+                    <field name="manual_currency_exchange_rate" string="Tasa Manual" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

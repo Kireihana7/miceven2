@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_reason_new_tree_romana" model="ir.ui.view">
+		<field name="name">chargue.consolidate.cancel.tree</field>
+		<field name="model">chargue.consolidate.cancel</field>
+		<field name="arch" type="xml">
+			<tree string="Motivo de Cancelación de Romana">
+				<field name="name"/>		
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_reason_new_form_romana" model="ir.ui.view">
+		<field name="name">chargue.consolidate.cancel.form</field>
+		<field name="model">chargue.consolidate.cancel</field>
+		<field name="arch" type="xml">
+			<form string="Motivo de Cancelación de Romana">
+                <sheet>
+				    <group>						
+				        <field name="name"/>
+				    </group>
+                </sheet>	
+			</form>
+		</field>
+	</record>
+
+	<record id="open_view_reason_new_tree" model="ir.actions.act_window">
+		<field name="name">Motivo de Cancelación de Romana</field>
+		<field name="res_model">chargue.consolidate.cancel</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="view_reason_new_tree_romana"></field>
+	</record>
+
+
+</odoo>
+

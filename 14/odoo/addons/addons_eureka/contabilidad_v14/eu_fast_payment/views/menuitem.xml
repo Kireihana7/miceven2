@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="open_account_payment_fast_create" model="ir.actions.act_window">
+        <field name="name">Pagos Rápido Creados</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('account_payment_fast','!=',False)]</field>
+        <field name="context">{'create':False,'delete':False}</field>
+    </record>
+
+    <!-- Menú principal -->
+    <menuitem id="app_fast_payment" name="Pagos Rápido"  sequence="20" action="eu_fast_payment.open_account_payment_fast" web_icon="eu_fast_payment,static/description/images/fast_payment.png"/>
+
+    <!-- Menú Secundario -->
+    <menuitem id="account_payment_fast_operaciones" name="Pagos Rápidos"  sequence="1"   parent="eu_fast_payment.app_fast_payment"/> 
+    <menuitem id="account_payment_fast_config"      name="Pagos"  sequence="2"   parent="eu_fast_payment.app_fast_payment"/>
+   
+    <!-- Detalles Operaciones -->
+    <menuitem 
+        id="menu_account_payment_fast" 
+        name="Pagos Rápidos"
+        sequence="1"
+        action="eu_fast_payment.open_account_payment_fast"
+        parent="eu_fast_payment.account_payment_fast_operaciones"
+    />
+    <menuitem 
+        id="menu_account_payment_fast_line" 
+        name="Detalle Pagos Rápidos"
+        sequence="1"
+        action="eu_fast_payment.open_account_payment_fast_line"
+        parent="eu_fast_payment.account_payment_fast_operaciones"
+    />
+
+    <!-- Detalles Informes -->
+    <menuitem 
+        id="menu_account_payment_fast_done" 
+        name="Pagos Creados" 
+        sequence="1" 
+        action="eu_fast_payment.open_account_payment_fast_create" 
+        parent="eu_fast_payment.account_payment_fast_config"
+    />
+    
+</odoo>

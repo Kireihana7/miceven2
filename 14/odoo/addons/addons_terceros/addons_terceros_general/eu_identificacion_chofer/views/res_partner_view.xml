@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_es_chofer">
+        <field name="name">view.es.chofer</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="before">
+              <group>                
+                <field name="es_chofer_partner" attrs="{'invisible': [('es_chofer_partner','=',False)]}"/>
+                <field name="vehicle_ids" widget="many2many_tags" attrs="{'invisible': [('es_chofer_partner','=',False)]}"/>
+              </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

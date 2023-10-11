@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_partner_view_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="type" position="after">
+                <field 
+                    name="is_nucleo" 
+                    attrs="{'invisible':[('company_type','=','person')]}"
+                />
+                <field 
+                    name="codigo_nucleo" 
+                    attrs="{
+                        'invisible':[('is_nucleo','=',False)],
+                        'required':[('is_nucleo','=',True)],
+                    }" 
+                />
+            </field>
+        </field>
+    </record>
+    <record id="fleet_vehicle_view_form_inherit" model="ir.ui.view">
+        <field name="name">fleet.vehicle.view.form.inherit</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <field name="vehicle_owner" position="before">
+                <field name="from_nucleo" attrs="{'invisible':[('vehicle_type_property','=','propio')]}" />
+            </field>
+        </field>
+    </record>
+    <record id="chargue_consolidate_view_form_inherit" model="ir.ui.view">
+        <field name="name">chargue.consolidate.view.form.inherit</field>
+        <field name="model">chargue.consolidate</field>
+        <field name="inherit_id" ref="eu_agroindustry.view_guide_consolidate_form_without"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="cana" string="Remesa de caña">
+                    <group>
+                        <group>
+                            <field name="lote" />
+                            <field name="tablon" />
+                            <field name="cosecha_manual" />
+                        </group>
+                        <group>
+                            <field name="cosecha_mecanizada" />
+                            <field name="cosecha_verde" />
+                            <field name="cosecha_quemada" />
+                        </group>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="equipment_request_form_requisition">
+        <field name="name">equipment.request.form.inherit.requisition</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="base_maintenance.equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="object" icon="fa-book"
+                    context="{'search_custom_maintenance_id': id, 'default_custom_maintenance_id': id}"
+                        name="show_maintenance_action" string="Petición de Material"/>
+            </xpath>
+        </field>
+    </record>
+  </data>
+</odoo>

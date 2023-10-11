@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="view_eos_feature_tree" model="ir.ui.view">
+        <field name="name">eos.feature.tree</field>
+        <field name="model">eos.feature</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="eos_id" />
+                <field name="version" />
+                <field name="geometry_type" />
+                <field name="longitude" />
+                <field name="latitude" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_eos_feature_form" model="ir.ui.view">
+        <field name="name">eos.feature.form</field>
+        <field name="model">eos.feature</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button 
+                        string="Sincronizar con EOS" 
+                        name="action_fetch_from_eos" 
+                        type="object" 
+                        class="oe_highlight"
+                    />
+                    <button 
+                        string="Eliminar de EOS" 
+                        name="action_delete_from_eos" 
+                        type="object"
+                        attrs="{'invisible':[('eos_id','=',0)]}"
+                        class="oe_highlight"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="eos_id" readonly="1" />
+                            <field name="shop_prop"/>
+                            <field name="name_prop"/>
+                        </group>
+                        <group>
+                            <field name="geometry_type"/>
+                            <field name="longitude"/>
+                            <field name="latitude"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>                
+            </form>
+        </field>
+    </record>
+    
+    <!-- <record id="eos_feature_action" model="ir.actions.act_window">
+        <field name="name">Geometry storage</field>
+        <field name="res_model">eos.feature</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Add a new feature!
+          </p>
+        </field>
+    </record>   
+    --> 
+
+    <!-- Features -->
+    <!--
+    <menuitem id="feature_master_menu"
+        name="Geometry storage"
+        parent="eos_menu_root"
+        action="eos_feature_action"
+        sequence="1"/> 
+    -->
+</odoo>

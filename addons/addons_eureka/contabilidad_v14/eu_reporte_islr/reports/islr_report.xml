@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- <report id="islr_report"
+        model="islr.wizard"
+        string="Reporte de ISLR"
+        name="eu_reporte_islr.islr_templates"
+        file="eu_reporte_islr.islr_templates"
+        report_type="qweb-pdf"
+        menu="False"
+    /> -->
+
+	<record id="islr_report" model="ir.actions.report">
+		<field name="name">Reporte de ISLR</field>
+		<field name="model">islr.wizard</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">eu_reporte_islr.islr_templates</field>
+		<field name="report_file">eu_reporte_islr.islr_templates</field>
+		<field name="binding_model_id" ref="model_islr_wizard"/>
+		<field name="binding_type">report</field>
+	</record>
+</odoo>
+

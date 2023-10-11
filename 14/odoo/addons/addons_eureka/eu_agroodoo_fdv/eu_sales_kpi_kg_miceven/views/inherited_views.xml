@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- #region Users -->
+    <record id="hr_employee_view_tree_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.view.tree.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <field name="zone_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+            </field>
+        </field>
+    </record>
+
+    <record id="hr_employee_view_form_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.view.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <field name="coach_id" position="after">
+                <field name="zone_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+            </field>
+        </field>
+    </record>
+    <!-- #endregion -->
+
+    <record id="res_config_settings_view_form_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="eu_sales_kpi_kg.res_config_settings_view_form_inherit"/>
+        <field name="arch" type="xml">
+            <div name="kpi_settings_container" position="inside">
+                <div class="row mt16 o_settings_container" name="kpi_settings_container_tipo">
+                    <div class="col-12 col-lg-6 o_setting_box" id="tipo_kpi">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Tipo KPI</span>
+                            <div class="text-muted">
+                                Tipo KPI
+                            </div>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="tipo_kpi" class="col-lg-3 o_light_label"/>
+                                    <field  
+                                        name="tipo_kpi" 
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <record id="crm_team_view_form_inherit" model="ir.ui.view">
+        <field name="name">crm.team.view.form.inherit</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <field name="zone_id" options="{'no_create': True}" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

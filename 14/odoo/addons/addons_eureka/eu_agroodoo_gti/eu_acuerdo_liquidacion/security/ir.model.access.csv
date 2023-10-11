@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_acuerdo_liquidacion,eu_acuerdo_liquidacion.acuerdo_liquidacion,model_acuerdo_liquidacion,base.group_user,1,1,1,1

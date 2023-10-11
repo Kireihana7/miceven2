@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="alerta_fecha_vencida" model="ir.cron">
+            <field name="name">Documentos Vencidos</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="priority">2</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="documents.model_documents_document" />
+            <field name="code">model._action_fecha_alerta()
+        </field>
+        <field name="active" eval="True"/>
+        </record>
+
+    <record id="vista_fecha_alerta_activity" model="mail.activity.type">
+        <field name="name">Documento Vencido</field>
+        <field name="summary">Debes Revisar sus documentos vencidos</field>
+        <field name="category">default</field>
+        <field name="res_model_id" ref="eu_document_fecha_alerta.model_documents_document"/>
+    </record>
+</odoo>

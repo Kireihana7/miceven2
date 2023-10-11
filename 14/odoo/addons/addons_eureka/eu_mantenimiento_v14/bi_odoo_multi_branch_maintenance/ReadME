@@ -1,0 +1,3 @@
+Version 14.0.0.1:
+	- Fixed access rights issue of branch. Only manager can create branch.
+	- Fixed view of branch in user page. 

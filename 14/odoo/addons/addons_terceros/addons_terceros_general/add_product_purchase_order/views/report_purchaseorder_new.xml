@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_purchaseorder_new_document_inherit" inherit_id="eu_purchase_order_report.report_purchaseorder_new_document">
+        <xpath expr="//t[@t-if='o.picking_type_id']" position="replace">
+            <t t-if="o.picking_type_id and not o.puesto_compra">
+                    <strong class="h6">Dirección de Envío:</strong>
+                    <table>
+                        <tr>
+                            <td>
+                                <span t-esc="o.picking_type_id.warehouse_id.partner_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                CI o RIF: <span t-esc="o.company_id.vat"/>
+                            </td>
+                        </tr>
+                        <tr t-if="o.picking_type_id.warehouse_id.partner_id.street">
+                            <td>
+                                <span t-esc="o.picking_type_id.warehouse_id.partner_id.street"/> - <span t-esc="o.picking_type_id.warehouse_id.partner_id.city"/>
+                                <!--<span t-esc="o.picking_type_id.name"/>-->
+                                <!--<span t-esc="o.dest_address_id.name"/>-->
+                                <!--<span t-esc="o.default_location_dest_id_usage"/>-->
+                                <!--<span t-esc="o.incoterm_id.name"/>-->
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span t-esc="o.picking_type_id.warehouse_id.partner_id.phone"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- <span t-esc="o.company_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/> -->
+
+                </t>
+
+        </xpath>
+        <xpath expr="//div[@t-if='o.user_id']" position="replace">
+        </xpath>
+        <xpath expr="//div[@t-if='o.moneda_pago']" position="before">
+            <div t-if="o.autorizado" class="col-2 bm-2">
+                <h6><small>Autorizado </small></h6>
+                <p t-field="o.autorizado.name" class="m-0" style="font-size:10px"/>
+            </div>
+            <div t-if="o.productor" class="col-2 bm-2">
+                <h6><small>Productor </small></h6>
+                <p t-field="o.productor.name" class="m-0" style="font-size:10px"/>
+            </div>
+            <div t-if="o.user_id" class="col-2 bm-2">
+                <h6><small>Comprador </small></h6>
+                <p t-field="o.user_id" class="m-0" style="font-size:10px"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_standard_footer')]" position="replace">
+            <div class="footer o_standard_footer">
+                <t t-if="not o.puesto_compra">     
+                    <div class="text-center -mb-4" style="font-size: 12px; margin-bottom: -13px;">
+                        Pagina: <span class="page"/> / <span class="topage"/><br/>
+                        Fecha de Impresión: <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y')"/>
+                    </div>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

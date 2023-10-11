@@ -1,0 +1,42 @@
+<odoo>
+  <data>
+    <record id="paperformat_nomina_biexternal" model="report.paperformat">
+      <field name="name">Recibo Nomina biexternal format</field>
+      <field name="orientation">Landscape</field>
+      <field name="header_spacing">30</field>
+      <field name="margin_top">30</field>
+      <field name="margin_bottom">10</field>
+      <field name="margin_left">15</field>
+      <field name="margin_right">10</field>
+      <field name="dpi">90</field>
+  </record>
+    <record id="custom_action_report_binominal" model="ir.actions.report">
+      <field name="name">Reporte Binominal</field>
+      <field name="model">bi.payroll.wiz</field> 
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">eu_bi_structure_payroll_report.report_bi_nominal</field>
+      <field name="report_file">eu_bi_structure_payroll_report.biribiribi</field>
+      <field name="paperformat_id" ref="eu_bi_structure_payroll_report.paperformat_nomina_biexternal"/>
+      <field name="binding_type">report</field>
+    </record>
+    <record id="custom_action_report_vacaciones" model="ir.actions.report">
+      <field name="name">Reporte de Vacaciones</field>
+      <field name="model">bi.payroll.wiz</field> 
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">eu_bi_structure_payroll_report.report_vacaciones_miceven</field>
+      <field name="report_file">eu_bi_structure_payroll_report.report_vacaciones_miceven</field>
+      <field name="paperformat_id" ref="eu_bi_structure_payroll_report.paperformat_nomina_biexternal"/>
+      <field name="binding_type">report</field>
+    </record>
+    <record id="custom_action_report_utilidades" model="ir.actions.report">
+      <field name="name">Reporte de Utilidades Binominal</field>
+      <field name="model">bi.payroll.wiz</field> 
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">eu_bi_structure_payroll_report.report_bi_nominal_UTILIDADES</field>
+      <field name="report_file">eu_bi_structure_payroll_report.biribiribi</field>
+      <field name="paperformat_id" ref="eu_bi_structure_payroll_report.paperformat_nomina_biexternal"/>
+      <field name="binding_type">report</field>
+    </record>
+    
+  </data>
+</odoo>

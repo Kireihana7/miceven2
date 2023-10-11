@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <template id="tp_report_list_accounts_receivable_product">
+        <t t-call="web.html_container">
+            <t t-set="tittle" t-value="'Cuentas por cobrar producto terminado (Vendedores)'"/>
+            <t t-set="desde" t-value="form.get('start_date')"/>
+            <t t-set="hasta" t-value="form.get('end_date')"/>
+            <t t-call="eu_miceven_report_topper.header_report_miceven">
+                <t t-foreach="form.get('documents')" t-as="docu">
+                    <!-- ================== Moneda ================== -->
+                    <t t-set="currency" t-value="docu.get('company_currency_id')"/>
+                    <t t-set="obj_currency" t-value="env['res.currency'].search([('id', '=', currency)])"/>
+                    <div class="page">
+                        <div class="oe_structure" />
+                        <table class="table table-bordered" style="font-size:11px">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" width="2%"><strong>ITEM</strong></th>
+                                    <th class="text-center" width="5%"><strong>FECHA</strong></th>
+                                    <th class="text-left"   width="15%"><strong>CLIENTE</strong></th>
+                                    <th class="text-left"   width="10%"><strong>CIUDAD</strong></th>
+                                    <th class="text-left"   width="15%"><strong>VENDEDOR</strong></th>
+                                    <th class="text-center" width="5%"><strong>N-° FACTURA</strong></th>
+                                    <th class="text-center" width="3"><strong>CANT</strong></th>
+                                    <th class="text-center" width="1%"><strong>UND</strong></th>
+                                    <th class="text-center" width="5%"><strong>PRECIO</strong></th>
+                                    <th class="text-center" width="5%"><strong>TOTAL A CANCELAR</strong></th>
+                                    <th class="text-left"   width="15%"><strong>PRODUCTO</strong></th>
+                                    <th class="text-center" width="6%"><strong>TOTAL ABONADO</strong></th>
+                                    <th class="text-center" width="6%"><strong>POR CANCELAR</strong></th>
+                                    <th class="text-center" width="5%"><strong>FECHA VENC</strong></th>
+                                    <th class="text-center" width="1%"><strong>DIAS TRANS</strong></th>
+                                </tr>                                
+                            </thead>
+                            <tbody>
+                                <t t-set="count" t-value="1"/>
+                                <tr t-foreach="docu.get('invoice_lines')" t-as="line">
+                                    <td class="text-center">
+                                        <t t-esc="count"/>
+                                    </td>
+                                    <td class="text-center" >
+                                        <span t-esc="line.get('invoice_date')"/>
+                                    </td>
+                                    <td class="text-left" >
+                                        <span t-esc="line.get('partner_id')"/>                              
+                                    </td>
+                                    <td class="text-left" >
+                                        <span t-esc="line.get('city_id')"/>                               
+                                    </td>
+                                    <td class="text-left" >
+                                        <span t-esc="line.get('invoice_user_id')"/>                                
+                                    </td>
+                                    <td class="text-left" >
+                                        <span t-esc="line.get('name')"/>                                
+                                    </td>
+                                    <td class="text-right" >
+                                        <span t-esc="line.get('cantidad_x_fardo')" t-options="{'widget': 'float', 'precision': 2}" />                                
+                                    </td>
+                                    <td class="text-center" >
+                                        <span t-esc="line.get('UOM')"/>                                
+                                    </td>
+                                    <td class="text-right" >
+                                        <span t-esc="line.get('precio_x_fardo_usd')" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>                                    </td>
+                                    <td class="text-right" >
+                                        <span t-esc="line.get('monto_total_usd')" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>                                
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.get('product')"/>                                
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="line.get('saldo_abonado')" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>                                
+                                    </td>
+                                    <td class="text-right" >
+                                        <span t-esc="line.get('pendiente_x_cancelar')" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>                                
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-esc="line.get('invoice_date_due')"/>                               
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-esc="line.get('days')"/>                                     
+                                    </td>
+                                    <t t-set="count" t-value="count + 1"/>
+                                </tr>
+                            </tbody>
+                        </table>
+                                <hr style="border-top: 1px solid black !important;"/>
+                                <!-- ================== Totales de la tabla ================== -->
+                                <div class="row div-cuentas">    
+                                    <div class="col-3 text-right">
+                                        <span style="position: relative; left: -20px; font-size:11px;">MONTO TOTAL POR CANCELAR CLIENTES</span>                                                                                                     
+                                    </div>     
+                                    <div class="col-3 text-right" style="font-size:11px">
+                                        <span t-esc="docu.get('total_cantidad_fardos')" t-options="{'widget': 'float', 'precision': 2}" style="position: relative; left: 60px;"/>                                                                                                     
+                                    </div>        
+                                    <div class="col-3"/>
+                                    <div class="col-1 text-right text-danger" style="position: relative; left: -260px; font-size:11px;">
+                                        <span t-esc="docu.get('total_a_cancelar')" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>                                                                                                     
+                                    </div>
+                                    <div class="col-1 text-right text-success" style="position: relative; left: -120px; font-size:11px;">
+                                        <span t-esc="docu.get('total_saldo_abonado')" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>                                                                                                     
+                                    </div>
+                                    <div class="col-1 text-right text-danger" style="position: relative; left: -150px; font-size:11px;">
+                                        <span t-esc="docu.get('total_pendiente_x_cancelar')" t-options='{"widget": "monetary", "display_currency": obj_currency}'/>                                                                                                     
+                                    </div>  
+                                    <div class="col-3"/>
+                                </div>
+                        <br/><br/>
+                        <div class="oe_structure" />
+                    </div>                
+                </t>
+            </t>
+        </t> 
+    </template>
+
+</odoo>

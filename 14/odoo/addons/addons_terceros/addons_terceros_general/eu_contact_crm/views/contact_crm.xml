@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- wizard action on res.partner -->
+        <!-- <act_window id="partner_wizard_action_crm"
+            name="Crear oportunidad(es)"
+            binding_model="res.partner"
+            res_model="contact.crm.wizard"
+            view_mode="form" 
+            target="new"
+            groups="base.group_partner_manager"/> -->
+
+        <record id="partner_wizard_action_crm" model="ir.actions.act_window">
+            <field name="name">Crear oportunidad(es)</field>
+            <field name="res_model">contact.crm.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="groups_id" eval="[(4, ref('base.group_partner_manager'))]"/>
+            <field name="target">new</field>
+            <!-- <field name="view_id" ref="wizard_view"/> -->
+            <field name="binding_model_id" ref="crm.model_res_partner"/>
+        </record>
+
+        <!-- wizard view -->
+        <record id="wizard_view" model="ir.ui.view">
+            <field name="name">Creación de Oportunidades</field>
+            <field name="model">contact.crm.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Grant Portal Access">
+                    <div>
+                        Seleccione los diferentes contactos que se les creará una Oportunidad en el CRM
+                    </div>
+                    <field name="user_ids">
+                        <tree string="Contacts" editable="bottom" create="false" delete="false">
+                            <field name="partner_id" force_save="1"/>
+                            <field name="monto"/>
+                            <field name="motivo"/>
+                            <field name="dvisita"/>
+                            <field name="svisita" widget="many2many_tags"/>
+                            <field name="fecha_visita"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <button string="Aplicar" name="action_apply" type="object" class="btn-primary"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_count_sheet,eu_inventory_count_sheet.print_count_sheet_report_template,model_stock_count_sheet,base.group_user,1,1,1,1
+access_stock_count_sheet_nostock,eu_inventory_count_sheet.print_count_sheet_report_template_not_stock,model_stock_count_sheet_notstock,base.group_user,1,1,1,1

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mrp_mro_request_production_wizard_user,mrp.mro.request.production.wizard.user,model_mrp_mro_request_production_wizard,mro_maintenance.group_maintenance_user,1,1,1,1
+access_mrp_mro_request_workcenter_wizard_user,mrp.mro.request.workcenter.wizard.user,model_mrp_mro_request_workcenter_wizard,mro_maintenance.group_maintenance_user,1,1,1,1
+
+
+
+

@@ -1,0 +1,212 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_expense
+# 
+# Translators:
+<<<<<<< HEAD
+# Martin Trigaux, 2022
+# Braulio D. López Vázquez <bdl@odoo.com>, 2022
+# Lucia Pacheco <lpo@odoo.com>, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0beta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-23 08:03+0000\n"
+"PO-Revision-Date: 2022-09-22 05:54+0000\n"
+"Last-Translator: Lucia Pacheco <lpo@odoo.com>, 2022\n"
+=======
+# Cécile Collart <cco@odoo.com>, 2021
+# Lucia Pacheco <lpo@odoo.com>, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~13.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-01 07:29+0000\n"
+"PO-Revision-Date: 2020-09-07 08:18+0000\n"
+"Last-Translator: Lucia Pacheco <lpo@odoo.com>, 2023\n"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+"Language-Team: Spanish (Mexico) (https://app.transifex.com/odoo/teams/41243/es_MX/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_MX\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#. module: sale_expense
+#: model:ir.model.fields,field_description:sale_expense.field_sale_order__expense_count
+msgid "# of Expenses"
+msgstr "Número de gastos"
+
+#. module: sale_expense
+<<<<<<< HEAD
+#: model:ir.model.fields,field_description:sale_expense.field_hr_expense__can_be_reinvoiced
+#: model:ir.model.fields,field_description:sale_expense.field_hr_expense_split__can_be_reinvoiced
+=======
+#: model:ir.model.fields,field_description:sale_expense.field_hr_expense__analytic_account_id
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+#. module: sale_expense
+#: model:ir.model.fields,field_description:sale_expense.field_hr_expense__can_be_reinvoiced
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+msgid "Can be reinvoiced"
+msgstr "Se puede volver a facturar"
+
+#. module: sale_expense
+#: model:ir.model.fields,field_description:sale_expense.field_hr_expense__sale_order_id
+<<<<<<< HEAD
+#: model:ir.model.fields,field_description:sale_expense.field_hr_expense_split__sale_order_id
+=======
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+msgid "Customer to Reinvoice"
+msgstr "Cliente al que se le va a volver a facturar"
+
+#. module: sale_expense
+<<<<<<< HEAD
+=======
+#: model:ir.model.fields,field_description:sale_expense.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:sale_expense.field_hr_expense__display_name
+#: model:ir.model.fields,field_description:sale_expense.field_product_template__display_name
+#: model:ir.model.fields,field_description:sale_expense.field_sale_order__display_name
+msgid "Display Name"
+msgstr "Nombre en pantalla"
+
+#. module: sale_expense
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#: model:ir.model,name:sale_expense.model_hr_expense
+msgid "Expense"
+msgstr "Gasto"
+
+#. module: sale_expense
+<<<<<<< HEAD
+#: model:ir.model.fields,field_description:sale_expense.field_product_product__expense_policy_tooltip
+#: model:ir.model.fields,field_description:sale_expense.field_product_template__expense_policy_tooltip
+msgid "Expense Policy Tooltip"
+msgstr "Información sobre la política de gastos"
+
+#. module: sale_expense
+#: model:ir.model,name:sale_expense.model_hr_expense_sheet
+msgid "Expense Report"
+msgstr "Reporte de gastos"
+
+#. module: sale_expense
+#: model:ir.model,name:sale_expense.model_hr_expense_split
+msgid "Expense Split"
+msgstr "Dividir gastos"
+
+#. module: sale_expense
+=======
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#: model:ir.actions.act_window,name:sale_expense.hr_expense_action_from_sale_order
+#: model:ir.model.fields,field_description:sale_expense.field_sale_order__expense_ids
+#: model_terms:ir.ui.view,arch_db:sale_expense.sale_order_form_view_inherit
+msgid "Expenses"
+msgstr "Gastos"
+
+#. module: sale_expense
+<<<<<<< HEAD
+#: code:addons/sale_expense/models/product_template.py:0
+#, python-format
+msgid "Expenses of this category may not be added to a Sales Order."
+msgstr "No se pueden añadir gastos de esta categoría a una orden de venta."
+
+#. module: sale_expense
+#: code:addons/sale_expense/models/product_template.py:0
+#, python-format
+msgid ""
+"Expenses will be added to the Sales Order at their actual cost when posted."
+msgstr ""
+"Se añadirán los gastos a la orden de venta a su costo real cuando se "
+"registren."
+
+#. module: sale_expense
+#: code:addons/sale_expense/models/product_template.py:0
+#, python-format
+msgid ""
+"Expenses will be added to the Sales Order at their sales price (product "
+"price, pricelist, etc.) when posted."
+msgstr ""
+"Se añadirán los gastos a la orden de venta a su precio de venta (precio del "
+"producto, lista de precios, etc.) cuando se registren."
+=======
+#: model:ir.model.fields,field_description:sale_expense.field_account_move_line__id
+#: model:ir.model.fields,field_description:sale_expense.field_hr_expense__id
+#: model:ir.model.fields,field_description:sale_expense.field_product_template__id
+#: model:ir.model.fields,field_description:sale_expense.field_sale_order__id
+msgid "ID"
+msgstr "ID"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: sale_expense
+#: model:ir.model.fields,help:sale_expense.field_hr_expense__sale_order_id
+msgid ""
+<<<<<<< HEAD
+"If the category has an expense policy, it will be reinvoiced on this sales "
+"order"
+msgstr ""
+"Si la categoría tiene una política de gastos, se volverá a facturar en esta "
+=======
+"If the product has an expense policy, it will be reinvoiced on this sales "
+"order"
+msgstr ""
+"Si el producto tiene una política de gastos, se volverá a facturar en esta "
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+"orden de venta"
+
+#. module: sale_expense
+#: model_terms:ir.ui.view,arch_db:sale_expense.product_product_view_form_inherit_sale_expense
+msgid "Invoicing"
+msgstr "Facturación"
+
+#. module: sale_expense
+#: model:ir.model,name:sale_expense.model_account_move_line
+msgid "Journal Item"
+<<<<<<< HEAD
+msgstr "Apunte de diario"
+
+#. module: sale_expense
+#: model:ir.model,name:sale_expense.model_product_template
+msgid "Product"
+msgstr "Producto"
+
+#. module: sale_expense
+#: code:addons/sale_expense/models/hr_expense_sheet.py:0
+#, python-format
+msgid "Reinvoiced Sales Orders"
+msgstr "Órdenes de venta refacturadas"
+
+#. module: sale_expense
+#: model:ir.model.fields,field_description:sale_expense.field_hr_expense_sheet__sale_order_count
+msgid "Sale Order Count"
+msgstr "Número de órdenes de venta"
+=======
+msgstr "Apunte contable"
+
+#. module: sale_expense
+#: model:ir.model.fields,field_description:sale_expense.field_account_move_line____last_update
+#: model:ir.model.fields,field_description:sale_expense.field_hr_expense____last_update
+#: model:ir.model.fields,field_description:sale_expense.field_product_template____last_update
+#: model:ir.model.fields,field_description:sale_expense.field_sale_order____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: sale_expense
+#: model:ir.model,name:sale_expense.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: sale_expense
+#: model:ir.model,name:sale_expense.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de venta"
+<<<<<<< HEAD
+
+#. module: sale_expense
+#: model_terms:ir.ui.view,arch_db:sale_expense.hr_expense_sheet_view_form
+msgid "Sales Orders"
+msgstr "Órdenes de venta"
+=======
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe

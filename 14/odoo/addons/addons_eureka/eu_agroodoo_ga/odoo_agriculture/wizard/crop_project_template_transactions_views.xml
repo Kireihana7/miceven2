@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_crop_project_template_transactions_form" model="ir.ui.view">
+        <field name="name">crop.project.template.transactions.form</field>
+        <field name="model">crop.project.template.transactions</field>
+        <field name="arch" type="xml">
+            <form string="Crop Project Template Transactions">
+                <group class="oe_title">
+                    <field name="crop_project_template_id"/>
+                </group>
+                <group class="oe_title">
+                    <field name="crop_request_transaction_ids" 
+                           widget="many2many_tags" />
+                </group>
+                <footer>
+                    <button name="action_add_transactions" string="Add Transactions to this Task" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_crop_project_template_transactions" model="ir.actions.act_window">
+        <field name="name">Crop Project Template Transactions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crop.project.template.transactions</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_crop_project_template_transactions_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

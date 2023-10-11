@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_guide_consolidate_product" name="Guía de Carga">
+    <t t-call="web.basic_layout">
+        <t t-set="doc" t-value="doc" />
+        <div class="page">
+            <div style="margin-left:0%;width:100%;text-align:center;">
+                <h3 class="mt16" >
+                    <span>Guía de Carga</span>
+                </h3>
+                <h3>
+                    <t t-if="doc.state != 'done'">
+                        <span style="color:#F00; font-size:24px">GUÍA DE CARGA NO CONFIRMADA</span>
+                    </t>
+                </h3>
+                <h3 class="mt16" >
+                    <span t-field="doc.name"/>
+                </h3>
+            </div>
+            <table name="info" class="table table-sm table-borderless">
+                <tr>
+                    <td colspan="1" width="25%"><strong>Información de la Compañia</strong></td>
+                    <td colspan="5" width="75%" style="text-align: left;">
+                        <div>
+                            <t t-if="doc.company_id.name">
+                                <span t-field="doc.company_id.name"/> - 
+                            </t>
+                            <t t-if="doc.company_id.street">
+                                <span t-field="doc.company_id.street"/> - 
+                            </t>
+                            <t t-if="doc.company_id.street2">
+                                <span t-field="doc.company_id.street2" t-if="doc.company_id.street2"/> - 
+                            </t>
+                            <t t-if="doc.company_id.city">
+                                <span t-field="doc.company_id.city"/> - 
+                            </t>
+                            <t t-if="doc.company_id.state_id">
+                                <span t-field="doc.company_id.state_id"/> - 
+                            </t>
+                            <t t-if="doc.company_id.zip">
+                                <span t-field="doc.company_id.zip"/> - 
+                            </t>
+                            <t t-if="doc.company_id.country_id">
+                                <span t-field="doc.company_id.country_id"/> - 
+                            </t>
+                            <t t-if="doc.company_id.vat">
+                                <span t-field="doc.company_id.vat"/>
+                            </t>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1" width="25%"><strong>Conductor</strong></td>
+                    <td colspan="1" width="25%" style="text-align: left;"><span t-if="doc.driver_id.name" t-esc="doc.driver_id.name"/> / <span t-if="doc.vehicle_id.name" t-esc="doc.vehicle_id.name"/></td>
+                    <td colspan="1" width="25%"><strong>Zona</strong></td>
+                    <t t-if="doc.zona.name">
+                        <td colspan="1" width="25%" style="text-align: left;"><span t-esc="doc.zona.name"/></td>
+                    </t>
+                    <t t-else="">
+                        <td colspan="1" width="25%" style="text-align: left;"></td>
+                    </t>
+                </tr>
+                <tr>
+                    <td colspan="1" width="25%"><strong>Fecha Programada</strong></td>
+                    <t t-if="doc.scheduled_date">
+                        <td colspan="1" width="25%" style="text-align: left;"><span t-esc="doc.scheduled_date" t-options='{"widget": "datetime"}'/></td>
+                    </t>
+                    <t t-else="">
+                        <td colspan="1" width="25%" style="text-align: left;"></td>
+                    </t>
+                    <td colspan="1" width="25%"><strong>Fecha</strong></td>
+                    <t t-if="doc.date">
+                        <td colspan="1" width="25%" style="text-align: left;"><span t-esc="doc.date" t-options='{"widget": "date"}'/></td>
+                    </t>
+                    <t t-else="">
+                        <td colspan="1" width="25%" style="text-align: left;"></td>
+                    </t>
+                </tr>
+                <tr>
+                    <td colspan="1" width="25%"><strong>Precinto de Seguridad</strong></td>
+                    <t t-if="doc.precint_number">
+                        <td colspan="1" width="25%" style="text-align: left;"><span t-esc="doc.precint_number" /></td>
+                    </t>
+                    <t t-else="">
+                        <td colspan="1" width="25%" style="text-align: left;"></td>
+                    </t>
+                    <td colspan="1" width="25%" style="text-align: left;"></td>
+                    <td colspan="1" width="25%" style="text-align: left;"></td>
+                </tr>
+            </table>
+            <table class="table table-bordered mb32" style="table-layout:auto;font-size:10px;">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Productos</th>
+                        <th style="text-align: center;">Cantidad</th>
+                        <th style="text-align: center;">Peso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="doc.guide_signature_products" t-as="line">
+                        <tr>
+                            <t t-if="line.product_id.name">
+                                <td style="text-align: left;" t-esc="line.product_id.name"/>
+                            </t>
+                            <t t-if="line.quantity_done">
+                                <td style="text-align: right;">
+                                    <span t-esc="line.quantity_done"/> /  
+                                    <span t-esc="line.product_id.uom_id.name"/>
+                                </td>
+                            </t>
+                            <t t-if="line.weight">
+                                <td style="text-align: right;" t-esc="line.weight"/>
+                            </t>
+                            <t t-else=''>
+                                <td style="text-align: right;">-</td>
+                            </t>
+                        </tr>
+                    </t>
+                    <tr>
+                        <td colspan="1">
+                            <span>Total Artículos</span>
+                        </td>
+                        <td colspan="1"  style="text-align: right;">
+                            <span t-field="doc.total"/>
+                        </td>
+                        <td colspan="1"  style="text-align: right;">
+                            <span t-field="doc.total_weight"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+              <table width="100%"  border="0">
+              <tr>
+                <th width="25%" scope="col" style="text-align: center;">Depósito</th>
+                <th width="25%" scope="col" style="text-align: center;">Conductor</th>
+                <th width="25%" scope="col" style="text-align: center;">Seguridad</th>
+                <th width="25%" scope="col" style="text-align: center;">Firma de Aprobación</th>
+
+              </tr>
+              <tr>
+                <td width="25%" style="text-align: center;">____________________________</td>
+                <td width="25%" style="text-align: center;">____________________________</td>
+                <td width="25%" style="text-align: center;">____________________________</td>
+                <td width="25%" style="text-align: center;">                
+                    <img class="image"
+                     t-att-src="'data:image/png;base64,%s' % to_text(doc.signature)"
+                     style="border:auto;" width="300px" height="50px"/>
+                </td>
+              </tr>
+            </table>
+           </p>
+        </div>
+    </t>
+</template>
+</odoo>

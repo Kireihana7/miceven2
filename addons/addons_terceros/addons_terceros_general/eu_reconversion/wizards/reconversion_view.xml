@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="view_reconversion_data_form" model="ir.ui.view">
+      <field name="name">reconversion.data.wiz.form</field>
+      <field name="model">reconversion.data</field>
+      <field name="arch" type="xml">
+        <form string="Reconversión">
+            <group>
+                <group>
+                    <field name="reconversion_validate"/>
+                </group>
+            </group>
+            <footer>
+                <button name="reconversion"  confirm="¿Esta seguro que desea realizar este proceso? Recuerde que NO PUEDE REVERTIRSE" string="Realizar Reconversión" type="object" class="btn-primary"/>
+                <button name="actualizar_productos"  confirm="¿Esta seguro que desea realizar este proceso? Recuerde que NO PUEDE REVERTIRSE" string="Actualizar Productos" type="object" class="btn-primary"/>
+                <button string="Cancel" class="btn-secondary" special="cancel"/>
+            </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_reconversion_data_wizard" model="ir.actions.act_window">
+        <field name="name">Reconversión</field>
+        <field name="res_model">reconversion.data</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="reconversion_data_menu"
+              name="Reconversión"
+              parent="base.menu_administration"
+              sequence="0"/>
+
+    <menuitem id="reconversion_data_sub_menu"
+              parent="reconversion_data_menu"
+              action="action_reconversion_data_wizard"
+              name="Reconversión"
+              sequence="0"/>
+  </data>
+</odoo>

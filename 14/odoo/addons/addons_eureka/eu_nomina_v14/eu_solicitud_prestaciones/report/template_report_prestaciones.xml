@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="print_report_solicitud_prestaciones">
+
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">   
+
+                        <style type="text/css">
+                            ::root{
+                                font-size: 0.8rem;
+                            }
+                            html{
+                                
+                                margin:0px;
+                                padding:0px;
+                                margin-bottom:2px;
+                            }
+                            #logos >span{
+                                font-size:10px;
+                            }
+                            .borrel{
+
+                                border: 2px solid black;
+                                border-radius: 12px
+                            }
+                            
+                        </style>
+                <div class="header borrel">
+
+                    <div class="borrel container " style="font-size: 0.8rem;">
+                        <div class="row">
+                            <div class="col-2 text-left">
+                                <img style="height: 120px; width:120px; margin-top:15px;" t-att-src="image_data_uri(o.company_id.logo)" />
+                            </div> 
+                            <!-- <img style="height: 120px; width:120px; margin-top:15px;" t-att-src="image_data_uri(o.company_id.logo)" /> -->
+
+
+                            
+                            <div class="col-8 text-center">
+                                <div class="container borrel" style="font-size: 0.7rem;">
+                                
+                                    <div class="row"> 
+                                        <div class="col-12 text-center">
+                                            <span t-esc="o.company_id.name"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-12 text-center">
+                                        RIF :<span t-esc="o.company_id.rif"></span> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            DIRECCION : 
+                                            <span t-esc="'-'.join(filter(bool,[o.company_id.street , o.company_id.street2, o.company_id.city]))" ></span> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <h3>SOLICITUD DE PRESTACIONES</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               
+                </div>
+                    <div class="row">
+                        <div class="col-12 text-right" style="font-size: 0.9rem;">
+                            Fecha de Solicitud : <th t-esc="o.date.strftime('%d-%m-%Y')"></th>
+                        </div>
+                    </div>
+                    
+                    <table class="table table-borderless table-sm shadow bg-white rounded mb-5" style="font-size: 0.9rem;">
+                        <thead>
+                            <tr>
+                                <th class='text-left' >Empleado : <span t-esc="o.employee_id.name"></span></th>
+                                <!-- <th class='text-center'>Fecha de Solicitud</th> -->
+                                <th class='text-right'>Cedula de Identidad : <span t-esc="o.employee_id.rif"></span></th>
+                                
+                            </tr>
+                            
+                                <th colspan="2" class='text-left'>Fecha el Ultimo Anticipo : <span t-esc="o.ultima_fecha.strftime('%d-%m-%Y')"></span></th>
+                                <!-- <th class='text-center'>Fecha de Solicitud</th> -->
+                            <tr>
+                            </tr>
+                            
+                                <th class='text-left'>Acumulado de Prestaciones : <span t-esc="o.antiguedad"  t-options='{"widget": "float", "precision": 2}'></span></th>
+                                <th class='text-right'>Monto Disponible : <span t-esc="o.disponible"  t-options='{"widget": "float", "precision": 2}'></span></th>
+                            <tr>
+                                <th colspan="2" class='text-left'>Motivo de Prestacion : <span t-esc="o.motivo_prestacion.name"></span></th>
+                            </tr>
+                            <tr>
+                                <t t-if="o.porcentaje_manual">
+                                    <th class="text-left" colspan="2"><span t-esc="o.cap_porcentaje"></span>%</th>
+                                </t>
+                                <t t-else="">
+                                    <th class="text-left" colspan="2">Porcentaje Solicitado<span>75%</span></th>
+                                </t>
+                            </tr>
+                            <tr>
+                                <th class='text-center'>Observacion : </th>
+                                <th class='text-left'><span t-esc="o.observacion"></span></th>
+                            </tr>
+                        </thead>
+                    </table>
+              
+                </div>
+            </t>
+            <div class="container mt-5" style="font-size: 0.7rem;">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <span>______________________________</span>
+                        <div>
+                            <span>Firma de Autorizado</span>
+                        </div>
+                    </div>
+                    
+                    <div class="col-6 text-center">
+                        <span>______________________________</span>
+                        <div>
+                            <span>Firma del Solicitante</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

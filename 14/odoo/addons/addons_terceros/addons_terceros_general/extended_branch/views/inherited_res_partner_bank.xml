@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_res_partner_bank_tree_inherit_branch" model="ir.ui.view">
+            <field name="name">view.res.partner.bank.tree.inherit.branch</field>
+            <field name="model">res.partner.bank</field>
+            <field name="inherit_id" ref="base.view_partner_bank_tree"/>
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <!-- Add your fields or attributes here -->
+                        <field name="branch_id"/>
+                </field>
+
+            </field>
+        </record>
+        <record id="view_res_partner_bank_form_inherit_branch" model="ir.ui.view">
+            <field name="name">view.res.partner.bank.form.inherit.branch</field>
+            <field name="model">res.partner.bank</field>
+            <field name="inherit_id" ref="base.view_partner_bank_form"/>
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <!-- Add your fields or attributes here -->
+                        <field name="branch_id"/>
+                </field>
+
+            </field>
+        </record>
+    </data>
+</odoo>

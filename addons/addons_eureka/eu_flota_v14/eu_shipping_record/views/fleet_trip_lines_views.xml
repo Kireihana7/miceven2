@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fleet_trip_line_view_tree" model="ir.ui.view">
+        <field name="name">fleet.trip.line.view.tree</field>
+        <field name="model">fleet.trip.line</field>
+        <field name="arch" type="xml">
+            <tree string="Productos de viajes">
+                <field name="product_id" />
+                <field name="fleet_trip_id" />
+                <field name="quantity" />
+                <field name="to_ship_weight" />
+                <field name="weight" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="fleet_trip_line_view_form" model="ir.ui.view">
+        <field name="name">fleet.trip.line.view.form</field>
+        <field name="model">fleet.trip.line</field>
+        <field name="arch" type="xml">
+            <form string="Productos de viajes">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_id" required="1" />
+                            <field name="quantity" required="1" />
+                            <field name="weight" required="1" />
+                        </group>
+                        <group>
+                            <field name="delivered_weight" />
+                            <field name="to_ship_weight" />
+                            <field name="returned_weight" />
+                            <field name="total_measure" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

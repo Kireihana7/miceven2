@@ -1,0 +1,31 @@
+// ------------------------------------------------------------------
+// Layout
+// ------------------------------------------------------------------
+.o_AttachmentImage {
+    min-width: 20px;
+    min-height: 20px;
+
+<<<<<<< HEAD:addons/mail/static/src/components/attachment_image/attachment_image.scss
+    img {
+        object-fit: contain;
+    }
+=======
+.o_EmojisPopover {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 200px;
+}
+
+.o_EmojisPopover_emoji {
+    font-size: 1.1em;
+    margin: 3px;
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe:addons/mail/static/src/components/emojis_popover/emojis_popover.scss
+}
+
+// ------------------------------------------------------------------
+// Style
+// ------------------------------------------------------------------
+
+.o_AttachmentImage {
+    cursor: zoom-in;
+}

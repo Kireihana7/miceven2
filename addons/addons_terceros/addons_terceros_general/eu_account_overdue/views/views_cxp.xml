@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="account_overdue_report_form_cxp">
+            <field name="name">account.report.overdue.form</field>
+            <field name="model">account.report.overdue.cxp</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="from_date" string="Fecha Inicio"/>
+                        <field name="to_date" string="Fecha Final"/>
+                        <field name="company_id" string="Compañía" invisible="1"/>
+                        <field name="currency_id_company" invisible="1" />
+                        <field name="currency_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                        <field name="journal_ids" widget="many2many_tags" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                        <field name="agrupar_clientes"/>
+                        <!-- <field name="res_partner_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/> -->
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Generar Reporte" type="object" class="highlight"/>
+                        <button string="Cancelar" class="btn-primary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="account_overdue_report_action_window_cxp">
+            <field name="name">Vencidas por Pagar</field>
+            <field name="res_model">account.report.overdue.cxp</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_overdue_report_cxp" name="Vencidas por Pagar"
+                  parent="account.account_reports_management_menu" action="account_overdue_report_action_window_cxp"
+                  sequence="100"/>
+
+    </data>
+</odoo>

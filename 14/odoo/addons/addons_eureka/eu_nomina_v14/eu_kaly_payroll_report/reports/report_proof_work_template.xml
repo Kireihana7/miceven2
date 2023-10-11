@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_proof_work_template" name="Constancia de trabajo">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-foreach="form.get('documents')" t-as="o">
+                    <div class="header" style="font-size: 9px;">
+                        <div class="row w-100 pl-4">
+                            <div class="row" style="">
+                                <img class="pl-3"  src="/eu_kaly_payroll_report/static/logo_nomina.png" height="85" width="85" />
+                                <p class="pl-2 pt-4">
+                                    <strong><span>REPÚBLICA BOLIVARIANA DE VENEZUELA</span></strong> <br />
+                                    <span>MINISTERIO DEL PODER POPULAR PARA EL PROCESO SOCIAL DE TRABAJO</span><br />
+                                    <strong><span>INSTITUTO VENEZOLANO DE LOS SEGUROS SOCIALES</span></strong> <br />
+                                    <span>DIRECCIÓN GENERAL DE AFILIACIÓN Y PRESTACIONES EN DINERO</span><br />
+                                </p>
+                            </div>
+                            <div class="col-3 text-right pt-4">
+                                <p style="">FORMA: 14-100</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <strong><p class="text-center" style="font-size: 13px;">CONSTANCIA DE TRABAJO PARA EL IVSS</p></strong>
+                        <style>
+                            table, td {
+                                border: 1px solid;
+                                padding: .20rem;
+                            }
+                            
+                        </style>
+                        <table class="text-center w-100" style="font-size: 10px;">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="text-center">DATOS DEL EMPLEADOR O EMPLEADORA</td>
+                                </tr>
+                                <tr>
+                                    <td>RAZÓN SOCIAL O NOMBRE DEL EMPLEADOR O EMPLEADORA</td>
+                                    <td colspan="2">NÚMERO PATRONAL</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2">
+                                        <span t-esc="env.company.name" />
+                                    </td>
+                                    <td colspan="2">
+                                        <span t-if="env.company.num_patronal" t-esc="env.company.num_patronal" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-center">DIRECCIÓN DEL EMPLEADOR O EMPLEADORA</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-center p-2">
+                                        <span t-if="env.company.partner_id.contact_address" t-esc="env.company.partner_id.contact_address" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>APELLIDOS Y NOMBRES DEL REPRESENTANTE LEGAL</td>
+                                    <td>CÉDULA DE IDENTIDAD Nº</td>
+                                    <td>TELÉFONO</td>
+                                </tr>
+                                <tr>
+                                    <td><span  t-if="env.company.law_represent" t-esc="env.company.law_represent.name" /></td>
+                                    <td><span  t-if="env.company.law_represent" t-esc="env.company.law_represent.cedula" /></td>
+                                    <td><span  t-if="env.company.law_represent" t-esc="env.company.law_represent.phone" /></td>
+                                </tr>
+                    
+                                <tr>
+                                    <td>DIRECCIÓN DE CORREO ELECTRÓNICO DEL EMPLEADOR O EMPLEADORA</td>
+                                    <td colspan="2">REGISTRO DE INFORMACIÓN FISCAL (RIF)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2"><span t-if="env.company.email" t-esc="env.company.email" /></td>
+                                    <td colspan="2" class="text-left">
+                                        <span class="col-6 border border-dark">J</span>
+                                        <span class="col-6 border border-dark ml-1">G</span>
+                                        <span class="pl-3" t-if="env.company.rif" t-esc="env.company.rif" /><br />
+                                    <!-- para el rif -->
+                                        <t t-if="o.get('letter_rif') == 'J'">
+                                            <span class="col-6 border border-dark">X</span>
+                                        </t>
+                                        <t t-else="">
+                                            <span class="col-6 border border-dark pr-4"></span>
+                                        </t>
+                                        <!-- for gorbernamental -->
+                                        <t t-if="o.get('letter_rif') == 'G'">
+                                            <span class="col-6 border border-dark">X</span>
+                                        </t>
+                                        <t t-else="">
+                                            <span class="col-6 border border-dark pr-4"></span>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="text-center w-100 pt-1" style="font-size: 10px;">
+                            <tbody>
+                                <tr>
+                                    <td colspan="6">DATOS DEL TRABAJADOR O TRABAJADORA</td>
+                                </tr>
+                                <tr>
+                                    <td>APELLIDOS Y NOMBRES</td>
+                                    <td>V</td>
+                                    <td>E</td>
+                                    <!-- <td>A</td>
+                                    <td>R</td> -->
+                                    <td width="30%">CÉDULA DE IDENTIDAD Nº</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span t-esc="o.get('name_employee')" />
+                                    </td>
+                                    <td>
+                                        <t t-if="o.get('nationality') == 'V'">
+                                            <span>X</span>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.get('nationality') == 'E'">
+                                            <span>X</span>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o.get('rif_employee')" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row pt-1">
+                            <div class="col-2"></div>
+                            <div class="col-4">
+                                <table class=" text-center" style="display: inline-table; font-size: 10px;">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="3">FECHA DE INGRESO</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>DIA</span><br/>
+                                                <span t-if="o.get('fecha_inicio_dia')" t-esc="o.get('fecha_inicio_dia')" />
+                                            </td>
+                                            <td>
+                                                <span>MES</span><br/>
+                                                <span t-if="o.get('fecha_inicio_mes')" t-esc="o.get('fecha_inicio_mes')" />
+                                            </td>
+                                            <td>
+                                                <span>AÑO</span><br/>
+                                                <span t-if="o.get('fecha_inicio_year')" t-esc="o.get('fecha_inicio_year')" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-4">
+                                <table class=" text-center" style="display: inline-table; font-size: 10px;">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="3">FECHA DE EGRESO</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>DIA</span><br/>
+                                                <span t-if="o.get('fecha_fin_dia')" t-esc="o.get('fecha_fin_dia')" />
+                                            </td>
+                                            <td>
+                                                <span>MES</span><br/>
+                                                <span t-if="o.get('fecha_fin_mes')" t-esc="o.get('fecha_fin_mes')" />
+                                            </td>
+                                            <td>
+                                                <span>AÑO</span><br/>
+                                                <span t-if="o.get('fecha_fin_year')" t-esc="o.get('fecha_fin_year')" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-2"></div>
+                        </div>
+                        <table class="w-100 text-center" style="font-size: 10px;">
+                            <tbody>
+
+                                <tr>
+                                    <td>SALARIOS DEVENGADOS</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        <table class="text-center w-100 pt-1 mes_year" style="padding: .22rem; border: 1px solid; font-size: 11px;">
+                            <t t-set="nominas" t-value="env['hr.payslip'].search([('is_anihilation','=',False),('is_utility','=',False),
+                            ('employee_id','=',o.get('employee_id')),
+                            ('type_struct_category','in',['normal','especial'])])"/>
+                            <tbody>
+                                <tr>
+                                    <td style="background-image: url('/eu_kaly_payroll_report/static/mes.svg'); 
+                                    background-repeat: no-repeat; background-size: 85px 25px;">
+                                    </td>
+                                    <t t-foreach="o.get('years')" t-as="year">
+                                        <td><span t-esc="year" /></td>
+                                    </t>
+                                </tr>
+                                <t t-set="meses" t-value="o.get('months')"/>
+                                <t t-foreach="meses" t-as="field">
+                                    <tr>
+                                        <td width="1%"><span t-esc="field[1]"/></td>
+                                        <t t-foreach="o.get('years')" t-as="year">
+                                            <t t-set="subtotal" t-value="sum(nominas.filtered(lambda x: x.date_from.strftime('%m%Y') == field[0] + str(year) ).mapped('line_ids').filtered(lambda x: x.category_id.code=='BASIC').mapped('total'))"/>
+                                            <td width="8%" class="text-right"><span t-esc="subtotal" t-options='{"widget": "float", "precision": 2}' /></td> 
+                                        </t>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <strong><td>TOTAL</td></strong>
+                                    <t t-foreach="o.get('years')" t-as="year">
+                                        <t t-set="total" t-value="sum(nominas.filtered(lambda x: x.date_from.strftime('%Y') == str(year) ).mapped('line_ids').filtered(lambda x: x.category_id.code=='BASIC').mapped('total'))"/>
+                                        <td width="8%" class="text-right"><span t-esc="total" t-options='{"widget": "float", "precision": 2}' /></td> 
+                                    </t>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="mt-1" style="border: 1px solid #000; font-size: 10px; ">
+                            <p style="padding-bottom: 32px; ">OBSERVACIONES</p>
+                        </div>
+                        <div class="text-center" style="font-size: 11px;">
+                            <strong><span>DECLARACIÓN JURADA</span></strong><br />
+                            <span>CERTIFICO BAJO FE DE JURAMENTO, QUE LA INFORMACIÓN QUE ANTECEDE ES CIERTA EN TODAS SUS PARTES</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <table style="font-size: 11px;" class="w-100 text-center">
+                                    <tbody>
+                                        <tr>
+                                            <td>APELLIDOS Y NOMBRES DEL FIRMANTE</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="w-100 mt-1 text-center" style="font-size: 9px;">
+                                    <tbody>
+                                        <tr>
+                                            <td>CARGO QUE OCUPA</td>
+                                            <td>LUGAR</td>
+                                            <td>FECHA</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td width="30%"></td>
+                                            <td>
+                                                <div class="row">
+                                                    <span class="col-4">DIA</span>
+                                                    <span class="col-4">MES</span>
+                                                    <span class="col-4">DIA</span>
+                                                </div>
+                                                 
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-4">
+                                <table style="font-size: 9px;" class="w-100">
+                                    <tbody>
+                                        <tr>
+                                            <td class="pb-5">FIRMA Y SELLO</td>
+                                        </tr>
+                                        <tr>
+                                            <td >C.I. Nº:</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <span style="font-size: 12px;" >Este formulario está autorizado por el IVSS y válido únicamente para ser consignado en las Oficinas Administrativas</span><br />
+                            <strong><span style="font-size: 12px;">EL FORMULARIO Y SU TRAMITACIÓN SON COMPLETAMENTE GRATUITOS</span></strong><br />
+                            <span class="text-primary" style="font-size: 12px;"><u>www.ivss.gob.ve</u></span>
+                        </div>
+                    </div>
+                    <!-- <div style="page-break-after:always;"> </div> -->
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

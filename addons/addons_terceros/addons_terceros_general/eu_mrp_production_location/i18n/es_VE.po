@@ -1,0 +1,57 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* eu_mrp_production_location
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20210324\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-27 19:46+0000\n"
+"PO-Revision-Date: 2023-01-27 15:46-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. module: eu_mrp_production_location
+#: model:ir.model,name:eu_mrp_production_location.model_mrp_bom
+msgid "Bill of Material"
+msgstr "Lista de materiales"
+
+#. module: eu_mrp_production_location
+#: model:ir.model.fields,field_description:eu_mrp_production_location.field_mrp_bom__location_dest_id
+#: model:ir.model.fields,field_description:eu_mrp_production_location.field_mrp_production__location_dest_id
+msgid "Destination location"
+msgstr "Ubicación de destino"
+
+#. module: eu_mrp_production_location
+#: model:ir.model.fields,field_description:eu_mrp_production_location.field_mrp_bom__display_name
+#: model:ir.model.fields,field_description:eu_mrp_production_location.field_mrp_production__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: eu_mrp_production_location
+#: model:ir.model.fields,field_description:eu_mrp_production_location.field_mrp_bom__id
+#: model:ir.model.fields,field_description:eu_mrp_production_location.field_mrp_production__id
+msgid "ID"
+msgstr ""
+
+#. module: eu_mrp_production_location
+#: model:ir.model.fields,field_description:eu_mrp_production_location.field_mrp_bom____last_update
+#: model:ir.model.fields,field_description:eu_mrp_production_location.field_mrp_production____last_update
+msgid "Last Modified on"
+msgstr "Modificada por última vez"
+
+#. module: eu_mrp_production_location
+#: model:ir.model.fields,help:eu_mrp_production_location.field_mrp_production__location_dest_id
+msgid "Location where the system will stock the finished products."
+msgstr "Ubicación donde el sistema almacenará los productos finalizados."
+
+#. module: eu_mrp_production_location
+#: model:ir.model,name:eu_mrp_production_location.model_mrp_production
+msgid "Production Order"
+msgstr "Orden de producción"

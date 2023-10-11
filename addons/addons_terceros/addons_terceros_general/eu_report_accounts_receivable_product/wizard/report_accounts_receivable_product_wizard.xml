@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="report_accounts_receivable_product_wizard" model="ir.ui.view">
+        <field name="name">report.accounts.receivable.product.wizard.form</field>
+        <field name="model">report.accounts.receivable.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="invoice_user_id" required="1"/>
+                </group>
+                <group name="parameters">
+                    <group>
+                        <field name="from_date" required="1"/>
+                    </group>
+                    <group>
+                        <field name="to_date" required="1"/>
+                    </group>
+                </group>
+                
+                <footer>
+                    <button name="print_report" string="Obtener reporte" type="object" class="btn-success" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="eu_report_accounts_receivable_product.action_report_accounts_receivable_product_wizard" model="ir.actions.act_window">
+        <field name="name">Cuentas por cobrar producto terminado (Vendedores)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">report.accounts.receivable.product</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="report_accounts_receivable_product_wizard"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

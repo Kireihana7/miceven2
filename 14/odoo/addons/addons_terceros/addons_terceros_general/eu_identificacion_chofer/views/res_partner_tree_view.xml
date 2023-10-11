@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="chofer_tree_view">
+        <field name="name">chofer.tree.view</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Chofer" edit="0" create="0" import="0" delete="0">
+                <field name="display_name" string="Name"/>
+                <field name="phone" class="o_force_ltr" optional="show"/>
+                <field name="email" optional="show"/>
+                <field name="city" optional="show"/>
+                <field name="state_id" optional="hide" readonly="1"/>
+                <field name="country_id" optional="show" readonly="1"/>
+                <field name="vat" optional="hide" readonly="1"/>
+                <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

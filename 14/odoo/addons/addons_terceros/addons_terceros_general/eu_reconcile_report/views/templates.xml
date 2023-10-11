@@ -1,0 +1,234 @@
+<odoo>
+        <template id="print_account_report_reconciles_template">
+            <t t-call="web.html_container">
+                <t t-set="data_report_margin_top" t-value="10"/>
+                <t t-call="web.basic_layout">
+                    <div style="border:1px solid black;border-radius:20px;border-spacing:0;margin-left:0%;width:100%;">
+                        <table class="text-center" style="width:100%;font-size:13px;">
+                            <tr>
+                                <th><span t-esc="form.get('company_name')"></span></th>
+                            </tr>
+                            <tr>
+                                <th><span t-esc="form.get('company_vat')"></span></th>
+                            </tr>
+                            <tr>
+                                <th><span>** CONCILIACIÓN **</span></th>
+                            </tr>
+                            <tr>
+                                <th><span>Reporte de Conciliación</span></th>
+                            </tr>
+                            <tr>
+                                <th>Diario: <span t-esc="form.get('journal_id')"/></th>
+                            </tr>
+                            <tr>
+                                <th>DEL: <span t-esc="form.get('start_date')" t-options='{"widget": "date"}'/>
+                                AL: <span t-esc="form.get('end_date')" t-options='{"widget": "date"}'/></th>
+                            </tr>
+                        </table>
+                    </div>
+                    <t t-if="form.get('visibility') in ('detalle','todo')">
+                        <table class="text-center" style="width:100%;font-size:12px;margin-top:20px">
+                            <thead>
+                                <tr style="font-size:13px;">
+                                    <th class="text-center"> <!-- 1 -->
+                                        <strong>Fecha </strong>
+                                    </th>
+                                    <th width="2%" class="text-center"> <!-- 2 -->
+                                        <strong></strong>
+                                    </th>
+                                    <th class="text-center"><!-- 3 -->
+                                        <strong>Descripción </strong>
+                                    </th>
+                                    <th class="text-center"><!-- 4 -->
+                                        <strong>Referencia </strong>
+                                    </th>
+                                    <th width="2%" class="text-center"> <!-- 5 -->
+                                        <strong></strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 6 -->
+                                        <strong>Empresa </strong>
+                                    </th>
+                                    <th width="2%" class="text-center"> <!-- 7 -->
+                                        <strong></strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 8 -->
+                                        <strong>Monto </strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 9 -->
+                                        <strong>Acumulado </strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 10 -->
+                                        <strong>Acumulado Conciliado </strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 11 -->
+                                        <strong>Acumulado No Conciliado </strong>
+                                    </th>
+                                    <th width="2%" class="text-center"> <!-- 12 -->
+                                        <strong></strong>
+                                    </th>
+                                    <th class="text-center"> <!-- 13 -->
+                                        <strong>Estatus</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  class="border-top">
+                                    <td class="text-center"> <!-- 1 -->
+                                         <span />
+                                    </td>
+                                    <td width="2%" class="text-left"><!-- 2 -->
+                                        <span />
+                                    </td>
+                                    <td class="text-center"><!-- 3 -->
+                                         <span>Saldo Inicial</span>
+                                    </td>
+                                    <td class="text-center"><!-- 4 -->
+                                         <span>Saldo Inicial</span>
+                                    </td>
+                                    <td width="2%" class="text-left"><!-- 5 -->
+                                        <span />
+                                    </td>
+                                    <td class="text-center"><!-- 6 -->
+                                        <span />
+                                    </td>
+                                    <td width="2%" class="text-left"><!-- 7 -->
+                                            <span />
+                                        </td>
+                                    <td class="text-right"><!-- 8 -->
+                                        <span >0.0</span>
+                                    </td>
+                                    <td class="text-right"><!-- 9 -->
+                                        <span t-esc="form.get('saldo_inicial')"/>
+                                    </td>
+                                    <td class="text-right"><!-- 10 -->
+                                        <span t-esc="form.get('saldo_inicial_conciliado')"/>
+                                    </td>
+                                    <td class="text-right"><!-- 11 -->
+                                        <span t-esc="form.get('saldo_inicial_no_conciliado')"/>
+                                    </td>
+                                    <td width="2%" class="text-left"><!-- 12 -->
+                                        <span />
+                                    </td>
+                                    <td class="text-left"><!-- 13 -->
+                                        <span />
+                                    </td>
+                                </tr>  
+                                <t t-foreach="form.get('invoices')" t-as="l">    
+                                    <tr style="font-size:12px;">
+                                        <td class="text-center"> <!-- 1 -->
+                                            <span t-esc="l.get('date')" t-options='{"widget": "date"}'/>
+                                        </td>
+                                        <td width="2%" class="text-left"><!-- 2 -->
+                                            <span />
+                                        </td>
+                                        <td class="text-left"><!-- 3 -->
+                                            <span t-esc="l.get('payment_ref')"/>
+                                        </td>
+                                        <td class="text-center"><!-- 4 -->
+                                            <span t-esc="l.get('ref')"/>
+                                        </td>
+                                        <td width="2%" class="text-left"><!-- 5 -->
+                                            <span />
+                                        </td>
+                                        <td class="text-left"><!-- 6 -->
+                                            <span t-esc="l.get('partner_id')"/>
+                                        </td>
+                                        <td width="2%" class="text-left"><!-- 7 -->
+                                            <span />
+                                        </td>
+                                        <td class="text-right"><!-- 8 -->
+                                            <span t-esc="l.get('amount')"/>
+                                        </td>
+                                        <td class="text-right"><!-- 9 -->
+                                            <span t-esc="l.get('acumulado')"/>
+                                        </td>
+                                        <td class="text-right"><!-- 10 -->
+                                            <span t-esc="l.get('acumulado_conciliado')"/>
+                                        </td>
+                                        <td class="text-right"><!-- 11 -->
+                                            <span t-esc="l.get('acumulado_no_conciliado')"/>
+                                        </td>
+                                        <td width="2%" class="text-left"><!-- 12 -->
+                                            <span />
+                                        </td>
+                                        <td class="text-center"><!-- 13 -->
+                                            <span t-esc="l.get('conciliado')"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <tr  class="border-top">
+                                    <td class="text-center"> <!-- 1 -->
+                                         <span />
+                                    </td>
+                                    <td width="2%" class="text-left"><!-- 2 -->
+                                        <span />
+                                    </td>
+                                    <td class="text-center"><!-- 3 -->
+                                         <span />
+                                    </td>
+                                    <td class="text-center"><!-- 4 -->
+                                        <span />
+                                    </td>
+                                    <td width="2%" class="text-left"><!-- 5 -->
+                                        <span />
+                                    </td>
+                                    <td class="text-center"><!-- 6 -->
+                                         <span />
+                                    </td>
+                                    <td width="2%" class="text-left"><!-- 7 -->
+                                        <span />
+                                    </td>
+                                    <td class="text-center"><!-- 8 -->
+                                        <span />
+                                    </td>
+                                    <td class="text-center"><!-- 9 -->
+                                        <span />
+                                    </td>
+                                    <td class="text-center"><!-- 10 -->
+                                        <span />
+                                    </td>
+                                    <td class="text-center"><!-- 11 -->
+                                        <span />
+                                    </td>
+                                    <td width="2%" class="text-left"><!-- 12 -->
+                                        <span />
+                                    </td>
+                                    <td class="text-center"><!-- 13 -->
+                                        <span />
+                                    </td>
+                                </tr>  
+                            </tbody>
+                        </table>
+                    </t>
+                    <br/>
+                    <t t-if="form.get('visibility') in ('cabecera','todo')">
+                        <table class="text-left;" style="width:30%;font-size:10px;margin-left:30%;">
+                            <tr >
+                                <th class="text-center" colspan="3"><span>Resumen de las Conciliaciones</span></th>
+                            </tr>
+                            <tr style="border:1px solid black">
+                                <th class="text-center" style="border:1px solid black"><span></span>Saldo Inicial</th>
+                                <th class="text-center" style="border:1px solid black"><span></span>Saldo Inicial Conciliado</th>
+                                <th class="text-center" style="border:1px solid black"><span></span>Saldo Inicial No Conciliado</th>
+                            </tr>
+                            <tr style="border:1px solid black">
+                                <th style="border:1px solid black" class="text-right"><span t-esc="form.get('saldo_inicial')"/> </th>
+                                <th style="border:1px solid black" class="text-right"><span t-esc="form.get('saldo_inicial_conciliado')"/> </th>
+                                <th style="border:1px solid black" class="text-right"><span t-esc="form.get('saldo_inicial_no_conciliado')"/> </th>
+                            </tr>
+                            <tr style="border:1px solid black">
+                                <th class="text-center" style="border:1px solid black"><span></span>Saldo Final</th>
+                                <th class="text-center" style="border:1px solid black"><span></span>Saldo Final Conciliado</th>
+                                <th class="text-center" style="border:1px solid black"><span></span>Saldo Final No Conciliado</th>
+                            </tr>
+                            <tr style="border:1px solid black">
+                                <th style="border:1px solid black" class="text-right"><span t-esc="form.get('saldo_final')"/> </th>
+                                <th style="border:1px solid black" class="text-right"><span t-esc="form.get('saldo_final_conciliado')"/> </th>
+                                <th style="border:1px solid black" class="text-right"><span t-esc="form.get('saldo_final_no_conciliado')"/> </th>
+                            </tr>
+                        </table>
+                    </t>
+                </t>
+            </t>
+        </template>
+</odoo>

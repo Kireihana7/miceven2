@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="group_stock_order_checklist_superuser" model="res.groups">
+        <field name="name">Listas de Verificación de Ajuste de Inventario Super usuario</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record model="ir.rule" id="stock_checklist_company_rule">
+        <field name="name">Listas de Verificación de Ajuste de Inventario</field>
+        <field name="model_id" ref="model_check_company_list_stock"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[
+            '|',
+                ('company_id', '=', False),
+                ('company_id', 'in', company_ids),
+        ]</field>
+    </record>
+
+</odoo>

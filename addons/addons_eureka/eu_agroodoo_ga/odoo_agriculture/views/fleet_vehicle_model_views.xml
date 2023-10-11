@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="fleet_vehicle_model_agriculture_view_form_inherit" model="ir.ui.view">
+        <field name="name">fleet.vehicle.model.agriculture.view.form.inherited</field>
+        <field name="model">fleet.vehicle.model</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_model_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vehicle_type']" position="after">
+                <field name="farm_equipment"/>                    
+            </xpath>              
+        </field>            
+    </record>
+
+    <record id="fleet_vehicle_model_agriculture_view_tree_inherit" model="ir.ui.view">
+        <field name="name">fleet.vehicle.model.agriculture.view.tree.inherited</field>
+        <field name="model">fleet.vehicle.model</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_model_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vehicle_type']" position="after">
+                <field name="farm_equipment" />                    
+            </xpath>    
+        </field>            
+    </record>    
+
+    <record id="fleet_vehicle_model_agriculture_view_search_inherit" model="ir.ui.view">
+        <field name="name">fleet.vehicle.model.agriculture.view.search.inherited</field>
+        <field name="model">fleet.vehicle.model</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_model_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search/field[@name='brand_id']" position="after">
+                <filter string="Farm Equipment" name="filter_farm_equipment" 
+                    domain="[
+                        ('farm_equipment','=', True)
+                    ]"/>               
+                <separator/>
+            </xpath>         
+            <xpath expr="//group" position="after">
+                <separator/>
+                <filter string="Farm Equipment" name="farm_equipment" context="{'group_by': 'farm_equipment'}"/>
+                <separator/>
+            </xpath>                       
+        </field>            
+    </record>    
+</odoo>

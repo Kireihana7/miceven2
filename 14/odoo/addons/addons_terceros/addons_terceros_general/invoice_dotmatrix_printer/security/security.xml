@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_print_ticket_romana" model="res.groups">
+        <field name="name">Reimprimir Ticket Romana</field>
+        <field name="category_id"
+            ref="eu_agroindustry.module_category_agroindustry" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+</odoo>

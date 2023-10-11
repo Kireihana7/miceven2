@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- #Paperformats-->
+    <record id="paperformat_accounting_document" model="report.paperformat">
+        <field name="name">Formato de documento contable</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">42</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">6</field>
+        <field name="margin_right">4</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="dpi">80</field>
+    </record>
+
+    <!-- Paperformat account state -->
+    <record id="paperformat_client_account_state" model="report.paperformat">
+        <field name="name">Formato de Estado de Cuenta </field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">42</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">6</field>
+        <field name="margin_right">4</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="dpi">80</field>
+    </record>
+
+    <record id="custom_action_report_client_account_state" model="ir.actions.report">
+        <field name="name">Estado de Cuenta del Cliente</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">eu_accounting_document.report_client_account_state_template</field>
+        <field name="report_file">eu_accounting_document.report_client_account_state_template</field>
+        <field name="paperformat_id" ref="eu_accounting_document.paperformat_client_account_state"/>
+        <field name="binding_type">report</field>
+    </record>
+   
+    <record id="custom_action_report_accounting_doc" model="ir.actions.report">
+        <field name="name">Report accounting document</field>
+        <field name="model">account.historial.document</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">eu_accounting_document.report_accounting_document_template</field>
+        <field name="report_file">eu_accounting_document.report_accounting_document_template</field>
+        <field name="paperformat_id" ref="eu_accounting_document.paperformat_accounting_document"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

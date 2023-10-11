@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem 
+        id="report_products_sold_vendor_usd_submenu"
+        name="Artículos más vendidos por vendedor en divisas"
+        sequence='6'
+        action="eu_report_products_sold_vendor_usd.action_products_sold_vendor_usd_wizard"
+        parent="account.menu_finance_reports"/>    
+</odoo>

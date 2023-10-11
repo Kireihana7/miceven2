@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="print_matriz_miceven_view_form" model="ir.ui.view">
+        <field name="name">print.matriz.nomina.view.form</field>
+        <field name="model">print.matriz.nomina</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="payslip_run"  />
+                    <pre class="receipt_content text-center">
+                        <field name="name" nolabel="1" readonly="1" force_save="1" widget="html"/>
+                    </pre>
+                </sheet>
+                <footer>
+                    <button string="Imprimir" name="action_print_matriz_miceven" type="object" class="oe_highlight"/>
+                    <button string="Cancelar" special="cancel" type="object" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="account_daily_consolidate_report_form">
+            <field name="name">account.report.consolidate.form</field>
+            <field name="model">account.report.consolidate</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="from_date" string="Fecha Inicio"/>
+                        <field name="to_date" string="Fecha Final"/>
+                        <field name="journal_ids" string="Diarios">
+                            <tree>
+                                <field name="name"/>
+                                <field name="type"/>
+                            </tree>
+                        </field>
+                        <field name="company_id" string="Compañía" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Generar PDF" type="object" class="oe_highlight"/>
+                        <button name="generate_xls_report" string="Generar XLS" type="object" class="oe_highlight" />
+                        <button string="Cancelar" class="btn-primary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="account_daily_consolidate_report_action_window">
+            <field name="name">Resumen Según Artículo 72</field>
+            <field name="res_model">account.report.consolidate</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_daily_consolidate_report" name="Resumen Según Artículo 72"
+                  parent="account.account_reports_management_menu" action="account_daily_consolidate_report_action_window"
+                  sequence="100"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_crops_dieases_form" model="ir.ui.view">
+            <field name="name">Crops Dieases View</field>
+            <field name="model">crops.dieases</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <!-- <label for="name" class="oe_edit_only"/> -->
+                                <label for="name" class="oe_edit_only"/>
+                                <field name="name"/>
+                            </h1>
+                        </div>                        
+                        <group>
+                            <group>
+                                <field name='crop_id' invisible="context.get('hide_crop_id')"/>
+                                <field name='crops_dieases_cure_id'/>
+                                <field name="causal_agent" />
+                                <field name="current_impact" />
+                                <field name="source" />
+                            </group>
+                            <group>  
+                                <field name='image' widget="image"/>
+                            </group>
+                        </group>
+                        <!-- 
+                        <group string="Description">
+                            <field name="description" nolabel="1" placeholder="Add a description."/>
+                        </group>
+                        -->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+                       
+        <record id="view_crops_dieases_tree" model="ir.ui.view">
+                <field name="name">Crops Dieases Tree View</field>
+                <field name="model">crops.dieases</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name='crops_dieases_cure_id'/>
+                        <field name='crop_id'/>
+                        <field name='causal_agent'/>
+                        <field name='source'/>
+                        <field name='current_impact'/>
+                    </tree>
+                </field>
+        </record>
+
+        <record id="view_crops_dieases_search" model="ir.ui.view">
+                <field name="name">Crops Dieases Search View</field>
+                <field name="model">crops.dieases</field>
+                <field name="arch" type="xml">
+                    <search>
+                        <field name='crops_dieases_cure_id'/>
+                        <field name='crop_id'/>
+                        <field name='description'/>
+                    </search>
+                </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_crops_dieases">
+            <field name="name">Crop Dieases</field>
+            <field name="res_model">crops.dieases</field>
+            <!-- <field name="view_type">form</field> --> <!-- odoo13 -->
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+
+    <data>
+        <record id="view_crops_dieases_cure_form" model="ir.ui.view">
+            <field name="name">Crops Dieases Cure View</field>
+            <field name="model">crops.dieases.cure</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                                <field name='name'/>
+                                <field name='description'/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>                    
+                </form>
+            </field>
+        </record>
+                       
+        <record id="view_crops_dieases_cure_tree" model="ir.ui.view">
+                <field name="name">Crops Dieases Cure Tree View</field>
+                <field name="model">crops.dieases.cure</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name='name'/>
+                        <field name='description'/>
+                    </tree>
+                </field>
+        </record>
+
+        <record id="view_crops_dieases_cure_search" model="ir.ui.view">
+                <field name="name">Crops Dieases Cure Search View</field>
+                <field name="model">crops.dieases.cure</field>
+                <field name="arch" type="xml">
+                    <search>
+                        <field name='name'/>
+                        <field name='description'/>
+                    </search>
+                </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_crops_dieases_cure">
+            <field name="name">Crop Dieases Cures</field>
+            <field name="res_model">crops.dieases.cure</field>
+            <!-- <field name="view_type">form</field> --> <!-- odoo13 -->
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

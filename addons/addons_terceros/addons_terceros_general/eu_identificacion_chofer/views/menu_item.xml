@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_chofer_vista_tree" model="ir.actions.act_window">
+        <field name="name">Detalles de Chofer</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="eu_identificacion_chofer.chofer_tree_view"/>
+        <field name="domain">[('es_chofer_partner', '=', True)]</field>
+    </record>
+
+    <menuitem id="detalle_chofer_vista_tree"
+            name="Chofer"
+            parent="fleet.fleet_vehicles"
+            action="eu_identificacion_chofer.action_chofer_vista_tree"
+            sequence="1"/>
+</odoo>

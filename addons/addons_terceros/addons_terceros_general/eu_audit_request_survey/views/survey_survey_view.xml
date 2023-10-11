@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_survey_survey_audit">
+        <field name="name">survey.survey.inherit.form.survey</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='has_conditional_questions']" position="after">
+                <field name="audit_id" domain="[('state','=','a_draft')]"  readonly="0" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

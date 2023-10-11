@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.report.accounts.receivable.product,access_report_accounts_receivable_product,eu_report_accounts_receivable_product.model_report_accounts_receivable_product,,1,1,1,1

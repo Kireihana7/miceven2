@@ -1,0 +1,176 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* event_sms
+# 
+# Translators:
+<<<<<<< HEAD
+# Martin Trigaux, 2022
+# Éder Brito <britoederr@gmail.com>, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~15.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-19 13:58+0000\n"
+"PO-Revision-Date: 2022-09-22 05:46+0000\n"
+"Last-Translator: Éder Brito <britoederr@gmail.com>, 2023\n"
+=======
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2020
+# Rafael H L Moretti <rafael.moretti@gmail.com>, 2020
+# Martin Trigaux, 2020
+# Mateus Lopes <mateus1@gmail.com>, 2020
+# Adriel Kotviski <kotviski@gmail.com>, 2020
+# Yannick Belot <yannickbh@gmail.com>, 2020
+# André Augusto Firmino Cordeiro <a.cordeito@gmail.com>, 2020
+# Éder Brito <britoederr@gmail.com>, 2021
+# Maitê Dietze, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~13.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-01 07:29+0000\n"
+"PO-Revision-Date: 2020-09-07 08:12+0000\n"
+"Last-Translator: Maitê Dietze, 2023\n"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/odoo/teams/41243/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+<<<<<<< HEAD
+=======
+
+#. module: event_sms
+#: model:sms.template,body:event_sms.sms_template_data_event_reminder
+msgid ""
+"${object.event_id.organizer_id.name or object.event_id.company_id.name or "
+"user.env.company.name}: We are excited to remind you that the "
+"${object.event_id.name} event is starting ${object.get_date_range_str()}. We"
+" confirm your registration and hope to meet you there."
+msgstr ""
+"${object.event_id.organizer_id.name or object.event_id.company_id.name or "
+"user.env.company.name}: Temos o prazer de relembrá-lo do evento "
+"${object.event_id.name} que iniciará ${object.get_date_range_str()}. "
+"Confirmamos seu cadastro e esperamos encontrá-lo lá."
+
+#. module: event_sms
+#: model:sms.template,body:event_sms.sms_template_data_event_registration
+msgid ""
+"${object.event_id.organizer_id.name or object.event_id.company_id.name or "
+"user.env.company.name}: We are happy to confirm your registration for the "
+"${object.event_id.name} event."
+msgstr ""
+"${object.event_id.organizer_id.name or object.event_id.company_id.name or "
+"user.env.company.name}: Temos o prazer de confirmar a sua inscrição para o "
+"evento ${object.event_id.name}."
+
+#. module: event_sms
+#: model:ir.model.fields,field_description:event_sms.field_event_mail__display_name
+#: model:ir.model.fields,field_description:event_sms.field_event_mail_registration__display_name
+#: model:ir.model.fields,field_description:event_sms.field_event_registration__display_name
+#: model:ir.model.fields,field_description:event_sms.field_event_type_mail__display_name
+msgid "Display Name"
+msgstr "Nome exibido"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: event_sms
+#: model:ir.model,name:event_sms.model_event_mail
+msgid "Event Automated Mailing"
+msgstr "Automação de email no evento"
+
+#. module: event_sms
+#: model:ir.model,name:event_sms.model_event_registration
+msgid "Event Registration"
+msgstr "Inscrição no Evento"
+
+#. module: event_sms
+#: model:sms.template,name:event_sms.sms_template_data_event_registration
+msgid "Event: Registration"
+msgstr "Evento: Inscrição"
+
+#. module: event_sms
+#: model:sms.template,name:event_sms.sms_template_data_event_reminder
+msgid "Event: Reminder"
+msgstr "Evento: Lembrete"
+<<<<<<< HEAD
+=======
+
+#. module: event_sms
+#: model:ir.model.fields,field_description:event_sms.field_event_mail__id
+#: model:ir.model.fields,field_description:event_sms.field_event_mail_registration__id
+#: model:ir.model.fields,field_description:event_sms.field_event_registration__id
+#: model:ir.model.fields,field_description:event_sms.field_event_type_mail__id
+msgid "ID"
+msgstr "ID"
+
+#. module: event_sms
+#: model:ir.model.fields,field_description:event_sms.field_event_mail____last_update
+#: model:ir.model.fields,field_description:event_sms.field_event_mail_registration____last_update
+#: model:ir.model.fields,field_description:event_sms.field_event_registration____last_update
+#: model:ir.model.fields,field_description:event_sms.field_event_type_mail____last_update
+msgid "Last Modified on"
+msgstr "Última modificação em"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: event_sms
+#: model:ir.model,name:event_sms.model_event_type_mail
+msgid "Mail Scheduling on Event Category"
+<<<<<<< HEAD
+msgstr "Agendamento de e-mail na Categoria de Evento"
+
+#. module: event_sms
+#: model:sms.template,body:event_sms.sms_template_data_event_reminder
+msgid ""
+"Ready for \"{{ object.event_id.name }}\" {{ object.get_date_range_str(object.partner_id.lang) }}?\n"
+"{{ 'It starts at %s' % format_time(time=object.event_begin_date, tz=object.event_id.date_tz, time_format='short', lang_code=object.partner_id.lang) + (', at %s' % object.event_id.address_inline if object.event_id.address_inline else '') + '.\\nSee you there!' if object.event_id.address_inline or 'website_published' not in object.event_id._fields else 'Join us on %s/event/%i !' % (object.get_base_url(), object.event_id.id) }}"
+msgstr ""
+=======
+msgstr "Agendamento de e-mail na categoria de evento"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: event_sms
+#: model:ir.model,name:event_sms.model_event_mail_registration
+msgid "Registration Mail Scheduler"
+msgstr "Agendador de E-mail de Registro"
+
+#. module: event_sms
+#: model:ir.model.fields.selection,name:event_sms.selection__event_mail__notification_type__sms
+#: model:ir.model.fields.selection,name:event_sms.selection__event_type_mail__notification_type__sms
+msgid "SMS"
+msgstr "SMS"
+
+#. module: event_sms
+<<<<<<< HEAD
+#: model:ir.model,name:event_sms.model_sms_template
+msgid "SMS Templates"
+msgstr "Modelos de SMS"
+=======
+#: model:ir.model.fields,field_description:event_sms.field_event_mail__sms_template_id
+#: model:ir.model.fields,field_description:event_sms.field_event_type_mail__sms_template_id
+msgid "SMS Template"
+msgstr "Modelo de SMS"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: event_sms
+#: model:ir.model.fields,field_description:event_sms.field_event_mail__notification_type
+#: model:ir.model.fields,field_description:event_sms.field_event_type_mail__notification_type
+msgid "Send"
+msgstr "Enviar"
+
+#. module: event_sms
+#: model:sms.template,body:event_sms.sms_template_data_event_registration
+msgid ""
+<<<<<<< HEAD
+"{{ object.event_id.organizer_id.name or object.event_id.company_id.name or "
+"user.env.company.name }}: We are happy to confirm your registration for the "
+"{{ object.event_id.name }} event."
+msgstr ""
+"{{ object.event_id.organizer_id.name or object.event_id.company_id.name or "
+"user.env.company.name }}: Estamos felizes em confirmar sua participação no "
+"evento {{ object.event_id.name }}."
+=======
+"This field contains the template of the SMS that will be automatically sent"
+msgstr "Este campo contem o modelo do SMS que será enviado automaticamente"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe

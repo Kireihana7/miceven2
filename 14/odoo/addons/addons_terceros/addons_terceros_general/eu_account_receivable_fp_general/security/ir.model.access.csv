@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_eu_account_receivable_fp_general,eu_account_receivable_fp_general.account_receivable_fp_general_wizard,model_account_receivable_fp_general_wizard,,1,1,1,1

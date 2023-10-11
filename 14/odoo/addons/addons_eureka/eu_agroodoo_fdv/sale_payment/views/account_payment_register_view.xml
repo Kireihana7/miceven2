@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_payment_register" model="ir.ui.view">
+        <field name="name">view.move.form.extends.payment.register</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="arch" type="xml">
+            <field name="communication" position="after">
+                <field name="sale_id" readonly="1" attrs="{'invisible': [('sale_id', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+</odoo>

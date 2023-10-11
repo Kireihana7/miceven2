@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="account_reconcile_venezuela_wizard_view" model="ir.ui.view">
+			<field name="name">Account Reconcile Venezuela </field>
+			<field name="model">account.reconcile.venezuela</field>
+			<field name="arch" type="xml">
+				<form string="Importar Extractos">
+                    <group>
+                    	<group>
+                    		<field name="bank_option" />
+                    		<field name="date" />
+                    		<field name="journal_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                    	</group>
+	                </group>
+					<group>
+						<field name="file" filename="name" />
+					</group>
+					<footer>
+						<button name="import_account" string="Importar Extracto" type="object" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="account_reconcile_venezuela_import_wizard" model="ir.actions.act_window">
+			<field name="name">Importar Extractos Bancarios Venezuela</field>
+			<field name="res_model">account.reconcile.venezuela</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+        
+		<menuitem id="account_reconcile_venezuela_import_data" groups="eu_venezuela_statement.importar_extractos_venezuela_group" name="Importar Extractos" parent="account_accountant.menu_accounting" sequence="6"/>
+		
+		<menuitem action="account_reconcile_venezuela_import_wizard" name="Importar Extractos" id="account_reconcile_venezuela_wizard_import"
+			parent="account_reconcile_venezuela_import_data" />
+
+	</data>
+</odoo>
+ 

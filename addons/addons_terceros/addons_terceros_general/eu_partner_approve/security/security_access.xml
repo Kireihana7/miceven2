@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups" id="can_activate_partner">
+        <field name="name">Puede Activar un Contacto</field>
+        <field name="category_id" ref="eu_partner_approve.module_approval_partner"/>
+    </record>
+    <record model="res.groups" id="can_desactivate_partner">
+        <field name="name">Puede desactivar un Contacto</field>
+        <field name="category_id" ref="eu_partner_approve.module_approval_partner"/>
+    </record>
+</odoo>

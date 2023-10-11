@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="view_total_sale">
+        <field name="name">sale.order.inherit.form.advance</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <field name="monto_restante" string="Importe Adeudado"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_form_inherit_tree_total" model="ir.ui.view">
+        <field name="name">sale_order_form_inherit_tree_total</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <field name="monto_restante" sum="Total Monto Restante" optional="hide" widget='monetary' options="{'currency_field': 'currency_id'}"></field>
+                <field name="monto_total" sum="Total Monto"  optional="hide" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+            </xpath>
+        </field>
+    </record>
+  </data>
+</odoo>

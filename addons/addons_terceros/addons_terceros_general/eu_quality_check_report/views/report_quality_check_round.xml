@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_quality_check_round">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="form.get('documents')" t-as="o">
+                        <div class="page">
+                            <div class="oe_structure"/>
+
+                            <center><h1>Certificado de Calidad</h1></center>
+                            <br/>
+
+                            <h3>Control de Calidad: <b><span t-esc="o.get('name')"/></b></h3>
+
+                            <div class="row">
+                                <div t-if="o.get('create_date')" class="col-12">
+                                    <strong>Fecha:</strong>
+                                    <p t-esc="o.get('create_date')" class="m-0"/>
+                                </div>                        
+                            </div>                            
+                            <div class="row">
+                                <div t-if="o.get('title')" class="col-12">
+                                    <strong>Titulo:</strong>
+                                    <p t-esc="o.get('title')" class="m-0"/>
+                                </div>                        
+                            </div>
+                            <div class="row">
+                                <div t-if="o.get('partner_id')" class="col-12">
+                                    <strong>Proveedor:</strong>
+                                    <p t-esc="o.get('partner_id')" class="m-0"/>
+                                </div>                        
+                            </div>  
+                            <div class="row">
+                                <div t-if="o.get('vehicle_id')" class="col-12">
+                                    <strong>Vehículo:</strong>
+                                    <p t-esc="o.get('vehicle_id')" class="m-0"/>
+                                </div>                        
+                            </div>                            
+                            <div class="row mt32 mb32">
+                                <div t-if="o.get('picking_id')" class="col-3 bm-2">
+                                    <strong>Albarán:</strong>
+                                    <p t-esc="o.get('picking_id')" class="m-0"/>
+                                </div>
+                                <div t-if="o.get('product_id')" class="col-3 bm-2">
+                                    <strong>Producto:</strong>
+                                    <p t-esc="o.get('product_id')" class="m-0"/>
+                                </div>                        
+                                <div t-if="o.get('lot_id')" class="col-3 bm-2">
+                                    <strong>Componentes de Lote:</strong>
+                                    <p t-esc="o.get('lot_id')" class="m-0"/>
+                                </div>
+                                <div t-if="o.get('lot_id')" class="col-3 bm-2">
+                                    <strong>Lote terminado:</strong>
+                                    <p t-esc="o.get('finished_lot_id')" class="m-0"/>
+                                </div>
+                            </div>
+                            <!-- =============================================== -->
+                            <div class="row mt32 mb32">
+                                <div t-if="o.get('measure')" class="col-3 bm-2">
+                                    <strong>Medida:</strong>
+                                    <p t-esc="o.get('measure')" class="m-0"/>
+                                </div>
+                                <div t-if="o.get('production_id')" class="col-3 bm-2">
+                                    <strong>Orden de producción:</strong>
+                                    <p t-esc="o.get('production_id')" class="m-0"/>
+                                </div>
+                                <div t-if="o.get('point_id')" class="col-3 bm-2">
+                                    <strong>Punto de Control:</strong>
+                                    <p t-esc="o.get('point_id')" class="m-0"/>
+                                </div>
+                                <div t-if="o.get('test_type_id')" class="col-3 bm-2">
+                                    <strong>Tipo:</strong>
+                                    <p t-esc="o.get('test_type_id')" class="m-0"/>
+                                </div>
+                            </div>
+                            <!-- =============================================== -->
+                            <div class="row mt32 mb32">
+                                <div t-if="o.get('team_id')" class="col-3 bm-2">
+                                    <strong>Equipo:</strong>
+                                    <p t-esc="o.get('team_id')" class="m-0"/>
+                                </div>
+                                <div t-if="o.get('company_id')" class="col-3 bm-2">
+                                    <strong>Compañia:</strong>
+                                    <p t-esc="o.get('company_id')" class="m-0"/>
+                                </div>
+                            </div>
+
+                            <!-- ================== Rondas ================== --> 
+                            <t t-if="o.get('rondas')">
+                                <br/>
+                                <h5>Operación</h5><strong><span t-esc="o.get('product_operation')"/></strong>                        
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th style="border-top:0px;"><strong>Propiedades</strong></th>
+                                            <th class="text-center" style="border-top:0px;"><strong>Resultado Esperado</strong></th>
+                                            <th class="text-center" style="border-top:0px;"><strong>Resultado Obtenido</strong></th>
+                                            <th class="text-center" style="border-top:0px;"><strong>Cantidad Esperada</strong></th>
+                                            <th class="text-center" style="border-top:0px;"><strong>Resultado</strong></th>
+                                            <th class="text-center" style="border-top:0px;"><strong>Diferencia</strong></th>                                            
+                                        </tr>                                
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="o.get('rondas')" t-as="line">
+                                            <tr>
+                                                <td style="border-top:0px;" class="text-left">
+                                                    <t t-if="line.get('display_type') == 'line_section'">
+                                                        <strong><span t-esc="line.get('name')"/></strong>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span t-esc="line.get('name')"/>
+                                                    </t>                                                   
+                                                </td>
+                                                <td style="border-top:0px;" class="text-right">
+                                                    <t t-if="line.get('resultado_esperado') == 'conforme'">
+                                                        <span>Conforme</span>
+                                                    </t>
+                                                    <t t-if="line.get('resultado_esperado') == 'caracte'">
+                                                        <span>Característico</span>
+                                                    </t>
+                                                    <t t-if="line.get('resultado_esperado') == 'no_conforme'">
+                                                        <span>No Conforme</span>
+                                                    </t>                                                                                                        
+                                                </td>
+                                                <td style="border-top:0px;" class="text-right">
+                                                    <t t-if="line.get('resultado') == 'conforme'">
+                                                        <span>Conforme</span>
+                                                    </t>
+                                                    <t t-if="line.get('resultado') == 'caracte'">
+                                                        <span>Característico</span>
+                                                    </t>
+                                                    <t t-if="line.get('resultado') == 'no_conforme'">
+                                                        <span>No Conforme</span>
+                                                    </t>                                                                                                        
+                                                </td>                                                
+                                                <td style="border-top:0px;" class="text-right">
+                                                    <t t-if="line.get('display_type') == 'line_section'">
+                                                        <span></span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span t-esc="line.get('qty_expected')"/>
+                                                    </t>                                                                                                        
+                                                </td>
+                                                <td style="border-top:0px;" class="text-right">
+                                                    <t t-if="line.get('display_type') == 'line_section'">
+                                                        <span></span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span t-esc="line.get('qty')"/>
+                                                    </t>                                                                                                        
+                                                </td>    
+                                                <td style="border-top:0px;" class="text-right">
+                                                    <t t-if="line.get('display_type') == 'line_section'">
+                                                        <span></span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span t-esc="line.get('diferencia')"/>
+                                                    </t>                                                                                                        
+                                                </td>                                                                                                
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+
+                                <!-- Promedio --> 
+                                <t t-if="o.get('rondas')">
+                                    <br/>
+                                    <h5>Promedio</h5>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-left" style="border-top:0px;"><strong>Nombre</strong></th>
+                                                <th class="text-left" style="border-top:0px;"><strong>Resultado</strong></th>
+                                            </tr>                                
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="o.get('promedio_propiedades')" t-as="line">
+                                                <tr>
+                                                    <td style="border-top:0px;" class="text-left">
+                                                        <span t-esc="line.get('name')"/>                                   
+                                                    </td>
+                                                    <td style="border-top:0px;" class="text-left">
+                                                        <span t-esc="line.get('promedio')"/>                                                  
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>                                        
+                                </t>                            
+                            </t>
+                            
+                            <!-- ================== No Conformidades ================== -->
+                            <t t-if="o.get('quality_motivo')">
+                                <br/>
+                                <h5>No Conformidades</h5>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left" style="border-top:0px;"><strong>Motivo</strong></th>
+                                            <th class="text-left" style="border-top:0px;"><strong>Cantidad</strong></th>
+                                            <th class="text-left" style="border-top:0px;"><strong>Destino</strong></th>
+                                        </tr>                                
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="o.get('quality_motivo')" t-as="line">
+                                            <tr>
+                                                <td style="border-top:0px;" class="text-left">
+                                                  <t t-if="line.get('name')">
+                                                    <span t-esc="line.get('name')"/>
+                                                  </t>                                     
+                                                </td>
+                                                <td style="border-top:0px;" class="text-left">
+                                                    <t t-if="line.get('quantity')">
+                                                        <span t-esc="line.get('quantity')"/>
+                                                    </t>                                                          
+                                                </td>
+                                                <td style="border-top:0px;" class="text-left">
+                                                    <t t-if="line.get('destino')">
+                                                        <span t-esc="line.get('destino')"/>
+                                                    </t>                                                          
+                                                </td>                                                
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </t>
+
+                            <!-- <t t-if="o.get('note')">
+                                <h5>Instrucciones:</h5>
+                                <p>
+                                    <t t-esc="o.get('note')"/>                                
+                                </p>
+                                <br/>
+                                <br/>
+                            </t> -->
+                            <t t-if="o.get('additional_note')">
+                                <h5>Notas:</h5>
+                                <p>
+                                    <t t-esc="o.get('additional_note')"/>                                
+                                </p>                                
+                                <br/>
+                                <br/>
+                            </t>
+                            <div class="oe_structure"/>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

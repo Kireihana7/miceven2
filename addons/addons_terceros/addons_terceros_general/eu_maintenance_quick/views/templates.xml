@@ -1,0 +1,149 @@
+<odoo>
+    <record model="ir.ui.view" id="view_maintenance_quick_form">
+        <field name="name">view_maintenance_quick form</field>
+        <field name="model">mro.order</field>
+        <field name="inherit_id" ref="mro_maintenance.mro_order_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='parts_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='task_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='equipment_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='maintenance_team_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='tool_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_maintenance_quick_form_planner">
+        <field name="name">view_maintenance_quick_form planner</field>
+        <field name="model">mro.planner</field>
+        <field name="inherit_id" ref="eu_mrp_extend.mro_planner_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='line_ids']/tree/field[@name='task_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='line_ids']/tree/field[@name='equipment_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_maintenance_quick_form_with_tags">
+        <field name="name">view_maintenance_quick_form_with_tags</field>
+        <field name="model">mro.order</field>
+        <field name="inherit_id" ref="eu_mrp_extend.mro_order_view_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_maintenance_quick_request_with_tags">
+        <field name="name">view_maintenance_quick_request_with_tags</field>
+        <field name="model">mro.request</field>
+        <field name="inherit_id" ref="eu_mrp_extend.mro_request_view_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_maintenance_quick_form_request">
+        <field name="name">view_maintenance_quick_form_with request</field>
+        <field name="model">mro.request</field>
+        <field name="inherit_id" ref="mro_maintenance.mro_request_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='equipment_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_maintenance_quick_piezas_repuesto">
+        <field name="name">view_maintenance_quick_form_piezas repuesto</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="fleet_operations.inherit_product_normal_form_views"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vehicle_make_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_maintenance_quick_branch">
+        <field name="name">view_maintenance_quick_form_branch</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="branch.product_product_view_form_branch"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='branch_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_maintenance_quick_supplier_tax">
+        <field name="name">view_maintenance_quick_form_supplier_tax</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="account.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='supplier_taxes_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='property_account_income_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='property_account_expense_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_maintenance_optional_product">
+        <field name="name">view_maintenance_quick_optional_product</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="sale_product_configurator.product_template_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='optional_product_ids']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True, "color_field": 'color'}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_maintenance_optional_price_difference">
+        <field name="name">view_maintenance_quick_optional_price_differencet</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="purchase.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='property_account_creditor_price_difference']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_maintenance_optional_refund_id">
+        <field name="name">view_maintenance_quick_optional_refund_id</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="to_refund_account.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='property_account_income_refund_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='property_account_expense_refund_id']" position="attributes">
+                <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True, "no_create": True, "no_open": True}</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

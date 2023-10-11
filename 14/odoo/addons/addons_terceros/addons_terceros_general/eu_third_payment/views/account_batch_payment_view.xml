@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_account_payment_batch_third" model="ir.ui.view">
+            <field name="name">Account batch payment third payment</field>
+            <field name="model">account.batch.payment</field>
+            <field name="inherit_id" ref="account_batch_payment.view_batch_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook/page/field/tree//field[@name='partner_id']" position="after">
+                    <field name="third_payment" readonly="1"/>
+                    <field name="autorizado" readonly="1"/>
+                </xpath>
+                <xpath expr="//form/sheet/notebook/page/field/form/group/group//field[@name='partner_id']" position="after">
+                    <field name="third_payment" readonly="1"/>
+                    <field name="autorizado" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

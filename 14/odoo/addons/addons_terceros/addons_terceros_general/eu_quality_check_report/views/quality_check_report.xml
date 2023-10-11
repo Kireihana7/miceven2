@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_quality_check" model="ir.actions.report">
+            <field name="name">Control de Calidad</field>
+            <field name="model">quality.check</field>
+            <field name="report_type">qweb-pdf</field>
+            <!-- <field name="report_name">eu_quality_check_report.report_quality_check</field> -->
+            <field name="report_name">eu_quality_check_report.report_quality_check_round</field>
+            <field name="report_file">eu_quality_check_report.report_quality_check_round</field>
+            <field name="print_report_name">'Control de Calidad - %s' % object.name</field>
+            <!-- <field name="binding_model_id" ref="model_quality_check"/> -->
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,45 @@
+<<<<<<< HEAD
+=======
+// ------------------------------------------------------------------
+// Layout
+// ------------------------------------------------------------------
+
+.o-autogrow {
+    flex: 1 1 auto;
+}
+
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+.o_Discuss {
+    min-height: 0;
+}
+
+.o_Discuss_thread {
+    flex: 1 1 0;
+<<<<<<< HEAD
+    min-width: 0;
+=======
+
+    &.o-mobile {
+        width: 100%;
+    }
+}
+
+.o_Discuss_notificationList {
+    width: 100%;
+    flex: 1 1 0;
+}
+// ------------------------------------------------------------------
+// Style
+// ------------------------------------------------------------------
+
+.o_Discuss.o-mobile {
+    background-color: white;
+}
+
+.o_Discuss_mobileAddItemHeaderInput {
+    appearance: none;
+    border: 1px solid gray('400');
+    border-radius: 5px;
+    outline: none;
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+}

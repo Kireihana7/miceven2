@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sales_period_report" model="ir.actions.report">
+		<field name="name">Ventas del periodo</field>
+		<field name="model">sales.period</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">eu_sales_period.sales_period_template</field>
+		<field name="report_file">eu_sales_period.sales_period_template</field>
+		<field name="binding_model_id" ref="model_sales_period"/>
+		<field name="binding_type">report</field>
+	</record>
+</odoo>
+

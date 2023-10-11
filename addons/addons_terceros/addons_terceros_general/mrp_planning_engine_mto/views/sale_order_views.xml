@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">view_order_form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <button name="action_confirm" position="after">
+                <button name="button_create_analytic_account" string="Create Analytic Account" type="object" class="oe_highlight"
+                    attrs="{'invisible': ['|',('analytic_account_id','!=', False),('state','not in', ('sent', 'draft'))]}"/>
+            </button>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" name="action_view_analytic_lines" type="object" icon="fa-usd" string="Cost/Revenue" attrs="{'invisible': [('analytic_account_id','=', False),('state','in', ('sent', 'draft'))]}" groups="analytic.group_analytic_accounting"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_line_sales_order_tree" model="ir.ui.view">
+        <field name="name">account.analytic.line.sales.order.tree</field>
+        <field name="model">account.analytic.line</field>
+        <field name="arch" type="xml">
+            <tree string="Analytic Entries">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="account_id" optional="hide"/>
+                <field name="general_account_id" optional="hide"/>
+                <field name="product_id"/>
+                <field name="unit_amount"/>
+                <field name="product_uom_id"/>
+                <field name="manufacture_order_id"/>
+                <field name="partner_id"/>
+                <field name="amount" sum="Total"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="move_id" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

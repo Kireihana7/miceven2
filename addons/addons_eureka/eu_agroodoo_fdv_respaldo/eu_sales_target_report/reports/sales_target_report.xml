@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <odoo>
+	<report id="sales_target_report"
+        model="sales.target.wizard"
+        string="Informe de Objetivos de Ventas"
+        name="eu_sales_target_report.sales_target_templates"
+        file="eu_sales_target_report.sales_target_templates"
+        report_type="qweb-pdf"
+        menu="False"
+    />
+</odoo> -->
+
+<odoo>
+    <record id="paperformat_sales_target" model="report.paperformat">
+        <field name="name">Objetivos de Ventas papper format</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">356</field>
+        <field name="page_width">216</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">3</field>
+        <field name="margin_right">3</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="sales_target_report" model="ir.actions.report">
+        <field name="name">Informe de Objetivos de Ventas</field>
+        <field name="model">sales.target.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="paperformat_id" ref="eu_sales_target_report.paperformat_sales_target"/>
+        <field name="report_name">eu_sales_target_report.sales_target_templates</field>
+        <field name="report_file">eu_sales_target_report.sales_target_templates</field>
+        <field name="binding_model_id" ref="model_sales_target_wizard"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

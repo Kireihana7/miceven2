@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_move_reversal_view_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.reversal.view.form.inherit</field>
+        <field name="model">account.move.reversal</field>
+        <field name="inherit_id" ref="account.view_account_move_reversal"/>
+        <field name="arch" type="xml">
+            <field name="reason" position="before">
+                <field name="percentage" attrs="{'invisible':[('refund_method','!=','refund')]}" />
+                <field name="use_product_service" attrs="{'invisible':[('refund_method','!=','refund')]}" />
+                <field name="tipo_monto" 
+                    attrs="{'invisible':['|',('refund_method','!=','refund'),('use_product_service','=',False)],'required':[('use_product_service','=',True)]}" 
+                />
+                <field name="product_id" options="{'no_quick_create': True, 'no_create_edit' : True, 'no_create': True, 'no_open': True}" attrs="{'invisible':['|',('refund_method','!=','refund'),('use_product_service','=',False)],'required':[('use_product_service','=',True)]}" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

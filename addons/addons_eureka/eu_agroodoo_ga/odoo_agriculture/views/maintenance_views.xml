@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_equipment_request_agriculture_view_kanban_inherit" model="ir.ui.view">
+        <field name="name">hr.equipment.request.agriculture.view.kanban.inherited</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="field[@name='category_id']" position="after">
+                <field name="product_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_equipment_request_agriculture_view_tree_inherit" model="ir.ui.view">
+        <field name="name">hr.equipment.request.agriculture.view.tree.inherited</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="field[@name='category_id']" position="after">
+                <field name="product_id"/>
+            </xpath>
+        </field>        
+    </record>
+
+    <record id="hr_equipment_request_agriculture_view_form_inherit" model="ir.ui.view">
+        <field name="name">hr.equipment.request.agriculture.view.form.inherited</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='equipment_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>                        
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="equipment_reservation_id" domain="[('task_id', '=', task_id)]"/>
+                <field name="equipment_reservation_line_id" domain="[('equipment_reservation_id', '=', equipment_reservation_id)]" attrs="{'readonly': [('equipment_reservation_id', '=', False)]}"/>
+                <field name="price"/>
+                <field name="task_id" invisible="1"/>
+                <field name='farmer_request_id' invisible="1"/>
+            </xpath>
+        </field>  
+    </record>
+
+    <!-- equiment.request : actions -->
+    <record id="hr_equipment_request_agriculture_action" model="ir.actions.act_window">
+        <field name="name">Maintenance Requests</field>
+        <field name="res_model">maintenance.request</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="hr_equipment_request_agriculture_view_kanban_inherit"/>
+        <!-- <field name="context">{
+            'default_user_id': uid,
+            'default_task_id': active_id
+        }</field>
+        <field name="domain">[('task_id', '=', active_id)]</field> -->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new maintenance request
+            </p><p>
+                Follow the process of the request and communicate with the collaborator.
+            </p>
+        </field>
+    </record>
+    
+    <!-- <menuitem 
+        id="hr_equipment_request_agriculture_menu"
+        name="Maintenance Requests"
+        sequence='4' 
+        action="odoo_agriculture.hr_equipment_request_agriculture_action"
+        parent="croping_request_submenu"/>	 -->
+
+</odoo>

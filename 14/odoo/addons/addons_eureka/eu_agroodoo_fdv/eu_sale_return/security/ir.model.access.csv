@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_eu_sale_return,eu_sale_return.sale_order_return,model_sale_order_return,eu_sale_return.group_sale_order_return_user,1,1,1,0
+access_eu_sale_return_dos,eu_sale_return.sale_order_return,model_sale_order_return,eu_sale_return.group_sale_order_return_manager,1,1,1,1

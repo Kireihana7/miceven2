@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="label_57x35">
+        <table class="table table-bordered col-xs-4">
+            <tr style="border:0;margin:0;padding:0;width:5.5cm;height:3.5cm;">
+                <td class="col-xs-4 text-center" style="border:0;margin:0;padding:0;">
+                    <div style="overflow:hidden; padding: 5px 5px 0; line-height: 1.3;font-size: 18px;">
+                        <span t-field="label.product_id.name"/>
+                    </div>
+                    <!-- <t t-if="not label.wizard_id.only_multi_moneda">
+                        <div style="width: 100%; padding: 0; margin: 0; font-size: 35px; font-weight: bold;">
+                            <span t-field="label.wizard_id.pricelist.currency_id.symbol"/>
+                            <span t-esc="label.product_id.with_context(pricelist=label.wizard_id.pricelist.id, uom=label.product_id.uom_id.id).price" t-options='{"widget": "float", "precision": 2}'/>
+
+                        </div>
+                    </t> -->
+                    <!-- <t t-if="label.wizard_id.multi_moneda">
+                        <div style="width: 100%; padding: 0; margin: 0; font-size: 35px; font-weight: bold;">
+                            <span t-field="label.product_id.currency_id.parent_id.symbol"/>
+                            <span t-esc="env['product.pricelist.item'].search([('pricelist_id','=',label.wizard_id.pricelist.id),('product_tmpl_id','=',label.product_id.product_tmpl_id.id)],limit=1).precio_usd" t-options='{"widget": "float", "precision": 2}'/>
+                        </div>
+                    </t> -->
+                    <img t-if="label.product_id.barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', label.product_id.barcode, 450, 250)" style="width:100%;height:50%;padding:3px 3px;"/>
+                    <div t-if="label.product_id.default_code" style="width: 100%; padding: 0; margin: 0; font-size: 18px;">
+                        <span t-field="label.product_id.default_code"/>
+                    </div>
+                    <!-- <div  style="width: 100%; padding: 0; margin: 0; font-size: 12px;">
+                        <span >PRECIO SIN IVA</span>
+                    </div> -->
+                    
+                </td>
+            </tr>
+        </table>
+    </template>
+
+    <template id="report_product_label_57x35_template">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-set="count" t-value="0" />
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <t t-foreach="docs" t-as="label">
+                        <t t-set="qty" t-value="1" />
+                        <t t-if="label.qty">
+                            <t t-set="qty" t-value="label.qty" />
+                        </t>
+                        <t t-foreach="list(range(qty))" t-as="index_qty">
+                            <div t-if="count % 15 == 0" style="page-break-after:always;"/>
+                            <div t-if="count % 3 == 0" style="clear:both;"/>
+                            <div style="width: 30%; float: left; height: 250px; margin: 0 10px;">
+                                <t t-call="garazd_product_label.label_57x35"/>
+                            </div>
+                            <t t-set="count" t-value="count+1" />
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_product_label_80_template">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-set="count" t-value="0" />
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <t t-foreach="docs" t-as="label">
+                        <t t-set="qty" t-value="1" />
+                        <t t-if="label.qty">
+                            <t t-set="qty" t-value="label.qty" />
+                        </t>
+                        <t t-foreach="list(range(qty))" t-as="index_qty">
+                            <div t-if="count % 1 == 0" style="page-break-after:always;"/>
+                            <div t-if="count % 1 == 0" style="clear:both;"/>
+                            <!-- <div style="width: 100%; float: left; height:3.5cm; margin: 0 10px;"> -->
+                                <t t-call="garazd_product_label.label_57x35"/>
+                            <!-- </div> -->
+                            <t t-set="count" t-value="count+1" />
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

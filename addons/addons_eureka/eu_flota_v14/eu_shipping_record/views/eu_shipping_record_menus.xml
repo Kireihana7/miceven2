@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="eu_shipping_record_menu_root"
+        name="Viajes"
+        sequence="0"
+        parent="fleet.menu_root"
+    />
+        <menuitem
+            id="fleet_trip_menu"
+            name="Registro de viajes"
+            parent="eu_shipping_record_menu_root"
+            action="eu_shipping_record.fleet_trip_action"
+        />
+        <menuitem
+            id="fleet_trip_product_menu"
+            name="Productos de viajes"
+            parent="eu_shipping_record_menu_root"
+            action="eu_shipping_record.fleet_trip_product_action"
+        />
+        <menuitem
+            id="fleet_trip_type_menu"
+            name="Tipo de servicio"
+            parent="eu_shipping_record_menu_root"
+            action="eu_shipping_record.fleet_trip_type_action"
+        />
+        <menuitem
+            id="fleet_trip_milestone_menu"
+            name="Tabulador"
+            parent="eu_shipping_record_menu_root"
+            action="eu_shipping_record.fleet_trip_milestone_action"
+        />
+
+</odoo>

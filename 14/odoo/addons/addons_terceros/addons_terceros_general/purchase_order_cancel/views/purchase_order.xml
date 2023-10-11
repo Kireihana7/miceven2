@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="purchase_order_form_view_cancel" model="ir.ui.view">
+            <field name="name">purchase_order_form_view_hide</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='button_cancel']" position="after">
+                    <button string="Anular Compra" type="object"
+                    name="button_cancel_order" 
+                    class="btn-primary"
+                    attrs="{'invisible': [('state', '=', 'anular')]}"
+                    groups="purchase_order_cancel.group_purchase_order_cancelled"
+                    />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

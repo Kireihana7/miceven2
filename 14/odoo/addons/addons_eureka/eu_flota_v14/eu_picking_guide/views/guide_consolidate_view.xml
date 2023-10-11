@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_guide_consolidate_form" model="ir.ui.view">
+        <field name="name">guide.consolidate.form</field>
+        <field name="model">guide.consolidate</field>
+        <field name="arch" type="xml">
+            <form string="Picking Guide">
+                <header>
+                    <button name="reset_draft" type="object" string="Reset to Draft" states="cancel" confirm="¿Do you want to reset to draft the Picking Guide?" groups="eu_picking_guide.group_account_wherehouse_picking" class="btn-primary"/>
+                    <button name="button_waiting" type="object" string="To Dispatch" states="draft" class="btn-primary" groups="eu_picking_guide.group_account_invoicing_picking,eu_picking_guide.group_account_wherehouse_picking"/>
+                    <button name="button_confirm" type="object" groups="eu_picking_guide.group_account_wherehouse_picking" string="Confirm Guide Picking" states="waiting" class="btn-primary" />
+                    <button name="products_obtain" type="object" string="Obtain Products" states="waiting" class="btn-primary" groups="eu_picking_guide.group_account_wherehouse_picking"/>
+                    <button name="button_actualizar_facturas" type="object" string="Obtain Invoices" states="waiting,done" class="btn-primary" groups="eu_picking_guide.group_account_wherehouse_picking"/>
+                    <button name="button_reprecint" type="object" string="Change Precint" states="waiting,done" groups="eu_picking_guide.group_reprecint_guide" class="btn-primary"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draf,waiting,done" readonly="1"/>
+                </header>
+                <sheet>
+                    <div 
+                        class="alert alert-danger" role="alert" style="margin-bottom:0px;"
+                        attrs="{'invisible': ['|',('state', '=' , ('draft','cancel')),('remaining_weight', '&lt;', 1)]}">
+                        La carga supera la capacidad de peso del vehículo por: <field name="remaining_weight" nolabel="1"/> kg
+                    </div>
+                    <div 
+                        class="alert alert-danger" role="alert" style="margin-bottom:0px;"
+                        attrs="{'invisible': ['|',('state', '=' , ('draft','cancel')),('remaining_volume', '&lt;', 1)]}">
+                        La carga supera la capacidad de volumen del vehículo por: <field name="remaining_volume" nolabel="1"/> m³
+                    </div>
+                    <div name="button_box" class="oe_button_box">
+                    </div>
+                    <div class="oe_title">
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/><br/>
+                            </h1>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" invisible="1" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                            <field name="scheduled_date" attrs="{'readonly': [('state', '=' , 'done')]}" />
+                            <field name="date" />
+                            <field name="zona" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' attrs="{'readonly':[('state', 'in', ['done', 'cancel','waiting'])]}"/>
+                            <field name="cestas_qty" />
+                            <field name="cestas_peso" />
+                            <field name="cestas_total" />
+                        </group>
+                        <group>
+                            <field name="vehicle_id" attrs="{'readonly':[('state', 'in', ['done', 'cancel','draft'])]}" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                            <field name="weight_capacity" />
+                            <field name="volume_capacity" />
+                            <field name="driver_id"/>
+                            <field name="license_plate"/>
+                            <field name="precint_number" required="1" attrs="{'readonly':[('state', 'in', ['waiting','done', 'cancel'])]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Picking Guide Lines" name="picking_guide_line"  attrs="{'readonly':[('state', 'in', ['done', 'cancel'])]}" >
+                            <field name="guide_signature_line" attrs="{'readonly':[('state', 'in', ['done', 'cancel'])]}">
+                                <tree editable="bottom">
+                                    <field name="company_id" invisible="1"/>
+                                    <field name="picking_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                                    <field name="invoice_rel" readonly="1" force_save="1" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                                    <field name="partner_id" force_save="1" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                                    <field name="zona" force_save="1" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                                    <field name="total_items" />
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2">
+                                <label for="total"/>
+                                <field name="total" nolabel="1"/>
+                                <label for="total_weight"/>
+                                <field name="total_weight" nolabel="1"/>
+                                <label for="total_amount"/>
+                                <field name="total_amount" nolabel="1"/>
+                                <label for="total_amount_ref"/>
+                                <field name="total_amount_ref" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Picking Guide Products" name="picking_guide_Products">
+                            <field name="guide_signature_products">
+                                <tree editable="bottom" edit="0" create="0" delete="0">
+                                    <field name="product_id" force_save="1" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                                    <field name="quantity_done" force_save="1"/>
+                                    <field name="weight" force_save="1"/>
+                                    <field name="volume" force_save="1"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2">
+                                <label for="total"/>
+                                <field name="total" nolabel="1"/>
+                                <label for="total_weight"/>
+                                <field name="total_weight" nolabel="1"/>
+                                <label for="total_amount"/>
+                                <field name="total_amount" nolabel="1"/>
+                                <label for="total_amount_ref"/>
+                                <field name="total_amount_ref" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Signature" name="signature">
+                            <field name="signature" widget="signature" attrs="{'readonly':[('state', 'in', ['done', 'cancel'])]}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_guide_consolidate_tree" model="ir.ui.view">
+        <field name="name">guide.consolidate.tree</field>
+        <field name="model">guide.consolidate</field>
+        <field name="arch" type="xml">
+            <tree string="Picking Guide">
+                <field name="name" />
+                <field name="scheduled_date" />
+                <field name="date" />
+                <field name="vehicle_id" />
+                <field name="driver_id" />
+                <field name="zona" />
+                <field name="total" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_guide_consolidate_line_tree" model="ir.ui.view">
+        <field name="name">guide.consolidate.line.tree</field>
+        <field name="model">guide.consolidate.line</field>
+        <field name="arch" type="xml">
+            <tree string="Picking Guide Line" create="0" edit="0" delete="0" duplicate="0">
+                <field name="company_id" optional="show"/>
+                <field name="guide_consolidate_id_line" optional="show"/>
+                <field name="picking_id" optional="show"/>
+                <field name="partner_id" optional="show"/>
+                <field name="total_items" optional="show"/>
+                <field name="zona" optional="show"/>
+                <field name="invoice_rel" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_guide_consolidate_product_tree" model="ir.ui.view">
+        <field name="name">guide.consolidate.product.tree</field>
+        <field name="model">guide.consolidate.product</field>
+        <field name="arch" type="xml">
+            <tree string="Picking Guide Product" create="0" edit="0" delete="0" duplicate="0">
+                <field name="company_id" optional="show"/>
+                <field name="guide_consolidate_id_product" optional="show"/>
+                <field name="product_id" optional="show"/>
+                <field name="quantity_done" optional="show"/>
+                <field name="weight" optional="show"/>
+                <field name="volume" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="open_guide_consolidate" model="ir.actions.act_window">
+        <field name="name">Picking Guide</field>
+        <field name="res_model">guide.consolidate</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" eval="False"/>
+    </record>
+
+    <record id="open_guide_consolidate_line" model="ir.actions.act_window">
+        <field name="name">Picking Guide Line</field>
+        <field name="res_model">guide.consolidate.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" eval="False"/>
+    </record>
+
+    <record id="open_guide_consolidate_product" model="ir.actions.act_window">
+        <field name="name">Picking Guide Product</field>
+        <field name="res_model">guide.consolidate.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" eval="False"/>
+    </record>
+</odoo>

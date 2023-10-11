@@ -1,0 +1,486 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* todo_list
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20210524\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-30 21:17+0000\n"
+"PO-Revision-Date: 2021-06-30 21:14-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es_VE\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_needaction
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_needaction
+msgid "Action Needed"
+msgstr "Accion necesaria"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__activity_ids
+#: model:ir.ui.menu,name:todo_list.activity_menu
+#: model:ir.ui.menu,name:todo_list.todo_menu
+#: model_terms:ir.ui.view,arch_db:todo_list.action_todo_tree
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: todo_list
+#: model:ir.actions.act_window,name:todo_list.action_activity
+#: model:ir.model,name:todo_list.model_mail_activity
+#: model_terms:ir.ui.view,arch_db:todo_list.action_todo_form
+#: model_terms:ir.ui.view,arch_db:todo_list.mail_activity_model_view_search
+msgid "Activity"
+msgstr "Actividad"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__activity_state
+msgid "Activity State"
+msgstr "Estado de actividad"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Icono de tipo de actividad"
+
+#. module: todo_list
+#: model:ir.actions.act_window,name:todo_list.mail_activity_type
+#: model:ir.ui.menu,name:todo_list.config_activity_types
+msgid "Activity Types"
+msgstr "Tipos de actividad"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_attachment_count
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_attachment_count
+msgid "Attachment Count"
+msgstr "Recuento de archivos adjuntos"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.action_todo_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__state__cancel
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: todo_list
+#: model_terms:ir.actions.act_window,help:todo_list.action_activity
+msgid "Create your ToDo List"
+msgstr "Crea tu lista de tareas pendientes"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__interval__daily
+msgid "Daily"
+msgstr "Diario"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.action_todo_kanban
+msgid "Delete"
+msgstr "Borrar"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__display_name
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__res_model_id
+#: model_terms:ir.ui.view,arch_db:todo_list.mail_activity_model_view_search
+msgid "Document Model"
+msgstr "Modelo de documento"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__state__done
+msgid "Done"
+msgstr "Hecho"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.action_todo_kanban
+msgid "Dropdown menu"
+msgstr "Menú desplegable"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__date_deadline
+msgid "Due Date"
+msgstr "Fecha vencimiento"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.action_todo_kanban
+msgid "Edit"
+msgstr "Editar"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__state__overdue
+msgid "Expired"
+msgstr "Caducado"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_follower_ids
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_channel_ids
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_partner_ids
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Socios)"
+
+#. module: todo_list
+#: model:ir.model.fields,help:todo_list.field_activity_general__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.mail_activity_model_view_search
+msgid "Future Activities"
+msgstr "Actividades futuras"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.mail_activity_model_view_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__id
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__id
+msgid "ID"
+msgstr ""
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: todo_list
+#: model:ir.model.fields,help:todo_list.field_activity_general__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icono para indicar una actividad de excepción."
+
+#. module: todo_list
+#: model:ir.model.fields,help:todo_list.field_activity_general__message_needaction
+#: model:ir.model.fields,help:todo_list.field_activity_general__message_unread
+#: model:ir.model.fields,help:todo_list.field_mail_activity__message_needaction
+#: model:ir.model.fields,help:todo_list.field_mail_activity__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcada, los mensajes nuevos requieren su atención."
+
+#. module: todo_list
+#: model:ir.model.fields,help:todo_list.field_activity_general__message_has_error
+#: model:ir.model.fields,help:todo_list.field_activity_general__message_has_sms_error
+#: model:ir.model.fields,help:todo_list.field_mail_activity__message_has_error
+#: model:ir.model.fields,help:todo_list.field_mail_activity__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__priority__1
+msgid "Important"
+msgstr "Importante"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_is_follower
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_is_follower
+msgid "Is Follower"
+msgstr "Es seguidor"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general____last_update
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity____last_update
+msgid "Last Modified on"
+msgstr "Modificada por última vez"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.mail_activity_model_view_search
+msgid "Late Activities"
+msgstr "Actividades retrasadas"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.action_todo_form
+msgid "Log a note..."
+msgstr "Registrar una nota ..."
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_main_attachment_id
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Accesorio principal"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.action_todo_form
+msgid "Mark As Done"
+msgstr "Marcar como hecho"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_has_error
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de entrega de mensaje"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_ids
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__interval__monthly
+msgid "Monthly"
+msgstr "Mensual"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.mail_activity_model_view_search
+msgid "My Activities"
+msgstr "Mis actividades"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Fecha límite para la próxima actividad"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__new_date
+msgid "Next Due Date"
+msgstr "Fecha de vencimiento Siguiente"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__priority__0
+msgid "Normal"
+msgstr "Normal"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_needaction_counter
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Numero de acciones"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_has_error_counter
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_has_error_counter
+msgid "Number of errors"
+msgstr "Numero de errores"
+
+#. module: todo_list
+#: model:ir.model.fields,help:todo_list.field_activity_general__message_needaction_counter
+#: model:ir.model.fields,help:todo_list.field_mail_activity__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: todo_list
+#: model:ir.model.fields,help:todo_list.field_activity_general__message_has_error_counter
+#: model:ir.model.fields,help:todo_list.field_mail_activity__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de entrega"
+
+#. module: todo_list
+#: model:ir.model.fields,help:todo_list.field_activity_general__message_unread_counter
+#: model:ir.model.fields,help:todo_list.field_mail_activity__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leídos"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__state__planned
+msgid "Planned"
+msgstr "Planificado"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__priority
+#: model_terms:ir.ui.view,arch_db:todo_list.mail_activity_model_view_search
+msgid "Priority"
+msgstr "Prioridad"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__interval__quarterly
+msgid "Quarterly"
+msgstr "Trimestral"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__recurring
+msgid "Recurring"
+msgstr "Recurrente"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__interval
+msgid "Recurring Interval"
+msgstr "Intervalo recurrente"
+
+#. module: todo_list
+#: model:ir.actions.server,name:todo_list.ir_cron_scheduler_recurring_action_ir_actions_server
+#: model:ir.cron,cron_name:todo_list.ir_cron_scheduler_recurring_action
+#: model:ir.cron,name:todo_list.ir_cron_scheduler_recurring_action
+msgid "Recurring Todo Activity"
+msgstr "Actividad recurrente de Todo"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__res_id
+msgid "Related Document ID"
+msgstr "ID del documento relacionado"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_has_sms_error
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error de entrega de SMS"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.mail_activity_model_view_search
+msgid "Show all records which has next action date is before today"
+msgstr "Mostrar todos los registros cuya fecha de próxima acción es anterior a hoy"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__state
+#: model_terms:ir.ui.view,arch_db:todo_list.mail_activity_model_view_search
+msgid "State"
+msgstr "Estado"
+
+#. module: todo_list
+#: model:ir.model.fields,help:todo_list.field_activity_general__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Estado basado en las actividades\n"
+"Atrasado: La fecha de vencimiento ya ha pasado\n"
+"Hoy: La fecha de la actividad es hoy\n"
+"Planificada: Actividades futuras."
+
+#. module: todo_list
+#: model:ir.ui.menu,name:todo_list.list_menu
+msgid "To Do"
+msgstr "Actvidades Para hacer"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__state__today
+msgid "Today"
+msgstr "Hoy"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.mail_activity_model_view_search
+msgid "Today Activities"
+msgstr "Actividades de hoy"
+
+#. module: todo_list
+#: model:ir.model.fields,help:todo_list.field_activity_general__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo de la actividad de excepción registrada."
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_unread
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes no leídos"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__message_unread_counter
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes no leídos"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__priority__3
+msgid "Urgent"
+msgstr "Urgente"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__priority__2
+msgid "Very Important"
+msgstr "Muy importante"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_activity_general__website_message_ids
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: todo_list
+#: model:ir.model.fields,help:todo_list.field_activity_general__website_message_ids
+#: model:ir.model.fields,help:todo_list.field_mail_activity__website_message_ids
+msgid "Website communication history"
+msgstr "Historia de la comunicación en la web"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__interval__weekly
+msgid "Weekly"
+msgstr "Semanal"
+
+#. module: todo_list
+#: model:ir.model.fields.selection,name:todo_list.selection__mail_activity__interval__yearly
+msgid "Yearly"
+msgstr "Anualmente"
+
+#. module: todo_list
+#: model:ir.model,name:todo_list.model_activity_general
+msgid "activity.general"
+msgstr "actividad.general"
+
+#. module: todo_list
+#: model_terms:ir.ui.view,arch_db:todo_list.action_todo_form
+msgid "e.g. Discuss proposal"
+msgstr "por ejemplo, debatir la propuesta"
+
+#. module: todo_list
+#: model:ir.model.fields,field_description:todo_list.field_mail_activity__user_id
+msgid "user"
+msgstr "usuario"

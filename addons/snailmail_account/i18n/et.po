@@ -1,0 +1,315 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* snailmail_account
+# 
+# Translators:
+<<<<<<< HEAD
+# Andre Roomet <andreroomet@gmail.com>, 2022
+# Triine Aavik <triine@avalah.ee>, 2022
+# Martin Trigaux, 2022
+# Eneli Õigus <enelioigus@gmail.com>, 2022
+=======
+# Triine Aavik <triine@avalah.ee>, 2020
+# Martin Trigaux, 2020
+# Arma Gedonsky <armagedonsky@hot.ee>, 2020
+# Andre Roomet <andreroomet@gmail.com>, 2020
+# Algo Kärp <algokarp@gmail.com>, 2021
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+# Anna, 2023
+# Leaanika Randmets, 2023
+# 
+msgid ""
+msgstr ""
+<<<<<<< HEAD
+"Project-Id-Version: Odoo Server 15.5alpha1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-20 09:02+0000\n"
+"PO-Revision-Date: 2022-09-22 05:55+0000\n"
+=======
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-02 14:12+0000\n"
+"PO-Revision-Date: 2020-09-07 08:19+0000\n"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+"Last-Translator: Leaanika Randmets, 2023\n"
+"Language-Team: Estonian (https://app.transifex.com/odoo/teams/41243/et/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: et\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: snailmail_account
+#: code:addons/snailmail_account/wizard/account_invoice_send.py:0
+#, python-format
+msgid "%s of the selected invoice(s) had an invalid address and were not sent"
+msgstr "%s valitud arve(te)l oli vigane aadress ja neid ei saadetud."
+
+#. module: snailmail_account
+<<<<<<< HEAD
+=======
+#: model_terms:ir.ui.view,arch_db:snailmail_account.account_invoice_send_inherit_account_wizard_form
+msgid ""
+"<i class=\"fa fa-info-circle\" role=\"img\" aria-label=\"Warning\" title=\"Make sure you have enough Stamps on your account.\"/>\n"
+"                                )"
+msgstr ""
+"<i class=\"fa fa-info-circle\" role=\"img\" aria-label=\"Warning\" title=\"Make sure you have enough Stamps on your account.\"/>\n"
+"                                )"
+
+#. module: snailmail_account
+#: model_terms:ir.ui.view,arch_db:snailmail_account.res_config_settings_view_form
+msgid ""
+"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
+"specific.\"/>"
+msgstr ""
+"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
+"specific.\"/>"
+
+#. module: snailmail_account
+#: model_terms:ir.ui.view,arch_db:snailmail_account.account_invoice_send_inherit_account_wizard_form
+msgid ""
+"<span class=\"text-danger\">\n"
+"                                            The customer address is not complete.\n"
+"                                        </span>"
+msgstr ""
+
+#. module: snailmail_account
+#: model_terms:ir.ui.view,arch_db:snailmail_account.account_invoice_send_inherit_account_wizard_form
+msgid ""
+"<span class=\"text-danger\">\n"
+"                                        Some customer addresses are not complete.\n"
+"                                    </span>"
+msgstr ""
+
+#. module: snailmail_account
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#: model_terms:ir.ui.view,arch_db:snailmail_account.account_invoice_send_inherit_account_wizard_form
+msgid ""
+"<i class=\"fa fa-info-circle\" role=\"img\" aria-label=\"Warning\" title=\"Make sure you have enough Stamps on your account.\"/>\n"
+"                                )"
+msgstr ""
+"<i class=\"fa fa-info-circle\" role=\"img\" aria-label=\"Warning\" title=\"Make sure you have enough Stamps on your account.\"/>\n"
+"                                )"
+
+#. module: snailmail_account
+#: model_terms:ir.ui.view,arch_db:snailmail_account.res_config_settings_view_form
+msgid ""
+"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
+"specific.\"/>"
+msgstr ""
+"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
+"specific.\"/>"
+
+#. module: snailmail_account
+#: model_terms:ir.ui.view,arch_db:snailmail_account.account_invoice_send_inherit_account_wizard_form
+msgid ""
+"<span class=\"text-danger\">\n"
+"                                    Some customer addresses are incomplete.\n"
+"                                </span>"
+msgstr ""
+"<span class=\"text-danger\">\n"
+"                                    Mõne kliendi aadressid on puudulikud.\n"
+"                                </span>"
+
+#. module: snailmail_account
+#: model_terms:ir.ui.view,arch_db:snailmail_account.account_invoice_send_inherit_account_wizard_form
+msgid ""
+"<span class=\"text-muted\" attrs=\"{'invisible': [('invalid_addresses', '!=', 0)]}\"> to: </span>\n"
+"                                <span class=\"text-danger\" attrs=\"{'invisible': [('invalid_addresses', '=', 0)]}\"> The customer's address is incomplete: </span>"
+msgstr ""
+"<span class=\"text-muted\" attrs=\"{'invisible': [('invalid_addresses', '!=', 0)]}\"> to: </span>\n"
+"                                <span class=\"text-danger\" attrs=\"{'invisible': [('invalid_addresses', '=', 0)]}\"> Kliendi aadress on puudulik: </span>"
+
+#. module: snailmail_account
+#: model:ir.model,name:snailmail_account.model_account_invoice_send
+msgid "Account Invoice Send"
+msgstr "Konto Arve Saatmine"
+<<<<<<< HEAD
+=======
+
+#. module: snailmail_account
+#: model:ir.model.fields,help:snailmail_account.field_account_invoice_send__snailmail_is_letter
+msgid ""
+"Allows to send the document by Snailmail (conventional posting delivery "
+"service)"
+msgstr ""
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: snailmail_account
+#: model:ir.model,name:snailmail_account.model_res_company
+msgid "Companies"
+msgstr "Ettevõtted"
+
+#. module: snailmail_account
+#: model:ir.model,name:snailmail_account.model_res_config_settings
+msgid "Config Settings"
+msgstr "Seadistused"
+
+#. module: snailmail_account
+<<<<<<< HEAD
+#: model_terms:ir.ui.view,arch_db:snailmail_account.account_invoice_send_inherit_account_wizard_form
+msgid "Contacts"
+msgstr "Kontaktid"
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice__create_uid
+msgid "Created by"
+msgstr "Loonud"
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice__create_date
+msgid "Created on"
+msgstr "Loomise kuupäev"
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice__display_name
+msgid "Display Name"
+msgstr "Näidatav nimi"
+
+#. module: snailmail_account
+=======
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice__create_uid
+msgid "Created by"
+msgstr "Loonud"
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice__create_date
+msgid "Created on"
+msgstr "Loodud"
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_account_invoice_send__display_name
+#: model:ir.model.fields,field_description:snailmail_account.field_res_company__display_name
+#: model:ir.model.fields,field_description:snailmail_account.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice__display_name
+msgid "Display Name"
+msgstr "Kuva nimi"
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_account_invoice_send__id
+#: model:ir.model.fields,field_description:snailmail_account.field_res_company__id
+#: model:ir.model.fields,field_description:snailmail_account.field_res_config_settings__id
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice__id
+msgid "ID"
+msgstr "ID"
+
+#. module: snailmail_account
+#: code:addons/snailmail_account/wizard/account_invoice_send.py:0
+#: code:addons/snailmail_account/wizard/account_invoice_send.py:0
+<<<<<<< HEAD
+#: model:ir.model.fields,field_description:snailmail_account.field_account_invoice_send__invalid_partner_ids
+=======
+#: model:ir.model.fields,field_description:snailmail_account.field_account_invoice_send__invalid_invoice_ids
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#, python-format
+msgid "Invalid Addresses"
+msgstr "Kehtetud aadressid"
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_account_invoice_send__invalid_addresses
+msgid "Invalid Addresses Count"
+msgstr "Kehtetute aadresside arv"
+
+#. module: snailmail_account
+<<<<<<< HEAD
+#: model:ir.model.fields,field_description:snailmail_account.field_account_invoice_send__invalid_invoices
+msgid "Invalid Invoices Count"
+msgstr "Kehtetu arvete arv"
+
+#. module: snailmail_account
+=======
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#: code:addons/snailmail_account/wizard/account_invoice_send.py:0
+#, python-format
+msgid "Invoice"
+msgstr "Arve"
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice__invoice_send_id
+msgid "Invoice Send"
+msgstr "Saada arve"
+
+#. module: snailmail_account
+<<<<<<< HEAD
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice____last_update
+msgid "Last Modified on"
+msgstr "Viimati muudetud"
+=======
+#: model:ir.model.fields,field_description:snailmail_account.field_account_invoice_send____last_update
+#: model:ir.model.fields,field_description:snailmail_account.field_res_company____last_update
+#: model:ir.model.fields,field_description:snailmail_account.field_res_config_settings____last_update
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice____last_update
+msgid "Last Modified on"
+msgstr "Viimati muudetud (millal)"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice__write_uid
+msgid "Last Updated by"
+<<<<<<< HEAD
+msgstr "Viimati uuendas"
+=======
+msgstr "Viimati uuendatud (kelle poolt)"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice__write_date
+msgid "Last Updated on"
+msgstr "Viimati uuendatud"
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_snailmail_confirm_invoice__model_name
+msgid "Model Name"
+msgstr "Mudeli nimetus"
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_account_invoice_send__partner_id
+msgid "Partner"
+<<<<<<< HEAD
+msgstr "Partner"
+
+#. module: snailmail_account
+#: model:ir.model.fields,help:snailmail_account.field_account_invoice_send__snailmail_is_letter
+msgid "Print and post the invoice by snailmail"
+msgstr "Printige ja postitage arve Snailmail'iga"
+=======
+msgstr "Kontakti kaart"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_account_invoice_send__snailmail_is_letter
+#: model:ir.model.fields,field_description:snailmail_account.field_res_company__invoice_is_snailmail
+#: model:ir.model.fields,field_description:snailmail_account.field_res_config_settings__invoice_is_snailmail
+msgid "Send by Post"
+msgstr "Saada postiga"
+
+#. module: snailmail_account
+#: model:ir.model,name:snailmail_account.model_snailmail_confirm_invoice
+msgid "Snailmail Confirm Invoice"
+msgstr "Snailmail kinnitab arvet"
+
+#. module: snailmail_account
+#: model:ir.model,name:snailmail_account.model_snailmail_confirm_invoice
+msgid "Snailmail Confirm Invoice"
+msgstr "Snailmail kinnitab arvet"
+
+#. module: snailmail_account
+#: model:ir.model.fields,field_description:snailmail_account.field_account_invoice_send__snailmail_cost
+msgid "Stamp(s)"
+<<<<<<< HEAD
+msgstr "Tempel(id)"
+
+#. module: snailmail_account
+#: code:addons/snailmail_account/wizard/account_invoice_send.py:0
+#, python-format
+msgid "You cannot send an invoice which has no partner assigned."
+msgstr "Te ei saa saata müügiarvet, millele pole partnerit määratud."
+=======
+msgstr "Mark(id)"
+
+#. module: snailmail_account
+#: model_terms:ir.ui.view,arch_db:snailmail_account.account_invoice_send_inherit_account_wizard_form
+msgid "invoices"
+msgstr "arved"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe

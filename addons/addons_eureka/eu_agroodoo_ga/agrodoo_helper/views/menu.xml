@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+      <!-- Top menu item -->
+      <menuitem id="agrodoo_helper_menu_root"
+          name="Agrodoo Helper"
+          web_icon="static/description/icon.png"
+          sequence="-198"/>          
+    </data>
+</odoo>

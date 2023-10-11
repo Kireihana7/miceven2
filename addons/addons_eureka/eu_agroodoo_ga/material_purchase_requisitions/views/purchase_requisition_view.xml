@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="material_purchase_requisition_form_view" model="ir.ui.view">
+            <field name="name">material.purchase.requisition.form.view</field>
+            <field name="model">material.purchase.requisition</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="is_departamento" invisible="1"/>
+                        <field name="is_gerente" invisible="1"/>
+                        <field name="is_responsable" invisible="1"/>
+                        <button name="requisition_confirm" type="object" string="Confirmar" states="0" class="btn-primary" groups="base.group_user"/>
+                        <button name="manager_approve" type="object" string="Aprobación del Departamento"  class="btn-primary" groups="material_purchase_requisitions.group_purchase_requisition_department"
+                            attrs="{'invisible':[('state','not in',('1','6'))]}"/>
+                        <button name="user_approve" type="object" string="Aprobado" class="btn-primary" groups="material_purchase_requisitions.group_purchase_requisition_manager"
+                            attrs="{'invisible':[('state','not in',('2'))]}"/>
+                        
+                        <button name="request_stock" 
+                            type="object" 
+                            string="Crear Pedido u Requisición de Compra" 
+                            class="btn-primary"
+                            attrs="{'invisible':['|',('state','not in',('3')),('is_responsable','=',False)]}" 
+                            groups="material_purchase_requisitions.group_purchase_requisition_approve"
+                        />
+
+                        <button name="action_received" type="object" string="Recibido" states="4" class="btn-primary"/>
+                        <button name="requisition_reject" type="object" string="Rechazado" groups="material_purchase_requisitions.group_purchase_requisition_department" states="1,3" />
+                        <button name="requisition_reject" type="object" string="Rechazado" groups="material_purchase_requisitions.group_purchase_requisition_manager" states="2" />
+                        <button name="action_cancel" type="object" states="0" string="Cancel" groups="base.group_user"/>
+                        <button name="reset_draft" type="object" string="Reiniciar a Borrador" states="6,7,5" class="btn-primary"/>
+                        <field name="state" widget="statusbar" string="Confirmar"  
+                                        statusbar_visible="0,1,2,3,4,5"/>
+                    </header>
+                    <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" 
+                                type="object" 
+                                icon="fa-truck"
+                                name="show_picking"
+                                groups="stock.group_stock_user"
+                                width="200px"
+                                attrs="{'invisible': [('count_rq', '=', 0)]}"
+                                >
+                        <field name="count_rq" widget="statinfo"/>
+                        </button>
+                        <button class="oe_stat_button"
+                            type="object" 
+                            icon="fa-book"
+                            name="action_show_po" 
+                            width="220px"
+                            attrs="{'invisible': [('count_po', '=', 0)]}"
+                            groups="stock.group_stock_user"
+                            >
+                        <field name="count_po" widget="statinfo"/>
+                        </button>
+                        <button class="oe_stat_button"
+                            type="object" 
+                            icon="fa-book"
+                            name="action_show_tr" 
+                            width="220px"
+                            attrs="{'invisible': [('count_tr', '=', 0)]}"
+                            groups="stock.group_stock_user"
+                            >
+                        <field name="count_tr" widget="statinfo"/>
+                        </button>
+                   <!--     <button class="oe_stat_button" type="object" icon="fa-book"
+                                name="action_show_li" string="Licitación de Compra"/>                                 -->
+                    </div>
+                    <div class="oe_title">
+                        <div class="oe_title">
+                        <h1>
+                            <field name="name"/><br/>
+                        </h1>
+                    </div>
+                    </div>
+                        <group>
+                                <group>
+                                    <field name="employee_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'  attrs="{'readonly':1}"/>
+                                    <field name="department_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'  attrs="{'readonly':1}"/>
+                                    <field name="company_id" groups="base.group_multi_company" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' attrs="{'readonly':1}"/>
+                                    <field name="requisiton_responsible_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'  attrs="{'readonly': [('state', '!=', '0')]}"/>
+                                    <field name="partner_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                                    <field name="requisition_type" />
+                                    <field name="priority" widget="priority"/>
+                                </group>
+                                <group>
+                                    <field name="request_date"/>
+                                    <field name="receive_date" attrs="{'readonly': [['state', 'in', ['7','6','5']]]}"/>
+                                    <field name="date_end" attrs="{'readonly': [['state', 'in', ['7','6','5']]]}"/>
+                                    
+                                    <field name="analytic_use" force_save="1" attrs="{'readonly': [('state', '!=', '0')]}"/>
+                                    <field name="analytic_account_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'  groups="analytic.group_analytic_accounting" attrs="{'readonly': [['state', 'in', ['7','6','5']]],'required': [('analytic_use', '=', 'header')],'invisible': [('analytic_use', '!=', 'header')]}"/>
+                                    <!-- <field name="branch_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/> -->
+                                </group>
+                             </group>
+                        <notebook>
+                            <page string="Línea de Requisición">
+                                <field name="requisition_line_ids" attrs="{'readonly': [('state', 'in', ['6','5'])]}" context="{'default_requisiton_responsible_id':parent.requisiton_responsible_id}">
+                                    <tree editable="bottom"  context="{'default_requisiton_responsible_id':parent.requisiton_responsible_id}">
+                                        <field name="requisition_type" groups="material_purchase_requisitions.group_purchase_requisition_user,purchase.group_purchase_user,material_purchase_requisitions.group_purchase_requisition_manager,material_purchase_requisitions.group_purchase_requisition_department"/>
+                                        <field name="product_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                                        <field name="analytic_account_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' attrs="{'required': [('parent.analytic_use', '=', 'line')],'column_invisible': [('parent.analytic_use', '=', 'header')]}"/>
+                                        <field name="requisiton_responsible_id" invisible="1"/>
+                                        <field name="description"/>
+                                        <field name="qty"/>
+                                        <field name="qty_available" groups="stock.group_stock_manager"/>
+                                        <field name="free_qty" groups="stock.group_stock_manager"/>
+                                        <field name="product_uom_category_id" invisible="1" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                                        <field name="uom" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                                        <field name="partner_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'  groups="material_purchase_requisitions.group_purchase_requisition_user,purchase.group_purchase_user,material_purchase_requisitions.group_purchase_requisition_manager,material_purchase_requisitions.group_purchase_requisition_department" attrs="{'readonly': [('requisition_type', '=', 'internal')]}" widget="many2many_tags" string="Proveedor(es) Sugerido(s)"/>
+                                    </tree>
+                                </field>
+                                <group>
+                                    <field name="reason" attrs="{'readonly': [['state', 'in', ['7','6','5']]]}" placeholder="Añade una justificación para la Requisición Interna ...."/>
+                                </group>
+                            </page>
+                            <page groups="material_purchase_requisitions.group_purchase_requisition_user,stock.group_stock_user" string="Detalles de la Requisición" attrs="{'readonly': [['state', 'in', ['done']]]}">
+                                <group>
+                                    <group>
+                                            <field name="location_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' 
+                                                   groups="material_purchase_requisitions.group_purchase_requisition_user,stock.group_stock_user" 
+                                                   attrs="{'readonly': [['state', 'in', ['7','6','5']]]}"/>
+                                    </group>
+                                    <group>
+                                        <field name="dest_location_id" groups="material_purchase_requisitions.group_purchase_requisition_user,stock.group_stock_user" attrs="{'readonly': [['state', 'in', ['7','6','5']]]}" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+                                        <field name="delivery_picking_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' groups="material_purchase_requisitions.group_purchase_requisition_user,stock.group_stock_user"/>
+                                        <field name="custom_picking_type_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'  groups="material_purchase_requisitions.group_purchase_requisition_user,stock.group_stock_user" attrs="{'readonly': [['state', 'in', ['7','6','5']]]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Otra Información">
+                                <group>
+                                    <group>
+                                        <field name="employee_confirm_id"/>
+                                        <field name="approve_manager_id"/>
+                                        <field name="approve_employee_id"/>
+                                        <field name="rq_create_for"/>
+                                        <field name="recieve_for"/>
+                                        <field name="reject_employee_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="confirm_date"/>
+                                        <field name="managerapp_date"/>
+                                        <field name="userrapp_date"/>
+                                        <field name="rq_create_for_date"/>
+                                        <field name="recieve_for_date"/>
+                                        <field name="userreject_date"/>
+                                    </group>
+                                </group>
+                            </page>
+                    </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        
+        <record id="material_purchase_requisition_tree_view" model="ir.ui.view">
+            <field name="name">material.purchase.requisition.view.tree</field>
+            <field name="model">material.purchase.requisition</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <header>
+                        <button name="max_request_stock" type="object" string="Crear Requisiciónes de Compra masivas" class="btn-primary" />
+                    </header>
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <field name="request_date"/>
+                    <field name="date_end"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="state" attrs="{'readonly':1}"/>
+                </tree>
+            </field>
+        </record>
+        
+
+        <!-- Aqui Kanban -->
+        <record id="material_purchase_Requisition_kanban_view" model="ir.ui.view">
+           <field name="name">material.purchase.requisition.kanban</field>
+           <field name="model">material.purchase.requisition</field>
+           <field name="priority">10</field>
+           <field name="arch" type="xml">
+               <kanban string="Requisición de Compra" quick_create="false" draggable="false" edit="false" default_group_by="state" default_order_by="asc" modifiers="{}">
+                    <templates modifiers="{}">
+                        <t t-name="kanban-box" modifiers="{}">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click" color="x_color" >
+                                <div class="o_dropdown_kanban dropdown" name="kanban_dropdown" >
+                                    <a class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" href="#" aria-label="Dropdown menu" title="Dropdown menu" role="button" modifiers="{}">
+                                        <span class="fa fa-bars fa-lg" />
+                                    </a>
+                                    <div class="dropdown-menu" role="menu" name="studio_div_8d05c9" modifiers="{}">
+                                        <t t-if="widget.editable" modifiers="{}">
+                                            <a class="dropdown-item oe_kanban_action oe_kanban_action_a"  data-type="edit" href="#">
+                                                Edit
+                                            </a>
+                                        </t>
+                                        <ul class="oe_kanban_colorpicker" data-field="x_color" modifiers="{}"/>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_card_content" modifiers="{}">
+                                    <field name="name" modifiers="{'readonly':true}"/>
+                                    <field name="employee_id" display="full" on_change="1" can_create="false" can_write="true" modifiers="{'required':true}"/>
+                                    <field name="request_date" display="full" modifiers="{'required':true}"/>
+                                    <field name="company_id" groups="base.group_multi_company" display="full" can_create="true" can_write="false" modifiers="{'required':true}"/>
+                                    <field name="state" attrs="{'readonly':1}" bold="True" display="full" modifiers="{}"/>
+                                </div>
+                                <div class="oe_kanban_bottom_left" name="studio_div_dec692" modifiers="{}">
+                                    <field name="priority" widget="priority" />
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- Final Kanban -->
+
+        <record id="material_purchase_requisition_search_view" model="ir.ui.view">
+            <field name="name">material.purchase.requisition search</field>
+            <field name="model">material.purchase.requisition</field>
+            <field name="arch" type="xml">
+                <search string="Busqueda de Solicitud de Requisición">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="request_date"/>
+                    <field name="date_end"/>
+                    <field name="department_id"/>
+                    <field name="approve_manager_id"/>
+                    <field name="approve_employee_id"/>
+                    <field name="location_id"/>
+                    <field name="managerapp_date"/>
+                    <field name="userrapp_date"/>
+                    <field name="receive_date"/>
+                    <field name="date_done"/>
+                    <field name="dest_location_id"/>
+                    <field name="delivery_picking_id"/>
+                    <field name="reason"/>
+                    <field name="state" attrs="{'readonly':1}"/>
+                    <group expand="0" string="Agrupado por">
+                        <filter string="Solicitante" name="employee_id" context="{'group_by':'employee_id'}"/>
+                        <filter string="Fecha de Requisición" name="request_date" context="{'group_by':'request_date'}"/>
+                        <filter string="Fecha tope" name="date_end" context="{'group_by':'date_end'}"/>
+                        <filter string="Departamento" name="department" context="{'group_by':'department_id'}"/>
+                        <filter string="Gerente del Departamento" name="department_manager" context="{'group_by':'approve_manager_id'}"/>
+                        <filter string="Aprobado por" name="approve_by" context="{'group_by':'approve_employee_id'}"/>
+                        <filter string="Ubicación" name="location" context="{'group_by':'location_id'}"/>
+                        <filter string="Fecha de Aprobación del Gerente" name="managerapp_date" context="{'group_by':'managerapp_date'}"/>
+                        <filter string="Fecha de Aprobación del Usuario" name="userapp_date" context="{'group_by':'userrapp_date'}"/>
+                        <filter string="Ubicación de Destino" name="dest_location_id" context="{'group_by':'dest_location_id'}"/>
+                        <filter string="Pedido de Entrega" name="delivery_picking_id" context="{'group_by':'delivery_picking_id'}"/>
+                        <filter string="Razón" name="reason" context="{'group_by':'reason'}"/>
+                        <filter string="Fecha de Finalización" name="date_done" context="{'group_by':'date_done'}"/>
+                        <filter string="Estado" name="state" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+           
+
+        <record model="ir.actions.act_window" id="action_material_purchase_requisition">
+            <field name="name">Requisiciones de Compra</field>
+            <field name="res_model">material.purchase.requisition</field>
+            <field name="view_mode">tree,kanban,form,graph</field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_material_purchase_requisition_two">
+            <field name="name">Requisiciones de Compra</field>
+            <field name="res_model">material.purchase.requisition</field>
+            <field name="view_mode">kanban,tree,form,graph</field>
+        </record>
+        <menuitem id="menu_purchase_requisition" name="Requisiciones" groups="base.group_user"  web_icon="material_purchase_requisitions,static/description/icon.png"/>
+        <menuitem id="menu_item_purchase_requisition" sequence="1" name="Requisición de Compra" parent="menu_purchase_requisition"/>
+        <menuitem id="menu_action_purchase_requisition" sequence="1" name="Requisiciones de Compras" parent="menu_item_purchase_requisition" action="action_material_purchase_requisition_two"/>
+
+        <menuitem id="menu_requisition_config" name="Configuración"  sequence="2"   parent="menu_purchase_requisition"/>
+        <menuitem id="menu_requisition_centro_de_costo" name="Centro de Costos"  sequence="1"  action="analytic.action_account_analytic_account_form" parent="menu_requisition_config"/>
+        
+    </data>
+</odoo>

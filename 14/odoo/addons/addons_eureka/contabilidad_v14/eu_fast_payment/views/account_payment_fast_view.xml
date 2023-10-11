@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_payment_fast_tree" model="ir.ui.view">
+        <field name="name">account.payment.fast.tree</field>
+        <field name="model">account.payment.fast</field>
+        <field name="arch" type="xml">
+            <tree string="Pagos Rápido"> 
+                <field name="name"/>
+                <field name="state"/>
+                <field name="company_id"/>
+                <field name="user_id"/>
+                <field name="confirmed_by"/>
+                <field name="payment_create_by"/>
+                <field name="payment_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_account_payment_fast_form" model="ir.ui.view">
+        <field name="name">account.payment.fast.form</field>
+        <field name="model">account.payment.fast</field>
+        <field name="arch" type="xml">
+            <form string="Pagos Rápido">
+                <header>
+                    <button name="crear_pagos" 
+                        type="object" 
+                        string="Crear Pagos" 
+                        states="done" 
+                        class="btn-primary" 
+                        groups="eu_fast_payment.group_crear_pago_rapido" 
+                        confirm="Esto creará Pagos en Borrador, ¿Está seguro? NO PUEDE DESHACERSE"
+                    />
+                    <button name="confirmar" type="object" string="Confirmar" states="draft" class="btn-primary" groups="eu_fast_payment.group_confirmar_pago_rapido"/>
+                    <button name="cancelar" type="object" string="Cancelar" states="draft" class="btn-primary" groups="eu_fast_payment.group_cancelar_pago_rapido"/>
+                    <field name="state" widget="statusbar" statusbar_visible="cancel,draft,done,payment" readonly="1"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button class="oe_stat_button" type="object" icon="fa-book" 
+                            attrs="{'invisible': [('state','!=','payment')]}"
+                            name="open_payments" 
+                            width="200px"
+                            >
+                            <field name="payment_count" 
+                                string="Pagos Creados" 
+                                widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="user_id" attrs="{'readonly': [('state','!=','draft')]}" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                            <field name="create_date" string="Fecha de Creación"/>
+                        </group>
+                        <group>
+                            <field name="confirmed_by" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                            <field name="payment_create_by"  options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                    </group>  
+                    <notebook>
+                        <page string="Pagos a Crear" name="detalle_rapido">
+                            <field name="order_line" attrs="{'readonly': [('state','!=','draft')]}">
+                                <tree string="Líneas Pagos Rápido" editable="bottom" >
+                                    <field name="fast_payment" invisible="1"/>
+                                    <field name="user_id" invisible="1"/>
+                                    <field name="name" />
+                                    <field name="referencia" />
+                                    <field name="partner_id" domain ="[('user_id','=',user_id)]" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                                    <field name="journal_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                                    <field name="rate" />
+                                    <field name="amount" />
+                                    <field name="amount_bs" />
+                                    <field name="currency_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                                    <field name="sale_id" 
+                                        domain="[('user_id','=',user_id),('partner_id','=',partner_id),('state','in',('sale','done'))]" 
+                                        options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                    />
+                                    <field name="invoice_id" 
+                                        domain="[('move_type','=','out_invoice'),('invoice_user_id','=',user_id),('partner_id','=',partner_id),('state','=','posted')]" 
+                                        options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                    />
+                                    <field name="payment_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                                    <field name="company_id" invisible="1"/>
+                                </tree>
+                            </field>
+                            <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <group class="oe_subtotal_footer oe_right" colspan="2" name="payment_total">
+                                    <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                        <label for="total_cash_usd" />
+                                    </div>
+                                    <field name="total_cash_usd" nolabel="1" class="oe_subtotal_footer_separator" />
+                                    <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                        <label for="total_cash_bs" />
+                                    </div>
+                                    <field name="total_cash_bs" nolabel="1" class="oe_subtotal_footer_separator" />
+                                    <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                        <label for="total_bank_usd" />
+                                    </div>
+                                    <field name="total_bank_usd" nolabel="1" class="oe_subtotal_footer_separator" />
+                                    <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                        <label for="total_bank_bs" />
+                                    </div>
+                                    <field name="total_bank_bs" nolabel="1" class="oe_subtotal_footer_separator" />
+                                </group>
+                                <div class="oe_clear"/>
+                            </group>
+                        </page>
+                    </notebook>                 
+                </sheet>  
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>  
+            </form>
+        </field>
+    </record>
+
+    <record id="open_account_payment_fast" model="ir.actions.act_window">
+        <field name="name">Pagos Rápido</field>
+        <field name="res_model">account.payment.fast</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_account_payment_fast_tree"></field>
+    </record>
+
+</odoo>

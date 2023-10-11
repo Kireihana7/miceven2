@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_config_company_wiz_view_form" model="ir.ui.view">
+        <field name="name">hr.config.company.wiz.view.form</field>
+        <field name="model">hr.config.company.wiz</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="boss_rrhh" />
+                        <field name="days_alert_contract" />
+                        <field name="create_work_entry_with_attendance" />
+                        <field name="lawyer_ref" />
+                        <field name="num_ipsa" />
+                        <field name="registrofiscal" />
+                    </group>
+                    <group string="Ajustes de compañia">
+                        <field name="dias_vac_base" />
+                        <field name="cant_dias_utilidades" />
+                        <field name="horas_change_noche" />
+                        <field name="num_cuenta_faov" />
+                        <field name="banavih_account" />
+                        <field name="subproceso" />
+                        <field name="cesta_ticket" />
+                        <field name="sal_minimo_ley" />
+                        <field name="por_riesgo" />
+                        <field name="por_aporte_sso" />
+                        <field name="por_empresa_lph" />
+                        <field name="por_empleado_lph" />
+                        <field name="por_empresa_rpe" />
+                        <field name="por_empleado_rpe" />
+                        <field name="check_journey_rotations" />
+                        <field name="time_between_rotations" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button 
+                        name="configurar"
+                        string="Confirmar"
+                        type="object"
+                        class="btn-primary"
+                        
+                    />
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_hr_config_company_wizard" model="ir.actions.act_window">
+        <field name="name">Configuración Datos Compañia</field>
+        <field name="res_model">hr.config.company.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hr_config_company_wiz_view_form"/>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+    id="act_config_company_config_view"
+    name="Configuración Datos Compañia"
+    action="action_hr_config_company_wizard"
+    parent="l10n_ve_payroll.menu_hr_payroll_unglobal_settings"
+    sequence="70"/>
+
+
+    
+</odoo>

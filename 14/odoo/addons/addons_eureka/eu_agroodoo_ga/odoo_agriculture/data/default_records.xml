@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">	
+        <!-- ======= Mano de Obra ======= -->
+		<record id="product_mano_de_obra" model="product.template">
+			<field name="name">Workforce</field>
+			<field name="sale_ok" eval="True"/>
+            <field name="purchase_ok" eval="True"/>
+            <field name="is_agriculture" eval="True"/>
+            <field name="mano_de_obra" eval="True"/>
+		</record>	
+        
+        <!-- ======= Mantenimiento de Equipo ======= -->
+		<record id="product_equipment_maintenance" model="product.template">
+			<field name="name">Equipment Maintenance</field>
+			<field name="sale_ok" eval="True"/>
+            <field name="purchase_ok" eval="True"/>
+            <field name="equipo_agricola" eval="True"/>
+            <field name="maintenance_as_product" eval="True"/>
+		</record>	        
+	</data>
+</odoo>

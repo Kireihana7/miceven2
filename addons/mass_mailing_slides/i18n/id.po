@@ -1,0 +1,77 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mass_mailing_slides
+# 
+# Translators:
+<<<<<<< HEAD
+# Martin Trigaux, 2022
+=======
+# Martin Trigaux, 2020
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+# Abe Manyo, 2023
+# 
+msgid ""
+msgstr ""
+<<<<<<< HEAD
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-08 06:38+0000\n"
+"PO-Revision-Date: 2022-10-04 09:55+0000\n"
+=======
+"Project-Id-Version: Odoo Server saas~13.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-01 07:29+0000\n"
+"PO-Revision-Date: 2020-09-07 08:14+0000\n"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+"Last-Translator: Abe Manyo, 2023\n"
+"Language-Team: Indonesian (https://app.transifex.com/odoo/teams/41243/id/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: id\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: mass_mailing_slides
+#: model_terms:ir.ui.view,arch_db:mass_mailing_slides.slide_channel_view_form
+<<<<<<< HEAD
+#: model_terms:ir.ui.view,arch_db:mass_mailing_slides.slide_channel_view_kanban
+msgid "Contact Attendees"
+msgstr "Hubungi Peserta"
+=======
+msgid "<span class=\"o_stat_text\">Mail Attendees</span>"
+msgstr ""
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: mass_mailing_slides
+#: model:ir.model,name:mass_mailing_slides.model_slide_channel
+msgid "Course"
+msgstr "Kursus"
+
+#. module: mass_mailing_slides
+<<<<<<< HEAD
+=======
+#: model:ir.model.fields,field_description:mass_mailing_slides.field_slide_channel__display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: mass_mailing_slides
+#: model:ir.model.fields,field_description:mass_mailing_slides.field_slide_channel__id
+msgid "ID"
+msgstr "ID"
+
+#. module: mass_mailing_slides
+#: model:ir.model.fields,field_description:mass_mailing_slides.field_slide_channel____last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: mass_mailing_slides
+#: model_terms:ir.ui.view,arch_db:mass_mailing_slides.slide_channel_view_kanban
+msgid "Mail Attendees"
+msgstr ""
+
+#. module: mass_mailing_slides
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#: code:addons/mass_mailing_slides/models/slide_channel.py:0
+#, python-format
+msgid "Mass Mail Course Members"
+msgstr "Kursus Email Massal Anggota"

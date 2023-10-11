@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Menú principal -->
+    <menuitem id="app_reportes_contables" name="Reportes Contables" sequence="20" action="eu_report_payment_bank.action_eu_reporte_payment_bank_wizard" web_icon="eu_report_payment_bank,static/description/images/fast_payment.png"/>
+
+    <!-- Menú Secundario -->
+    <menuitem id="eu_report_payment_bank_operaciones" name="Reportes Contables" sequence="1" parent="eu_report_payment_bank.app_reportes_contables"/> 
+   
+    <!-- Detalles Operaciones -->
+    <menuitem 
+        id="menu_eu_report_payment_bank" 
+        name="Reportes Contables"
+        sequence="1"
+        action="eu_report_payment_bank.action_eu_reporte_payment_bank_wizard"
+        parent="eu_report_payment_bank.eu_report_payment_bank_operaciones"
+    />
+    
+</odoo>

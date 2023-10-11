@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="custom_audit_documentation_view_tree" model="ir.ui.view">
+        <field name="name">custom.audit.documentation.view.tree</field>
+        <field name="model">custom.audit.documentation</field>
+        <field name="arch" type="xml">
+            <tree string="Documentación" editable="bottom">
+                <field name="name" required="1" />
+                <field name="accorded" attrs="{'readonly': [('checked', '=', False)]}" />
+                <field name="not_accorded" attrs="{'readonly': [('checked', '=', False)]}" />
+                <field name="checked" />
+                <field name="observation" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="custom_audit_documentation_view_form" model="ir.ui.view">
+        <field name="name">custom.audit.documentation.view.form</field>
+        <field name="model">custom.audit.documentation</field>
+        <field name="arch" type="xml">
+            <form string="Documentación">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="accorded" />
+                        <field name="not_accorded" />
+                        <field name="checked" />
+                        <field name="observation" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fleet_vehicle_view_form_inherit" model="ir.ui.view">
+        <field name="name">fleet.vehicle.view.form.inherit</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <field name="active" position="after">
+                <field 
+                    name="maintenance_request_id" 
+                    readonly="1" 
+                    attrs="{'invisible':[('maintenance_request_id', '=', False)]}" 
+                />
+            </field>
+            <field name="active" position="attributes">
+                <attribute name="attrs">
+                    {'readonly':[('maintenance_request_id', '!=', False)]}
+                </attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="maintenance_request_view_form_inherit" model="ir.ui.view">
+        <field name="name">maintenance.request.view.form.inherit</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <header position="inside">
+                <button 
+                    string="Crear servicio" 
+                    name="action_create_service" 
+                    type="object" 
+                    class="oe_highlight"
+                    attrs="{
+                        'invisible':[
+                            '|',
+                            ('vehicle_service_id', '!=', False),
+                            ('vehicle_id', '=', False),
+                        ]
+                    }"
+                />
+            </header>
+            <field name="equipment_id" position="after">
+                <field 
+                    name="vehicle_id" 
+                    attrs="{'invisible':[('equipment_id', '!=', False)]}" 
+                    options="{'no_create': True}"
+                />
+                <field name="vehicle_service_id" attrs="{'invisible':[('vehicle_id', '=', False)]}" readonly="1" />
+            </field>
+            <field name="equipment_id" position="attributes">
+                <attribute name="attrs">
+                    {'invisible':[('vehicle_id', '!=', False)]}
+                </attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="fleet_vehicle_log_services_view_form_inherit" model="ir.ui.view">
+        <field name="name">fleet.vehicle.log.services.view.form.inherit</field>
+        <field name="model">fleet.vehicle.log.services</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_view_form" />
+        <field name="arch" type="xml">
+            <field name="vechical_type_id" position="after">
+                <field 
+                    name="maintenance_request_id" 
+                    readonly="1" 
+                    attrs="{'invisible': [('maintenance_request_id', '=', False)]}" 
+                />
+            </field>
+        </field>
+    </record>
+
+</odoo>

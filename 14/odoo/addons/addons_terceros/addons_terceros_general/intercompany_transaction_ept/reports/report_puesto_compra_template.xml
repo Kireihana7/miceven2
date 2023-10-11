@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_puesto_compra_template" name="Template Puesto de Compra">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="add_product_purchase_order.header_puesto_compra" />
+                    <style>
+                        .table td {
+                            padding: .18rem;
+                        }
+                        .table th {
+                            padding: .48rem;
+                        }
+                    </style>
+                    <div class="page">
+                        <table class="table table-borderless mt-3" style="font-size:7px;">
+                            <thead class="border-bottom border-dark">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cant. Sacos</th>
+                                    <th>Peso Bruto</th>
+                                    <th>Peso Saco</th>
+                                    <th>Peso Neto</th>
+                                    <th>Precio Quintal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.order_line" t-as="line">
+                                    <tr>
+                                        <td><span t-field="line.name"/></td>
+                                        <td class="text-right"><span t-field="line.qty_saco"/></td>
+                                        <td class="text-right"><span t-field="line.qty_bruto"/> kg</td>
+                                        <td class="text-right"><span t-field="line.qty_tara"/> kg</td>
+                                        <td class="text-right"><span t-field="line.product_qty"/> kg</td>
+                                        <td class="text-right"><span t-field="line.precio_quintal"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot class="text-right">
+                                <tr>
+                                    <td colspan="6">Total a Pagar: <span t-field="o.precio_total_sin_caleta"/></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

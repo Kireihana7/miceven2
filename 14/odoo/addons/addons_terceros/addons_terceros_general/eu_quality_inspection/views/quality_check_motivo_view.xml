@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_quality_check_motivo_tree_romana" model="ir.ui.view">
+        <field name="name">quality.check.motivo.tree</field>
+        <field name="model">quality.check.motivo</field>
+        <field name="arch" type="xml">
+            <tree string="Tabla de no Conformidades" edit="0" create="0" import="0" delete="0">
+                <field name="company_id" invisible="1"/>
+                <field name="name"/> 
+                <field name="quantity"/>
+                <field name="quality_check"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_quality_check_motivo_form_romana" model="ir.ui.view">
+        <field name="name">quality.check.motivo.form</field>
+        <field name="model">quality.check.motivo</field>
+        <field name="arch" type="xml">
+            <form string="Tabla de no Conformidades">
+                <sheet>
+                    <group>
+                        <field name="company_id" invisible="1"/>
+                        <field name="name"/>
+                        <field name="quantity"/>
+                    </group>
+                </sheet>  
+            </form>
+        </field>
+    </record>
+
+    <record id="open_view_quality_check_motivo_tree" model="ir.actions.act_window">
+        <field name="name">Tabla de no Conformidades</field>
+        <field name="res_model">quality.check.motivo</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_quality_check_motivo_tree_romana"></field>
+    </record>
+
+</odoo>
+

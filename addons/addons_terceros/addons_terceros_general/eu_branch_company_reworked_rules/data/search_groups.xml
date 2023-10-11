@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- <record id="material_purchase_requisition_search_view_branch" model="ir.ui.view">
+        <field name="name">material.purchase.requisition.branch.search</field>
+        <field name="model">material.purchase.requisition</field>
+        <field name="mode">extension</field>
+        <field name="inherit_id" ref="material_purchase_requisitions.material_purchase_requisition_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="inside">
+                <filter string="Sucursal" name="sucursal" context="{'group_by':'branch_id'}"/>
+                <separator/>
+            </xpath>
+        </field>
+    </record> -->
+
+    <record id="view_department_filter_view_branch" model="ir.ui.view">
+        <field name="name">hr.department.branch.search</field>
+        <field name="model">hr.department</field>
+        <field name="mode">extension</field>
+        <field name="inherit_id" ref="hr.view_department_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search[1]" position="inside">
+                <filter string="Sucursal" name="sucursal" context="{'group_by':'branch_id'}"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_employee_filter_view_branch" model="ir.ui.view">
+        <field name="name">hr.employee.branch.search</field>
+        <field name="model">hr.employee</field>
+        <field name="mode">extension</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="inside">
+                <filter string="Sucursal" name="sucursal" context="{'group_by':'branch_id'}"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="stock_warehouse_view_search_branch" model="ir.ui.view">
+        <field name="name">stock.warehouse.branch.search</field>
+        <field name="model">stock.warehouse</field>
+        <field name="mode">extension</field>
+        <field name="inherit_id" ref="stock.stock_warehouse_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search[1]" position="inside">
+                <filter string="Sucursal" name="sucursal" context="{'group_by':'branch_id'}"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_res_partner_filter_search_branch" model="ir.ui.view">
+        <field name="name">res.partner.branch.search</field>
+        <field name="model">res.partner</field>
+        <field name="mode">extension</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="inside">
+                <filter string="Sucursal" name="sucursal" context="{'group_by':'branch_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    
+</odoo>

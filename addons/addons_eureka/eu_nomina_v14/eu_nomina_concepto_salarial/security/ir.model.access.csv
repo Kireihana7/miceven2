@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_nomina_report_concepto_salarial,access_nomina_report_concepto_salarial,model_res_concept_salarial,,1,1,1,1

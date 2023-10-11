@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_pago_global_cscv_new" model="ir.actions.report">
+        <field name="name">Reporte de Nomina Global NUEVO</field>
+        <field name="model">nomina.global.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="paperformat_id" ref="l10n_ve_payroll.paperformat_nomina_recibo"/>
+        <field name="report_name">l10n_ve_payroll.template_report_nomina_new</field>
+        <field name="report_file">l10n_ve_payroll.template_report_nomina_new</field>
+        <field name="print_report_name">'General - Pagos'</field>
+        <field name="binding_model_id" ref="model_nomina_global_wizard"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+        <record model="ir.rule" id="mro_maintenance_team_multicompany_rule">
+            <field name="name">mro_maintenance_team_multi-company</field>
+            <field name="model_id" ref="mro_maintenance.model_mro_maintenance_team" />
+            <field name="global" eval="True" />
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule" id="mro_tool_multicompany_rule">
+            <field name="name">mro_tool_multi-company</field>
+            <field name="model_id" ref="mro_maintenance.model_mro_tool" />
+            <field name="global" eval="True" />
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule" id="mro_equipment_category_multicompany_rule">
+            <field name="name">mro_equipment_category_multi-company</field>
+            <field name="model_id" ref="mro_maintenance.model_mro_equipment_category" />
+            <field name="global" eval="True" />
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule" id="_mro_equipment_location_multicompany_rule">
+            <field name="name">_mro_equipment_location_multi-company</field>
+            <field name="model_id" ref="mro_maintenance.model_mro_equipment_location" />
+            <field name="global" eval="True" />
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+    </data>
+    
+</odoo>

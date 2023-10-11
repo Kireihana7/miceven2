@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<record id="seq_eos_feature" model="ir.sequence">
+			<field name="name">EOS Feature</field>
+			<field name="code">eos.feature</field>
+			<field name="prefix">EOS/FEATURE/000</field>		
+		</record>
+
+		<record id="seq_eos_statistics" model="ir.sequence">
+			<field name="name">EOS Statistics</field>
+			<field name="code">eos.statistics.task</field>
+			<field name="prefix">EOS/STASK/000</field>		
+		</record>		
+
+		<record id="seq_eos_download" model="ir.sequence">
+			<field name="name">EOS Download</field>
+			<field name="code">eos.download.task</field>
+			<field name="prefix">EOS/DTASK/000</field>		
+		</record>				
+
+		<record id="seq_eos_field" model="ir.sequence">
+			<field name="name">EOS Field</field>
+			<field name="code">eos.field</field>
+			<field name="prefix">EOS/FIELD/000</field>		
+		</record>		
+
+		<record id="seq_eos_field_classification_area" model="ir.sequence">
+			<field name="name">EOS Field Classification Area</field>
+			<field name="code">eos.field.classification.area</field>
+			<field name="prefix">EOS/FIELD/CA/000</field>		
+		</record>				
+		
+		<record id="seq_eos_zoning" model="ir.sequence">
+			<field name="name">EOS Zoning</field>
+			<field name="code">eos.zoning.task</field>
+			<field name="prefix">EOS/ZTASK/000</field>		
+		</record>				
+	</data>
+</odoo>

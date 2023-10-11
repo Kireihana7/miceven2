@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_partner_svisita_employee,acc_res_partner_svisita_employee,model_res_partner_svisita,base.group_user,1,1,1,1
+access_res_partner_segmento_employee,acc_res_partner_segmento_employee,model_res_partner_segmento,base.group_user,1,1,1,1
+access_res_partner_canal_employee,acc_res_partner_canal_employee,model_res_partner_canal,base.group_user,1,1,1,1
+access_res_partner_dvisita_employee,acc_res_partner_dvisita_employee,model_res_partner_dvisita,base.group_user,1,1,1,1

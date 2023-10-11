@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-inherit="mail.ChatterTopbar" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-if='chatter.threadView']" position="inside">              
+            <button
+                class="btn btn-link o_ChatterTopbar_button registrar_hallazgo"
+                type="button"
+                t-on-click="_onClickRegistrarHallazgo"
+                t-att-disabled="chatter.isDisabled"
+            >
+                Registrar hallazgo
+            </button>
+        </xpath>
+    </t>
+</templates>

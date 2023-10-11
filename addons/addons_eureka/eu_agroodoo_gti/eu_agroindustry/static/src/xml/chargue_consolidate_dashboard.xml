@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <!-- This template is for a table at the top of purchase views that shows some KPIs. -->
+    <t t-name="eu_agroindustry.AgroDashboard">
+        <div class="o_agro_dashboard container escritorio">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-sm">
+                        <!-- thead needed to avoid list view rendering error for some reason -->
+                        <thead>
+                            <tr>
+                                <!-- can't use th tag due to list rendering error when no values in list... -->
+                                <td class="o_text">
+                                    <div>Gestión de <br/>Carga</div>                                   
+                                </td>
+
+                                <td class="o_main o_dashboard_action" title="Camiones por Llegar"
+                                    name="agros_por_llegar">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-01.png"/><br/> 
+                                    <a href="#"><t t-esc="values['por_llegar']"/><br/>Por llegar</a>
+                                </td>
+
+                                <td 
+                                    class="o_main o_dashboard_action" 
+                                    title="Camiones en Patio"
+                                    name="agros_patio"
+                                    t-if="usar_patio"
+                                >
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-04.png"/><br/> 
+                                    <a href="#"><t t-esc="values['patio']"/><br/>Patio</a>
+                                </td>
+                                
+                                <td class="o_main o_dashboard_action" title="Camiones Peso Tara"
+                                    name="agros_peso_bruto">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-02.png"/><br/> 
+                                    <a href="#"><t t-esc="values['peso_bruto']"/><br/>Peso Bruto</a>
+                                </td>
+
+                                <td class="o_main o_dashboard_action" title="Camiones en Proceso"
+                                    name="agros_proceso">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-03.png"/><br/>
+                                    <a href="#"><t t-esc="values['proceso']"/><br/>Proceso</a>
+                                </td>
+
+                                <td class="o_main o_dashboard_action" title="Camiones Peso Bruto"
+                                    name="agros_peso_tara">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-02.png"/><br/>
+                                    <a href="#"><t t-esc="values['peso_tara']"/><br/>Peso Tara</a>
+                                </td>
+
+                                <td class="o_main o_dashboard_action" title="Camiones por Salir"
+                                    name="agros_por_salir">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-05.png"/><br/>
+                                    <a href="#"><t t-esc="values['por_salir']"/><br/>Por salir</a>
+                                </td>
+
+                                <td class="o_main o_dashboard_action" title="Camiones Finalizados"
+                                    name="agros_finalizado">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-06.png"/><br/> 
+                                    <a href="#"><t t-esc="values['finalizado']"/><br/>Finalizado</a>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="o_agro_dashboard container movil">
+            <div class="row">
+                <div class="col-sm-6">
+                    <table class="table table-sm">       
+                        <thead>
+                            <tr>
+                                <td class="o_text">
+                                    <div>Carga</div>
+                                </td>
+                                <td class="ocultar size-icon o_dashboard_action" name="agros_por_llegar">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-01.png"/>
+                                    <br/>
+                                    <a href="#">
+                                        <t t-esc="values['por_llegar']"/>
+                                    </a>
+                                </td>
+                                <td 
+                                    class="ocultar size-icon o_dashboard_action" 
+                                    name="agros_patio"
+                                    t-if="usar_patio"
+                                >
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-04.png"/>
+                                    <br/>
+                                    <a href="#"> 
+                                        <t t-esc="values['patio']"/>
+                                    </a>
+                                </td>
+                                <td class="ocultar size-icon o_dashboard_action" name="agros_peso_bruto">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-02.png"/>
+                                    <br/>
+                                    <a href="#">
+                                        <t t-esc="values['peso_bruto']"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="col-sm-6">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <td class="ocultar size-icon o_dashboard_action" name="agros_proceso">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-03.png"/>
+                                    <br/>
+                                    <a href="#">
+                                        <t t-esc="values['proceso']"/>
+                                    </a>
+                                </td>
+                                <td class="ocultar size-icon o_dashboard_action" name="agros_peso_tara">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-02.png"/>
+                                    <br/>
+                                    <a href="#">
+                                        <t t-esc="values['peso_tara']"/>
+                                    </a>
+                                </td>
+                                <td class="ocultar size-icon o_dashboard_action" name="agros_por_salir">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-05.png"/>
+                                    <br/>
+                                    <a href="#">
+                                        <t t-esc="values['por_salir']"/>
+                                    </a>
+                                </td>
+                                <td class="ocultar size-icon o_dashboard_action" name="agros_finalizado">
+                                    <img src="/eu_agroindustry/static/description/images/CAMION_PROCESO_DE_CARGA_Y_DESCARGA-06.png"/>
+                                    <br/>
+                                    <a href="#">
+                                        <t t-esc="values['finalizado']"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </t>
+</templates>

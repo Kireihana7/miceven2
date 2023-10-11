@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_renew_contract_view_form" model="ir.ui.view">
+        <field name="name">hr.renew.contract.view.form</field>
+        <field name="model">hr.renew.contract</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="fecha_ini" />
+                        <field name="fecha_final" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button 
+                        name="renew"
+                        string="Confirmar"
+                        type="object"
+                        class="btn-primary"
+                        
+                    />
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_expiry_report" model="ir.actions.report">
+            <field name="name">Product Expiry Report</field>
+            <field name="model">product.expiry.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">eu_expiry_report_alerts_and_email.p_exp_report_tmpl</field>
+            <field name="report_file">eu_expiry_report_alerts_and_email.p_exp_report_tmpl</field>
+        </record>
+    </data>
+</odoo>

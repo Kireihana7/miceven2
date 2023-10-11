@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_quality_check_motivo_detail_tree_romana" model="ir.ui.view">
+        <field name="name">quality.check.motivo.tree</field>
+        <field name="model">quality.check.motivo.detail</field>
+        <field name="arch" type="xml">
+            <tree string="Tabla de Motivos">
+                <field name="name"/> 
+                <field name="company_id" invisible="1"/> 
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_quality_check_motivo_detail_form_romana" model="ir.ui.view">
+        <field name="name">quality.check.motivo.detail.form</field>
+        <field name="model">quality.check.motivo.detail</field>
+        <field name="arch" type="xml">
+            <form string="Tabla de Motivos">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" invisible="1"/> 
+                    </group>
+                </sheet>  
+            </form>
+        </field>
+    </record>
+
+    <record id="open_view_quality_check_motivo_detail_tree" model="ir.actions.act_window">
+        <field name="name">Tabla de Motivos</field>
+        <field name="res_model">quality.check.motivo.detail</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_quality_check_motivo_detail_tree_romana"></field>
+    </record>
+
+</odoo>
+

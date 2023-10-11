@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_three_mit_payroll_three_mit_payroll,three_mit_payroll.three_mit_payroll,model_three_mit_payroll_three_mit_payroll,base.group_user,1,1,1,1

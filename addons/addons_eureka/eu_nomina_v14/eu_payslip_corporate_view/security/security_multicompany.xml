@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        
+        <record id="corporate_payslip_group" model="res.groups">
+            <field name="name">view Corporate Payslip</field>
+        </record>
+        <record id="corporate_super_payslip_group" model="res.groups">
+            <field name="name">view Corporate Super Secret Payslip</field>
+        </record>
+        <record model="ir.rule"  id="eu_rules_corporate_payroll">
+            <field name="name">payslips corporativas</field>
+            <field name="model_id" ref="model_hr_payslip"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['&amp;','|',('its_super_secret', '=', False),('its_super_secret', '=', user._has_group('eu_payslip_corporate_view.corporate_super_payslip_group')),'|',('corporate_type', '=', False), ('corporate_type', '=', user._has_group('eu_payslip_corporate_view.corporate_payslip_group'))]</field>
+        </record>
+        <record model="ir.rule"  id="eu_rules_corporate_payroll_run">
+            <field name="name">payslips run corporativas</field>
+            <field name="model_id" ref="model_hr_payslip_run"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['&amp;','|',('its_super_secret', '=', False),('its_super_secret', '=', user._has_group('eu_payslip_corporate_view.corporate_super_payslip_group')),'|',('corporate_type', '=', False), ('corporate_type', '=', user._has_group('eu_payslip_corporate_view.corporate_payslip_group'))]</field>
+        </record>
+        <record model="ir.rule"  id="eu_rules_corporate_liquidation">
+            <field name="name">liquidations corporativas</field>
+            <field name="model_id" ref="model_hr_liquidacion_corporate"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('its_super_secret', '=', False),('its_super_secret', '=', user._has_group('eu_payslip_corporate_view.corporate_super_payslip_group'))]</field>
+        </record>
+        <record model="ir.rule"  id="eu_rules_corporate_anticipate">
+            <field name="name">Anticipos corporativas</field>
+            <field name="model_id" ref="model_hr_anticipos_corporate"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('its_super_secret', '=', False),('its_super_secret', '=', user._has_group('eu_payslip_corporate_view.corporate_super_payslip_group'))]</field>
+        </record>
+        <record model="ir.rule"  id="eu_rules_corporate_structures_secret">
+            <field name="name">structure secret corporativas</field>
+            <field name="model_id" ref="model_hr_payroll_structure"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('its_super_secret', '=', False),('its_super_secret', '=', user._has_group('eu_payslip_corporate_view.corporate_super_payslip_group'))]</field>
+        </record>
+        <record model="ir.rule"  id="eu_rules_corporate_prestation">
+            <field name="name">Prestaciones corporativas</field>
+            <field name="model_id" ref="model_hr_prestaciones_corporate"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('its_super_secret', '=', False),('its_super_secret', '=', user._has_group('eu_payslip_corporate_view.corporate_super_payslip_group'))]</field>
+        </record>
+        <record model="ir.rule"  id="eu_rules_corporate_prestation_lines_Secret">
+            <field name="name">Prestaciones lineas secretas corporativas</field>
+            <field name="model_id" ref="model_hr_prestaciones_corporate_employee_line"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('its_super_secret', '=', False),('its_super_secret', '=', user._has_group('eu_payslip_corporate_view.corporate_super_payslip_group'))]</field>
+        </record>
+    </data>
+
+</odoo>

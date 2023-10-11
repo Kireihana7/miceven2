@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record model="ir.rule"  id="stock_quant_partner_rule">
+            <field name="name">Stock Quant Partner User multi-company</field>
+            <field name="model_id" ref="model_stock_quant_partner"/>
+            <field name="groups" eval="[(4, ref('eu_partner_stock.group_stock_quant_partner_user'))]"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids),('user_id', '=', user.id)]</field>
+        </record>
+        <record model="ir.rule"  id="stock_quant_partner_rule">
+            <field name="name">Stock Quant Partner Manager multi-company</field>
+            <field name="model_id" ref="model_stock_quant_partner"/>
+            <field name="groups" eval="[(4, ref('eu_partner_stock.group_stock_quant_partner_manager'))]"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        
+    </data>
+</odoo>

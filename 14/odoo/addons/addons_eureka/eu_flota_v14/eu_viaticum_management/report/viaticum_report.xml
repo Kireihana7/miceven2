@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="viaticum_report_template">
+        <t t-call="web.html_container">
+            <t t-set="vef" t-value="env.ref('base.VEF')"/>
+            <t t-set="currency_id" t-value="env['res.currency'].browse(currency_id)"/>
+            <t t-set="rate" t-value="currency_id.rate"/>
+            <t t-foreach="env['viaticum.viaticum'].browse(viaticum_ids)" t-as="o">
+                <t t-set="payment" t-value="o.payment_id"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 class="text-center">
+                            Reporte de viáticos (<span t-field="o.name"/>) en <span t-field="currency_id.name" />
+                        </h2>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Responsable</td>
+                                    <td>
+                                        <span t-field="o.partner_id" />
+                                    </td>
+                                    <td>Pago</td>
+                                    <td>
+                                        <span t-field="payment.name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Monto total</td>
+                                    <td>
+                                        <span t-if="currency_id != o.currency_id" t-field="o.amount_ref" />
+                                        <span t-else="" t-field="o.amount" />
+                                    </td>
+                                    <td>Balance</td>
+                                    <td>
+                                        <span t-if="currency_id != o.currency_id" t-field="o.balance_ref" />
+                                        <span t-else="" t-field="o.balance" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Pago reintegro</td>
+                                    <td>
+                                        <span t-if="o.pago_reintegro_id" t-field="o.pago_reintegro_id.name" />
+                                        <span t-else="">No tiene</span>
+                                    </td>
+                                    <td>Monto de reintegro</td>
+                                    <td>
+                                        <span t-if="currency_id != o.currency_id" t-field="o.amount_reintegro_ref" />
+                                        <span t-else="" t-field="o.amount_reintegro" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <t t-set="total" t-value="0" />
+                        <table class="table table-sm mt-2">
+                            <thead>
+                                <tr>
+                                    <th>N° de factura</th>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr 
+                                    t-foreach="payment.credit_partial_reconcile_ids + payment.debit_partial_reconcile_ids" 
+                                    t-as="reconcile" 
+                                    t-key="reconcile.id"
+                                >
+                                    <t t-set="move" t-value="reconcile.debit_move_parent_id or reconcile.credit_move_parent_id" />
+                                    <td scope="row">
+                                        <span t-field="move.name" />
+                                    </td>
+                                    <td>
+                                        <span t-field="move.invoice_date" />
+                                    </td>
+                                    <td>
+                                        <t t-set="amount" t-value="reconcile.amount" />
+                                        <t t-if="reconcile.company_currency_id != currency_id">
+                                            <t t-set="amount" t-value="reconcile.debit_amount_currency or reconcile.credit_amount_currency"/>
+                                        </t>
+                                        <t t-set="total" t-value="total + amount"/>
+                                        <span 
+                                            t-options="{'widget':'monetary','display_currency':currency_id}"
+                                            t-esc="amount" 
+                                        />
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">Total</td>
+                                    <td>
+                                        <span 
+                                            t-options="{'widget':'monetary','display_currency':currency_id}"
+                                            t-esc="total" 
+                                        />
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_viaticum_viatucum" model="ir.actions.report">
+        <field name="name">Reporte de viáticos</field>
+        <field name="model">viaticum.viaticum</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">eu_viaticum_management.viaticum_report_template</field>
+        <field name="report_file">eu_viaticum_management.viaticum_report</field>
+        <field name="print_report_name">'Reporte de viáticos %s' % object.name</field>
+    </record>
+</odoo>

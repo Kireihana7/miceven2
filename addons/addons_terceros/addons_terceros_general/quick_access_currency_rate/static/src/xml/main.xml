@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+<t t-name="quick_access_currency_rate.main_view">
+         <t t-if="_.isEmpty(previews)">
+            <li class="text-center mt16 mb16">
+                <span>No active currency...</span>
+            </li>
+        </t>
+        <t t-if="!_.isEmpty(previews)">
+            <div class="o_currency_rate_systray_dropdown_top">
+                <button type="button" class="btn btn-primary btn-save-currency"> Save </button>
+                <button type="button" class="btn btn-primary btn-open-currency"> Open </button>
+            </div>
+            <t t-foreach="previews" t-as="preview">
+                <t t-call="quick_access_currency_rate.Preview" />
+            </t>
+        </t>
+</t>
+
+</templates>

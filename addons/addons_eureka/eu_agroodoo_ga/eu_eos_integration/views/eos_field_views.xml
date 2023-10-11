@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- ============================================================= -->
+    <!-- =========================== Field =========================== -->
+    <!-- ============================================================= -->
+    <record id="view_eos_field_tree" model="ir.ui.view">
+        <field name="name">eos.field.tree</field>
+        <field name="model">eos.field</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_eos_field_form" model="ir.ui.view">
+        <field name="name">eos.field.form</field>
+        <field name="model">eos.field</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>                               
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>                
+            </form>
+        </field>
+    </record>
+    
+    <record id="eos_field_action" model="ir.actions.act_window">
+        <field name="name">Field</field>
+        <field name="res_model">eos.field</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Add a new field task!
+          </p>
+        </field>
+    </record>    
+
+    <!-- ================================================================================= -->
+    <!-- =========================== Field Classification Area =========================== -->
+    <!-- ================================================================================= -->    
+    <record id="view_eos_field_classification_area_tree" model="ir.ui.view">
+        <field name="name">eos.field.classification.area.tree</field>
+        <field name="model">eos.field.classification.area</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="eos_field_id" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_eos_field_classification_area_form" model="ir.ui.view">
+        <field name="name">eos.field.classification.area.form</field>
+        <field name="model">eos.field.classification.area</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="eos_field_id" />
+                        </group>
+                    </group>                               
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>                
+            </form>
+        </field>
+    </record>
+    
+    <record id="eos_field_classification_area_action" model="ir.actions.act_window">
+        <field name="name">Field Classification Area</field>
+        <field name="res_model">eos.field.classification.area</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Add a new field classification area!
+          </p>
+        </field>
+    </record>    
+
+    <!-- ============================================================= --> 
+
+    <!-- Field Parent -->
+    <menuitem id="field_master_menu"
+        name="Fields"
+        parent="eos_menu_root"
+        sequence="8"/>  
+
+        <!-- Field -->
+        <menuitem id="field_submenu"
+            name="Field"
+            parent="field_master_menu"
+            action="eos_field_action"
+            sequence="1"/>
+
+        <!-- Field Classification Area -->
+        <menuitem id="field_classification_area_submenu"
+            name="Field Classification Area"
+            parent="field_master_menu"
+            action="eos_field_classification_area_action"
+            sequence="2"/>         
+</odoo>

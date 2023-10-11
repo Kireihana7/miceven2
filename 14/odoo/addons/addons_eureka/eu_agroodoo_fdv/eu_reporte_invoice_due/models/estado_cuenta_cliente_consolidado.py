@@ -1,0 +1,151 @@
+from odoo import models, fields, api
+import io
+import xlsxwriter
+import base64
+from odoo.exceptions import UserError
+
+class EstadoCuentaClienteConsolidado(models.TransientModel):
+    _name = 'estado.cuenta.cliente.consolidado'
+
+    partner_id = fields.Many2one('res.partner', string='Cliente', required=True)
+    name = fields.Char(string='Nombre Archivo', default="Estado Cliente.xlsx")
+    from_date = fields.Date(string="Desde")
+    to_date = fields.Date(string="Hasta")
+    sin_fecha = fields.Boolean(string="Sin Fecha")
+    report_data = fields.Binary(string='Reporte')
+
+    def generate_invoices(self):
+        # Obtener todas las facturas de cliente publicadas
+        domain = [('move_type', '=', 'out_invoice'),
+            ('state', '=', 'posted'),
+            ('company_id', '=', self.env.company.id),
+            ('partner_id', '=', self.partner_id.id)]
+        if not self.sin_fecha:
+            domain.append(('date', '>=', self.from_date))
+            domain.append(('date', '<=', self.to_date))
+        invoices = self.env['account.move'].search(domain)
+        if not invoices:
+            raise UserError('El cliente no tiene facturas')
+
+        # Crear el archivo Excel
+        output = io.BytesIO()
+        workbook = xlsxwriter.Workbook(output)
+        worksheet = workbook.add_worksheet('Facturas')
+
+        # Formato numérico para los campos
+        numeric_format = workbook.add_format({'num_format': '#,##0.00'})
+
+        # Formato de fecha
+        date_format = workbook.add_format({'num_format': 'dd/mm/yyyy'})
+        # Establecer el formato para el encabezado centrado
+        header_format = workbook.add_format({'bold': True, 'align': 'center', 'valign': 'vcenter'})
+        # Escribir el encabezado centrado en 3 filas y 6 columnas
+        worksheet.merge_range(0, 0, 2, 5, 'BALANCE DEL CLIENTE' + str(self.partner_id.name), header_format)
+        # Escribir datos de las facturas y líneas en el archivo Excel
+        row = 3
+        col = 0
+        headers = [
+            'N° de Factura',
+            'Fecha Prepago',
+            'Total Unid. A Cargar',
+            'Cant. por Kg.',
+            'Precio Unid.',
+            'Total Precio en $ / Unid.',
+            'Precio por Total $',
+            'Producto',
+            'Unidad'
+        ]
+        # Escribir datos de las facturas y líneas en el archivo Excel
+        # Reiniciar la columna
+        col = 0
+        for header in headers:
+            worksheet.write(row, col, header)
+            col += 1
+        for invoice in invoices:
+            # Escribir número de factura
+            row += 1
+            for line in invoice.invoice_line_ids:
+                worksheet.write(row, 0, invoice.name)
+                worksheet.write(row, 1, invoice.invoice_date.strftime('%d/%m/%Y'), date_format)
+                worksheet.write(row, 2, line.quantity)
+                worksheet.write(row, 3, line.product_id.weight * line.quantity)
+                worksheet.write(row, 4, line.price_unit, numeric_format)
+                worksheet.write(row, 5, line.price_subtotal, numeric_format)
+                worksheet.write(row, 6, line.price_subtotal, numeric_format)
+                worksheet.write(row, 7, line.product_id.name)
+                worksheet.write(row, 8, line.product_uom_id.name if line.product_uom_id else 'N/A')
+                # row += 1
+        # Salto de 3 filas para diferenciar los pagos
+        row += 3
+        col = 0
+        # Escribir encabezado de pagos
+        payment_headers = [
+            'Fecha Pago',
+            'Banco',
+            'Referencia',
+            'Tasa',
+            'Monto Pagado'
+        ]
+        for header in payment_headers:
+            worksheet.write(row, col, header)
+            col += 1
+        total_cargas = total_cancelado = monto_pendiente = 0
+        for invoice in invoices:
+            # Obtener los pagos vinculados a la factura
+            partials = invoice._get_reconciled_invoices_partials()
+            if partials:
+                row += 1
+                col = 0
+                # Escribir datos de pagos
+                for partial, amount, invoice_line in partials:
+                    payment_date = partial.credit_move_id.date.strftime('%d/%m/%Y')
+                    payment_amount = amount
+                    worksheet.write(row, col, payment_date, date_format)
+                    worksheet.write(row, col + 1, partial.credit_move_id.journal_id.name if partial.credit_move_id.journal_id else 'N/A')
+                    worksheet.write(row, col + 2 , partial.credit_move_id.ref if partial.credit_move_id else 'N/A')
+                    worksheet.write(row, col + 3, partial.credit_move_id.manual_currency_exchange_rate if partial.credit_move_id else 0, numeric_format)
+                    worksheet.write(row, col + 4, payment_amount, numeric_format)
+                    row += 1
+
+                # Calcular totales
+                total_cancelado += sum(amount for partial, amount, invoice_line in partials)
+            total_cargas += sum(line.price_subtotal for line in invoice.invoice_line_ids)
+        
+        monto_pendiente = (total_cargas - total_cancelado)
+
+        # Escribir totales
+        row+=1
+        worksheet.write(row, 6 , 'Monto Total de Cargas') 
+        worksheet.write(row, 7, total_cargas, numeric_format)  # Escribir el monto total de cargas
+        row+=1
+        worksheet.write(row, 6 , 'Monto Total de Cancelado') 
+        worksheet.write(row, 7, total_cancelado, numeric_format)  # Escribir el monto total cancelado
+        row+=1
+        worksheet.write(row, 6 , 'Monto Pendiente por Cancelar') 
+        worksheet.write(row, 7, monto_pendiente, numeric_format)  # Escribir el monto pendiente por cancelar
+
+        # Reiniciar la columna para la siguiente factura
+        col = 0
+        row += 2
+
+        # Ajustar el ancho de las columnas
+        worksheet.set_column(0, 8, 15)
+
+        # Cerrar el archivo Excel
+        workbook.close()
+        output.seek(0)
+
+        # Guardar el archivo Excel como un binary en el registro transitorio
+        self.write({
+            'report_data': base64.b64encode(output.getvalue()),
+            'name': 'Estado Cliente ' + self.partner_id.name + '.xlsx'
+        })
+
+        return {
+            'name': self.name,
+            'type': 'ir.actions.act_window',
+            'res_model': self._name,
+            'view_mode': 'form',
+            'res_id': self.id,
+            'target': 'new'
+        }

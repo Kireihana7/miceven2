@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jose Ñeri -->
+<odoo>
+    <record id="wizard_miceven_pago_balance_view_form" model="ir.ui.view">
+        <field name="name">wizard.miceven.pago.balance.view.form</field>
+        <field name="model">wizard.miceven.pago.balance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group >
+                        <field name="desde" />
+                    <field name="hasta" />
+                    <field name="motype" />
+                    <field name="invoice_id" domain="[('invoice_date','&gt;=',desde),('invoice_date','&lt;=',hasta),('move_type','=',motype)]"/>
+                    </group>
+                    
+                </sheet>
+                <footer>
+                    <button string="Generar Reporte" name="print_report_balance" type="object" class="oe_highlight"/>
+                    <button string="Cancelar" special="cancel" type="object" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_balance_payment_miceven" model="ir.actions.report">
+            <field name="name">Relacion Pago Miceven</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">eu_account_reports.report_miceven_payment</field>
+            <field name="report_file">eu_account_reports.report.report_invoice_payment</field>
+            <field name="print_report_name">'Relacion pago - %s' % object.name</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+        </record>
+
+</odoo>

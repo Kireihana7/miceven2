@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_custom_audit_request_survey">
+        <field name="name">custom.audit.request.inherit.form.survey</field>
+        <field name="model">custom.audit.request</field>
+        <field name="inherit_id" ref="odoo_audit_request_form.custom_audit_request_view_form_probc"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/div" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <button class="oe_stat_button" type="object" icon="fa-book" 
+                        context="{
+                        'search_default_audit_id': active_id,
+                        'default_audit_id': active_id,
+                        }" 
+                        name="show_survey_survey" 
+                        width="180px"
+                        >
+                    <field name="survey_count" widget="statinfo"/>
+                    </button>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

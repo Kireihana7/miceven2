@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_price_history_view_tree" model="ir.ui.view">
+        <field name="name">product.price.history.view.tree</field>
+        <field name="model">product.price.history</field>
+        <field name="arch" type="xml">
+            <tree string="Historial de coste">
+                <field name="product_id" />
+                <field name="product_tmpl_id" />
+                <field name="currency_id" invisible="1" />
+                <field name="origin" />
+                <field name="cost" />
+                <field name="product_category_id" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_product_price_history" model="ir.actions.act_window">
+        <field name="name">Historial de costo</field>
+        <field name="res_model">product.price.history</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <menuitem 
+        name="Historial de Precio" 
+        id="eu_product_price_history_menu"
+        parent="stock.menu_warehouse_report" 
+        action="eu_product_price_history.action_product_price_history" 
+    />
+</odoo>

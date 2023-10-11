@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <record id="purchase_order_inherit_module_name" model="ir.ui.view">
+    <field name="name">purchase.order.view.form.inherit.weight</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//notebook[1]" position="after">
+            <div class="text-right">
+                <label for="total_order_weight"/>:<field name="total_order_weight" /><field name="weight_uom" />
+            </div>
+        </xpath>
+        <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='product_uom']" position="after">
+            <field name="weight" />
+            <field name="weight_uom" />
+        </xpath>
+    </field>
+ </record>
+<!--  <record id="purchase_order_inherit_puesto_venta" model="ir.ui.view">
+    <field name="name">purchase.order.view.weight.puesto.venta</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="add_product_purchase_order.view_order_form_inh_initial"/>
+    <field name="arch" type="xml">
+        <xpath expr="//notebook[1]" position="after">
+            <div class="text-right">
+                <label for="total_order_weight"/>:<field name="total_order_weight" /><field name="weight_uom" />
+            </div>
+        </xpath>
+        <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='product_uom']" position="after">
+            <field name="weight" />
+            <field name="weight_uom" />
+        </xpath>
+    </field>
+ </record> -->
+
+ <record id="purchase_order_inherit_tree_weight" model="ir.ui.view">
+    <field name="name">purchase.order.view.tree.inherit.weight</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_kpis_tree"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='amount_total']" position="after">
+
+                <field name="total_order_weight" sum="total_order_weight" optional="hide"/>
+            
+        </xpath>
+        
+    </field>
+ </record>
+
+ <record id="purchase_order_inherit_tree_weight_common" model="ir.ui.view">
+    <field name="name">purchase.order.view.tree.inherit.weight</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_view_tree"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='amount_total']" position="after">
+
+                <field name="total_order_weight" sum="total_order_weight" optional="hide"/>
+            
+        </xpath>
+        
+    </field>
+ </record>
+ <record id="purchase_order_line_inherit_tree_weight_common" model="ir.ui.view">
+    <field name="name">purchase.order.line.view.tree.inherit.weight</field>
+    <field name="model">purchase.order.line</field>
+    <field name="inherit_id" ref="sh_po_tender_management.sh_bidline_tree_view"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='price_subtotal']" position="after">
+            <field name="weight_total" sum="weight_total" optional="show"/>
+            <field name="weight_uom" optional="show"/>
+
+        </xpath>
+        <!-- <xpath expr="//field[@name='route_id']" position="attributes">
+            <attribute name="optional" separator="" add="" remove="" value="">show</attribute>
+        </xpath> -->
+        
+    </field>
+ </record>
+ 
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_customer_invoice_cancel_reason_form" model="ir.ui.view">
+	<field name="name">account.move.form</field>
+	<field name="model">account.move</field>
+	<field name="inherit_id" ref="account.view_move_form"/>
+	<field name="arch" type="xml">
+	    <xpath expr ="//field[@name='narration']" position="after">
+	        <div>
+		        <label for="invoice_cancel_reason_id"  attrs="{'invisible': [('state', 'in', ['draft', 'posted'])]}" />
+		        
+		       	<strong attrs="{'invisible': [('state', 'in', ['draft', 'posted'])]}"> : </strong>
+		        <field name="invoice_cancel_reason_id" 
+		        	attrs="{'invisible': [('state', 'in', ['draft', 'posted'])],
+		        	'readonly':  [('state', '=', 'cancel')]}" 
+		        	nolabel="1" /> <br/>
+	        </div>
+	        <label for="descripcion" attrs="{'invisible': [('state', 'in', ['draft', 'posted'])]}"/>
+	        <field name="descripcion" attrs="{'invisible': [('state', 'in', ['draft', 'posted'])]}" nolabel="1"/>	
+
+	    </xpath>
+	    <xpath expr ="//button[@name='button_draft']" position="before">
+		    <button name="open_wizard_cancel" attrs="{'invisible': [('state', 'in', ['draft', 'cancel'])]}" type="object" string="Cancel Bill" groups="account.group_account_invoice"/>
+	    </xpath>
+	</field>
+    </record>
+
+
+    <!--record id="view_vendor_invoice__cancel_reason_form" model="ir.ui.view">
+	<field name="name">account.move.supplier.form</field>
+	<field name="model">account.move</field>
+	<field name="inherit_id" ref = "account.view_move_form"/>
+	<field name="arch" type="xml">
+	    <xpath expr ="//page[@id='invoice_tab']" position="inside">
+	        <label for="invoice_cancel_reason_id"  attrs="{'invisible': [('state', 'in', ['draft', 'proforma','proforma2', 'open','paid'])]}"/>
+	        <strong  attrs="{'invisible': [('state', 'in', ['draft', 'proforma','proforma2', 'open','paid'])]}"> : </strong>
+	        <field name="invoice_cancel_reason_id" attrs="{'invisible': [('state', 'in', ['draft', 'cancel'])]}" nolabel="1"/>		
+	    </xpath>
+	    <xpath expr ="//button[@name='button_draft']" position="after">
+		    <button name="open_wizard_cancel" type="object" states="draft,proforma2" string="Cancel Bill" groups="account.group_account_invoice"/>
+	    </xpath>
+	</field>
+    </record-->
+
+</odoo>
+

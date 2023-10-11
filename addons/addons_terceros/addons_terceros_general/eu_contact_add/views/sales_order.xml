@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="sale_order_view_form_inherit_canal" model="ir.ui.view">
+            <field name="name">sale.order.view.inherit.canal</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="canal"  options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' string="Canal" ></field>
+                    <field name="segmento" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' string="Segmento" ></field>
+                    <!-- <field name="dvisita" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' string="Día de Visita" ></field>
+                    <field name="svisita" string="Semana de Visita" widget="many2many_tags"  options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'></field> -->
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

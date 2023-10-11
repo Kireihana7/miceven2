@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+	<template id="web_print_report_assets" inherit_id="web.assets_backend">
+		<xpath expr="." position="inside">
+			<script type="text/javascript" src="/web_expand_print_report_cr/static/src/js/jspdf.min.js"/>
+			<script type="text/javascript" src="/web_expand_print_report_cr/static/src/js/web_group_expand.js"/>		
+		</xpath>
+	</template>
+
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<report id="mrp_production_report"
+        model="mrp.production.report.wizard"
+        string="Lista de Producciones"
+        name="eu_production_order_report.production_report"
+        file="eu_production_order_report.production_report"
+        report_type="qweb-pdf"
+        menu="False"
+    />
+</odoo>
+

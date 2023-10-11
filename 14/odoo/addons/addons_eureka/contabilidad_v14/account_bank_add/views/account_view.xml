@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="account_bank_statement_two_fields">
+        <field name="name">account.bank.statement.inherit.form.payment</field>
+        <field name="model">account.bank.statement</field>
+        <field name="inherit_id" ref="account.view_bank_statement_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group[2]" position="inside">
+                <div class="oe_subtotal_footer_separator oe_inline">
+                    <label for="should" />
+                </div>
+                <field name="should" nolabel="1" class="oe_subtotal_footer_separator"/>
+                <div class="oe_subtotal_footer_separator oe_inline">
+                    <label for="tohave" />
+                </div>
+                <field name="tohave" nolabel="1" class="oe_subtotal_footer_separator"/>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="account_bank_statement_fields">
+        <field name="name">account.bank.statement.inherit.form.payment</field>
+        <field name="model">account.bank.statement</field>
+        <field name="inherit_id" ref="account.view_bank_statement_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook/page/field/tree/field[9]" position="after">
+                <field name="should" sum="Should"/>
+                <field name="tohave" sum="Tohave" />
+            </xpath>
+        </field>
+    </record>
+
+  </data>
+</odoo>

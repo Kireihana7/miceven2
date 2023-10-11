@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="paperformat_prepaid_customers" model="report.paperformat">
+    <field name="name">Formato Clientes Prepagos</field>
+    <field name="default" eval="True"/>
+    <field name="format">A4</field>
+    <field name="page_height">0</field>
+    <field name="page_width">0</field>
+    <field name="orientation">Landscape</field>
+    <field name="margin_top">30</field>
+    <field name="margin_bottom">10</field>
+    <field name="margin_left">6</field>
+    <field name="margin_right">6</field>
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">30</field>
+    <field name="dpi">80</field>
+  </record> 
+
+  <record id="paperformat_account_payment_multi_currency" model="report.paperformat">
+    <field name="name">Formato Cobros por Numero multimoneda</field>
+    <field name="default" eval="True"/>
+    <field name="format">A4</field>
+    <field name="page_height">0</field>
+    <field name="page_width">0</field>
+    <field name="orientation">Portrait</field>
+    <field name="margin_top">30</field>
+    <field name="margin_bottom">10</field>
+    <field name="margin_left">6</field>
+    <field name="margin_right">6</field>
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">30</field>
+    <field name="dpi">80</field>
+  </record> 
+
+
+  <record id="custom_action_sale_report_costumers_wizard" model="ir.actions.report">
+    <field name="name">Reporte Clientes Prepagos</field>
+    <field name="model">sale.report.costumers.wizard</field> 
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">eu_account_reports.sale_report_costumer_template</field>
+    <field name="report_file">eu_account_reports.sale_report_costumer_template</field>
+    <field name="paperformat_id" ref="paperformat_prepaid_customers"/>
+    <field name="binding_type">report</field>
+  </record>
+
+  <record id="custom_action_cobros_por_numero_multimoneda_wizard" model="ir.actions.report">
+    <field name="name">Reporte Cobros por número multimoneda</field>
+    <field name="model">report.account.payment.wizard</field> 
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">eu_account_reports.account_payment_multi_currency</field>
+    <field name="report_file">eu_account_reports.account_payment_multi_currency</field>
+    <field name="paperformat_id" ref="paperformat_account_payment_multi_currency"/>
+    <field name="binding_type">report</field>
+  </record>
+
+  
+</odoo>

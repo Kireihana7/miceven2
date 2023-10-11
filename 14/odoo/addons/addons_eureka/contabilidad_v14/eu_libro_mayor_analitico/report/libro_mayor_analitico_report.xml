@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="libro_mayor_analitico_resumido_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <h4 class="text-center">
+                    Libro mayor analítico
+                    <br />
+                    Desde <t t-esc="from_date"/> hasta <t t-esc="to_date"/>
+                </h4>
+                <style>
+                    caption {
+                        font-size: 1.25rem;
+                        caption-side: top;
+                    }
+                </style>
+                <t t-set="debe" t-value="0"/>
+                <t t-set="haber" t-value="0"/>
+                <t t-set="currency_id" t-value="env['res.currency'].browse(currency_id)"/>
+                <table 
+                    class="table table-sm mb-2" 
+                    t-foreach="env['account.account'].browse(account_ids)" 
+                    t-as="account_id"
+                >
+                    <caption class="text-center">
+                        <t t-esc="account_id.code"/>
+                        <t t-esc="account_id.name"/>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Desde</th>
+                            <th scope="col">Hasta</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Debe</th>
+                            <th scope="col">Haber</th>
+                            <th scope="col">Saldo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="saldo" t-value="0" />
+                        <tr t-foreach="date_range" t-as="dates">
+                            <t t-set="balance" t-value="account_id.balance_by_date(dates[0], dates[1], currency_id)"/>
+                            <t t-if="balance">
+                                <td t-foreach="dates" t-as="fecha" t-esc="fecha" />
+                                <td>
+                                    Movimientos del mes
+                                </td>
+                                <td 
+                                    t-esc="balance.get('debit', 0)" 
+                                    t-options="{'widget': 'monetary', 'display_currency': currency_id}" 
+                                />
+                                <td 
+                                    t-esc="balance.get('credit', 0)" 
+                                    t-options="{'widget': 'monetary', 'display_currency': currency_id}" 
+                                />
+                                <t t-set="saldo" t-value="saldo + balance.get('balance', 0)" />
+                                <td 
+                                    t-esc="saldo" 
+                                    t-options="{'widget': 'monetary', 'display_currency': currency_id}" 
+                                />
+                            </t>
+                        </tr>
+                    </tbody>
+                    <tfoot class="border-bottom">
+                        <tr>
+                            <t t-set="total" t-value="account_id.balance_by_date(from_date, to_date, currency_id)" />
+                            <t t-set="debe" t-value="debe + total['debit']" />
+                            <t t-set="haber" t-value="haber + total['credit']" />
+                            <td scope="row" colspan="3" class="text-right text-uppercase">
+                                Total
+                            </td>
+                            <td 
+                                t-options="{'widget': 'monetary', 'display_currency': currency_id}" 
+                                t-esc="total['debit']" 
+                            />
+                            <td 
+                                colspan="2" 
+                                t-options="{'widget': 'monetary', 'display_currency': currency_id}" 
+                                t-esc="total['credit']" 
+                            />
+                        </tr>
+                    </tfoot>
+                </table>
+                <table class="table table-sm mt-4">
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="text-right text-uppercase">Total general</td>
+                            <td 
+                                t-options="{'widget':'monetary', 'display_currency': currency_id}"
+                                t-esc="debe" 
+                            />
+                            <td 
+                                t-options="{'widget':'monetary', 'display_currency': currency_id}"
+                                t-esc="haber" 
+                            />
+                        </tr>
+                    </tbody>
+                </table>
+            </t>
+        </t>
+    </template>
+    <template id="libro_mayor_analitico_detallado_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <h4 class="text-center">
+                    Libro mayor analítico
+                    <br />
+                    Desde <t t-esc="from_date"/> hasta <t t-esc="to_date"/>
+                </h4>
+                <style>
+                    caption {
+                        font-size: 1.25rem;
+                        caption-side: top;
+                    }
+                </style>
+                <t t-set="debe" t-value="0"/>
+                <t t-set="haber" t-value="0"/>
+                <t t-set="currency_id" t-value="env['res.currency'].browse(currency_id)"/>
+                <table 
+                    class="table table-sm mb-2" 
+                    t-foreach="env['account.account'].browse(account_ids)" 
+                    t-as="account_id"
+                >
+                    <caption class="text-center">
+                        <t t-esc="account_id.code"/>
+                        <t t-esc="account_id.name"/>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Número</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Debe</th>
+                            <th scope="col">Haber</th>
+                            <th scope="col">Saldo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="saldo" t-value="0" />
+                        <tr t-foreach="account_id.get_lines_by_date(from_date, to_date)" t-as="line">
+                            <td>
+                                <span t-field="line.date" />
+                            </td>
+                            <td>
+                                <span t-field="line.move_id.journal_id.code" />
+                            </td>
+                            <td>
+                                <span t-field="line.move_id.name" />
+                            </td>
+                            <td>
+                                <span t-field="line.name" />
+                            </td>
+                            <t t-set="saldo" t-value="saldo + (line.balance if currency_id == line.currency_id else line.balance_usd)" />
+                            <t t-if="currency_id == line.currency_id">
+                                <td>
+                                    <span t-field="line.debit" />
+                                </td>
+                                <td>
+                                    <span t-field="line.credit" />
+                                </td>
+                            </t>
+                            <t t-else="">
+                                <td>
+                                    <span t-field="line.debit_usd" />
+                                </td>
+                                <td>
+                                    <span t-field="line.credit_usd" />
+                                </td>
+                            </t>
+                            <td>
+                                <span 
+                                    t-options="{'widget': 'monetary', 'display_currency': currency_id}" 
+                                    t-esc="saldo" 
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot class="border-bottom">
+                        <tr>
+                            <t t-set="total" t-value="account_id.balance_by_date(from_date, to_date, currency_id)" />
+                            <t t-set="debe" t-value="debe + total['debit']" />
+                            <t t-set="haber" t-value="haber + total['credit']" />
+                            <td scope="row" colspan="4" class="text-right text-uppercase">
+                                Total
+                            </td>
+                            <td 
+                                t-options="{'widget': 'monetary', 'display_currency': currency_id}" 
+                                t-esc="total['debit']" 
+                            />
+                            <td 
+                                colspan="2" 
+                                t-options="{'widget': 'monetary', 'display_currency': currency_id}" 
+                                t-esc="total['credit']" 
+                            />
+                        </tr>
+                    </tfoot>
+                </table>
+                <table class="table table-sm mt-4">
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="text-right text-uppercase">Total general</td>
+                            <td 
+                                t-options="{'widget':'monetary', 'display_currency': currency_id}"
+                                t-esc="debe" 
+                            />
+                            <td 
+                                t-options="{'widget':'monetary', 'display_currency': currency_id}"
+                                t-esc="haber" 
+                            />
+                        </tr>
+                    </tbody>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>

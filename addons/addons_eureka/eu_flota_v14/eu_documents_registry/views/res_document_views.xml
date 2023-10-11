@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- #region Tipos de documentos -->
+    <record id="res_partner_document_view_tree" model="ir.ui.view">
+        <field name="name">res.partner.document.view.tree</field>
+        <field name="model">res.partner.document</field>
+        <field name="arch" type="xml">
+            <tree string="Tipos de documentos" editable="bottom">
+                <field name="name" required="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="res_partner_document_view_form" model="ir.ui.view">
+        <field name="name">res.partner.document.view.form</field>
+        <field name="model">res.partner.document</field>
+        <field name="arch" type="xml">
+            <form string="Tipos de documentos">
+                <sheet>
+                    <group>
+                        <field name="name" required="1" />    
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- #endregion -->
+
+    <!-- Document line -->
+    <record id="res_partner_document_line_view_form" model="ir.ui.view">
+        <field name="name">res.partner.document.line.view.form</field>
+        <field name="model">res.partner.document.line</field>
+        <field name="arch" type="xml">
+            <form string="Documento del cliente">
+                <sheet>
+                    <group>
+                        <field name="document_id" required="1" />
+                        <field name="name" required="1" />
+                        <field name="code" required="1" />
+                        <field name="due_date" required="1" />
+                        <field name="emit_date" required="1" /> 
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_open_res_partner_document_view" model="ir.actions.act_window">
+        <field name="name">Documentos</field>
+        <field name="res_model">res.partner.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="res_partner_document_view_tree"></field>
+    </record>
+
+    <menuitem
+        id="res_partner_document_menu"
+        name="Tipos de documentos"
+        action="action_open_res_partner_document_view"
+        groups="eu_documents_registry.group_registry_documents"
+        parent="contacts.res_partner_menu_config"
+    />
+    
+</odoo>

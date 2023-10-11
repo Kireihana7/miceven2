@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_kpi_config_branch,eu_sales_kpi_kg.kpi_config_branch,eu_sales_kpi_kg_miceven.model_kpi_config_zone,base.group_user,1,0,0,0
+access_kpi_config_branch_ver,kpi_config_branch_ver,eu_sales_kpi_kg_miceven.model_kpi_config_zone,eu_sales_kpi_kg.group_ver_kpi,1,0,0,0
+access_kpi_config_branch_crear,kpi_config_branch_crear,eu_sales_kpi_kg_miceven.model_kpi_config_zone,eu_sales_kpi_kg.group_crear_kpi,1,1,1,1

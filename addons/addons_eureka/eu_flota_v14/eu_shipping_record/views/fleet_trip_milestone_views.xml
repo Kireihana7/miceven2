@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fleet_trip_milestone_view_form" model="ir.ui.view">
+        <field name="name">fleet.trip.milestone.view.form</field>
+        <field name="model">fleet.trip.milestone</field>
+        <field name="arch" type="xml">
+            <form string="Tabulador">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" invisible="1" />
+                            <field name="route_type" widget="radio" required="1" />
+                            <field 
+                                name="origin_branch_id" 
+                                attrs="{
+                                    'required':[('route_type','in',['branch_branch','branch_city'])],
+                                    'invisible':[('route_type','not in',['branch_branch','branch_city'])],
+                                }"
+                                force_save="1"
+                                options="{'no_create': True}"
+                            />
+                            <field 
+                                name="origin_city_id" 
+                                attrs="{
+                                    'required':[('route_type','in',['city_city','city_branch'])],
+                                    'invisible':[('route_type','not in',['city_city','city_branch'])],
+                                }"
+                                force_save="1"
+                                options="{'no_create': True}"
+                            />
+                            <field 
+                                name="destination_branch_id" 
+                                attrs="{
+                                    'required':[('route_type','in',['branch_branch','city_branch'])],
+                                    'invisible':[('route_type','not in',['branch_branch','city_branch'])],
+                                }"
+                                force_save="1"
+                                options="{'no_create': True}"
+                            />
+                            <field 
+                                name="destination_city_id" 
+                                attrs="{
+                                    'required':[('route_type','in',['city_city','branch_city'])],
+                                    'invisible':[('route_type','not in',['city_city','branch_city'])],
+                                }"
+                                force_save="1"
+                                options="{'no_create': True}"
+                            />
+                        </group>
+                        <group>
+                            <field name="note" />
+                            <field name="currency_id" invisible="1" />
+                            <field name="can_invoice_trip" invisible="1" />
+                            <field name="cost" required="1" attrs="{'invisible':[('can_invoice_trip','=',False)]}"/>
+                            <field name="time" widget="float_time" />
+                            <field name="distance" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="fleet_trip_milestone_view_search" model="ir.ui.view">
+        <field name="name">fleet.trip.milestone.view.search</field>
+        <field name="model">fleet.trip.milestone</field>
+        <field name="arch" type="xml">
+            <search string="Tabulador">
+                <filter 
+                    string="Tipo de ruta" 
+                    name="filter_route_type" 
+                    context="{'group_by': 'route_type'}" 
+                />
+                <filter 
+                    string="Sucursal de origen" 
+                    name="filter_origin_branch" 
+                    context="{'group_by': 'origin_branch_id'}" 
+                />
+                <filter 
+                    string="Ciudad de origen" 
+                    name="filter_origin_city" 
+                    context="{'group_by': 'origin_city_id'}" 
+                />
+                <filter 
+                    string="Sucursal de destino" 
+                    name="filter_destination_branch" 
+                    context="{'group_by': 'destination_branch_id'}" 
+                />
+                <filter 
+                    string="Ciudad de destino" 
+                    name="filter_destination_city" 
+                    context="{'group_by': 'destination_city_id'}" 
+                />
+                <separator />
+                <filter 
+                    name="filter_city_city"
+                    string="Ciudad-ciudad" 
+                    domain="[('route_type','=','city_city')]" 
+                />
+                <filter 
+                    name="filter_branch_branch"
+                    string="Sucursal-sucursal" 
+                    domain="[('route_type','=','branch_branch')]" 
+                />
+                <filter 
+                    name="filter_city_branch"
+                    string="Ciudad-sucursal" 
+                    domain="[('route_type','=','city_branch')]" 
+                />
+                <filter 
+                    name="filter_branch_city"
+                    string="Sucursal-ciudad" 
+                    domain="[('route_type','=','branch_city')]" 
+                />
+
+            </search>
+        </field>
+    </record>
+
+    <record id="fleet_trip_milestone_view_tree" model="ir.ui.view">
+        <field name="name">fleet.trip.milestone.view.tree</field>
+        <field name="model">fleet.trip.milestone</field>
+        <field name="arch" type="xml">
+            <tree string="Tabulador" editable="bottom">
+                <field name="name" invisible="1" />
+                <field name="route_type" required="1" />
+                <field name="origin_branch_id" />
+                <field name="origin_city_id" />
+                <field name="destination_branch_id" />
+                <field name="destination_city_id" />
+                <field name="note" />  
+                <field name="currency_id" invisible="1" />
+                <field name="can_invoice_trip" invisible="1" />
+                <field name="cost" required="1" />
+                <field name="distance" />
+                <field name="time" widget="float_time" />
+            </tree>
+        </field>
+    </record>
+</odoo>

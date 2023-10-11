@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="fleet_inspection_category_action" model="ir.actions.act_window">
+        <field name="name">Categorías de inspeccion</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">fleet.inspection.category</field>
+    </record>
+    <record id="fleet_vehicle_inspection_action" model="ir.actions.act_window">
+        <field name="name">Fichas de inspección</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">fleet.vehicle.inspection</field>
+        <field name="view_mode">tree,kanban,form,search</field>
+        <field name="view_id" ref="eu_vehicle_inspection.fleet_vehicle_inspection_view_kanban" />
+    </record>
+</odoo>

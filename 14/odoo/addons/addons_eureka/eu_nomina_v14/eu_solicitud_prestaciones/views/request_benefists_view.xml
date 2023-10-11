@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- views_tree -->
+  <record model="ir.ui.view" id="eu_solicitud_prestaciones_tree">
+    <field name="name">solicitud.prestaciones.tree</field>
+    <field name="model">res.request.benefits</field>
+    <field name="arch" type="xml">
+        <tree>
+          <!-- <field name="date"/> -->
+          <field name="employee_id"/>
+          <field name="prestacion" invisible="1"/>
+          <field name="antiguedad"/>
+          <field name="contract_id"/>
+        </tree>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="eu_solicitud_prestaciones_form">
+    <field name="name">eu.solicitud.form</field>
+    <field name="model">res.request.benefits</field>
+    <field name="arch" type="xml">
+
+      <form string="Solicitud de Prestaciones">
+        <sheet>
+          <group>
+            <group name="solicitud" string="Solicitud de Prestaciones">
+              <field name="date"/>
+              <field name="employee_id" options='{"no_open": True, "no_create_edit": True, "no_create": True, "no_quick_create": True }'/>
+              <field name ="prestacion" invisible="1"/>
+              <field name="antiguedad" options='{"no_open": True, "no_create_edit": True, "no_create": True, "no_quick_create": True }'/>
+              <field name="contract_id"/>
+              <field name="observacion"/>
+            </group>
+            <group>
+              <field name="ultima_fecha" options='{"no_open": True, "no_create_edit": True, "no_create": True, "no_quick_create": True }'/>
+              <field name="disponible" options='{"no_open": True, "no_create_edit": True, "no_create": True, "no_quick_create": True }'/>
+              <field name="porcentaje_manual"/>
+              <field name="cap_porcentaje"  attrs="{'invisible':[('porcentaje_manual', '=', False)] ,'required':[('porcentaje_manual', '=', True)]}"/>
+              <field name="motivo_prestacion" options='{"no_open": True, "no_create_edit": True, "no_create": True, "no_quick_create": True }'/>
+            </group>
+          </group>
+
+        </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids" />
+          <field name="activity_ids"/>
+          <field name="message_ids"/>
+        </div>
+      </form>
+    </field>
+  </record>
+
+    <!-- actions opening views on models -->
+    <record id="acction_solicitud_prestaciones" model="ir.actions.act_window">
+        <field name="name">Solicitud de Prestaciones</field>
+        <field name="res_model">res.request.benefits</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- menu donde se llama a la vista -->
+    <menuitem name="Solicitud de Prestaciones" id="solicitud_prestaciones_menu" parent="l10n_ve_payroll.view_prestations_view" action="eu_solicitud_prestaciones.acction_solicitud_prestaciones"/>
+
+  </data>
+</odoo>

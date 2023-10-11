@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <record id="paperformat_guide_consolidate" model="report.paperformat">
+            <field name="name">Guide Consolidate papper format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">279</field>
+            <field name="page_width">216</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">3</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+        <record id="paperformat_guide_consolidate_product" model="report.paperformat">
+            <field name="name">Guide Consolidate papper format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">279</field>
+            <field name="page_width">216</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">3</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report id="guide_consolidate_report"
+            model="guide.consolidate"
+            string="Guía de Despacho (Productos)"
+            report_type="qweb-pdf"
+            paperformat="eu_picking_guide.paperformat_guide_consolidate"
+            name="eu_picking_guide.report_guide_consolidate_action"
+            file="eu_picking_guide.report_guide_consolidate_action"
+            menu="True"/>
+        <report id="guide_consolidate_report_su"
+            model="guide.consolidate"
+            string="Guía de Despacho"
+            report_type="qweb-pdf"
+            paperformat="eu_picking_guide.paperformat_guide_consolidate_product"
+            name="eu_picking_guide.report_guide_consolidate_su_action"
+            file="eu_picking_guide.report_guide_consolidate_su_action"
+            menu="True"/>
+        <report id="guide_consolidate_report_product"
+            model="guide.consolidate"
+            string="Guía de Carga"
+            report_type="qweb-pdf"
+            paperformat="eu_picking_guide.paperformat_guide_consolidate_product"
+            name="eu_picking_guide.report_guide_consolidate_product_action"
+            file="eu_picking_guide.report_guide_consolidate_product_action"
+            menu="True"/>
+        
+
+            <template id="report_guide_consolidate_action">
+                <t t-call="web.html_container">
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-call="eu_picking_guide.report_guide_consolidate"/>
+                    </t>
+                </t> 
+            </template>
+            <template id="report_guide_consolidate_product_action">
+                <t t-call="web.html_container">
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-call="eu_picking_guide.report_guide_consolidate_product"/>
+                    </t>
+                </t>
+            </template>
+            <template id="report_guide_consolidate_su_action">
+                <t t-call="web.html_container">
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-call="eu_picking_guide.report_guide_consolidate_su"/>
+                    </t>
+                </t>
+            </template>
+
+    </data>
+</odoo>

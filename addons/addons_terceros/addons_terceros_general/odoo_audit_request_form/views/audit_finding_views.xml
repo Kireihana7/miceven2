@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="custom_audit_finding_view_tree" model="ir.ui.view">
+        <field name="name">custom.audit.finding.view.tree</field>
+        <field name="model">custom.audit.finding</field>
+        <field name="arch" type="xml">
+            <tree string="Hallazgos">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="fecha_emision" />
+                <field name="user_id" />
+                <field 
+                    name="state" 
+                    widget="badge"  
+                    decoration-danger="state == 'disabled'"
+                    decoration-success="state == 'enabled'"
+                />
+                <field name="to_print" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="custom_audit_finding_view_search" model="ir.ui.view">
+        <field name="name">custom.audit.finding.view.search</field>
+        <field name="model">custom.audit.finding</field>
+        <field name="arch" type="xml">
+            <search string="Hallazgos">
+                <field name="fecha_emision" />
+                <field name="user_id" />
+                <field name="state" />
+                <field name="to_print" />
+                <filter 
+                    string="Fecha de emision" 
+                    name="groupby_fecha_emision" 
+                    context="{'group_by': 'fecha_emision'}" 
+                />
+                <filter 
+                    string="Usuario" 
+                    name="groupby_user_id" 
+                    context="{'group_by': 'user_id'}" 
+                />
+                <filter 
+                    string="Estado" 
+                    name="groupby_state" 
+                    context="{'group_by': 'state'}" 
+                />
+                <separator />
+                <filter 
+                    string="Imprimir" 
+                    name="groupby_to_print" 
+                    domain="[('to_print', '=', True)]" 
+                />
+                <filter 
+                    string="No Imprimir" 
+                    name="groupby_to_print" 
+                    domain="[('to_print', '=', False)]" 
+                />
+            </search>
+        </field>
+    </record>
+
+    <record id="custom_audit_finding_view_form" model="ir.ui.view">
+        <field name="name">custom.audit.finding.view.form</field>
+        <field name="model">custom.audit.finding</field>
+        <field name="arch" type="xml">
+            <form string="Hallazgos">
+                <header>
+                    <button 
+                        string="Habilitar" 
+                        name="action_set_state" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'state': 'enabled'}"
+                        confirm="¿Debes confirmar?"
+                        states="disabled"
+                    />
+                    <button 
+                        string="Inhabilitar" 
+                        name="action_set_state" 
+                        type="object" 
+                        class="oe_highlight"
+                        context="{'state': 'disabled'}"
+                        confirm="¿Debes confirmar?"
+                        states="enabled"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="audit_request_id" required="1" invisible="1"/>
+                        <field 
+                            name="name" 
+                            required="1" 
+                            attrs="{'readonly':[('state', '=', 'disabled')]}" 
+                        />
+                        <field 
+                            name="to_print" 
+                            attrs="{'readonly':[('state', '=', 'disabled')]}" />
+                        <field 
+                            name="fecha_emision"
+                            required="1"
+                            attrs="{'readonly':[('state', '=', 'disabled')]}" />
+                        <field 
+                            name="user_id" 
+                            required="1" 
+                            attrs="{'readonly':[('state', '=', 'disabled')]}" 
+                        />
+                        <field 
+                            name="file" 
+                            filename="filename" 
+                            attrs="{'readonly':[('state', '=', 'disabled')]}" 
+                        />
+                        <field 
+                            name="filename" 
+                            invisible="1" 
+                            attrs="{'readonly':[('state', '=', 'disabled')]}" 
+                        />
+                    </group>
+                    <group>
+                        <field 
+                            name="enabled_reason" 
+                            readonly="1" 
+                            attrs="{'invisible':[('enabled_reason', '=', False)]}"
+                        />
+                        <field 
+                            name="disabled_reason" 
+                            readonly="1" 
+                            attrs="{'invisible':[('disabled_reason', '=', False)]}"
+                        />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+</odoo>

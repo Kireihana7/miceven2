@@ -1,0 +1,162 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* event_sms
+# 
+# Translators:
+<<<<<<< HEAD
+# Lilach Gilliam <lilach.gilliam@gmail.com>, 2022
+# Yihya Hugirat <hugirat@gmail.com>, 2022
+# ZVI BLONDER <ZVIBLONDER@gmail.com>, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~15.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-19 13:58+0000\n"
+"PO-Revision-Date: 2022-09-22 05:46+0000\n"
+"Last-Translator: ZVI BLONDER <ZVIBLONDER@gmail.com>, 2022\n"
+=======
+# Yihya Hugirat <hugirat@gmail.com>, 2020
+# ZVI BLONDER <ZVIBLONDER@gmail.com>, 2020
+# Lilach Gilliam <lilach.gilliam@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~13.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-01 07:29+0000\n"
+"PO-Revision-Date: 2020-09-07 08:12+0000\n"
+"Last-Translator: Lilach Gilliam <lilach.gilliam@gmail.com>, 2021\n"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+"Language-Team: Hebrew (https://app.transifex.com/odoo/teams/41243/he/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: he\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#. module: event_sms
+<<<<<<< HEAD
+=======
+#: model:sms.template,body:event_sms.sms_template_data_event_reminder
+msgid ""
+"${object.event_id.organizer_id.name or object.event_id.company_id.name or "
+"user.env.company.name}: We are excited to remind you that the "
+"${object.event_id.name} event is starting ${object.get_date_range_str()}. We"
+" confirm your registration and hope to meet you there."
+msgstr ""
+
+#. module: event_sms
+#: model:sms.template,body:event_sms.sms_template_data_event_registration
+msgid ""
+"${object.event_id.organizer_id.name or object.event_id.company_id.name or "
+"user.env.company.name}: We are happy to confirm your registration for the "
+"${object.event_id.name} event."
+msgstr ""
+
+#. module: event_sms
+#: model:ir.model.fields,field_description:event_sms.field_event_mail__display_name
+#: model:ir.model.fields,field_description:event_sms.field_event_mail_registration__display_name
+#: model:ir.model.fields,field_description:event_sms.field_event_registration__display_name
+#: model:ir.model.fields,field_description:event_sms.field_event_type_mail__display_name
+msgid "Display Name"
+msgstr "שם תצוגה"
+
+#. module: event_sms
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+#: model:ir.model,name:event_sms.model_event_mail
+msgid "Event Automated Mailing"
+msgstr "דיוור אוטומטי לאירועים"
+
+#. module: event_sms
+#: model:ir.model,name:event_sms.model_event_registration
+msgid "Event Registration"
+msgstr "הרשמה לאירוע"
+
+#. module: event_sms
+#: model:sms.template,name:event_sms.sms_template_data_event_registration
+msgid "Event: Registration"
+msgstr "אירוע: הרשמה"
+
+#. module: event_sms
+#: model:sms.template,name:event_sms.sms_template_data_event_reminder
+msgid "Event: Reminder"
+msgstr "אירוע: תזכורת"
+<<<<<<< HEAD
+=======
+
+#. module: event_sms
+#: model:ir.model.fields,field_description:event_sms.field_event_mail__id
+#: model:ir.model.fields,field_description:event_sms.field_event_mail_registration__id
+#: model:ir.model.fields,field_description:event_sms.field_event_registration__id
+#: model:ir.model.fields,field_description:event_sms.field_event_type_mail__id
+msgid "ID"
+msgstr "מזהה"
+
+#. module: event_sms
+#: model:ir.model.fields,field_description:event_sms.field_event_mail____last_update
+#: model:ir.model.fields,field_description:event_sms.field_event_mail_registration____last_update
+#: model:ir.model.fields,field_description:event_sms.field_event_registration____last_update
+#: model:ir.model.fields,field_description:event_sms.field_event_type_mail____last_update
+msgid "Last Modified on"
+msgstr "שונה לאחרונה ב - "
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: event_sms
+#: model:ir.model,name:event_sms.model_event_type_mail
+msgid "Mail Scheduling on Event Category"
+msgstr "תזמון דואר על פי קטגוריית אירועים"
+<<<<<<< HEAD
+
+#. module: event_sms
+#: model:sms.template,body:event_sms.sms_template_data_event_reminder
+msgid ""
+"Ready for \"{{ object.event_id.name }}\" {{ object.get_date_range_str(object.partner_id.lang) }}?\n"
+"{{ 'It starts at %s' % format_time(time=object.event_begin_date, tz=object.event_id.date_tz, time_format='short', lang_code=object.partner_id.lang) + (', at %s' % object.event_id.address_inline if object.event_id.address_inline else '') + '.\\nSee you there!' if object.event_id.address_inline or 'website_published' not in object.event_id._fields else 'Join us on %s/event/%i !' % (object.get_base_url(), object.event_id.id) }}"
+msgstr ""
+=======
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: event_sms
+#: model:ir.model,name:event_sms.model_event_mail_registration
+msgid "Registration Mail Scheduler"
+msgstr "מתזמן דוא\"ל הרשמה"
+
+#. module: event_sms
+#: model:ir.model.fields.selection,name:event_sms.selection__event_mail__notification_type__sms
+#: model:ir.model.fields.selection,name:event_sms.selection__event_type_mail__notification_type__sms
+msgid "SMS"
+msgstr "SMS"
+
+#. module: event_sms
+<<<<<<< HEAD
+#: model:ir.model,name:event_sms.model_sms_template
+msgid "SMS Templates"
+=======
+#: model:ir.model.fields,field_description:event_sms.field_event_mail__sms_template_id
+#: model:ir.model.fields,field_description:event_sms.field_event_type_mail__sms_template_id
+msgid "SMS Template"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+msgstr "תבנית SMS"
+
+#. module: event_sms
+#: model:ir.model.fields,field_description:event_sms.field_event_mail__notification_type
+#: model:ir.model.fields,field_description:event_sms.field_event_type_mail__notification_type
+msgid "Send"
+msgstr "שלח"
+
+#. module: event_sms
+#: model:sms.template,body:event_sms.sms_template_data_event_registration
+msgid ""
+<<<<<<< HEAD
+"{{ object.event_id.organizer_id.name or object.event_id.company_id.name or "
+"user.env.company.name }}: We are happy to confirm your registration for the "
+"{{ object.event_id.name }} event."
+msgstr ""
+"{{ object.event_id.organizer_id.name or object.event_id.company_id.name or "
+"user.env.company.name }}: אנו שמחים לאשר את הרישום שלך לאירוע {{ "
+"object.event_id.name }}."
+=======
+"This field contains the template of the SMS that will be automatically sent"
+msgstr "שדה זה מכיל את תבנית ה- SMS שתישלח אוטומטית"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe

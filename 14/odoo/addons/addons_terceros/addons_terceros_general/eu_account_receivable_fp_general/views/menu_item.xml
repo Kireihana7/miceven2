@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem 
+        id="report_account_receivable_fp_general_submenu"
+        name="Cuentas por Cobrar de Producto Terminado (General)"
+        sequence='5'
+        action="eu_account_receivable_fp_general.action_account_receivable_fp_general_wizard"
+        parent="account.menu_finance_reports"/>    
+</odoo>

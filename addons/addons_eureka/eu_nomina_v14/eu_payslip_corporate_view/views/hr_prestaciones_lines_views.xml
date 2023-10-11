@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="hr_employee_corporate_view" model="ir.ui.view">
+            <field name="name">hr.employee.corporate</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="l10n_ve_payroll.hr_employee_form_view_inherited_f"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_go_to_prestaciones']" position="after">
+                    <button name='action_go_to_prestaciones_corporate' groups="eu_payslip_corporate_view.corporate_payslip_group"
+                    type="object" icon="fa-file-text-o">
+                        <span>Prestaciones Corporativas</span>
+                    </button>
+                </xpath>
+                
+                <xpath expr="//field[@name='pin']" position="after">
+                    <field name="secret_journey" groups="eu_payslip_corporate_view.corporate_payslip_group"/>
+                    <field name="puntual" />
+                    <field name="exemplar" />
+                </xpath>
+            </field>
+        </record>
+        <record id="hr_prestaciones_c_employee_line_view_tree" model="ir.ui.view">
+            <field name="name">hr.prestaciones.corporate.employee.line</field>
+            <field name="model">hr.prestaciones.corporate.employee.line</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="line_type"/>
+                    <field name="fecha" />
+                    <field name="contract_id" />
+                    <field name="sal_mensual" />
+                    <field name="sal_diario" />
+                    <field name="utilidades" />
+                    <field name="vacaciones" />
+                    <field name="total_diario" />
+                    <field name="antiguedad" />
+                    <field name="antiguedad_adicional" />
+                    <field name="antiguedad80" />
+                    <field name="porcentaje" />
+                    <field name="tasa_activa" />
+                    <field name="prestaciones_mes" />
+                    <field name="anticipos_otorga" />
+                    <field name="prestaciones_acu" />
+                    <field name="intereses" />
+                    <field name="intereses_acum" />
+                    <field name="presta_e_inte" />
+
+                </tree>
+            </field>
+        </record>
+        
+        
+        <record id="action_view_prestaciones_c_full_list" model="ir.actions.act_window">
+            <field name="name">Listado General de Prestaciones</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.prestaciones.corporate.employee.line</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="hr_prestaciones_c_employee_line_view_tree"></field>
+            <field name="binding_view_types">tree</field>
+            <field name="target">current</field>
+        </record>
+        <menuitem
+            id="view_prestations_corp_list_view"
+            name="Detalles Prestaciones Corporativas"
+            action="eu_payslip_corporate_view.action_view_prestaciones_c_full_list"
+            parent="eu_payslip_corporate_view.view_prestations_c_view"
+            groups="eu_payslip_corporate_view.corporate_payslip_group"
+            sequence="11"/>
+    </data>
+</odoo>

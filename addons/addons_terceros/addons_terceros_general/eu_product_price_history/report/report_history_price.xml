@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="paperformat_product_price_history" model="report.paperformat">
+        <field name="name">paperformat.product.price.history</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">35</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">3</field>
+        <field name="margin_right">3</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">30</field>
+        <field name="dpi">90</field>
+    </record>
+    <record id="action_report_product_price_history" model="ir.actions.report">
+        <field name="name">Reporte Historial Precio</field>
+        <field name="model">product.price.history</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="paperformat_id" ref="eu_product_price_history.paperformat_product_price_history"/>
+        <field name="report_name">eu_product_price_history.report_product_history_price</field>
+        <field name="report_file">eu_product_price_history.report_history_price</field>
+        <field name="binding_model_id" ref="model_product_price_history"/>
+        <field name="binding_type">report</field>
+    </record>       
+    <template id="report_product_history_price">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2 class="text-center">Historial de coste</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Origen</th>
+                                <th scope="col">Costo</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Compañia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="docs" t-as="history" t-key="history.id">
+                                <td scope="row">
+                                    <t t-if="history.product_id">
+                                        <span t-field="history.product_id.name"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-field="history.product_tmpl_id.name"/>
+                                    </t>
+                                </td>
+                                <td>
+                                    <span t-field="history.product_category_id.name" />
+                                </td>
+                                <td>
+                                    <span t-field="history.origin" />
+                                </td>
+                                <td>
+                                    <span t-field="history.cost" />
+                                </td>
+                                <td>
+                                    <span t-field="history.create_date" />
+                                </td>
+                                <td>
+                                    <span t-field="history.company_id.name" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

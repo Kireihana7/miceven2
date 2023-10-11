@@ -1,0 +1,131 @@
+<odoo>
+    <data>
+        <template id="print_customers_report_template">
+            <t t-call="web.html_container">
+                <t t-set="data_report_margin_top" t-value="10"/>
+                <t t-call="web.basic_layout">
+                    <div style="border:1px solid black;border-radius:20px;border-spacing:0;margin-left:0%;font-size:13px;width:100%;">
+                        <table class="text-center" style="width:100%;">
+                            <tr>
+                                <th><span t-esc="form.get('company_name')"></span></th>
+                            </tr>
+                            <tr>
+                                <th><span t-esc="form.get('company_vat')"></span></th>
+                            </tr>
+                            <tr>
+                                <th><span>** VENTAS **</span></th>
+                            </tr>
+                            <tr>
+                                <th><span>Maestro de Clientes</span></th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    DEL: <span t-esc="form.get('start_date')" t-options='{"widget": "date"}'/>
+                                    AL: <span t-esc="form.get('end_date')" t-options='{"widget": "date"}'/>
+                                </th>
+                            </tr>
+                            <tr>
+                                <t t-if="form.get('state')">
+                                    <th>ESTATUS:
+                                        <t t-if="form.get('state')=='activo'">
+                                            <strong>Activos</strong>
+                                        </t>
+                                        <t t-if="form.get('state')=='inactivo'">
+                                            <strong>Inactivos</strong>
+                                        </t>
+                                    </th>
+                                </t>
+                            </tr>
+                        </table>
+                    </div>
+                    <table class="text-center" style="width:100%;margin-top:20px;font-size:13px;">
+                        <thead>
+                            <tr >
+                                <th class="text-center" style="width:3%;"> <!-- 1 -->
+                                    <strong>Renglón</strong>
+                                </th>
+                                <th class="text-center" style="width:7%;"> <!--2 -->
+                                    <strong>RIF. No. o Cédula</strong>
+                                </th>
+                                <th class="text-center" style="width:25%;"> <!-- 3 -->
+                                    <strong>Nombre</strong>
+                                </th>
+                                <td class="text-center" style="width:2%;"> <!-- 1 -->
+                                        <span />
+                                </td>
+                                <th class="text-center" style="width:51%;"> <!-- 4 -->
+                                    <strong>Dirección del Cliente</strong>
+                                </th>
+                                <th class="text-center" style="width:12%;"> <!-- 5 -->
+                                    <strong>Comercial</strong>
+                                </th>
+                                <t t-if="form.get('state') == ''">
+                                    <th class="text-center">
+                                        <strong>Estatus</strong>
+                                    </th>
+                                </t>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="operacion" t-value="1"/>
+                            <t t-foreach="form.get('partners')" t-as="l">    
+                                <tr >
+                                    <td class="text-center" style="width:3%;"> <!-- 1 -->
+                                        <span t-esc="operacion"/>
+                                    </td>
+                                    <td class="text-left" style="width:7%;"><!-- 2 -->
+                                        <span t-esc="l.get('rif_partner')"/>
+                                    </td>
+                                    <td class="text-left" style="width:25%;"><!-- 3 -->
+                                        <span t-esc="l.get('name')"/>
+                                    </td>
+                                    <td class="text-center" style="width:2%;"> <!-- 1 -->
+                                        <span />
+                                    </td>
+                                    <td class="text-left" style="width:51%;"><!-- 4 -->
+                                        <span t-esc="l.get('information')"/>
+                                    </td>
+                                    <td class="text-left" style="width:12%;"><!-- 5 -->
+                                        <span t-esc="l.get('commercial')"/>
+                                    </td>
+                                    <t t-if="form.get('state')  == ''">
+                                        <td class="text-center">
+                                            <span t-esc="l.get('state')"/>
+                                        </td>
+                                    </t>
+                                </tr>
+                                <t t-set="operacion" t-value="operacion+1"/>
+                            </t>
+                            <tr  class="border-top">
+                                <td class="text-center"> <!-- 1 -->
+                                     <span />
+                                </td>
+                                <td class="text-center"><!-- 2 -->
+                                     <span />
+                                </td>
+                                <td class="text-center"><!-- 3 -->
+                                    <span />
+                                </td>
+                                <td class="text-center"><!-- 4 -->
+                                    <span />
+                                </td>
+                                <td class="text-center"><!-- 5 -->
+                                    <span />
+                                </td>
+                                <td class="text-center"><!-- 6 -->
+                                    <span />
+                                </td>
+                                <t t-if="form.get('state') == ''">
+                                    <td class="text-center">
+                                        <span />
+                                    </td>
+                                </t>
+                            </tr>  
+                        </tbody>
+                    </table>
+                    <br/>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

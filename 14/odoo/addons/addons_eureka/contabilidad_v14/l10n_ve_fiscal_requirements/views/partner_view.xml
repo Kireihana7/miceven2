@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <data>
+
+      <record id="view_partner_form_rif_inherit" model="ir.ui.view">
+          <field name="name">res.partner.form.dynamica</field>
+          <field name="model">res.partner</field>
+          <field name="inherit_id" ref="base.view_partner_form"/>
+          <field name="arch" type="xml">
+              <xpath expr="//group/group[last()]/field" position="before">
+                  <field name="rif" attrs="{'required':[('has_cedula', '=', True)]}" invisible="1"/>
+                  <field name="has_cedula" required="1" widget="boolean_toggle" />
+                  <field name="cedula" attrs="{'required':[('has_cedula', '=', True)]}" />
+                  <field name="vd_rif" />
+                  <field name="residence_type" required="True"/>
+              </xpath>
+              <xpath expr="//field[@name='vat']" position="attributes">
+                  <attribute name="invisible">False</attribute>
+                  <attribute name="readonly">True</attribute>
+                  <attribute name="force_save">True</attribute>
+                  <attribute name="string">RIF</attribute>
+              </xpath>
+              <xpath expr="//field[@name='phone']" position="attributes">
+                  <attribute name="required">1</attribute>
+              </xpath>
+          </field>
+      </record>
+
+  </data>
+</odoo>

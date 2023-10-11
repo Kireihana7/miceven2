@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="view_advance_purchase">
+        <field name="name">purchase.order.inherit.form.advance</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="object" icon="fa-book" 
+                    context="{
+                    'search_default_purchase_id': active_id,
+                    'default_purchase_id': active_id,
+                    'search_default_purchase_identify': active_id, 
+                    'default_purchase_identify': active_id, 
+                    'search_default_partner_id': partner_id, 
+                    'default_partner_id': partner_id
+                    }" 
+                    name="show_advance_purchase" 
+                    width="180px"
+                    >
+                <field name="advance_count" widget="statinfo"/>
+                </button>
+            </xpath>
+            <xpath expr="//page[@name='purchase_delivery_invoice']" position="before">
+                <page name="advances" string="Anticipos de la Compra">
+                    <group>
+                        <group>
+                            <field name="monto_advance" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                            <field name="currency_id_advance_dolar" invisible="1"/>
+                            <field name="monto_advance_dolar" widget='monetary' options="{'currency_field': 'currency_id_advance_dolar'}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="advance_id"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_form_inherit_tree_advance" model="ir.ui.view">
+        <field name="name">purchase_order_form_inherit_tree</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <field name="currency_id_advance_dolar" invisible="1"/>
+                <field name="monto_advance" optional="hide" string="Anticipo recibido" widget='monetary' options="{'currency_field': 'currency_id'}"></field>
+                <field name="monto_advance_dolar" optional="hide" string="Anticipo Recibido (Dolar)" widget='monetary' options="{'currency_field': 'currency_id_advance_dolar'}"/>
+            </xpath>
+        </field>
+    </record>
+
+  </data>
+</odoo>

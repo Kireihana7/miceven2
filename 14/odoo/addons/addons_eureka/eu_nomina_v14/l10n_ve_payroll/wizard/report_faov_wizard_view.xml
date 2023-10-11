@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_report_faov_form" model="ir.ui.view">
+        <field name="name">Report Faov Wizard</field>
+        <field name="model">report.faov.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Imprimir">
+                <group>
+                    <field name="para_fecha" required="1"/>
+                    <field name="periodo" required="1"/>
+                    <field name="filtro" required="1"/>
+                    <field name="employee_tags" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button
+                        name="print_report"
+                        string="Imprimir"
+                        type="object"
+                        icon="fa-cog fa-spin fa-inverse text-white"
+                        class="btn-primary"
+                        
+                    />
+                    
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_view_faov_wizard" model="ir.actions.act_window">
+        <field name="name"> Reporte Faov wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">report.faov.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_report_faov_form"></field>
+        <field name="binding_view_types">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+        id="report_faov_wizard"
+        name="Reporte Faov"
+        action="l10n_ve_payroll.action_view_faov_wizard"
+        parent="hr_payroll.menu_hr_payroll_report"
+        sequence="12"/>
+        
+</odoo>

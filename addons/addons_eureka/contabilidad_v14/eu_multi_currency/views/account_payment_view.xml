@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account_payment_form_inherit_views_ref" model="ir.ui.view">
+        <field name="name">account_move_form_inherit_views_usd</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_method_id']" position="after">
+                <field name="currency_id_ref" invisible="1"></field>
+                <field name="importe_na" />
+                <field name="amount_ref" widget='monetary' options="{'currency_field': 'currency_id_ref'}"></field>
+                <field name="tasa_del_dia" string="Tasa del día"></field>
+                <field name="tasa_del_dia_two" string="Tasa del día Ref"></field>
+                <field name="origin_invoice" readonly="1" attrs="{'invisible': [('origin_invoice', '=', False)]}"/>
+                <field name="draft_initial" readonly="1" attrs="{'invisible': [('draft_initial', '=', False)]}"/>
+            </xpath>
+            <xpath expr="//header" position="after">
+                <div 
+                    class="alert alert-danger" role="alert" style="margin-bottom:0px;">
+                    ¡Recuerde añadir la descripción del Pago!
+                </div>
+            </xpath>
+            <sheet position="inside">
+                <notebook>
+                    <page 
+                        name="debit" 
+                        string="Debito" 
+                        attrs="{
+                            'invisible':['|',('payment_type','=','inbound'),('debit_partial_reconcile_ids','=',False)]
+                        }"
+                    >
+                        <field name="debit_partial_reconcile_ids" readonly="1">
+                            <tree>
+                                <field name="company_currency_id" invisible="1" />
+                                <field name="amount" />
+                                <field name="debit_amount_currency" />
+                                <field name="debit_currency_id" invisible="1" />
+                                <field name="debit_move_parent_id" string="Factura" />
+                                <field name="max_date" string="Fecha" />
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="company_currency_id" invisible="1" />
+                                    <field name="amount" />
+                                    <field name="debit_amount_currency" />
+                                    <field name="debit_currency_id" invisible="1" />
+                                    <field name="debit_move_parent_id" string="Factura" />
+                                    <field name="max_date" string="Fecha" />
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                    <page 
+                        name="credit" 
+                        string="Credito" 
+                        attrs="{
+                            'invisible':['|',('payment_type','=','outbound'),('credit_partial_reconcile_ids','=',False)]
+                        }"
+                    >
+                        <field name="credit_partial_reconcile_ids" readonly="1">
+                            <tree>
+                                <field name="company_currency_id" invisible="1" />
+                                <field name="amount" />
+                                <field name="credit_amount_currency" />
+                                <field name="credit_currency_id" invisible="1" />
+                                <field name="credit_move_parent_id" string="Factura" />
+                                <field name="max_date" string="Fecha" />
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="company_currency_id" invisible="1" />
+                                    <field name="amount" />
+                                    <field name="credit_amount_currency" />
+                                    <field name="credit_currency_id" invisible="1" />
+                                    <field name="credit_move_parent_id" string="Factura" />
+                                    <field name="max_date" string="Fecha" />
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="ref_bank" />
+            </xpath>
+            <xpath expr="//field[@name='ref']" position="attributes">
+                <attribute name="string">Referencia Bancaria</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="account_move_form_inherit_tree_ref" model="ir.ui.view">
+        <field name="name">account_move_form_inherit_tree</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount']" position="after">
+                <field name="currency_id_ref" optional="hide"></field>
+                <field name="importe_na" />
+                <field name="amount_ref" widget='monetary' sum="amount_total_usd_d" options="{'currency_field': 'currency_id_ref', 'no_open': True, 'no_create_edit': True, 'no_quick_create': True, 'no_create': True}"></field>
+                <field name="amount_usd" sum="Monto Total Inverso"/>
+                <field name="amount_company_currency" sum="Monto Total USD"/>
+                <field name="tasa_del_dia" optional="hide" string="Tasa del día" ></field>
+                <field name="tasa_del_dia_two" optional="hide" string="Tasa del día Ref" ></field>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_pago_form_inherit_draft">
+        <field name="name">view_pago_form_inherit draft</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_create_payments']" position="after">
+                <button string="Crear Pago en Borrador" name="action_create_payments_draft" type="object" class="oe_highlight"/>
+            </xpath>
+            <xpath expr="//field[@name='communication']" position="after">
+                <field name="ref_bank" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

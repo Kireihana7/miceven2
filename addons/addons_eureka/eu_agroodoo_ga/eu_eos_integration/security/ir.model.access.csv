@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_eos_feature,eu_eos_integration.eos.feature,model_eos_feature,base.group_user,1,1,1,1
+access_eos_statistics_task,eu_eos_integration.eos.statistics.task,model_eos_statistics_task,base.group_user,1,1,1,1
+access_eos_download_task,eu_eos_integration.eos.download.task,model_eos_download_task,base.group_user,1,1,1,1
+access_eos_field,eu_eos_integration.eos.field,model_eos_field,base.group_user,1,1,1,1
+access_eos_field_classification_area,eu_eos_integration.eos.field.classification.area,model_eos_field_classification_area,base.group_user,1,1,1,1
+access_eos_zoning_task,eu_eos_integration.eos.zoning.task,model_eos_zoning_task,base.group_user,1,1,1,1
+access_eos_datasets,eu_eos_integration.eos.datasets,model_eos_datasets,base.group_user,1,1,1,1
+access_eos_datasets_abbreviation,eu_eos_integration.eos.datasets.abbreviation,model_eos_datasets_abbreviation,base.group_user,1,1,1,1

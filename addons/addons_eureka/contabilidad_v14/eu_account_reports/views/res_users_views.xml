@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========= Vista de búsqueda ========= -->
+    <record model="ir.ui.view" id="res_users_view_search_account_reports_vendor_inherit">
+        <field name="name">res.users.view.search.account.reports.vendor.inherited</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator />
+                <filter name="is_vendor" string="Vendedores"
+                    domain="[('is_vendor', '=', True)]" />            
+                <separator />
+                <group expand="0" string="Agrupar por">
+                    <filter string="Vendedor" name="is_vendor" domain="[]"
+                        context="{'group_by': 'is_vendor'}" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ========= Formulario ========= -->
+    <record id="view_users_form_account_reports_vendor" model="ir.ui.view">
+        <field name="name">res.users.form.account.reports.vendor.inherited</field>
+        <field name="model">res.users</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]//field[@name='partner_id']" position="after">
+                <field name="is_vendor" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

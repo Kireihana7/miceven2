@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_partner_tipo_cuenta" model="ir.ui.view">
+            <field name="name">client-type_account_view</field>
+            <field name="model">res.partner.bank</field>
+            <field name="inherit_id" ref="base.view_partner_bank_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="tipo_de_cuenta" />
+                </xpath>
+                
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="stock_picking_hurt_puesto_compra"  inherit_id="stock.report_picking">
+        <xpath expr="//th[@name='th_from']" position="before">
+            <th name="th_qty_saco" t-if="o.purchase_id.puesto_compra == True" align="left">
+                <strong>Cant. saco</strong>
+            </th>
+        </xpath>
+
+        <xpath expr="//table[1]/tbody//td[2]" position="after">
+            <td name="th_qty_saco" t-if="o.purchase_id.puesto_compra == True" align="left">
+                <span t-field="ml.qty_saco" />
+            </td>
+        </xpath>
+
+
+    </template>
+    
+    <template id="intercompany_puesto_compra"  inherit_id="intercompany_transaction_ept.intercompany_reporte">
+        <xpath expr="//th[@name='th_from']" position="before">
+            <th name="th_qty_saco" t-if="o.puesto_compra == True" align="left">
+                <strong>Cant. saco</strong>
+            </th>
+        </xpath>
+        <xpath expr="//table[1]/tbody//td[2]" position="after">
+            <td name="th_qty_saco" t-if="o.puesto_compra == True" align="left">
+                <span t-field="ml.qty_saco" />
+            </td>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- <report id="relacion_pagos_report"
+        model="relacion.pagos.wizard"
+        string="Reporte de relación de pagos"
+        name="eu_reporte_relacion_pago.relacion_pagos_template"
+        file="eu_reporte_relacion_pago.relacion_pagos_template"
+        report_type="qweb-pdf"
+        menu="False"
+    /> -->
+
+	<record id="relacion_pagos_report" model="ir.actions.report">
+		<field name="name">Reporte de relación de pagos</field>
+		<field name="model">relacion.pagos.wizard</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">eu_reporte_relacion_pago.relacion_pagos_template</field>
+		<field name="report_file">eu_reporte_relacion_pago.relacion_pagos_template</field>
+		<field name="binding_model_id" ref="model_relacion_pagos_wizard"/>
+		<field name="binding_type">report</field>
+	</record>
+</odoo>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_extends_add_limit" model="ir.ui.view">
+        <field name="name">view.move.form.extends.add.wizard.limit</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="arch" type="xml">
+            <div name="amount_div" position="after">
+                <field name="amount_ref" />
+            </div>
+            <field name="communication" position="after">
+                <field name="banco_origen"/>
+            </field>
+        </field>
+    </record>
+   
+</odoo>

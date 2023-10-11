@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="quality_check_view_form_small_inherit_responsable" model="ir.ui.view">
+        <field name="name">quality_check_view_form_small_inherit_responsable</field>
+        <field name="model">quality.check</field>
+        <field name="inherit_id" ref="quality_control.quality_check_view_form_small"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/group/group/div" position="after">
+                <field name="responsable" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+            </xpath>
+        </field>
+    </record>
+    <record id="quality_check_view_form_inherit_responsable" model="ir.ui.view">
+        <field name="name">quality.check.view.form responsable</field>
+        <field name="model">quality.check</field>
+        <field name="inherit_id" ref="quality_control.quality_check_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="responsable" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

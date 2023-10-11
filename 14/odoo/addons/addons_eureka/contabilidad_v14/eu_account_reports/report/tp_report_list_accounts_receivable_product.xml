@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Manuel Jimenez - 2 -->
+<odoo>
+    <record id="paperformat_invoice_report" model="report.paperformat">
+        <field name="name">Cuentas por cobrar producto terminado (Vendedores)</field>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+    </record>
+    <record id="report_list_accounts_receivable_product" model="ir.actions.report">
+        <field name="name">Cuentas por cobrar producto terminado (Vendedores)</field>
+        <field name="model">report.accounts.receivable.product</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">eu_account_reports.tp_report_list_accounts_receivable_product</field>
+        <field name="report_file">eu_account_reports.tp_report_list_accounts_receivable_product</field>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_invoice_report"/>
+    </record>
+    <template id="tp_report_list_accounts_receivable_product">
+        <t t-call="web.html_container">
+            <t t-set="tittle" t-value="'Cuentas por cobrar producto terminado (Vendedores)'"/>
+            <t t-set="desde" t-value="form.get('start_date')"/>
+            <t t-set="hasta" t-value="form.get('end_date')"/>
+            <t t-call="eu_miceven_report_topper.header_report_miceven">
+                <t t-foreach="form.get('documents')" t-as="docu">
+                    <!-- ================== Moneda ================== -->
+                    <t t-set="currency" t-value="docu.get('company_currency_id')"/>
+                    <t t-set="obj_currency" t-value="env['res.currency'].search([('id', '=', currency)])"/>
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <!-- <center><h1>CUENTAS POR COBRAR DE PRODUCTO TERMINADO (GENERAL)</h1></center> -->
+                        
+                        <!-- ================== Moneda ================== -->
+                        <t t-set="currency" t-value="docu.get('company_currency_id')"/>
+                        <t t-set="obj_currency" t-value="env['res.currency'].search([('id', '=', currency)])"/>    
+                        
+                        <!-- ================== Facturas ================== --> 
+                        <t t-if="docu.get('invoices')">
+                            <br/>
+                            <!-- ================== Totales ================== -->
+                            <t t-set="total_cantidad_fardos" t-value="0"/>
+                            <t t-set="total_a_cancelar" t-value="0"/>
+                            <t t-set="total_saldo_abonado" t-value="0"/>
+                            <t t-set="total_pendiente_x_cancelar" t-value="0"/>
+                            
+                            <!-- <span t-esc="docu.get('lista_vendedores')"/> -->
+
+                            <t t-foreach="docu.get('invoices')" t-as="invoice_data">
+                                <table class="table table-sm t-cuentas" style="font-size:11px">
+                                    <thead>
+                                        <tr style="background: #C8C8C8;">
+                                            <th class="text-left" style="width: 30px !important;"><strong>FACTURA:</strong></th>
+                                            <td class="text-left" style="width: 30px !important;">
+                                                <span t-esc="invoice_data.get('name')"/>                                                                                                    
+                                            </td>
+                                            
+                                            <th class="text-left" style="width: 30px !important;"><strong>FECHA:</strong></th>
+                                            <td class="text-left" style="width: 30px !important;">
+                                                <span t-esc="invoice_data.get('invoice_date')"/>                                                                                                    
+                                            </td>
+                                            
+                                            <th class="text-left" style="width: 30px !important;"><strong>CLIENTE:</strong></th>
+                                            <td class="text-left" style="width: 200px !important;">
+                                                <t t-if="len(invoice_data.get('partner_id')) &gt; 20">
+                                                    <span t-esc="invoice_data.get('partner_id')[0:20] + '...'"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-esc="invoice_data.get('partner_id')"/>
+                                                </t>                                                                                             
+                                            </td>    
+                                            
+                                            <th class="text-left" style="width: 30px !important;"><strong>CIUDAD:</strong></th>
+                                            <td class="text-left" style="width: 160px !important; text-transform: uppercase;">
+                                                <t t-if="len(invoice_data.get('city_id')) &gt; 20">
+                                                    <span t-esc="invoice_data.get('city_id')[0:20] + '...'"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-esc="invoice_data.get('city_id')"/>
+                                                </t>                                                                                             
+                                            </td>                                                           
+                                            
+                                            <th class="text-left" style="width: 30px !important;"><strong>VENDEDOR:</strong></th>
+                                            <td class="text-left" style="width: 180px !important; text-transform: uppercase;">
+                                                <t t-if="len(invoice_data.get('invoice_user_id')) &gt; 40">
+                                                    <span t-esc="invoice_data.get('invoice_user_id')[0:40] + '...'"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-esc="invoice_data.get('invoice_user_id')"/>
+                                                </t>                                                                                             
+                                            </td>
+                                            <th class="text-left" style="width:90px"><strong>FECHA VENC:</strong></th>
+                                            <td class="text-left" style="width: 30px !important;">
+                                                <span t-esc="invoice_data.get('invoice_date_due')"/>                                                                                                    
+                                            </td>
+                                            <th class="text-left" style="width:90px"><strong>DIAS TRANS:</strong></th>
+                                            <td class="text-center" style="width: 30px !important;">
+                                                <span t-esc="invoice_data.get('days')"/>                                                                                                    
+                                            </td>                                                     
+                                        </tr>                                
+                                    </thead>
+                                </table>
+                                
+                                <table class="table table-sm t-cuentas" style="font-size:11px">
+                                    <!-- ================== Detalles de la Factura ================== --> 
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="width: 20px !important;"><strong>ITEM</strong></th>
+                                            <th class="text-right" style="width: 90px !important;"><strong>CANTIDAD</strong></th>
+                                            <th class="text-right" style="width: 90px !important;"><strong>PRECIOS POR FARDOS $</strong></th>
+                                            <th class="text-right" style="width: 90px !important;"><strong>SUB-TOTAL $</strong></th>
+                                            <th class="text-left" style="width: 500px !important;"><strong>PRODUCTO</strong></th>                                            
+                                        </tr>                                                
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="count" t-value="1"/>
+                                        <t t-foreach="invoice_data.get('invoice_lines')" t-as="invoice_line">
+                                            <tr>
+                                                <td class="text-center">
+                                                    <span t-esc="count"/>                                                                                                    
+                                                </td>                                               
+                                                <td class="text-right">
+                                                    <span t-esc="invoice_line.get('cantidad_x_fardo')" t-options="{'widget': 'float', 'precision': 2}"/> <span t-esc="invoice_line.get('product_uom_name')"/>
+                                                </td>        
+                                                <td class="text-right">
+                                                    <span t-esc="invoice_line.get('precio_x_fardo_usd')" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/>                                                                                                    
+                                                </td>                                                                                                                                                                                
+                                                <td class="text-right">
+                                                    <t t-if="invoice_line.get('sub_total_usd') is not False">
+                                                        <span t-esc="invoice_line.get('sub_total_usd')" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/>
+                                                    </t>
+                                                </td>                                                                                                                                         
+                                                <td class="text-left">
+                                                    <span t-esc="invoice_line.get('product')"/>                                                                                                    
+                                                </td>                                                
+                                            </tr>      
+                                            <!-- ================== Acumulando valores ================== --> 
+                                            <t t-set="count" t-value="count + 1"/>
+                                            <t t-set="total_cantidad_fardos" t-value="total_cantidad_fardos + invoice_line.get('cantidad_x_fardo')"/>
+                                            <t t-set="total_a_cancelar" t-value="total_a_cancelar + invoice_line.get('sub_total_usd')"/>
+                                        </t>                                                            
+                                    </tbody>                                        
+                                </table>
+                                
+                                <table class="table table-sm t-cuentas" style="font-size:11px">
+                                    <tbody>
+                                        <td style="width: 700px !important;"/>
+                                        
+                                        <th class="text-left"><strong>MONTO TOTAL:</strong></th>                                       
+                                        <td class="text-right" style="width:10px">
+                                            <t t-esc="invoice_data.get('field_amount_total')" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/>
+                                        </td>
+                                        <th class="text-left">-</th>
+                                          
+                                        <th class="text-left" style="width:30px"><strong>ABONADO:</strong></th> 
+                                        <td>
+                                            <span t-esc="invoice_data.get('saldo_abonado')" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/>                                                                                                     
+                                        </td>
+                                        <th class="text-left" style="width:5px">-</th>
+                                        
+                                        <th class="text-left"><strong>PENDIENTE POR CANCELAR:</strong></th> 
+                                        <td>
+                                            <span t-esc="invoice_data.get('pendiente_x_cancelar')" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/>                                                                                                     
+                                        </td>
+                                    </tbody>                                      
+                                </table>
+                                  
+                                <!-- ================== Acumulando valores ================== --> 
+                                <t t-set="total_saldo_abonado" t-value="total_saldo_abonado + invoice_data.get('saldo_abonado')"/>                                              
+                            </t>
+                            
+                            <!-- ================== Totales ================== --> 
+                            <br/><br/>
+                            
+                            <div class="row div-cuentas" style="font-size:12px">
+                                <div class="col-1 text-right">
+                                    CANTIDAD TOTAL:
+                                </div>                                                                                                                                                                           
+                                <div class="col-1 text-left text-success">
+                                    <span t-esc="total_cantidad_fardos" t-options="{'widget': 'float', 'precision': 2}"/>                                                                                                     
+                                </div>
+                                <div class="col-4 text-right">
+                                    MONTO TOTAL POR CANCELAR CLIENTES:
+                                </div>
+                                <div class="col-1 text-left text-danger">
+                                    <span t-esc="total_a_cancelar" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/>                                                                                                     
+                                </div>
+                                <div class="col-1 text-right">
+                                    ABONADO:
+                                </div>
+                                <div class="col-1 text-left text-success">
+                                    <span t-esc="total_saldo_abonado" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/>                                                                                                    
+                                </div>
+                                <div class="col-2 text-right">
+                                    TOTAL A CANCELAR:
+                                </div>  
+                                <!-- ================== Calculando Total Pendiente por Cancelar ================== -->       
+                                <t t-set="total_pendiente_x_cancelar" t-value="total_a_cancelar - total_saldo_abonado"/>                
+                                <div class="col-1 text-left text-danger bg-warning">
+                                    <span t-esc="total_pendiente_x_cancelar" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: obj_currency}"/>                                                                                                    
+                                </div>
+                            </div>                                
+                        </t>
+                        <div class="oe_structure"/>
+                    </div>                
+                </t>
+            </t>
+        </t> 
+    </template>
+</odoo>

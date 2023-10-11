@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="hr_employee_journey_group_view_tree" model="ir.ui.view">
+            <field name="name">hr.employee.journey.group.view.tree</field>
+            <field name="model">hr.employee.journey.group</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name" />
+                    <field name="schedule_id" />
+                    <field name="employee_ids" />
+                </tree>
+            </field>
+        </record>
+       <record id="hr_employee_journey_group_view_form" model="ir.ui.view">
+           <field name="name">hr.employee.journey.group.view.form</field>
+           <field name="model">hr.employee.journey.group</field>
+           <field name="arch" type="xml">
+               <form string="">
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name"/><br/>
+                                </h1>
+    
+                            </div>
+                        </div>
+                        <group>
+                            <group >
+                            <field name="schedule_id" />
+                            <field name="categoria" />
+                            </group>
+                            <group><field name="sequence" /></group>
+                        </group>
+                        <group class="text-center">
+                            <label for="employee_ids" style="font-size:30px;" colspan="2"/> 
+                            <field name="employee_ids"  nolabel="1"  >
+                                <tree>
+                                    <field name="emp_id" string="Código"/>
+                                    <field name="lastname" />
+                                    <field name="firstname" />
+                                    <field name="department_id" />
+                                    <field name="job_id" />
+                                    <field name="work_phone" />
+                                </tree>
+                            </field>
+                            
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+               </form>
+           </field>
+       </record>
+        
+        <record id="action_view_journey_groups" model="ir.actions.act_window">
+            <field name="name">Grupos de jornada</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee.journey.group</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_employee_journey_group_view_tree"></field>
+            <field name="binding_view_types">tree</field>
+            <field name="target">current</field>
+        </record>
+        <menuitem
+            id="view_journey_groups_view"
+            name="Grupos de jornada"
+            action="l10n_ve_payroll.action_view_journey_groups"
+            parent="l10n_ve_payroll.menu_hr_payroll_unglobal_settings"
+            sequence="50"/>
+
+
+<!-- categoria jornada -->
+            <record id="journey_group_categ_view_tree" model="ir.ui.view">
+                <field name="name">hr.employee.journey.group.view.tree</field>
+                <field name="model">journey_group_categ</field>
+                <field name="arch" type="xml">
+                    <tree string="">
+                        <field name="name" />
+                        <field name="code" />
+                        <field name="rotation_days" />
+                    </tree>
+                </field>
+            </record>
+           <record id="journey_group_categ_view_form" model="ir.ui.view">
+               <field name="name">hr.employee.journey.group.view.form</field>
+               <field name="model">journey_group_categ</field>
+               <field name="arch" type="xml">
+                   <form string="">
+                        <sheet>
+                            <div class="oe_title">
+                                <div class="oe_title">
+                                    <h1>
+                                        <field name="name"/><br/>
+                                    </h1>
+        
+                                </div>
+                            </div>
+                            <group>
+                                <group >
+                                    <field name="code" />
+                                    <field name="rotation_days" />
+                                </group>
+                                
+                            </group>
+                            <group class="text-center">
+                                <label for="groups_ids" style="font-size:30px;" colspan="2"/> 
+                                <field name="groups_ids"  nolabel="1"  >
+                                    <tree>
+                                        <field name="sequence" />
+                                        <field name="name" />
+                                    </tree>
+                                </field>
+                                
+                            </group>
+                        </sheet>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids"/>
+                            <field name="activity_ids"/>
+                            <field name="message_ids"/>
+                        </div>
+                   </form>
+               </field>
+           </record>
+            
+            <record id="action_view_journey_group_categ" model="ir.actions.act_window">
+                <field name="name">Categoria G. jornada</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">journey_group_categ</field>
+                <field name="view_mode">tree,form</field>
+                <field name="view_id" ref="journey_group_categ_view_tree"></field>
+                <field name="binding_view_types">tree</field>
+                <field name="target">current</field>
+            </record>
+            <menuitem
+                id="view_journey_groups_categ_view"
+                name="Categorias Grupos de jornada"
+                action="l10n_ve_payroll.action_view_journey_group_categ"
+                parent="l10n_ve_payroll.menu_hr_payroll_unglobal_settings"
+                sequence="49"/>
+    </data>
+</odoo>

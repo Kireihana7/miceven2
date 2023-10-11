@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_order_line_tree_inherit_purchase_sdp" model="ir.ui.view">
+            <field name="name">purchase.order.line.tree.purchase.sdp.location</field>
+            <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+            <field name="model">purchase.order.line</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='price_subtotal']" position="before">
+                    <field name="price_unit" sum="Total unit" widget="monetary"/>
+                </xpath>
+                <!-- UPDATE: -->
+                <xpath expr="//field[@name='price_unit']" position="after">
+                    <field name="custom_requisition_id" optional="hide"/>
+                    <field name="invoice_status" optional="hide"/>
+                </xpath>                
+            </field>
+        </record>
+
+        <record id="purchase_order_line_search_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.line.search.inherited</field>
+            <field name="model">purchase.order.line</field>
+            <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/group" position="inside">
+                    <filter name="groupby_custom_requisition_id" string="Requisición" domain="[]" context="{'group_by' : 'custom_requisition_id'}"/>
+                    <filter name="groupby_invoice_status" string="Estado de facturación" domain="[]" context="{'group_by' : 'invoice_status'}"/>
+                </xpath>             
+            </field>            
+        </record>
+
+        <record model="ir.actions.act_window" id="action_order_line_purchase">
+            <field name="name">Detalles de Pedidos</field>
+            <field name="res_model">purchase.order.line</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="purchase_order_menu_line"
+                name="Línea de los Pedidos"
+                parent="purchase.menu_procurement_management"
+                action="action_order_line_purchase"
+                groups="purchase.group_purchase_user"
+                sequence="2"/>
+    </data>
+</odoo>

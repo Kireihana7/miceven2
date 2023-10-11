@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="clientes_prepago_wizard_form" model="ir.ui.view">
+        <field name="name">clientes.prepago.wizard.form</field>
+        <field name="model">clientes.prepago.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Clientes Prepago">
+                <group>
+                    <field name="company_id" required="1" options="{'no_open': True, 'no_create_edit': True, 'no_quick_create': True, 'no_create': True}"/>
+                    <field name="partner_id" required="1" options="{'no_open': True, 'no_create_edit': True, 'no_quick_create': True, 'no_create': True}"/>
+                    <field name="start_date" string="Fecha Desde" required="1" widget="daterange" options='{"related_end_date": "end_date"}'/>    
+                    <field name="end_date" string="Fecha Hasta" required="1" widget="daterange" options='{"related_start_date": "start_date"}'/>    
+                </group>                          
+                <footer>
+                    <button name="action_generate_report" string="Imprimir" type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_clientes_prepago_wizard" model="ir.actions.act_window">
+        <field name="name">Clientes Prepago</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clientes.prepago.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="clientes_prepago_wizard_form"/>
+        <field name="target">new</field>
+    </record>    
+</odoo>

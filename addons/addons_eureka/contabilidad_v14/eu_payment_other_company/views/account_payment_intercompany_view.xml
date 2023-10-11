@@ -1,0 +1,213 @@
+<odoo>
+    <data>
+
+        <record id="account_payment_intercompany_form" model="ir.ui.view">
+            <field name="name">account_payment_intercompany_form</field>
+            <field name="model">account.payment.multi.company</field>
+            <field name="arch" type="xml">
+                <form string="Pagos Intercompañía">
+                    <header>
+                        <button 
+                            name="button_cancel" 
+                            type="object" 
+                            string="Cancelar Transferencia" 
+                            states="draft" 
+                            class="btn-primary"
+                            groups="eu_payment_other_company.group_can_cancel_other_company_payment"
+                        />
+                        <button 
+                            name="button_confirm" 
+                            type="object" 
+                            string="Confirmar Transferencia" 
+                            states="draft" 
+                            confirm="Esta acción creará los pagos en la otra compañía, ¿Está seguro?" 
+                            class="btn-primary"
+                            groups="eu_payment_other_company.group_can_confirm_other_company_payment"
+                        />
+                        <button 
+                            name="button_validate" 
+                            type="object" 
+                            string="Enviado" 
+                            states="confirm" 
+                            class="btn-primary"
+                            confirm="Esta acción confirmará los Pagos en Borrador, ¿Está seguro?"
+                            groups="eu_payment_other_company.group_can_validate_other_company_payment"
+                        />
+                        <button 
+                            name="button_done" 
+                            type="object" 
+                            string="Realizado" 
+                            states="validate" 
+                            class="btn-primary"
+                            groups="eu_payment_other_company.group_can_done_other_company_payment"
+                        />
+                        <field name="state" widget="statusbar" statusbar_visible="cancel,draft,confirm,validate" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div name="button_box" class="oe_button_box">
+                            <button class="oe_stat_button" type="object" icon="fa-book" 
+                                context="{
+                                'search_default_other_company_payment_id_to': active_id,
+                                'default_other_company_payment_id_to': active_id,
+                                }" 
+                                name="show_payment_id_to" 
+                                width="180px"
+                                >
+                            <field name="payment_id_to_count" widget="statinfo"/>
+                            </button>
+                            <button class="oe_stat_button" type="object" icon="fa-book" 
+                                context="{
+                                'search_default_other_company_payment_id_from': active_id,
+                                'default_other_company_payment_id_from': active_id,
+                                }" 
+                                name="show_payment_id_from" 
+                                width="180px"
+                                >
+                            <field name="payment_id_from_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name"/><br/>
+                                </h1>
+                                <h3>
+                                    <strong>ID Único </strong><field name="id"/><br/>
+                                </h3>
+                            </div>
+                        </div>
+                        <group>
+                            <group string="Origen">
+                                <field name="company_id_to" 
+                                    attrs="{'readonly':[('state','!=','draft')]}"
+                                    options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                />
+                                <field name="journal_id_to" 
+                                    domain="[('company_id','=',company_id_to),('type','in',('bank','cash'))]"
+                                    attrs="{'readonly':[('state','!=','draft')]}"
+                                    options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                />
+                                <field name="currency_id" 
+                                    attrs="{'invisible':[('journal_id_to','=',False)]}"
+                                    options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                />
+                                <field name="invoice_to" 
+                                    attrs="{'invisible':[('invoice_to','=',False)]}"
+                                    options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                />
+                            </group>
+                            <group string="Destino">
+                                <field name="company_id_from" 
+                                    domain="[('id','!=',company_id_to)]"
+                                    attrs="{'readonly':[('state','!=','draft')]}"
+                                    options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                />
+                                <field 
+                                    name="journal_id_from" 
+                                    domain="[('id','!=',journal_id_to),('company_id','=',company_id_from),('type','in',('bank','cash'))]"
+                                    options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                    attrs="{'readonly':[('state','!=','draft')]}"
+                                />
+                                <field name="currency_id_ref" 
+                                    attrs="{'invisible':[('journal_id_from','=',False)]}"
+                                    options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                />
+                                <field name="invoice_from" 
+                                    attrs="{'invisible':[('invoice_from','=',False)]}"
+                                    options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                />
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Montos">
+                                <field name="amount" />
+                                <field name="amount_ref" />
+                            </group>
+                            <group string="Fechas">
+                                <field name="create_date" />
+                                <field name="confirm_date" />
+                                <field name="validate_date" />
+                                <field name="done_date" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="payment_to" string="Pagos Origen">
+                                <field name="payment_to"  
+                                    widget="many2many" 
+                                    attrs="{'readonly':[('state','!=','draft')]}"
+                                    domain="[('state','=','posted'),('company_id','=',company_id_to),('payment_type','=','outbound'),('partner_type','=','supplier')]"
+                                >
+                                    <tree readonly="1">
+                                        <field name="name"/>
+                                        <field name="partner_id"/>
+                                        <field name="journal_id"/>
+                                        <field name="currency_id"/>
+                                        <field name="amount" sum="Total Amount"/>
+                                        <field name="amount_ref" sum="Total Amount Ref"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="payment_from" string="Pagos Destino" attrs="{'invisible':[('state','=','draft')]}">
+                                <field name="payment_from" readonly="1">
+                                    <tree readonly="1">
+                                        <field name="name"/>
+                                        <field name="partner_id"/>
+                                        <field name="journal_id"/>
+                                        <field name="currency_id"/>
+                                        <field name="amount" sum="Total Amount"/>
+                                        <field name="amount_ref" sum="Total Amount Ref"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_payment_multi_company_tree" model="ir.ui.view">
+            <field name="name">account.payment.multi.company.tree</field>
+            <field name="model">account.payment.multi.company</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" optional="show"/>
+                    <field name="confirm_date" optional="show"/>
+                    <field name="validate_date" optional="show"/>
+                    <field name="done_date" optional="show"/>
+                    <field name="company_id_to" optional="show"/>
+                    <field name="company_id_from" optional="show"/>
+                    <field name="journal_id_to" optional="show"/>
+                    <field name="journal_id_from" optional="show"/>
+                    <field name="amount" optional="show"/>
+                    <field name="amount_ref" optional="show"/>
+                    <field name="payment_to" optional="show"/>
+                    <field name="payment_from" optional="show"/>
+                    <field name="invoice_to" optional="show"/>
+                    <field name="invoice_from" optional="show"/>
+                    <field name="state" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="account_payment_other_company_action_window">
+            <field name="name">Traslado de Pagos</field>
+            <field name="res_model">account.payment.multi.company</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_account_payment_other_company_internal" 
+                name="Traslado de Pagos"
+                parent="account_accountant.menu_accounting" 
+                sequence="3"
+        />
+        <menuitem id="menu_account_payment_other_company"
+                name="Traslado de Pagos"
+                parent="eu_payment_other_company.menu_account_payment_other_company_internal" 
+                action="account_payment_other_company_action_window"
+                sequence="1"
+        />
+
+    </data>
+</odoo>

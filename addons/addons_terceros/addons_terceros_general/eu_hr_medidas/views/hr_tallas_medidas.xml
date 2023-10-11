@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_employee_measures_form" model="ir.ui.view">
+            <field name="name">hr.employee.measures</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='personal_information']//group/group[7]" position="after">
+                    <group string="Tallas/Medidas">
+                        <label for="zapatos" string="Zapatos"/>
+                        <field name="zapatos" nolabel="1" maxlength="2"/>
+
+                        <label for="pantalon" string="Pantalon"/>
+                        <field name="pantalon" nolabel="1" maxlength="2"/>
+
+                        <label for="camisa" string="Camisa"/>
+                        <field name="camisa" nolabel="1"/>
+
+                        <label for="estatura" string="Estatura"/>
+                        <div class="o_row">
+                            <field name="estatura" nolabel="1" maxlength="4" placeholder="Ejemplo. 0,00"/>
+                            <span>Mts</span>
+                        </div>
+
+                        <label for="peso" string="Peso"/>
+                        <div class="o_row">
+                            <field name="peso" nolabel="1" maxlength="3"/>
+                            <span>Kg</span>
+                        </div>
+
+                        <label for="braga" string="Braga"/>
+                        <field name="braga" nolabel="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

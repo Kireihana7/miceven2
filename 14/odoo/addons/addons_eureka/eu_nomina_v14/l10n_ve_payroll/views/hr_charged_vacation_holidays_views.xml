@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="hr_holidays_per_year_view_tree" model="ir.ui.view">
+            <field name="name">hr.holidays.per.year.view.tree</field>
+            <field name="model">hr.holidays.per.year</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name" />
+                    <field name="anno" />
+                </tree>
+            </field>
+        </record>
+        
+        <record id="hr_holidays_per_year_view_form" model="ir.ui.view">
+            <field name="name">hr.holidays.per.year.view.form</field>
+            <field name="model">hr.holidays.per.year</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button 
+                            string="Cargar desde Internet" 
+                            name="load_from_web" 
+                            type="object" 
+                            class="oe_highlight"
+                        />
+                        <button 
+                            string="Cargar por archivo" 
+                            name="load_from_document" 
+                            type="object" 
+                            class="oe_highlight"
+                        />
+                        <button 
+                            string="Eliminar y Recrear entradas para este calendario" 
+                            name="generate_work_entries47" 
+                            type="object" 
+                            class="oe_highlight"
+                        />
+                        
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="anno"/>
+                            <field name="holidays_lines_ids" >
+                                <tree>
+                                    <field name="name" />
+                                    <field name="fecha" />
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="action_view_holiday_config" model="ir.actions.act_window">
+            <field name="name">Dias Feriados</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.holidays.per.year</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_holidays_per_year_view_tree"></field>
+            <field name="binding_view_types">tree</field>
+            <field name="target">current</field>
+        </record>
+        <menuitem
+        id="menu_hr_payroll_unglobal_settings"
+        name="Miscelaneos"
+        parent="hr_work_entry_contract.menu_hr_payroll_configuration"
+        sequence="0"
+        
+        />
+        <menuitem
+            id="view_holiday_config"
+            name="Dias Feriados"
+            groups="l10n_ve_payroll.hr_payroll_2lvl_group"
+            action="l10n_ve_payroll.action_view_holiday_config"
+            parent="l10n_ve_payroll.menu_hr_payroll_unglobal_settings"
+            sequence="11"/>
+
+    </data>
+    <record id="hr_payroll.hr_payslip_action_view_to_pay" model="ir.actions.act_window">
+        <field name="name">Payslips To Pay</field>
+
+        <field name="domain">[('state', 'in', ['draft', 'verify']),('is_vacation', '=', False),('is_utility', '=', False)]</field>
+    </record>
+</odoo>

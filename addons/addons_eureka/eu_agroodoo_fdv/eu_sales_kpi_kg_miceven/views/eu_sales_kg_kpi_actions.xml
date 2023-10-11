@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="kpi_config_zone_action" model="ir.actions.act_window">
+        <field name="name">KPI Zonas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">kpi.config.zone</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="eu_sales_kpi_kg_miceven.kpi_config_zone_view_tree" />
+    </record>
+
+</odoo>

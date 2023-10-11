@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="kpi_config_branch_view_tree" model="ir.ui.view">
+        <field name="name">kpi.config.branch.view.tree</field>
+        <field name="model">kpi.config.branch</field>
+        <field name="arch" type="xml">
+            <tree string="KPI Sucursales">
+                <field name="kpi_kg_config_id" readonly="1"  optional="show"/>
+                <field name="name"  optional="show"/>
+                <field name="branch_id"  optional="show"/>
+                <field name="goal" sum="Total goal" optional="show"/>
+                <field name="progress" sum="Total progress" optional="show"/>
+                <field name="progress_percent"  optional="show"/>
+                <field name="distributed_goal" sum="Total distributed_goal" optional="show"/>
+                <field name="salesperson_goal" sum="Total salesperson_goal" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="kpi_config_branch_view_form" model="ir.ui.view">
+        <field name="name">kpi.config.branch.view.form</field>
+        <field name="model">kpi.config.branch</field>
+        <field name="arch" type="xml">
+            <form string="KPI Sucursales">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="kpi_kg_config_id" readonly="1" />
+                            <field name="name" />
+                            <field name="branch_id" required="1" options="{'no_create': True}" />                            
+                        </group>
+                        <group>
+                            <field name="goal" required="1" />
+                            <field name="distributed_goal" />
+                            <field name="salesperson_goal" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="salesperson" string="Vendedores">
+                            <field name="id" invisible="1" />
+                            <field name="kpi_salesperson_ids" context="{'default_kpi_branch_id': id}" />
+                        </page>
+                        <page name="category" string="Categorias">
+                            <field name="kpi_subcategory_ids">
+                                <tree string="Categoria" editable="bottom">
+                                    <field name="kpi_branch_id" invisible="1" />
+                                    <field name="kpi_category_id" required="1" />
+                                    <field name="goal" required="1" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+</odoo>

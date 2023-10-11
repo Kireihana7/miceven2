@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+
+
+        <record id="paperformat_customer_report" model="report.paperformat">
+            <field name="name">Customer Report papper format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">356</field>
+            <field name="page_width">216</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">3</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+
+
+        <report id="report_customers"
+                model="report.customer.sale"
+                string="Maestro de Clientes"
+                name="eu_partner_approve.print_customers_report_template"
+                paperformat="eu_partner_approve.paperformat_customer_report"
+                file="eu_partner_approve.print_customers_report_template"
+                report_type="qweb-pdf"
+                menu="False"
+        />
+    </data>
+</odoo>

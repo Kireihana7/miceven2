@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="production_report">
+		<t t-call="web.html_container">
+			<t t-call="web.external_layout">
+				<div class="page">
+					<style type="text/css">
+                        .table{
+				        	font-size: 12px;
+				        	line-height: 1.6;
+				        }
+
+                    </style>
+					<div class="row">
+						<div class="col-12 text-center">
+                        	<h5><b>Listado de Ordenes de producción</b></h5>
+	                        <div class="col-12" style="font-size:12px;">
+	                        	<t t-if="date_start">
+	                            	<b>Desde: <spam t-esc="date_start" t-options='{"widget": "date"}'/></b>
+	                        	</t>
+	                        	<t t-if="date_end">
+	                            	<b>Hasta: <spam t-esc="date_end" t-options='{"widget": "date"}'/></b>
+	                        	</t>
+	                        </div>
+                    	</div>
+                    </div><br/>
+                    <div t-foreach="producciones" t-as="mp">
+                    	<div class="table-responsive-sm" style="border:1px solid #333;">
+
+                    		<table class="table table-sm table-borderless">
+                				<tr>                    					
+                    				<th>Producción</th>
+                    				<th>Responsable</th>
+                    				<th>Lista de Materiales</th>
+                				</tr>
+                				<tr>
+                    				<td><span t-esc="mp['name']"/></td>
+                    				<td><span t-esc="mp['user_id']"/></td>
+                    				<td><span t-esc="mp['bom_id']"/></td>
+                				</tr>
+                				<tr>                    					
+                    				<th>Producto</th>
+                    				<th>Cantidad</th>
+                    				<th>Cantidad Producida</th>
+                				</tr>
+                				<tr>
+                    				<td><span t-esc="mp['product_id']"/></td>
+                    				<td><span t-esc="mp['product_qty']"/></td>
+                    				<td><span t-esc="mp['qty_producing']"/></td>
+                				</tr>
+                				<tr>                    					
+                    				<th>Fecha Prevista</th>
+                    				<th>Fecha Finalizado</th>
+                    				<th></th>
+                				</tr>
+                				<tr>
+                    				<td><span t-esc="mp['date_planned_start']" t-options='{"widget": "date"}'/></td>
+                    				<td><span t-esc="mp['date_finished']" t-options='{"widget": "date"}'/></td>
+                    				<td></td>
+                				</tr>
+                    		</table>
+                    		<t t-if="len(componentes)>0">                    			
+			                	<table class="table table-sm">
+			                		<caption style="caption-side: top;">COMPONENTES</caption>
+			                		<thead class="thead-light" style="display: table-row-group">
+										<tr>
+											<th>Producto</th>
+											<th>A Consumir</th>
+											<th>Consumido</th>
+											<th>U/M</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr t-foreach="componentes" t-as="mri">
+											<t t-if="mri['raw_material_production_id'] == mp['id']">
+												<td><span t-esc="mri['product_id']"/></td>
+												<td class="text-right"><span t-esc="mri['product_uom_qty']"/></td>
+												<td class="text-right"><span t-esc="mri['quantity_done']"/></td>
+												<td><span t-esc="mri['product_uom']"/></td>
+											</t>
+										</tr>
+									</tbody>
+			                	</table>
+                    		</t>
+		                	<t t-if="len(ordenes_de_trabajo)>0">		                		
+			                	<table  class="table table-sm" style="width:100%;">
+			                		<t t-set="existe" t-value="0"/>
+			                		<t t-foreach="ordenes_de_trabajo" t-as="wi">
+				                		<t t-if="wi['production_id'] == mp['id']">
+				                			<t t-if="existe == 0">
+						                		<caption style="caption-side: top;">ORDENES DE TRABAJO</caption>
+						                		<thead class="thead-light" style="display: table-row-group">
+													<tr>
+														<th>Operación</th>
+														<th>Centro de Producción</th>
+														<th>Fecha de Inicio Programada</th>
+														<th>Duración Estimada</th>
+														<th>Duracion Real</th>
+														<th>Estado</th>
+													</tr>
+												</thead>
+												<t t-set="existe" t-value="1"/>
+											</t>
+											<tbody>
+												<tr>												
+													<td><span t-esc="wi['workcenter_id']"/></td>
+													<td><span t-esc="wi['date_planned_start']" t-options='{"widget": "date"}'/></td>
+													<td><span t-esc="wi['duration_expected']"/></td>
+													<td><span t-esc="wi['duration']"/></td>
+													<td><span t-esc="wi['state']"/></td>
+												</tr>
+											</tbody>
+										</t>
+									</t>
+		                		</table>
+		                	</t>
+		                	<t t-if="len(sub_productos)>0 ">
+		                		<table  class="table table-sm" style="width:100%;">
+			                		<t t-set="existe" t-value="0"/>
+			                		<t t-foreach="sub_productos" t-as="mbi">
+			                			<t t-if="mbi['production_id'] == mp['id']">
+				                			<t t-if="existe == 0">
+					                			<caption style="caption-side: top;">SUB PRODUCTOS</caption>
+					                			<thead class="thead-light" style="display: table-row-group">
+													<tr>
+														<th>Producto</th>
+														<th>Fabricar</th>
+														<th>Producido</th>
+														<th>U/M</th>
+													</tr>
+												</thead>
+												<t t-set="existe" t-value="1"/>
+											</t>
+											<tbody>
+												<tr>
+													<td><span t-esc="mbi['product_id']"/></td>
+													<td class="text-right"><span t-esc="mbi['product_uom_qty']"/></td>
+													<td class="text-right"><span t-esc="mbi['quantity_done']"/></td>
+													<td><span t-esc="mbi['product_uom']"/></td>
+												</tr>
+											</tbody>
+					                	</t>
+				                	</t>
+			                	</table>
+		                	</t>
+                    	</div>
+                    	<br/>
+                    </div>
+				</div>
+			</t>
+		</t>
+	</template>
+</odoo>
+

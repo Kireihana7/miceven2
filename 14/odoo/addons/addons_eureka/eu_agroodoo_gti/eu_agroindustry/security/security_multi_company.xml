@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record model="ir.rule"  id="chargue_consolidate_rule">
+            <field name="name">Chargue Consolidate multi-company</field>
+            <field name="model_id" ref="model_chargue_consolidate"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule"  id="chargue_manual_rule">
+            <field name="name">Chargue Manual multi-company</field>
+            <field name="model_id" ref="model_chargue_manual"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule"  id="chargue_multi_weight_rule">
+            <field name="name">Chargue Multi Weight multi-company</field>
+            <field name="model_id" ref="model_chargue_multi_weight"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule"  id="romana_serial_rule">
+            <field name="name">Romana Serial multi-company</field>
+            <field name="model_id" ref="model_romana_serial"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule"  id="quality_tolerancia_rule">
+            <field name="name">Tabla de Tolerancia multi-company</field>
+            <field name="model_id" ref="eu_quality_inspection.model_quality_tolerancia"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule"  id="quality_check_motivo_rule">
+            <field name="name">Tabla de no Conformidades multi-company</field>
+            <field name="model_id" ref="eu_quality_inspection.model_quality_check_motivo"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule"  id="quality_check_motivo_detail_rule">
+            <field name="name">Tabla de Motivos multi-company</field>
+            <field name="model_id" ref="eu_quality_inspection.model_quality_check_motivo_detail"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule"  id="product_template_operation_rule">
+            <field name="name">Producto Operaciones multi-company</field>
+            <field name="model_id" ref="eu_quality_inspection.model_product_template_operation"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule"  id="product_template_propiedades_rule">
+            <field name="name">Producto Propiedades multi-company</field>
+            <field name="model_id" ref="eu_quality_inspection.model_product_template_propiedades"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule"  id="chargue_consolidate_excedente_rule">
+            <field name="name">Romana Excedente multi-company</field>
+            <field name="model_id" ref="model_chargue_consolidate_excedente"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule"  id="chargue_consolidate_descuento_rule">
+            <field name="name">Romana Descuento multi-company</field>
+            <field name="model_id" ref="model_chargue_consolidate_descuento"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+        
+    </data>
+</odoo>

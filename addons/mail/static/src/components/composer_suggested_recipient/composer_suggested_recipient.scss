@@ -1,0 +1,9 @@
+// Dirty fix: clear modal-body padding, otherwise it create space inside the
+// suggested_recipient list.
+.o_ComposerSuggestedRecipient .modal-body {
+<<<<<<< HEAD
+    padding: map-get($spacers, 0);
+=======
+    padding: 0;
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+}

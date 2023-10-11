@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acc_wizard_income_period,access_wizard_income_period,model_wizard_report_income_period,base.group_user,1,1,1,1

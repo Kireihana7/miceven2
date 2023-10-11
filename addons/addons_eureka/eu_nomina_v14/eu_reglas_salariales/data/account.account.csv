@@ -1,0 +1,18 @@
+id,name,code,user_type_id/id,reconcile
+account_activa_account_21231720097,PROVEED. A CTA DE TRABAJADORES,2.1.23.17.20.097,account.data_account_type_current_assets,True
+account_activa_account_57115541403,SUELDOS Y SALARIOS,5.7.11.55.41.403,account.data_account_type_current_assets,True
+account_activa_account_57115543441,VACAC. BNO/VACAC Y DIAS ADIC-VACAC,5.7.11.55.43.441,account.data_account_type_current_assets,True
+
+account_activa_account_11231010041,PRESTAMO PERSONAL ADMINISTRACION,1.1.23.10.10.041,account.data_account_type_current_assets,True
+account_activa_account_27119927431,INTERESES PREST SOCIALES,2.7.1.1.99.27.431,account.data_account_type_current_assets,True
+account_activa_account_57115543430,PRESTACIONES SOCIALES APARTADO,5.7.11.55.43.430,account.data_account_type_current_assets,True
+
+account_activa_account_271143,APARTADO PRESTACIONES SOCIALES PERSONAL,2.7.1.43,account.data_account_type_current_assets,True
+
+account_activa_account_57115641413,BONIFIC. UNICA Y ESPECIAL,5.7.11.56.41.413,account.data_account_type_current_assets,True
+
+account_activa_account_57115549492,OTROS BENEFIC. A TRABAJADORES,5.7.11.55.49.492,account.data_account_type_current_assets,True
+account_activa_account_61146441412,BONIFICACION POR PAGAR,6.1.14.64.41.412,account.data_account_type_current_assets,True
+account_activa_account_57115543440,UTILIDADES TRABAJADORES,5.7.11.55.43.440,account.data_account_type_current_assets,True
+account_activa_account_57115543438,PRESTAC. SOC. RETROACTIVIDAD,5.7.11.55.43.438,account.data_account_type_current_assets,True
+account_activa_account_21230827901,AYUDA ECONOMICA UNICA Y ESPECIAL,2.1.2.3.08.27.901,account.data_account_type_current_assets,True

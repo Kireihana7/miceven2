@@ -1,0 +1,91 @@
+<odoo>
+    <data>
+        
+
+        <record id="action_ticket_romana" model="report.paperformat">
+            <field name="name">Ticket de Romana</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">297</field>
+            <field name="page_width">210</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">30</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">3</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+   
+
+         <report id="eu_inventory_sheet_ajust"
+                model="chargue.consolidate"
+                string="Ticket de Romana"
+                name="eu_agroindustry.report_ficha_romana"
+                paperformat="eu_agroindustry.action_ticket_romana"
+                file="eu_agroindustry.report_ficha_romana"
+                report_type="qweb-pdf"
+                
+        />
+
+
+        <record id="action_ticket_romana_corto" model="report.paperformat">
+            <field name="name">Orden de Carga</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">297</field>
+            <field name="page_width">210</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">30</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">3</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+   
+
+         <report id="eu_agroindustry_orden_carga"
+                model="chargue.consolidate"
+                string="Orden de Carga"
+                name="eu_agroindustry.report_orden_carga"
+                paperformat="eu_agroindustry.action_ticket_romana_corto"
+                file="eu_agroindustry.report_orden_carga"
+                report_type="qweb-pdf"
+                
+        />
+
+               <!-- QWeb Reports -->
+        <record id="paperformat_quality_custom" model="report.paperformat">
+            <field name="name">Factura formato pequeño en Almacen</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">279</field>
+            <field name="page_width">80</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+         
+         <report id="quality_report_action_custom"
+            model="quality.check"
+            string="Calidad (Pequeño)"
+            report_type="qweb-pdf"
+            paperformat="eu_agroindustry.paperformat_quality_custom"
+            name="eu_agroindustry.report_invoice_small_format_quality"
+            file="eu_agroindustry.report_invoice_small_format_quality"
+            menu="True"/>
+
+
+
+    </data>
+</odoo>

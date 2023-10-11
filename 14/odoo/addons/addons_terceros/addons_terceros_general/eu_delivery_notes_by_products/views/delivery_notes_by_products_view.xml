@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="delivery_notes_by_products_view">
+        <field name="name">delivery.notes.by.products form</field>
+        <field name="model">delivery.notes.by.products</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="date_start"/>
+    					<field name="date_end"/>
+                    </group>
+                    <group>
+                        <field name="state"/>
+                        <field name="partner_id"/>
+                    </group>
+                </group>
+                <group name="company" groups="base.group_multi_company">
+                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True, 'no_open': True}" domain="[('user_ids','=',uid)]" readonly="1"/>
+                </group>
+                <footer>
+                    <button name="report_delivery_notes_by_products" string="Generar Reporte" type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+	<record model="ir.actions.act_window" id="delivery_notes_by_products_action">
+        <field name="name">NOTAS DE ENTREGA POR PRODUCTOS</field>
+        <field name="res_model">delivery.notes.by.products</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem   id="menu_delivery_notes_by_products"
+                name="Notas de entrega por productos"
+                parent="stock.menu_warehouse_report"
+                action="delivery_notes_by_products_action"
+                sequence="100"/>
+</odoo>

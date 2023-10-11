@@ -1,0 +1,141 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_dropshipping
+# 
+# Translators:
+<<<<<<< HEAD
+# Pedro Filipe <pedro2.10@hotmail.com>, 2022
+# Martin Trigaux, 2022
+# Manuela Silva <mmsrs@sky.com>, 2022
+# Nuno Silva <nuno.silva@arxi.pt>, 2022
+# Pedro Castro Silva <pedrocs@exo.pt>, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-15 12:44+0000\n"
+"PO-Revision-Date: 2022-09-22 05:55+0000\n"
+"Last-Translator: Pedro Castro Silva <pedrocs@exo.pt>, 2022\n"
+=======
+# Manuela Silva <mmsrs@sky.com>, 2020
+# Pedro Castro Silva <pedrocs@exo.pt>, 2020
+# Reinaldo Ramos <reinaldo.ramos@arxi.pt>, 2020
+# Pedro Filipe <pedro2.10@hotmail.com>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~13.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-01 07:29+0000\n"
+"PO-Revision-Date: 2020-09-07 08:19+0000\n"
+"Last-Translator: Pedro Filipe <pedro2.10@hotmail.com>, 2020\n"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+"Language-Team: Portuguese (https://app.transifex.com/odoo/teams/41243/pt/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: pt\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#. module: stock_dropshipping
+#: model:ir.model,name:stock_dropshipping.model_res_company
+msgid "Companies"
+msgstr "Empresas"
+<<<<<<< HEAD
+=======
+
+#. module: stock_dropshipping
+#: model:ir.model.fields,field_description:stock_dropshipping.field_procurement_group__display_name
+#: model:ir.model.fields,field_description:stock_dropshipping.field_purchase_order_line__display_name
+#: model:ir.model.fields,field_description:stock_dropshipping.field_res_company__display_name
+#: model:ir.model.fields,field_description:stock_dropshipping.field_sale_order_line__display_name
+#: model:ir.model.fields,field_description:stock_dropshipping.field_stock_rule__display_name
+msgid "Display Name"
+msgstr "Nome"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: stock_dropshipping
+#: model:stock.route,name:stock_dropshipping.route_drop_shipping
+#: model_terms:ir.ui.view,arch_db:stock_dropshipping.purchase_order_form_inherit_stock_dropshipping
+#: model_terms:ir.ui.view,arch_db:stock_dropshipping.view_order_form_inherit_sale_stock
+msgid "Dropship"
+msgstr "Envio Direto"
+<<<<<<< HEAD
+
+#. module: stock_dropshipping
+#: model:ir.model.fields,field_description:stock_dropshipping.field_purchase_order__dropship_picking_count
+#: model:ir.model.fields,field_description:stock_dropshipping.field_sale_order__dropship_picking_count
+msgid "Dropship Count"
+msgstr ""
+
+#. module: stock_dropshipping
+#: model:ir.model.fields,field_description:stock_dropshipping.field_stock_picking__is_dropship
+msgid "Is a Dropship"
+msgstr ""
+=======
+
+#. module: stock_dropshipping
+#: model:ir.model.fields,field_description:stock_dropshipping.field_procurement_group__id
+#: model:ir.model.fields,field_description:stock_dropshipping.field_purchase_order_line__id
+#: model:ir.model.fields,field_description:stock_dropshipping.field_res_company__id
+#: model:ir.model.fields,field_description:stock_dropshipping.field_sale_order_line__id
+#: model:ir.model.fields,field_description:stock_dropshipping.field_stock_rule__id
+msgid "ID"
+msgstr "ID"
+
+#. module: stock_dropshipping
+#: model:ir.model.fields,field_description:stock_dropshipping.field_procurement_group____last_update
+#: model:ir.model.fields,field_description:stock_dropshipping.field_purchase_order_line____last_update
+#: model:ir.model.fields,field_description:stock_dropshipping.field_res_company____last_update
+#: model:ir.model.fields,field_description:stock_dropshipping.field_sale_order_line____last_update
+#: model:ir.model.fields,field_description:stock_dropshipping.field_stock_rule____last_update
+msgid "Last Modified on"
+msgstr "Última Modificação em"
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: stock_dropshipping
+#: model:ir.model,name:stock_dropshipping.model_stock_picking_type
+msgid "Picking Type"
+msgstr "Tipo de Operação de Stock"
+
+#. module: stock_dropshipping
+#: model:ir.model,name:stock_dropshipping.model_procurement_group
+msgid "Procurement Group"
+msgstr "Grupo de Aprovisionamento"
+<<<<<<< HEAD
+
+#. module: stock_dropshipping
+#: model:ir.model,name:stock_dropshipping.model_purchase_order
+msgid "Purchase Order"
+msgstr "Ordem de Compra"
+=======
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: stock_dropshipping
+#: model:ir.model,name:stock_dropshipping.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Linha de Encomenda de Compra"
+<<<<<<< HEAD
+
+#. module: stock_dropshipping
+#: model:ir.model,name:stock_dropshipping.model_sale_order
+msgid "Sales Order"
+msgstr "Ordem de Vendas"
+=======
+>>>>>>> 57f59f2088c46f4603ff83bbcf2db42d705331fe
+
+#. module: stock_dropshipping
+#: model:ir.model,name:stock_dropshipping.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Linhas da Ordem de Vendas"
+
+#. module: stock_dropshipping
+#: model:ir.model,name:stock_dropshipping.model_stock_rule
+msgid "Stock Rule"
+msgstr ""
+
+#. module: stock_dropshipping
+#: model:ir.model,name:stock_dropshipping.model_stock_picking
+msgid "Transfer"
+msgstr "Transferência"

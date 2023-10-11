@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_form_inherit_close" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.close</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="so_cerrada" invisible="1"/>
+                <button name="cerrar_so" 
+                    type="object" 
+                    string="Cerrar SO" 
+                    attrs="{'invisible': ['|',('state', 'not in', ('done','sale')),('so_cerrada','=',True)]}"
+                    groups="eu_close_so.group_cerrar_so"
+                    confirm="¿Desea cerrar la Venta? Esto no puede deshacerse" class="btn-primary"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- 
+        <record id="purchase_agreement_naterial_agriculture_tree_view_inherit" model="ir.ui.view">
+            <field name="name">purchase.agreement.agriculture.tree.view.inherited</field>
+            <field name="model">purchase.agreement</field>
+            <field name="inherit_id" ref="sh_po_tender_management.sh_purchase_agreement_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="create">false</attribute>
+               </xpath>
+            </field>
+        </record>
+         -->
+
+        <!-- <record id="purchase_agreement_naterial_form_view_inherit" model="ir.ui.view">
+            <field name="name">purchase.agreement.naterial.form.view.inherit.inherited</field>
+            <field name="model">purchase.agreement</field>
+            <field name="inherit_id" ref="material_purchase_requisitions.purchase_agreement_naterial_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page/field[@name='sh_purchase_agreement_line_ids']/tree/field[@name='sh_product_id']" position="after">
+                    <field name="sh_product_type"/>  
+                </xpath>     
+            </field>
+        </record> -->
+        
+        <record id="sh_purchase_agreement_agriculture_form_view_inherit" model="ir.ui.view">
+            <field name="name">sh.purchase.agreement.agriculture.form.view.inherited</field>
+            <field name="model">purchase.agreement</field>
+            <field name="inherit_id" ref="sh_po_tender_management.sh_purchase_agreement_form_view"/>
+            <field name="arch" type="xml">
+                <!-- Ocultando la page original de las líneas cuando la compañía SÍ es agrícola (field 'sh_purchase_agreement_line_ids') -->
+                <xpath expr="//notebook/page[1]" position="attributes">
+                    <attribute name="attrs">{'invisible': [('agriculture_company', '=', True)]}</attribute>
+                </xpath>     
+                
+                <!-- Creando y mostrando otra page para las líneas cuando la compañía SÍ sea agrícola -->
+                <xpath expr="//notebook/page[1]" position="after">
+                    <field name="agriculture_company" invisible="1"/> <!-- Del modelo padre -->
+                    <page string="Products (Agriculture)" attrs="{'invisible': [('agriculture_company', '=', False)]}">
+                        <field name="sh_purchase_agreement_agriculture_line_ids" attrs="{'readonly':[('state','in',['closed','cancel'])]}">
+                            <form string="Purchase Tender">
+                                <group>
+                                    <group>
+                                        <field name="sh_product_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                                        <field name="sh_qty"/>
+                                        <field name="sh_ordered_qty"/>
+                                        <field name="sh_price_unit"/>	
+                                        <field name="schedule_date" />
+    
+                                        <field name="farmer_request_id" invisible="1"/>
+                                        <field name="crop_request_transaction_id" invisible="1"/>
+                                        <field name="crop_request_transaction_line_id" invisible="1"/>
+                                        <field 
+                                            name="analytic_account_id_1"
+                                            groups="analytic.group_analytic_accounting" 
+                                            options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                        />
+
+                                        <field 
+                                            name="analytic_account_id_2"
+                                            domain="[
+                                                ('parent_id', '=', analytic_account_id_1),
+                                                ('is_parent_category', '=', False),
+                                                ('num_parents', '=', 1)
+                                            ]"
+                                            groups="analytic.group_analytic_accounting" 
+                                            options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'                                            
+                                        />  
+                                        
+                                        <field name="analytic_account_id_3"
+                                            domain="[
+                                                ('parent_id', '=', analytic_account_id_2),
+                                                ('is_parent_category', '=', False),
+                                                ('num_parents', '=', 2)
+                                            ]"
+                                            groups="analytic.group_analytic_accounting" 
+                                            options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'                                            
+                                        />
+                    
+                                        <field name="analytic_account_id_4"
+                                            domain="[
+                                                ('parent_id', '=', analytic_account_id_3),
+                                                ('is_parent_category', '=', False),
+                                                ('num_parents', '=', 3)
+                                            ]"
+                                            groups="analytic.group_analytic_accounting" 
+                                            options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'                                            
+                                        />
+    
+                                        <field name="analytic_tag_ids" optional="hide" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' groups="analytic.group_analytic_tags" widget="many2many_tags"/>											
+                                    </group>
+                                </group>
+                            </form>
+                            <tree editable="bottom" decoration-primary="sh_qty &gt; sh_ordered_qty" decoration-success="sh_ordered_qty &gt;= sh_qty">
+                                <field name="sh_product_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                                <field name="sh_qty"/>
+                                <field name="sh_ordered_qty"/>
+                                <field name="sh_price_unit"/>
+                                <!--<field name="schedule_date"/>!-->
+                                <field 
+                                    name="analytic_account_id_1"
+                                    groups="analytic.group_analytic_accounting" 
+                                    options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                                />
+
+                                <field 
+                                    name="analytic_account_id_2"
+                                    domain="[
+                                        ('parent_id', '=', analytic_account_id_1),
+                                        ('is_parent_category', '=', False),
+                                        ('num_parents', '=', 1)
+                                    ]"
+                                    groups="analytic.group_analytic_accounting" 
+                                    options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'                                            
+                                />  
+                                
+                                <field name="analytic_account_id_3"
+                                    domain="[
+                                        ('parent_id', '=', analytic_account_id_2),
+                                        ('is_parent_category', '=', False),
+                                        ('num_parents', '=', 2)
+                                    ]"
+                                    groups="analytic.group_analytic_accounting" 
+                                    options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'                                            
+                                />
+            
+                                <field name="analytic_account_id_4"
+                                    domain="[
+                                        ('parent_id', '=', analytic_account_id_3),
+                                        ('is_parent_category', '=', False),
+                                        ('num_parents', '=', 3)
+                                    ]"
+                                    groups="analytic.group_analytic_accounting" 
+                                    options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'                                            
+                                />
+                                <field name="analytic_tag_ids" optional="hide" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" groups="analytic.group_analytic_tags" widget="many2many_tags" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                            </tree>
+                        </field>
+                    </page>                    
+                </xpath>              
+            </field>
+        </record>
+        
+    </data>
+</odoo>

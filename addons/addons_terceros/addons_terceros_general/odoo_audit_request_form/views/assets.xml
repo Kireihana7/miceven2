@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="odoo_audit_request_form_assets" name="Audit Assets" inherit_id="web.assets_backend">
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/odoo_audit_request_form/static/js/index.js"/>
+        </xpath>
+    </template>
+
+</odoo>

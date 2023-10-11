@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_eu_product_price_history,eu_product_price_history,model_product_price_history,base.group_user,1,1,1,1
+access_product_history_price_report,product_history_price_report,model_product_history_price_report,base.group_user,1,1,1,1
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view"
+        id="material_purchase_requisition_form_inherit_view_maintenance">
+        <field name="name">material_purchase_requisition_form_inherit_view_maintenance</field>
+        <field name="model">material.purchase.requisition</field>
+        <field name="inherit_id"
+        ref="material_purchase_requisitions.material_purchase_requisition_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='analytic_account_id']"
+                position="after">
+                <field name="custom_maintenance_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'  attrs="{'invisible': [('custom_maintenance_id', '=', False)]}" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view"
+        id="material_purchase_requisition_search_view_inherit_maintenance">
+        <field name="name">material.purchase.requisition.search.inherit.maintenance</field>
+        <field name="model">material.purchase.requisition</field>
+        <field name="inherit_id"
+        ref="material_purchase_requisitions.material_purchase_requisition_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search/field[@name='state']"
+                position="inside">
+                <field name="custom_maintenance_id" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' />
+            </xpath>
+            <xpath expr="//search/group"
+                position="inside">
+                   <filter string="Mantenimiento" name="custom_maintenance_id" context="{'group_by':'custom_maintenance_id'}"/>
+            </xpath>
+        </field>
+    </record>
+    
+  </data>
+</odoo>

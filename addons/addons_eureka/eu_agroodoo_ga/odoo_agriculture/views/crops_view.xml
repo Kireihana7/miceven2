@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_farmer_location_crop_form" model="ir.ui.view">
+            <field name="name">Crop Form View</field>
+            <field name="model">farmer.location.crops</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button 
+                            string="Create Crop Project Template" 
+                            name="action_create_crop_project_template" 
+                            type="object" class="oe_highlight"
+                            attrs="{'invisible': [('project_count', '>', 0)]}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="view_dieases" type="object" class="oe_stat_button" icon="fa-pencil-square-o">
+                                <field string="Diseases" name="crops_diease_count" widget="statinfo"/>
+                            </button>                            
+                            <button name="view_varieties" type="object" class="oe_stat_button" icon="fa-pencil-square-o">
+                                <field string="Varieties" name="variety_count" widget="statinfo"/>
+                            </button>
+                            <button 
+                                name="view_project" 
+                                type="object" 
+                                class="oe_stat_button" 
+                                icon="fa-pencil-square-o"
+                                attrs="{'invisible': [('project_count', '&lt;', 1)]}">
+                                <field string="Project" name="project_count" widget="statinfo"/>
+                            </button>
+                        </div>                        
+                        <group>
+                            <group>
+                                <!-- 
+                                <field name="default_id" />
+                                <field name="name_en" />
+                                <field name="name_uk" />    
+                                <field name="name_ru" />
+                                <field name="name_pt" />
+                                <field name="name_es" />
+                                <field name="name_fr" /> 
+                                -->
+                                <field name="name_es" />
+                                <field name="project_id" />
+                                <field name='warehouse_id'/>
+                                <field name='location_id'/>
+                                <!-- <field name="color" /> -->
+                                
+                                <!-- 
+                                <field name='crop_period_start'/>
+                                <field name='crop_period_end'/> 
+                                -->
+                            </group>
+                            <group>  
+                                <field name='image' widget="image"/>
+                            </group>
+                        </group>                      
+                        <notebook>
+                            <!-- <page name="maturities_ids" string="Maturities">
+                                <field name="maturities_ids" widget="section_and_note_one2many" mode="tree">
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name='default_id'/>
+                                                    <field name='name'/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Maturities" editable="top"> 
+                                        <field name='default_id'/>
+                                        <field name='name'/>
+                                    </tree>
+                                </field>
+                            </page>                             -->
+                            <page name="crops_materials" string="Crop Materials">
+                                <field name="crop_material_ids" context="{'default_internal_type':'material'}" domain="[('internal_type', '=', 'material')]"  widget="section_and_note_one2many" mode="tree">
+                                <!-- <field name="crop_material_ids" widget="section_and_note_one2many" mode="tree"> -->
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name='internal_type' invisible="1"/>
+                                                    <field name='job_type_id'/>
+                                                    <field name='product_id'/>
+                                                    <field name='internal_note'/>
+                                                </group>
+                                                <group>
+                                                    <field name='quantity'/>
+                                                    <field name='qty_available'/>
+                                                    <field name='uom_id'/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Crop Materials" editable="bottom"> 
+                                        <field name='internal_type' invisible="1"/>
+                                        <field name='job_type_id' domain="[('type', '=', 'material')]"/>
+                                        <field name='product_id' domain="[('agricultural_internal_type', '=', 'material')]"/>
+                                        <field name='internal_note'/>
+                                        <field name='quantity'/>
+                                        <field name='qty_available'/>
+                                        <field name='uom_id'/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="crops_labour" string="Crop Labours">
+                                <field name="crop_labour_ids" context="{'default_internal_type':'labour'}" domain="[('internal_type', '=', 'labour')]"  widget="section_and_note_one2many" mode="tree">
+                                <!-- <field name="crop_labour_ids" widget="section_and_note_one2many" mode="tree"> -->
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name='internal_type' invisible="1"/>
+                                                    <field name='job_type_id'/>
+                                                    <field name='product_id'/>
+                                                    <field name='internal_note'/>
+                                                </group>
+                                                <!-- <group>
+                                                    <field name='quantity'/>
+                                                    <field name='qty_available'/>
+                                                    <field name='uom_id'/>
+                                                </group> -->
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Crops Labour" editable="bottom"> 
+                                        <field name='internal_type' invisible="1"/>
+                                        <field name='job_type_id' domain="[('type', '=', 'labour')]"/>
+                                        <field name='product_id' domain="[('agricultural_internal_type', '=', 'labour')]"/>
+                                        <field name='internal_note'/>
+                                        <!-- <field name='quantity'/>
+                                        <field name='qty_available'/>
+                                        <field name='uom_id'/> -->
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="crop_equipment" string="Crop Equipments">
+                                <field name="crop_equipment_ids" context="{'default_internal_type':'equipment'}" domain="[('internal_type', '=', 'equipment')]"  widget="section_and_note_one2many" mode="tree">
+                                <!-- <field name="crop_equipment_ids" widget="section_and_note_one2many" mode="tree"> -->
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name='internal_type' invisible="1"/>
+                                                    <field name='job_type_id'/>
+                                                    <field name='product_id'/>
+                                                    <field name='vehicle_id'/>
+                                                    <field name='internal_note'/>
+                                                </group>
+                                                <group>
+                                                    <field name='quantity'/>
+                                                    <!-- <field name='qty_available'/>
+                                                    <field name='uom_id'/> -->
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Crop Equipments" editable="bottom"> 
+                                        <field name='internal_type' invisible="1"/>
+                                        <field name='job_type_id' domain="[('type', '=', 'equipment')]"/>
+                                        <field name='product_id' domain="[('agricultural_internal_type', '=', 'equipment')]"/>
+                                        <field name='vehicle_id' required="1"/>
+                                        <field name='internal_note'/>
+                                        <field name='quantity'/>
+                                        <!-- <field name='qty_available'/>
+                                        <field name='uom_id'/> -->
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="crops_overhead" string="Crop Overheads">
+                                <field name="crop_overhead_ids" context="{'default_internal_type':'overhead'}" domain="[('internal_type', '=', 'overhead')]" widget="section_and_note_one2many" mode="tree">
+                                    <!-- <field name="crop_overhead_ids" widget="section_and_note_one2many" mode="tree"> -->
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name='internal_type' invisible="1"/>
+                                                    <field name='job_type_id'/>
+                                                    <field name='product_id'/>
+                                                    <field name='internal_note'/>
+                                                </group>
+                                                <!--
+                                                <group>
+                                                    <field name='quantity'/>
+                                                    <field name='qty_available'/> 
+                                                    <field name='uom_id'/> 
+                                                </group>
+                                                -->
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Crop Overheads" editable="bottom"> 
+                                        <field name='internal_type' invisible="1"/>
+                                        <field name='job_type_id' domain="[('type', '=', 'overhead')]"/>
+                                        <field name='product_id' domain="[('agricultural_internal_type', '=', 'overhead')]"/>
+                                        <field name='internal_note'/>
+                                        <!-- <field name='quantity'/>
+                                        <field name='qty_available'/>
+                                        <field name='uom_id'/> -->
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="crops_hired_service" string="Hired Services">
+                                <field name="crop_hired_service_ids" context="{'default_internal_type':'hired_service'}" domain="[('internal_type', '=', 'hired_service')]" widget="section_and_note_one2many" mode="tree">
+                                    <!-- <field name="crop_hired_service_ids" widget="section_and_note_one2many" mode="tree"> -->
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name='internal_type' invisible="1"/>
+                                                    <field name='job_type_id'/>
+                                                    <field name='product_id'/>
+                                                    <field name='internal_note'/>
+                                                </group>
+                                                
+                                                <group>
+                                                    <field name='partner_id'/>
+                                                    <!-- 
+                                                    <field name='quantity'/>
+                                                    <field name='qty_available'/> 
+                                                    <field name='uom_id'/>
+                                                    -->
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Hired Services" editable="bottom"> 
+                                        <field name='internal_type' invisible="1"/>
+                                        <field name='job_type_id' domain="[('type', '=', 'hired_service')]"/>
+                                        <field name='product_id' domain="[('agricultural_internal_type', '=', 'hired_service')]"/>
+                                        <field name='internal_note'/>
+                                        <field name='partner_id' required="1"/>
+                                        <!-- <field name='quantity'/>
+                                        <field name='qty_available'/>
+                                        <field name='uom_id'/> -->
+                                    </tree>
+                                </field>
+                            </page>                            
+                            <!-- 
+                            <page string="Crop Diseases" name='crops_dieases_ids'>
+                                <field name="crops_dieases_ids" widget="section_and_note_one2many" mode="tree">
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name='crops_dieases_cure_id'/>
+                                                    <field name='description'/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Crop Diseases" editable="bottom"> 
+                                        <field name='crops_dieases_cure_id'/>
+                                        <field name='description'/>
+                                    </tree>
+                                </field>
+                            </page> 
+                            -->
+                            <!-- 
+                            <page string="Crop Processes" name='crop_task_ids'>
+                                <field name="crop_task_ids" widget="section_and_note_one2many" mode="tree">
+                                    <tree string="Crops Processes" editable="bottom"> 
+                                        <field name="task_id"/>
+                                    </tree>
+                                </field>
+                            </page> 
+                            -->
+                            <page string="Description">
+                                <field name='description'/>
+                            </page>
+                        </notebook> 
+                       
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>                    
+                </form>
+            </field>
+        </record>
+                       
+        <record id="view_farmer_location_crop_tree" model="ir.ui.view">
+                <field name="name">Crop Tree View</field>
+                <field name="model">farmer.location.crops</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name='name'/>
+                        <!-- <field name='crop_period_start'/>
+                        <field name='crop_period_end'/> -->
+                        <field name='warehouse_id'/>
+                        <field name='location_id'/> 
+<!--                         <field name='start_date'/>
+                        <field name='end_date'/> -->    
+                        <!-- <field name='description'/> -->
+                    </tree>
+                </field>
+        </record>
+
+        <record id="view_farmer_location_crop_search" model="ir.ui.view">
+                <field name="name">Crop Search View</field>
+                <field name="model">farmer.location.crops</field>
+                <field name="arch" type="xml">
+                    <search>
+                        <field name='name'/>
+                        <field name='warehouse_id'/>
+                        <field name='location_id'/>
+                        <field name='crop_period_start'/>
+                        <field name='crop_period_end'/>
+                        <!-- <field name='start_date'/>
+                        <field name='end_date'/>    --> 
+                        <field name='description'/>
+                        <group expand="0" string="Group By">
+                            <filter name="Warehouse" context="{'group_by':'warehouse_id'}"/>
+                            <filter name="Stock Location" context="{'group_by':'location_id'}"/>
+                            <!-- <filter name="Start Date" context="{'group_by':'start_date'}"/>
+                            <filter name="End Date" context="{'group_by':'end_date'}"/> -->
+                            <filter name="Crop Period Start" context="{'group_by':'crop_period_start'}"/>
+                            <filter name="Crop Period End" context="{'group_by':'crop_period_end'}"/>
+                        </group>
+                    </search>
+                </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_farmer_location_crop">
+            <field name="name">Crops</field>
+            <field name="res_model">farmer.location.crops</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

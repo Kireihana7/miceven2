@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_header_memo_audit" name="Template del Header">
+        <div class="header mb-2">
+            <div class="rounded-lg border " style="font-size:12px;">
+                <t t-foreach="docs.get_departments_logos()" t-as="logo">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                  <t t-if="image_data_uri(logo)">
+                                    <img t-att-src="image_data_uri(logo)" width="55" height="55"/>
+                                  </t>
+                                </td>
+                                <td class="text-center">AUDITORIA <br /> MEMORÁNDUM </td>
+                                <td>
+                                    Nro: <span t-field="o.memo_sequence" /><br />
+                                    Fecha de Emisión: <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')" /><br />
+                                    Revisón:   <span>Pág: <span class="page"/> / <span class="topage"/> </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+            </div>
+        </div>
+    </template>
+</odoo>

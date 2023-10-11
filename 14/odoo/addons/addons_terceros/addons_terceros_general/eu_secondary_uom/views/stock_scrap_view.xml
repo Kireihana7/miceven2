@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="stock_scrap_form_view_sec" model="ir.ui.view">
+			<field name="name">stock.scrap.form.view</field>
+			<field name="model">stock.scrap</field>
+			<field name="inherit_id" ref="stock.stock_scrap_form_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//sheet//group[1]//group[1]//div[hasclass('o_row')]" position="after">
+					<label for="sec_qty" attrs="{'invisible': [('is_secondary_unit', '=', False)]}"/>
+					<div class="o_row">
+						<field name="is_secondary_unit" invisible="1"/>
+						<field name="secondary_category_id" invisible="1"/>
+	                    <field name="sec_qty" attrs="{'invisible': [('is_secondary_unit', '=', False)],'required': [('is_secondary_unit', '=', True)]}" readonly="1"/>
+	                    <field name="sec_uom" attrs="{'invisible': [('is_secondary_unit', '=', False)],'required': [('is_secondary_unit', '=', True)]}" domain="[('category_id','=',secondary_category_id)]" readonly="1"/>
+                   </div>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

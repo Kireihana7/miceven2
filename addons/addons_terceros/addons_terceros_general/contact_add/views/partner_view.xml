@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="res_users_form_inherit_views" model="ir.ui.view">
+            <field name="name">res_partner_form_inherit_views</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='purchase']" position="after">
+                    <group string="Indicadores" name="credit">
+                        <field name="segmento" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' string="Segmento" ></field>
+                        <field name="canal" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}' string="Canal" ></field>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="dvisita" string="Día de Visita" options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'></field>
+                    <field name="svisita" string="Semana de Visita" widget="many2many_tags"  options='{"no_open": True, "no_create_edit": True, "no_quick_create": True, "no_create": True}'></field>
+                </xpath>
+            </field>
+        </record>       
+
+        <record model="ir.actions.act_window" id="action_svisita">
+            <field name="name">Semana de Visita</field>
+            <field name="res_model">res.partner.svisita</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_dvisita">
+            <field name="name">Día de Visita</field>
+            <field name="res_model">res.partner.dvisita</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_segmento">
+            <field name="name">Segmento</field>
+            <field name="res_model">res.partner.segmento</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_canal">
+            <field name="name">Canal</field>
+            <field name="res_model">res.partner.canal</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="res_partner_segmento_tree_view" model="ir.ui.view">
+            <field name="name">res.partner.segmento.view.tree</field>
+            <field name="model">res.partner.segmento</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="res_partner_canal_tree_view" model="ir.ui.view">
+            <field name="name">res.partner.canal.view.tree</field>
+            <field name="model">res.partner.canal</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="res_partner_dvisita_tree_view" model="ir.ui.view">
+            <field name="name">res.partner.dvisita.view.tree</field>
+            <field name="model">res.partner.dvisita</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="res_partner_svisita_tree_view" model="ir.ui.view">
+            <field name="name">res.partner.svisita.view.tree</field>
+            <field name="model">res.partner.svisita</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="active"/>
+                    <field name="parent_id"/>                    
+                </tree>
+            </field>
+        </record>
+
+        <record id="res_partner_segmento_form_view" model="ir.ui.view">
+            <field name="name">res.partner.segmento.form.view</field>
+            <field name="model">res.partner.segmento</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <div class="oe_title">
+                        <div class="oe_title">
+                            <h1>
+                               Segmento
+                            </h1>
+                        </div>
+                    </div> 
+                        <group>
+                                <group>
+                                    <field name="name"/>
+                                </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="res_partner_canal_form_view" model="ir.ui.view">
+            <field name="name">res.partner.canal.form.view</field>
+            <field name="model">res.partner.canal</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <div class="oe_title">
+                        <div class="oe_title">
+                            <h1>
+                               Canal
+                            </h1>
+                        </div>
+                    </div> 
+                        <group>
+                                <group>
+                                    <field name="name"/>
+                                </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="res_partner_svisita_form_view" model="ir.ui.view">
+            <field name="name">res.partner.svisita.form.view</field>
+            <field name="model">res.partner.svisita</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <div class="oe_title">
+                        <div class="oe_title">
+                            <h1>
+                                Semana de Visita
+                            </h1>
+                        </div>
+                    </div> 
+                        <group>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="active"/>
+                                    <field name="parent_id"/>
+                                </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="res_partner_dvisita_form_view" model="ir.ui.view">
+            <field name="name">res.partner.dvisita.form.view</field>
+            <field name="model">res.partner.dvisita</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <div class="oe_title">
+                        <div class="oe_title">
+                            <h1>
+                               Día de Visita
+                            </h1>
+                        </div>
+                    </div> 
+                        <group>
+                                <group>
+                                    <field name="name"/>
+                                </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <menuitem id="menu_partner_svisita"
+        action="action_svisita"
+        name="Semana Visita" parent="contacts.res_partner_menu_config"
+        sequence="8"/>
+
+    <menuitem id="menu_partner_dvisita"
+        action="action_dvisita"
+        name="Día de Visita" parent="contacts.res_partner_menu_config"
+        sequence="9"/>
+
+    <menuitem id="menu_partner_segmento"
+        action="action_segmento"
+        name="Segmento" parent="contacts.res_partner_menu_config"
+        sequence="10"/>
+
+    <menuitem id="menu_partner_canal"
+        action="action_canal"
+        name="Canal" parent="contacts.res_partner_menu_config"
+        sequence="11"/>
+
+    </data>
+</odoo>

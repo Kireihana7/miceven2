@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_location_form_cubic_qty" model="ir.ui.view">
+            <field name="name">stock.location.cubic.qty.form</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group/group[2]" position="after">
+                    <group name="Capacity" string="Capacidad">
+                        <field name="qty_max" />
+                        <field name="qty_occupied" />
+                        <field name="qty_per_occu" />
+                        <field name="capacity_type" />
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_location_tree_cubic_qty" model="ir.ui.view">
+            <field name="name">stock.location.cubic.qty.tree</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_tree2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="capacity_type" />
+
+                    <field  class="text-center" name="qty_per_occu" widget="progressbar" options="{'max_value': 100}"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="stock_location_view_kanban_cubic_qty" model="ir.ui.view">
+            <field name="name">stock.location.cubic.qty.kanban</field>
+            <field name="model">stock.location</field>
+            <field name="arch" type="xml">
+                <kanban string="Ubicaciones de Inventario">
+                    <field name="complete_name" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="qty_max" />
+                    <field name="qty_per_occu" widget="gauge" nolabel="1" options="{'max_value': 100}" modifiers="{&quot;readonly&quot;: true}"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="o_kanban_card_content">
+                                    <field name="qty_max" invisible="1"/>
+
+                                    <span class="o_kanban_record_subtitle text-center font-weight-bold" style="font-size:2rem;"><field name="complete_name" on_change="1" modifiers="{&quot;readonly&quot;: true}"/></span>
+                                    <field name="qty_per_occu" widget="gauge" nolabel="1" options="{'max_value': 100}" modifiers="{&quot;readonly&quot;: true}"/>
+
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <record id="stock.action_location_form" model="ir.actions.act_window">
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+    </data>
+</odoo>
+   

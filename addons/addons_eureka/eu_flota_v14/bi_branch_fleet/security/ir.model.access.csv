@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+fleet.fleet_vehicle_model_access_right_user,fleet_vehicle_model_access_right,fleet.model_fleet_vehicle_model,branch.group_branch_user,1,1,1,0
+fleet.fleet_vehicle_access_right_user,fleet_vehicle_access_right,fleet.model_fleet_vehicle,branch.group_branch_user,1,1,1,0
+fleet.fleet_vehicle_model_brand_access_right_user,fleet_vehicle_model_brand_access_right,fleet.model_fleet_vehicle_model_brand,branch.group_branch_user,1,1,1,0
+access_fleet_vehicle_manager,fleet.vehicle.manager,model_fleet_vehicle,branch.group_branch_user_manager,1,1,1,1
+access_fleet_vehicle_odometer_user,fleet.vehicle.odometer,model_fleet_vehicle_odometer,branch.group_branch_user,1,1,1,0
+access_fleet_vehicle_odometer_manager,fleet.vehicle.odometer,model_fleet_vehicle_odometer,branch.group_branch_user_manager,1,1,1,1
+access_fleet_vehicle_log_contract_user,fleet.vehicle.log.contract,model_fleet_vehicle_log_contract,branch.group_branch_user,1,1,1,0
+access_fleet_vehicle_log_contract_manager,fleet.vehicle.log.contract,model_fleet_vehicle_log_contract,branch.group_branch_user_manager,1,1,1,1
+
+access_fleet_vehicle_log_services_user,fleet.vehicle.log.services,model_fleet_vehicle_log_services,branch.group_branch_user,1,1,1,0
+access_fleet_vehicle_log_services_manager,fleet.vehicle.log.services,model_fleet_vehicle_log_services,branch.group_branch_user_manager,1,1,1,1

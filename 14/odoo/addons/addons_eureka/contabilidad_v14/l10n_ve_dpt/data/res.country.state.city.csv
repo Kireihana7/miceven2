@@ -1,0 +1,468 @@
+id,name,code,country_id:id,state_id:id
+city_carmenderaton,Carmen de Raton,1,base.ve,state_amazonas
+city_islaraton,Isla Raton,2,base.ve,state_amazonas
+city_laesmeralda,La Esmeralda,3,base.ve,state_amazonas
+city_maroa,Maroa,4,base.ve,state_amazonas
+city_puertoayacucho,Puerto Ayacucho,5,base.ve,state_amazonas
+city_sancarlosderionegro,San Carlos de Rio Negro,6,base.ve,state_amazonas
+city_sanfernandodeatabapo,San Fernando de Atabapo,7,base.ve,state_amazonas
+city_sanjuandemanapiare,San Juan de Manapiare,8,base.ve,state_amazonas
+city_anaco,Anaco,9,base.ve,state_anzoategui
+city_araguadebarcelona,Aragua de Barcelona,10,base.ve,state_anzoategui
+city_barcelona,Barcelona,11,base.ve,state_anzoategui
+city_bocadeuchire,Boca de Uchire,12,base.ve,state_anzoategui
+city_caigua,Caigua,13,base.ve,state_anzoategui
+city_cantaura,Cantaura,14,base.ve,state_anzoategui
+city_clarines,Clarines,15,base.ve,state_anzoategui
+city_elchaparro,El Chaparro,16,base.ve,state_anzoategui
+city_eltigre,El Tigre,17,base.ve,state_anzoategui
+city_eltrigrito,El Tigrito,18,base.ve,state_anzoategui
+city_guanta,Guanta,19,base.ve,state_anzoategui
+city_lecheria,Lecheria,20,base.ve,state_anzoategui
+city_mapire,Mapire,21,base.ve,state_anzoategui
+city_onoto,Onoto,22,base.ve,state_anzoategui
+city_pariaguan,Pariaguan,23,base.ve,state_anzoategui
+city_puertolacruz,Puerto La Cruz,24,base.ve,state_anzoategui
+city_puertopiritu,Puerto Piritu,25,base.ve,state_anzoategui
+city_sanjosedeguanipa,San Jose de Guanipa,26,base.ve,state_anzoategui
+city_sanmateo_an,San Mateo,27,base.ve,state_anzoategui
+city_soledad,Soledad,28,base.ve,state_anzoategui
+city_urica,Urica,29,base.ve,state_anzoategui
+city_valledeguanape,Valle de Guanape,30,base.ve,state_anzoategui
+city_zuata,Zuata,31,base.ve,state_anzoategui
+city_achaguas,Achaguas,32,base.ve,state_apure
+city_biruaca,Biruaca,33,base.ve,state_apure
+city_bruzual,Bruzual,34,base.ve,state_apure
+city_elamparo,El Amparo,35,base.ve,state_apure
+city_elorza,Elorza,36,base.ve,state_apure
+city_guasdualito,Guasdualito,37,base.ve,state_apure
+city_puertopaez,Puerto Paez,38,base.ve,state_apure
+city_sanfernandodeapure,San Fernando de Apure,39,base.ve,state_apure
+city_sanjuandepayara,San Juan de Payara,40,base.ve,state_apure
+city_barbacoas,Barbacoas,41,base.ve,state_aragua
+city_cagua,Cagua,42,base.ve,state_aragua
+city_camatagua,Camatagua,43,base.ve,state_aragua
+city_choroni,Choroni,44,base.ve,state_aragua
+city_coloniatovar,Colonia Tovar,45,base.ve,state_aragua
+city_elconsejo,El Consejo,46,base.ve,state_aragua
+city_ellimon,El Limon,47,base.ve,state_aragua
+city_lastejerias,Las Tejerias,48,base.ve,state_aragua
+city_lavictoria,La Victoria,49,base.ve,state_aragua
+city_magdaleno,Magdaleno,50,base.ve,state_aragua
+city_maracay,Maracay,51,base.ve,state_aragua
+city_ocumaredelacosta,Ocumare de la Costa,52,base.ve,state_aragua
+city_palonegro,Palo Negro,53,base.ve,state_aragua
+city_sancasimiro,San Casimiro,54,base.ve,state_aragua
+city_sanmateo,San Mateo,55,base.ve,state_aragua
+city_sansebastian,San Sebastian,56,base.ve,state_aragua
+city_santacruzdearagua,Santa Cruz de Aragua,57,base.ve,state_aragua
+city_tocoron,Tocoron,58,base.ve,state_aragua
+city_turmero,Turmero,59,base.ve,state_aragua
+city_villadecura,Villa de Cura,60,base.ve,state_aragua
+city_santarita,Santa Rita,61,base.ve,state_aragua
+city_arismendi,Arismendi,62,base.ve,state_barinas
+city_barinas,Barinas,63,base.ve,state_barinas
+city_barinitas,Barinitas,64,base.ve,state_barinas
+city_caldera,Caldera,65,base.ve,state_barinas
+city_capitanejo,Capitanejo,66,base.ve,state_barinas
+city_ciudadbolivia,Ciudad Bolivia,67,base.ve,state_barinas
+city_ciudaddenutrias,Ciudad de Nutrias,68,base.ve,state_barinas
+city_elcanton,El Canton,69,base.ve,state_barinas
+city_guacara,Guacara,70,base.ve,state_barinas
+city_lasveguitas,Las Veguitas,71,base.ve,state_barinas
+city_libertaddebarinas,Libertad de Barinas,72,base.ve,state_barinas
+city_obispos,Obispos,73,base.ve,state_barinas
+city_pedraza,Pedraza,74,base.ve,state_barinas
+city_sabaneta,Sabaneta,75,base.ve,state_barinas
+city_santabarbaradebarinas,Santa Barbara de Barinas,76,base.ve,state_barinas
+city_santaines,Santa Ines,77,base.ve,state_barinas
+city_socopo,Socopo,78,base.ve,state_barinas
+city_caicaradelorinoco,Caicara del Orinoco,79,base.ve,state_bolivar
+city_canaima,Canaima,80,base.ve,state_bolivar
+city_caripito_bol,Caripito,81,base.ve,state_bolivar
+city_ciudadbolivar,Ciudad Bolivar,82,base.ve,state_bolivar
+city_ciudadguayana,Ciudad Guayana,83,base.ve,state_bolivar
+city_ciudadpiar,Ciudad Piar,84,base.ve,state_bolivar
+city_elcallao,El Callao,85,base.ve,state_bolivar
+city_eldorado,El Dorado,86,base.ve,state_bolivar
+city_elmanteco,El Manteco,87,base.ve,state_bolivar
+city_elpalmar,El Palmar,88,base.ve,state_bolivar
+city_elpauji,El Pauji,89,base.ve,state_bolivar
+city_guasipati,Guasipati,90,base.ve,state_bolivar
+city_guri,Guri,91,base.ve,state_bolivar
+city_iboriwo,Iboriwo,92,base.ve,state_bolivar
+city_kavanayen,Kavanayen,93,base.ve,state_bolivar
+city_laparagua,La Paragua,94,base.ve,state_bolivar
+city_lasclaritas,Las Claritas,95,base.ve,state_bolivar
+city_maripa,Maripa,96,base.ve,state_bolivar
+city_paraitepuyderoraima,Paraitepuy de Roraima,97,base.ve,state_bolivar
+city_sanfranciscodeyuruani,San Francisco de Yuruani,98,base.ve,state_bolivar
+city_sanjosedebolivar,San Jose de Bolivar,99,base.ve,state_bolivar
+city_sanrafaeldekamoiran,San Rafael de Kamoiran,100,base.ve,state_bolivar
+city_santaelenadeuairen,Santa Elena de Uairen,101,base.ve,state_bolivar
+city_tumeremo,Tumeremo,102,base.ve,state_bolivar
+city_upata,Upata,103,base.ve,state_bolivar
+city_aguirre,Aguirre,104,base.ve,state_carabobo
+city_bejuma,Bejuma,105,base.ve,state_carabobo
+city_belen,Belen,106,base.ve,state_carabobo
+city_campodecarabobo,Campo de Carabobo,107,base.ve,state_carabobo
+city_canoabo,Canoabo,108,base.ve,state_carabobo
+city_centraltacarigua,Central Tacarigua,109,base.ve,state_carabobo
+city_chirgua,Chirgua,110,base.ve,state_carabobo
+city_ciudadalianza,Ciudad Alianza,111,base.ve,state_carabobo
+city_elpalito,El Palito,112,base.ve,state_carabobo
+city_gige,Gige,113,base.ve,state_carabobo
+city_lastrincheras,Las Trincheras,114,base.ve,state_carabobo
+city_losguayos,Los Guayos,115,base.ve,state_carabobo
+city_mariara,Mariara,116,base.ve,state_carabobo
+city_montalban,Montalban,117,base.ve,state_carabobo
+city_naguanagua,Naguanagua,118,base.ve,state_carabobo
+city_puertocabello,Puerto Cabello,119,base.ve,state_carabobo
+city_sandiego,San Diego,120,base.ve,state_carabobo
+city_sanjoaquin,San Joaquin,121,base.ve,state_carabobo
+city_tocuyito,Tocuyito,122,base.ve,state_carabobo
+city_urama,Urama,123,base.ve,state_carabobo
+city_valencia,Valencia,124,base.ve,state_carabobo
+city_vigirimita,Vigirimita,125,base.ve,state_carabobo
+city_apartaderoscojedes,Apartaderos Cojedes,126,base.ve,state_cojedes
+city_camuriquito,Camuriquito,127,base.ve,state_cojedes
+city_ciudaddecojedes,Ciudad de Cojedes,128,base.ve,state_cojedes
+city_cojedes,Cojedes,129,base.ve,state_cojedes
+city_elbaul,El Baul,130,base.ve,state_cojedes
+city_elpao,El Pao,131,base.ve,state_cojedes
+city_elpaocojedes,El Pao Cojedes,132,base.ve,state_cojedes
+city_laaguadita,La Aguadita,133,base.ve,state_cojedes
+city_lasvegas,Las Vegas,134,base.ve,state_cojedes
+city_libertaddecojedes,Libertad de Cojedes,135,base.ve,state_cojedes
+city_macapo,Macapo,136,base.ve,state_cojedes
+city_mapuey,Mapuey,137,base.ve,state_cojedes
+city_samancito,Samancito,138,base.ve,state_cojedes
+city_sancarlos,San Carlos,139,base.ve,state_cojedes
+city_tinaco,Tinaco,140,base.ve,state_cojedes
+city_tinaquillo,Tinaquillo,141,base.ve,state_cojedes
+city_vallecito,Vallecito,142,base.ve,state_cojedes
+city_curiapo,Curiapo,143,base.ve,state_deltaamacuro
+city_pedernales,Pedernales,144,base.ve,state_deltaamacuro
+city_sierraimataca,Sierra Imataca,145,base.ve,state_deltaamacuro
+city_tucupita,Tucupita,146,base.ve,state_deltaamacuro
+city_archipielagolasaves,Archipielago Las Aves,147,base.ve,state_dependenciasfederales
+city_archipielagolosmonjes,Archipielago Los Monjes,148,base.ve,state_dependenciasfederales
+city_archipielagolosroques,Archipielago Los Roques,149,base.ve,state_dependenciasfederales
+city_islalaorchila,Isla La Orchila,150,base.ve,state_dependenciasfederales
+city_islasdepatos,Islas de Patos,151,base.ve,state_dependenciasfederales
+city_islaslasaves,Islas Las Aves,152,base.ve,state_dependenciasfederales
+city_altagracia,Altagracia,153,base.ve,state_distritocapital
+city_bellavista,Bella Vista,154,base.ve,state_distritocapital
+city_betijoque,Betijoque,155,base.ve,state_distritocapital
+city_caracas,"Caracas (capital federal)""",156,base.ve,state_distritocapital
+city_chirimena,Chirimena,157,base.ve,state_distritocapital
+city_eljunquito,El Junquito,158,base.ve,state_distritocapital
+city_higuerote,Higuerote,159,base.ve,state_distritocapital
+city_lapaz,La Paz,160,base.ve,state_distritocapital
+city_mariche,Mariche,161,base.ve,state_distritocapital
+city_miraflores,Miraflores,162,base.ve,state_distritocapital
+city_adicora,Adicora,163,base.ve,state_falcon
+city_bocadearoa,Boca de Aroa,164,base.ve,state_falcon
+city_cabure,Cabure,165,base.ve,state_falcon
+city_capadare,Capadare,166,base.ve,state_falcon
+city_capatarida,Capatarida,167,base.ve,state_falcon
+city_chichiriviche,Chichiriviche,168,base.ve,state_falcon
+city_churuguara,Churuguara,169,base.ve,state_falcon
+city_coro,Coro,170,base.ve,state_falcon
+city_dabajuro,Dabajuro,171,base.ve,state_falcon
+city_jacura,Jacura,172,base.ve,state_falcon
+city_laveladecoro,La Vela de Coro,173,base.ve,state_falcon
+city_lostaques,Los Taques,174,base.ve,state_falcon
+city_maparari,Maparari,175,base.ve,state_falcon
+city_menedemauroa,Mene de Mauroa,176,base.ve,state_falcon
+city_mirimire,Mirimire,177,base.ve,state_falcon
+city_moron,Moron,178,base.ve,state_falcon
+city_palmasola,Palmasola,179,base.ve,state_falcon
+city_pedregal,Pedregal,180,base.ve,state_falcon
+city_piritufalcon,Piritu Falcon,181,base.ve,state_falcon
+city_pueblonuevofalcon,Pueblo Nuevo Falcon,182,base.ve,state_falcon
+city_puertocumarebo,Puerto Cumarebo,183,base.ve,state_falcon
+city_puntacardon,Punta Cardon,184,base.ve,state_falcon
+city_puntofijo,Punto Fijo,185,base.ve,state_falcon
+city_sanjuandeloscayos,San Juan de Los Cayos,186,base.ve,state_falcon
+city_sanluis,San Luis,187,base.ve,state_falcon
+city_santacruzdebucaral,Santa Cruz De Bucaral,188,base.ve,state_falcon
+city_taratara,Taratara,189,base.ve,state_falcon
+city_tocopero,Tocopero,190,base.ve,state_falcon
+city_tocuyodelacosta,Tocuyo de La Costa,191,base.ve,state_falcon
+city_tucacas,Tucacas,192,base.ve,state_falcon
+city_urumaco,Urumaco,193,base.ve,state_falcon
+city_yaracal,Yaracal,194,base.ve,state_falcon
+city_altagraciadeorituco,Altagracia de Orituco,195,base.ve,state_guarico
+city_cabruta,Cabruta,196,base.ve,state_guarico
+city_calabozo,Calabozo,197,base.ve,state_guarico
+city_camaguan,Camaguan,198,base.ve,state_guarico
+city_chaguaramas,Chaguaramas,199,base.ve,state_guarico
+city_chaguaramasguarico,Chaguaramas Guarico,200,base.ve,state_guarico
+city_elsocorro,El Socorro,201,base.ve,state_guarico
+city_elsombrero,El Sombrero,202,base.ve,state_guarico
+city_guarico,Guarico,203,base.ve,state_guarico
+city_guayabal,Guayabal,204,base.ve,state_guarico
+city_lasmercedes,Las Mercedes,205,base.ve,state_guarico
+city_lasmercedesdelosllanos,Las Mercedes de Los Llanos,206,base.ve,state_guarico
+city_lezama,Lezama,207,base.ve,state_guarico
+city_ortiz,Ortiz,208,base.ve,state_guarico
+city_sanjosedeguaribe,San Jose de Guaribe,209,base.ve,state_guarico
+city_sanjuandelosmorros,San Juan de Los Morros,210,base.ve,state_guarico
+city_sanrafaeldelaya,San Rafael de Laya,211,base.ve,state_guarico
+city_santamariadeipire,Santa Maria de Ipire,212,base.ve,state_guarico
+city_tucupido,Tucupido,213,base.ve,state_guarico
+city_valledelapascua,Valle de la Pascua,214,base.ve,state_guarico
+city_zaraza,Zaraza,215,base.ve,state_guarico
+city_catialamar,Catia La Mar,216,base.ve,state_laguaira
+city_chuspa,Chuspa,217,base.ve,state_laguaira
+city_laguaira,La Guaira,218,base.ve,state_laguaira
+city_maiquetia,Maiquetia,219,base.ve,state_laguaira
+city_arenales,Arenales,220,base.ve,state_lara
+city_barquisimeto,Barquisimeto,221,base.ve,state_lara
+city_cabudare,Cabudare,222,base.ve,state_lara
+city_carora,Carora,223,base.ve,state_lara
+city_cuara,Cuara,224,base.ve,state_lara
+city_cubiro,Cubiro,225,base.ve,state_lara
+city_duaca,Duaca,226,base.ve,state_lara
+city_elmanzano,El Manzano,227,base.ve,state_lara
+city_eltocuyo,El Tocuyo,228,base.ve,state_lara
+city_guigue,Guigue,229,base.ve,state_lara
+city_humocaroalto,Humocaro Alto,230,base.ve,state_lara
+city_humocarobajo,Humocaro Bajo,231,base.ve,state_lara
+city_lamiel,La Miel,232,base.ve,state_lara
+city_moroturo,Moroturo,233,base.ve,state_lara
+city_quibor,Quibor,234,base.ve,state_lara
+city_rioclaro,Rio Claro,235,base.ve,state_lara
+city_sanare,Sanare,236,base.ve,state_lara
+city_sarare,Sarare,237,base.ve,state_lara
+city_siquisique,Siquisique,238,base.ve,state_lara
+city_tintorero,tintorero,239,base.ve,state_lara
+city_apartaderosmerida,Apartaderos Merida,240,base.ve,state_merida
+city_arapuey,Arapuey,241,base.ve,state_merida
+city_aricagua,Aricagua,242,base.ve,state_merida
+city_bailadores,Bailadores,243,base.ve,state_merida
+city_canagua,Canagua,244,base.ve,state_merida
+city_chachopo,Chachopo,245,base.ve,state_merida
+city_chiguara,Chiguara,246,base.ve,state_merida
+city_ejido,Ejido,247,base.ve,state_merida
+city_elvigia,El Vigia,248,base.ve,state_merida
+city_guaraque,Guaraque,249,base.ve,state_merida
+city_laazulita,La Azulita,250,base.ve,state_merida
+city_merida,Merida,251,base.ve,state_merida
+city_mucuchies,Mucuchies,252,base.ve,state_merida
+city_nuevabolivia,Nueva Bolivia,253,base.ve,state_merida
+city_pueblollano,Pueblo Llano,254,base.ve,state_merida
+city_santacruzdemora,Santa Cruz de Mora,255,base.ve,state_merida
+city_santaelenadearenales,Santa Elena de Arenales,256,base.ve,state_merida
+city_santamariadecaparo,Santa Maria de Caparo,257,base.ve,state_merida
+city_santodomingo,Santo Domingo,258,base.ve,state_merida
+city_tabay,Tabay,259,base.ve,state_merida
+city_timotes,Timotes,260,base.ve,state_merida
+city_torondoy,Torondoy,261,base.ve,state_merida
+city_tovar,Tovar,262,base.ve,state_merida
+city_tucani,tucani,263,base.ve,state_merida
+city_zea,Zea,264,base.ve,state_merida
+city_araguita,Araguita,265,base.ve,state_miranda
+city_baruta,Baruta,266,base.ve,state_miranda
+city_carrizal,Carrizal,267,base.ve,state_miranda
+city_caucagua,Caucagua,268,base.ve,state_miranda
+city_chacao,Chacao,269,base.ve,state_miranda
+city_chaguaramasmiranda,Chaguaramas Miranda,270,base.ve,state_miranda
+city_charallave,Charallave,271,base.ve,state_miranda
+city_cua,Cua,272,base.ve,state_miranda
+city_cupira,Cupira,273,base.ve,state_miranda
+city_curiepe,Curiepe,274,base.ve,state_miranda
+city_elguapo,El Guapo,275,base.ve,state_miranda
+city_elhatillo,El Hatillo,276,base.ve,state_miranda
+city_eljarillo,El Jarillo,277,base.ve,state_miranda
+city_filasdemariche,Filas de Mariche,278,base.ve,state_miranda
+city_guarenas,Guarenas,279,base.ve,state_miranda
+city_guatire,Guatire,280,base.ve,state_miranda
+city_losanaucos,Los Anaucos,281,base.ve,state_miranda
+city_losteques,Los Teques,282,base.ve,state_miranda
+city_mamporal,Mamporal,283,base.ve,state_miranda
+city_miranda,Miranda,284,base.ve,state_miranda
+city_ocumaredeltuy,Ocumare del Tuy,285,base.ve,state_miranda
+city_panaquire,Panaquire,286,base.ve,state_miranda
+city_paracotos,Paracotos,287,base.ve,state_miranda
+city_petare,Petare,288,base.ve,state_miranda
+city_riochico,Rio Chico,289,base.ve,state_miranda
+city_sanantoniodelosaltos,San Antonio de Los Altos,290,base.ve,state_miranda
+city_sandiegodelosaltos,San Diego de Los Altos,291,base.ve,state_miranda
+city_sanfernandodelguapo,San Fernando del Guapo,292,base.ve,state_miranda
+city_sanfranciscodeyare,San Francisco de Yare,293,base.ve,state_miranda
+city_sanjosedebarlovento,San Jose de Barlovento,294,base.ve,state_miranda
+city_sanjosedelosaltos,San Jose de Los Altos,295,base.ve,state_miranda
+city_sanjosederiochico,San Jose de Rio Chico,296,base.ve,state_miranda
+city_sanpedrodelosaltos,San Pedro de Los Altos,297,base.ve,state_miranda
+city_santaluciadeltuy,Santa Lucia del Tuy,298,base.ve,state_miranda
+city_santateresa, Santa Teresa,299,base.ve,state_miranda
+city_santateresadeltuy,Santa Teresa del Tuy,300,base.ve,state_miranda
+city_tacariguadelalaguna,Tacarigua de La Laguna,301,base.ve,state_miranda
+city_tacariguademamporal,Tacarigua de Mamporal,302,base.ve,state_miranda
+city_tacata,Tacata,303,base.ve,state_miranda
+city_turumo,Turumo,304,base.ve,state_miranda
+city_aguasay,Aguasay,305,base.ve,state_monagas
+city_araguadematurin,Aragua de Maturin,306,base.ve,state_monagas
+city_barrancas,Barrancas,307,base.ve,state_monagas
+city_barrancasdelorinoco,Barrancas del Orinoco,308,base.ve,state_monagas
+city_caicaradematurin,Caicara de Maturin,309,base.ve,state_monagas
+city_caripe,Caripe,310,base.ve,state_monagas
+city_caripito,Caripito,311,base.ve,state_monagas
+city_chaguaramal,Chaguaramal,312,base.ve,state_monagas
+city_chaguaramasmonagas,Chaguaramas Monagas,313,base.ve,state_monagas
+city_elfurrial, El Furrial,314,base.ve,state_monagas
+city_eltejero,El Tejero,315,base.ve,state_monagas
+city_jusepin,Jusepin,316,base.ve,state_monagas
+city_latoscana,La Toscana,317,base.ve,state_monagas
+city_maturin,Maturin,318,base.ve,state_monagas
+city_puntademata,Punta de Mata,319,base.ve,state_monagas
+city_quiriquire,Quiriquire,320,base.ve,state_monagas
+city_sanantoniodematurin,San Antonio de Maturin,321,base.ve,state_monagas
+city_santabarbara,Santa Barbara,322,base.ve,state_monagas
+city_sanvicentemonagas,San Vicente Monagas,323,base.ve,state_monagas
+city_temblador,Temblador,324,base.ve,state_monagas
+city_teresen,Teresen,325,base.ve,state_monagas
+city_uracoa,Uracoa,326,base.ve,state_monagas
+city_bocadepozo,Boca de Pozo,327,base.ve,state_nuevaesparta
+city_bocaderio,Boca de Rio,328,base.ve,state_nuevaesparta
+city_elespinal,El Espinal,329,base.ve,state_nuevaesparta
+city_elvalledelespiritusanto,El Valle del Espiritu Santo,330,base.ve,state_nuevaesparta
+city_elyaque,El Yaque,331,base.ve,state_nuevaesparta
+city_juangriego,Juan Griego,332,base.ve,state_nuevaesparta
+city_laasuncion,La Asuncion,333,base.ve,state_nuevaesparta
+city_laguardia,La Guardia,334,base.ve,state_nuevaesparta
+city_pampatar,Pampatar,335,base.ve,state_nuevaesparta
+city_paraguachi,Paraguachi,336,base.ve,state_nuevaesparta
+city_porlamar,Porlamar,337,base.ve,state_nuevaesparta
+city_puertofermin,Puerto Fermin,338,base.ve,state_nuevaesparta
+city_puntadepiedras,Punta de Piedras,339,base.ve,state_nuevaesparta
+city_sanfranciscodemacanao,San Francisco de Macanao,340,base.ve,state_nuevaesparta
+city_sanjuanbautista,San Juan Bautista,341,base.ve,state_nuevaesparta
+city_sanpedrodecoche,San Pedro de Coche,342,base.ve,state_nuevaesparta
+city_santaana,Santa Ana,343,base.ve,state_nuevaesparta
+city_acarigua,Acarigua,344,base.ve,state_portuguesa
+city_aguablanca,Agua Blanca,345,base.ve,state_portuguesa
+city_araure,Araure,346,base.ve,state_portuguesa
+city_biscucuy,Biscucuy,347,base.ve,state_portuguesa
+city_boconoito,Boconoito,348,base.ve,state_portuguesa
+city_chabasquen,Chabasquen,349,base.ve,state_portuguesa
+city_elplayon,El Playon,350,base.ve,state_portuguesa
+city_guanare,Guanare,351,base.ve,state_portuguesa
+city_guanarito,Guanarito,352,base.ve,state_portuguesa
+city_ospino,Ospino,353,base.ve,state_portuguesa
+city_papelon,Papelon,354,base.ve,state_portuguesa
+city_piritu,Piritu,356,base.ve,state_portuguesa
+city_sanrafaeldeonoto,San Rafael de Onoto,358,base.ve,state_portuguesa
+city_villabruzual,Villa Bruzual,360,base.ve,state_portuguesa
+city_araya,Araya,361,base.ve,state_sucre
+city_cariaco,Cariaco,362,base.ve,state_sucre
+city_carpano,Carpano,363,base.ve,state_sucre
+city_carupano,Carupano,364,base.ve,state_sucre
+city_casanay,Casanay,365,base.ve,state_sucre
+city_cumana,Cumana,366,base.ve,state_sucre
+city_cumanacoa,Cumanacoa,367,base.ve,state_sucre
+city_elpilar,El Pilar,368,base.ve,state_sucre
+city_guira,Guira,369,base.ve,state_sucre
+city_irapa,Irapa,370,base.ve,state_sucre
+city_marigitar,Marigitar,371,base.ve,state_sucre
+city_mariguitar,Mariguitar,372,base.ve,state_sucre
+city_riocaribe,Rio Caribe,373,base.ve,state_sucre
+city_sanantoniodelgolfo,San Antonio del Golfo,374,base.ve,state_sucre
+city_sanjosedeaerocuar,San Jose de Aerocuar,375,base.ve,state_sucre
+city_tunapuy,Tunapuy,376,base.ve,state_sucre
+city_yaguaraparo,Yaguaraparo,377,base.ve,state_sucre
+city_abejales,Abejales,378,base.ve,state_tachira
+city_capachonuevo,Capacho Nuevo,379,base.ve,state_tachira
+city_capachoviejo,Capacho Viejo,380,base.ve,state_tachira
+city_colon,Colon,381,base.ve,state_tachira
+city_coloncito,Coloncito,382,base.ve,state_tachira
+city_cordero,Cordero,383,base.ve,state_tachira
+city_delicias,Delicias,384,base.ve,state_tachira
+city_elcobre,El Cobre,385,base.ve,state_tachira
+city_elpinal,El Pinal,386,base.ve,state_tachira
+city_lafria,La Fria,387,base.ve,state_tachira
+city_lagrita,La Grita,388,base.ve,state_tachira
+city_lasmesas,Las Mesas,389,base.ve,state_tachira
+city_latendida,La Tendida,390,base.ve,state_tachira
+city_lobatera,Lobatera,391,base.ve,state_tachira
+city_michelena,Michelena,392,base.ve,state_tachira
+city_palmira,Palmira,393,base.ve,state_tachira
+city_pregonero,Pregonero,394,base.ve,state_tachira
+city_queniquea,Queniquea,395,base.ve,state_tachira
+city_rubio,Rubio,396,base.ve,state_tachira
+city_sanantoniodeltachira,San Antonio del Tachira,397,base.ve,state_tachira
+city_sancristobal,San Cristobal,398,base.ve,state_tachira
+city_sanjosecito,San Josecito,399,base.ve,state_tachira
+city_sanjuandecolon,San Juan de Colon,400,base.ve,state_tachira
+city_sanrafaeldelpinal,San Rafael del Pinal,401,base.ve,state_tachira
+city_sansimon,San Simon,402,base.ve,state_tachira
+city_santaanadeltachira,Santa Ana del Tachira,403,base.ve,state_tachira
+city_santaisabel,Santa Isabel,404,base.ve,state_tachira
+city_seboruco,Seboruco,405,base.ve,state_tachira
+city_tariba,Tariba,406,base.ve,state_tachira
+city_umuquena,Umuquena,407,base.ve,state_tachira
+city_urena,Urena,408,base.ve,state_tachira
+city_bocono,Bocono,409,base.ve,state_trujillo
+city_campoelias,Campo Elias,410,base.ve,state_trujillo
+city_carache,Carache,411,base.ve,state_trujillo
+city_carvajal,Carvajal,412,base.ve,state_trujillo
+city_chejende,Chejende,413,base.ve,state_trujillo
+city_eldividive,El Dividive,414,base.ve,state_trujillo
+city_elparadero,El Paradero,415,base.ve,state_trujillo
+city_escuque,Escuque,416,base.ve,state_trujillo
+city_lapuerta,La Puerta,417,base.ve,state_trujillo
+city_laquebrada,La Quebrada,418,base.ve,state_trujillo
+city_montecarmelo,Monte Carmelo,419,base.ve,state_trujillo
+city_motatan,Motatan,420,base.ve,state_trujillo
+city_pampan,Pampan,421,base.ve,state_trujillo
+city_pampanito,Pampanito,422,base.ve,state_trujillo
+city_sabanademendoza,Sabana de Mendoza,423,base.ve,state_trujillo
+city_sabanagrande,Sabana Grande,424,base.ve,state_trujillo
+city_santaapolonia,Santa Apolonia,425,base.ve,state_trujillo
+city_trujillo,Trujillo,426,base.ve,state_trujillo
+city_valera,Valera,427,base.ve,state_trujillo
+city_aroa,Aroa,428,base.ve,state_yaracuy
+city_boraure,Boraure,429,base.ve,state_yaracuy
+city_chivacoa,Chivacoa,430,base.ve,state_yaracuy
+city_cocorote,Cocorote,431,base.ve,state_yaracuy
+city_farriar,Farriar,432,base.ve,state_yaracuy
+city_guama,Guama,433,base.ve,state_yaracuy
+city_independencia,Independencia,434,base.ve,state_yaracuy
+city_nirgua,Nirgua,435,base.ve,state_yaracuy
+city_sabanadeparra,Sabana de Parra,436,base.ve,state_yaracuy
+city_sanfelipe,San Felipe,437,base.ve,state_yaracuy
+city_sanpablo,San Pablo,438,base.ve,state_yaracuy
+city_urachiche,Urachiche,439,base.ve,state_yaracuy
+city_yaritagua,Yaritagua,440,base.ve,state_yaracuy
+city_yumare,Yumare,441,base.ve,state_yaracuy
+city_bachaqueros,Bachaqueros,442,base.ve,state_zulia
+city_bobures,Bobures,443,base.ve,state_zulia
+city_cabimas,Cabimas,444,base.ve,state_zulia
+city_cajaseca,Caja Seca,445,base.ve,state_zulia
+city_canozancudo,Cano Zancudo,446,base.ve,state_zulia
+city_casiguaelcubo,Casigua El Cubo,447,base.ve,state_zulia
+city_ciudadojeda,Ciudad Ojeda,448,base.ve,state_zulia
+city_concepcion,Concepcion,449,base.ve,state_zulia
+city_eltoro,El Toro,450,base.ve,state_zulia
+city_encontrado,Encontrado,451,base.ve,state_zulia
+city_lacanada,La Canada,452,base.ve,state_zulia
+city_laconcepcion,La Concepcion,453,base.ve,state_zulia
+city_lagunillas,Lagunillas,454,base.ve,state_zulia
+city_lavilladelrosario,La Villa del Rosario,455,base.ve,state_zulia
+city_lospuertosdealtagracia,Los Puertos de Altagracia,456,base.ve,state_zulia
+city_machiques,Machiques,457,base.ve,state_zulia
+city_maracaibo,Maracaibo,458,base.ve,state_zulia
+city_menegrande,Menegrande,459,base.ve,state_zulia
+city_pueblonuevo,Pueblo Nuevo ,460,base.ve,state_zulia
+city_sancarlosdelzulia,San Carlos del Zulia,461,base.ve,state_zulia
+city_sanfrancisco,San Francisco,462,base.ve,state_zulia
+city_sanrafaeldeelmojan,San Rafael de El Mojan,463,base.ve,state_zulia
+city_sanrafaeldelmojan,San Rafael del Mojan,464,base.ve,state_zulia
+city_santabarbara_zu,Santa Barbara,465,base.ve,state_zulia
+city_santarita_zu,Santa rita,466,base.ve,state_zulia
+city_santimoteo,San Timoteo,467,base.ve,state_zulia
+city_sinamaica,Sinamaica,468,base.ve,state_zulia
+city_tiajuana,Tia Juana,469,base.ve,state_zulia
+city_villadelrosario,Villa del Rosario,470,base.ve,state_zulia

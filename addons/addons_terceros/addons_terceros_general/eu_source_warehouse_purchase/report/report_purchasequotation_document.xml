@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="report_purchasequotation_source_warehouse_document"
+        inherit_id="purchase.report_purchasequotation_document"
+    >
+        <xpath expr="//table[hasclass('table-sm')]" position="before">
+            <div class="row mt32 mb32">
+                <div t-if="o.purchase_source_warehouse_id" class="col-3 bm-2">
+                    <strong>Almacén Origen:</strong>
+                    <p t-field="o.purchase_source_warehouse_id.name" class="m-0"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

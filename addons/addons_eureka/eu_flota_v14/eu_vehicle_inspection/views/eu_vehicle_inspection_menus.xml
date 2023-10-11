@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="eu_vehicle_inspection_menu_root"
+        name="Inspecciones"
+        parent="fleet.menu_root"
+    />
+        <menuitem
+            id="fleet_vehicle_inspection_menu"
+            name="Fichas de inspección"
+            action="eu_vehicle_inspection.fleet_vehicle_inspection_action"
+            parent="eu_vehicle_inspection_menu_root"
+        />
+        <menuitem
+            id="fleet_inspection_category_menu"
+            name="Categorías"
+            action="eu_vehicle_inspection.fleet_inspection_category_action"
+            parent="eu_vehicle_inspection_menu_root"
+        />
+
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="header_ficha_inspections" name="Template del Header">
+        <div>
+            <div class="rounded-lg border " style="font-size:12px;">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <t t-if="image_data_uri(env.company.logo)">
+                                    <img t-att-src="image_data_uri(env.company.logo)" width="55" height="55"/>
+                                </t>
+                            </td>
+                            <td class="text-center">
+                                <span style="font-size: 13px;" t-esc="env.company.name" /><br />
+                                <span> RIF: <span t-esc="env.company.rif" /> </span><br />
+                            </td>
+                            <td>
+                                <span>Fecha Impresión: <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"/> </span> <br />
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </template>
+</odoo>

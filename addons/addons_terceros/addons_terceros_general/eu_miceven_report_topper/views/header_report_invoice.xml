@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="header_report_miceven" name="Template del Header">
+        <div t-attf-class="header o_company_#{env.company.id}_layout" t-att-style="report_header_style">
+            <div class="row" style="font-size: 12px;">
+                <div class="col-1" style="margin-right:3rem;">
+                    <t t-if="image_data_uri(env.company.logo)">
+                        <img t-att-src="image_data_uri(env.company.logo)" width="120" height="120" style="margin-top:1rem;"/>
+                    </t>
+                </div>
+                <div class="col-11">
+                    <div class="row" >
+                        <div class="col-8" style="margin-top:1rem;">
+                            <span >ODOO - CORPOEUREKA</span>
+                        </div>
+                        <div class="col-1" style="margin-top:1rem;">
+                            Usuario
+                        </div>
+                        <div class="col-3 text-center" style="margin-top:1rem;">
+                            <span t-esc="env.user.name"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <span t-esc="env.company.name"/>
+                        </div>
+                        <div class="col-1">
+                            Pág.:
+                        </div>
+                        
+                        <div class="col-3 text-center" >
+                          <span class="page"/>
+                          de
+                            <span class="topage"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <span> RIF: <span t-esc="env.company.rif"/></span>
+                        </div>
+                        <div class="col-1">
+                            Fecha:
+                        </div>
+                        <div class="col-3 text-center" >
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y  %H:%M:%S')"/>
+                        </div>
+                        
+                    </div>
+                    <div class="row" style="font-size: 16px;">
+                        <div class="col-12 text-center">
+                            <span t-esc="tittle"/>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            Fecha: Desde <span t-esc="desde"/> Hasta <span t-esc="hasta"/>
+                        </div>
+                        
+                        
+                    </div>
+                    <t t-if="Moneda and report_currency">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <span>Moneda a Filtrar: <span t-esc="Moneda" /></span>; <span>Moneda a Reportar: <span t-esc="report_currency" /></span>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                    </t>
+                </div>
+            </div>
+                
+            </div>
+    
+        <div t-attf-class="article o_report_layout_standard o_company_#{env.company.id}_layout" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <div class="pt-5">
+                <!-- This div ensures that the address is not cropped by the header. -->
+            </div>
+            <t t-raw="0"/>
+        </div>
+
+    </template>
+</odoo>

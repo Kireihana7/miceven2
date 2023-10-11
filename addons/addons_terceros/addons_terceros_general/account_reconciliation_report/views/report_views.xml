@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+
+
+        <record id="paperformat_reconciliation_report" model="report.paperformat">
+            <field name="name">Reconciliation Report papper format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">297</field>
+            <field name="page_width">216</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">3</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="account_reconciliation_report" model="ir.actions.report">
+            <field name="name">Conciliaciones Pendientes</field>
+            <field name="model">account.reconciliation.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">account_reconciliation_report.print_account_reconciliation_report_template</field>
+            <field name="report_file">account_reconciliation_report.print_account_reconciliation_report_template</field>
+            <field name="binding_model_id" ref="model_account_reconciliation_report"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

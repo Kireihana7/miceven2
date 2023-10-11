@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem 
+        id="menu_sales_kpi" 
+        name="Indicadores de Venta" 
+        web_icon="eu_sales_kpi_kg,static/description/icon.png"
+    />
+        <!-- <menuitem
+            id="kpi_kg_menu_root"
+            parent="eu_sales_kpi_kg.menu_sales_kpi"
+            name="KPI Kg"
+            sequence="2"
+        />
+        <menuitem
+            id="kpi_kg_menu"
+            parent="eu_sales_kpi_kg.kpi_kg_menu_root"
+            name="KPI Kg"
+            groups="eu_sales_kpi_kg.group_crear_kpi"
+            action="eu_sales_kpi_kg.kpi_kg_config_action"
+            sequence="1"
+        />
+        <menuitem
+            id="kpi_kg_vendedores"
+            parent="eu_sales_kpi_kg.kpi_kg_menu_root"
+            name="Logrado Vendedores"
+            sequence="2"
+            action="eu_sales_kpi_kg.kpi_config_salesperson_action_menu"
+        />
+        <menuitem
+            id="kpi_tabla_menu"
+            parent="eu_sales_kpi_kg.kpi_kg_menu_root"
+            name="Objetivos del Mes"
+            sequence="3"
+            groups="eu_sales_kpi_kg.group_crear_kpi"
+
+            action="eu_sales_kpi_kg.kpi_tabla_action"
+        /> -->
+    
+
+    <!-- Reportes -->
+    <menuitem 
+        id="eu_sales_kpi_kg_operaciones" 
+        name="Informes" 
+        sequence="100" 
+        parent="eu_sales_kpi_kg.menu_sales_kpi">
+        <!-- Edgar Aldana -->
+        <!-- <menuitem 
+            id="menu_sales_by_month_products" 
+            name="Ventas por Mes y por Productos"
+            sequence="0"
+            action="eu_sales_kpi_kg.action_sales_by_month_products"
+        />       
+        <menuitem 
+            id="menu_sales_by_customer_hs_nationwide" 
+            name="Ventas por cliente con mayor venta a nivel nacional"
+            sequence="1"
+            action="eu_sales_kpi_kg.action_sales_by_customer_hs_nationwide"
+        />        -->
+        <!-- <menuitem 
+            id="menu_sales_by_pvc_schedule" 
+            name="Pedidos por productos, vendedor y cliente - Programación"
+            sequence="2"
+            action="eu_sales_kpi_kg.action_sales_by_pvc_schedule"
+        />                        
+
+        <menuitem 
+            id="menu_processed_payments_day_vendor" 
+            name="Pagos procesados en el día por vendedor"
+            sequence="3"
+            action="eu_sales_kpi_kg.action_processed_payments_day_vendor"
+        />                -->
+    </menuitem>     
+    
+</odoo>

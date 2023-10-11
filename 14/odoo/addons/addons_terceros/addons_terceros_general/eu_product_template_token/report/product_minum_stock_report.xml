@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="minun_munim" >
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <style>
+                        body{
+                            font-size:0.8rem;
+                        }
+                    </style>
+                    <t t-set="domain" t-value="doc.get_domain()"/>
+                   
+                    <t t-set="reposiciones" t-value="doc.env['stock.warehouse.orderpoint'].search(domain).filtered(lambda x: x.qty_on_hand &lt;= x.product_min_qty)"/>
+                    <t t-set="products_to_seek" t-value="reposiciones.mapped('product_id')"/>
+                    <t t-set="movimientos" t-value="doc.env['stock.move.line'].search(domain).filtered(lambda x:x.product_id in products_to_seek).sorted(key=lambda x: x.date)"/>
+                    <t t-set="company_ids" t-value="doc.env.user.company_ids"/>
+
+                    <div class="container mt-2" >
+                        <div class="row">
+                            <div class="col-3">
+                                <img  t-if="doc.env.company.logo" t-att-src="image_data_uri(doc.env.company.logo)" height="120px" style="max-width: 180px;padding-left:5px;"/>
+                            </div>
+                            <div id="logos" class="col-6 text-center">
+                                
+                                <span  class="font-weight-bold" t-field="doc.env.company.name"/> <br/> 
+                                        <span t-field="doc.env.company.street"/> - 
+                                        <span t-field="doc.env.company.street2" t-if="doc.env.company.street2"/> - 
+                                        <span t-field="doc.env.company.city"/> - 
+                                        <span t-field="doc.env.company.state_id"/> - 
+                                        <span t-field="doc.env.company.vat"/>
+                            </div>
+                            <div class="col-3 text-right">
+                               
+                                <strong class="font-weight-bold" style="font-size:10px;">FECHA </strong><br/>
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')" />
+                                
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <t t-if="doc.company_ids">
+                        <t t-set="company_ids" t-value="doc.company_ids"/>
+                    </t>
+                    <t t-foreach="company_ids" t-as="company">
+                        <h4 t-esc="company.name"></h4>
+                    
+                    <t t-foreach="reposiciones.filtered(lambda x: x.company_id==company)" t-as="repo">
+                        <table class="table table-sm table-bordered shadow">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th colspan="2"><span t-esc="repo.product_id.name"/> <span t-esc="repo.product_id.default_code"/></th>
+                                    
+                                    <th>Cant. a Mano</th>
+                                    <th><span t-esc="repo.qty_on_hand"/></th>
+                                    <th>Cant. minima</th>
+                                    <th><span t-esc="repo.product_min_qty"/></th>
+                                </tr>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Tipo Operación</th>
+                                    <th>Cantidad</th>
+                                    <th>Lote</th>
+                                    <th>Desde</th>
+                                    <th>Hasta</th>
+                                    <th>C.Costo</th>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size:0.6rem;">
+                                <t t-set="movimientosB" t-value="movimientos.filtered(lambda x: x.product_id == repo.product_id and x.company_id==company)"/>
+                                <t t-foreach="movimientosB" t-as="mov">
+                                    <tr>
+                                        <th><span t-esc="mov.date"/></th>
+                                        <th><span t-esc="mov.picking_code"/></th>
+                                        <th><span t-esc="mov.qty_done"/> <span t-esc="mov.product_uom_id.name"/></th>
+                                        <th><span t-esc="mov.lot_id.name"/></th>
+                                        <th><span t-esc="mov.location_id.complete_name"/> </th>
+                                        <th><span t-esc="mov.location_dest_id.complete_name"/></th>
+                                        <th><span t-esc="mov.analytic_account_id.name"/></th>
+                                    </tr>
+                                </t>
+                                <t t-if="not movimientosB">
+                                    <tr>
+                                        <th colspan="7">No existen movimientos de este producto</th>
+                                        
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+                </t>
+
+
+
+                </t>
+            </t>
+        </t>
+    </template>
+    
+    
+    
+
+</odoo>

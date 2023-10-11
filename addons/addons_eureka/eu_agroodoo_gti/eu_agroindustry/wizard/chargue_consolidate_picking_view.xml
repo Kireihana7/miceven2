@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_chargue_consolidate_picking_form" model="ir.ui.view">
+        <field name="name">chargue.consolidate.picking.form</field>
+        <field name="model">chargue.consolidate.picking</field>
+        <field name="arch" type="xml">
+            <form string="Creación de Picking">
+                <field name="company_id" invisible="1"/>
+                <field name="operation_type" invisible="1"/>
+                <group>
+                    <field 
+                        name="purchase_id" 
+                        attrs="{'invisible': [('operation_type', '!=', 'compra')]}" 
+                    />
+                    <field 
+                        name="sale_id" 
+                        attrs="{'invisible': [('operation_type', '!=', 'venta')]}" 
+                    />
+                    <field name="product_id" options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                    <field name="product_uom_qty" attrs="{'readonly': [('operation_type', '!=' , 'transferencia')]}" />
+                    <field name="product_uom" />
+                    <field name="seed_type_id" />
+                </group>
+                <group>
+                    <div class="o_td_label">
+                        <label for="partner_id" string="Contacto" style="font-weight:bold;" />
+                    </div>
+                    <field name="partner_id" nolabel="1" options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                    <field name="owner_id" groups="stock.group_tracking_owner"/>
+                    <field 
+                        name="picking_type_id" 
+                        options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'
+                        required="1"
+                    />
+                </group>
+                <group attrs="{'invisible': [('operation_type', '!=' , 'transferencia')]}">
+                    <field name="location_src_id" attrs="{'required': [('operation_type', '=' , 'transferencia')]}" options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                    <field name="location_dest_id" attrs="{'required': [('operation_type', '=' , 'transferencia')]}" options='{"no_open": False, "no_create_edit": True, "no_quick_create": True, "no_create": True}'/>
+                </group>
+                <footer> 
+                    <button string='Crear Picking' name='create_picking' type='object' class='btn-primary' />
+                    <button string='Cancel' class='btn-default' special="cancel"/>
+                </footer>               
+            </form>
+        </field>
+    </record>
+</odoo>

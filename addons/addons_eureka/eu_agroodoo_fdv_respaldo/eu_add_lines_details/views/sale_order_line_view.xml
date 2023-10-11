@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_order_line_tree_inherit_sale_sdp" model="ir.ui.view">
+            <field name="name">sale.order.line.tree.sale.sdp.location</field>
+            <field name="inherit_id" ref="sale.view_order_line_tree"/>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='price_subtotal']" position="before">
+                    <field name="price_unit" sum="Total unit" widget="monetary"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="action_order_line_sale">
+            <field name="name">Detalles de Pedidos</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="sale_order_menu_line"
+                name="Línea de los Pedidos"
+                parent="sale.sale_order_menu"
+                action="action_order_line_sale"
+                groups="sales_team.group_sale_salesman"
+                sequence="2"/>
+    </data>
+</odoo>
